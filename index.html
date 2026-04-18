@@ -315,6 +315,19 @@ section {
   z-index: 2;
 }
 
+.work-subtitle {
+  position: absolute;
+  top: 112px;
+  left: 80px;
+  z-index: 2;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--sage);
+  max-width: 480px;
+  line-height: 1.5;
+}
+
 .work-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -441,15 +454,319 @@ section {
   letter-spacing: 0.08em;
 }
 
-/* ── CONTACT ── */
-#contact {
+/* ── CLIENTS (real work) ── */
+#clients {
+  background: var(--cream);
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+#clients .section-label {
+  margin-bottom: 6px;
+}
+
+.clients-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--sage);
+  margin-bottom: 56px;
+  max-width: 480px;
+  line-height: 1.5;
+}
+
+.clients-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  flex: 1;
+}
+
+.client-card {
+  background: var(--off);
+  padding: 40px 36px;
+  border-left: 3px solid var(--oak);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.client-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(42,43,37,0.08);
+}
+
+.client-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 32px;
+  color: rgba(42,43,37,0.15);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-bottom: 18px;
+}
+
+.client-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 30px;
+  line-height: 1.15;
+  color: var(--dark);
+  margin-bottom: 8px;
+}
+
+.client-handle {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--oak);
+  margin-bottom: 22px;
+  text-decoration: none;
+  display: inline-block;
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.25s ease;
+  cursor: none;
+}
+.client-handle:hover { border-color: var(--oak); }
+
+.client-did {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-bottom: 8px;
+}
+
+.client-proud {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--dark);
+  margin-bottom: 22px;
+}
+
+.client-stat {
+  display: inline-block;
+  padding: 6px 14px;
+  background: rgba(200,169,126,0.15);
+  color: var(--dark);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  margin-bottom: 22px;
+  align-self: flex-start;
+}
+
+.client-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--dark);
+  padding-top: 22px;
+  border-top: 1px solid rgba(42,43,37,0.1);
+  margin-bottom: 10px;
+}
+
+.client-quote::before {
+  content: '"';
+  font-size: 28px;
+  color: var(--oak);
+  margin-right: 4px;
+  vertical-align: -4px;
+}
+
+.client-attr {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--sage);
+}
+
+/* ── PROCESS ── */
+#process {
   background: var(--dark);
+  color: var(--cream);
+  padding: 80px;
+  display: flex;
+  flex-direction: column;
+}
+
+#process .section-label {
+  color: var(--oak);
+  margin-bottom: 6px;
+}
+
+.process-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: rgba(245,242,237,0.55);
+  margin-bottom: 56px;
+  max-width: 520px;
+  line-height: 1.5;
+}
+
+.process-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2px;
+  flex: 1;
+  background: rgba(200,169,126,0.15);
+}
+
+.process-step {
+  background: var(--dark);
+  padding: 44px 36px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+  transition: background 0.3s ease;
+}
+
+.process-step:hover {
+  background: var(--charcoal);
+}
+
+.process-num {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 56px;
+  color: var(--oak);
+  letter-spacing: 0.02em;
+  line-height: 1;
+  margin-bottom: 24px;
+}
+
+.process-name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 26px;
+  line-height: 1.2;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+
+.process-desc {
+  font-size: 12px;
+  line-height: 1.75;
+  color: rgba(245,242,237,0.55);
+  font-weight: 300;
+}
+
+/* ── TESTIMONIALS ── */
+#testimonials {
+  background: var(--warm);
+  padding: 80px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+#testimonials .section-label {
+  margin-bottom: 6px;
+}
+
+.testimonials-subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  color: var(--sage);
+  margin-bottom: 48px;
+  max-width: 520px;
+  line-height: 1.5;
+}
+
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  max-width: 1100px;
+}
+
+.testimonial-card {
+  padding: 40px 44px;
+  background: var(--cream);
+  position: relative;
+  border-top: 3px solid var(--oak);
+}
+
+.testimonial-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 96px;
+  color: rgba(200,169,126,0.2);
+  line-height: 0.5;
+  position: absolute;
+  top: 36px;
+  left: 36px;
+  pointer-events: none;
+  font-style: italic;
+}
+
+.testimonial-quote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 24px;
+  font-style: italic;
+  line-height: 1.4;
+  color: var(--dark);
+  margin-bottom: 28px;
+  position: relative;
+  z-index: 1;
+}
+
+.testimonial-attr {
+  display: flex;
   align-items: center;
-  text-align: center;
-  padding: 80px;
+  gap: 14px;
+  padding-top: 20px;
+  border-top: 1px solid rgba(42,43,37,0.1);
+}
+
+.testimonial-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--oak);
+}
+
+.testimonial-name {
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--dark);
+  font-weight: 500;
+}
+
+.testimonial-context {
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--sage);
+  margin-left: auto;
+}
+
+/* ── Mobile: disable cursor, fix layouts ── */
+@media (max-width: 900px), (hover: none) {
+  body { cursor: auto; }
+  #cursor { display: none; }
+  * { cursor: auto !important; }
+  a, button, .service-item, .work-card, .work-preview, .nav-dot, .client-card, .client-handle { cursor: pointer !important; }
+}
+
+/* ── CONTACT ── */
+#contact {
+  background: var(--dark);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  padding: 80px 100px;
+  overflow-y: auto;
+}
+
+.contact-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
 
 .contact-pre {
@@ -462,11 +779,11 @@ section {
 
 .contact-headline {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(44px, 7vw, 100px);
+  font-size: clamp(44px, 5.5vw, 80px);
   line-height: 1;
   font-weight: 300;
   color: var(--cream);
-  margin-bottom: 16px;
+  margin-bottom: 28px;
 }
 
 .contact-headline em {
@@ -475,33 +792,209 @@ section {
 }
 
 .contact-sub {
-  font-size: 14px;
-  color: rgba(245,242,237,0.45);
-  letter-spacing: 0.15em;
+  font-size: 12px;
+  color: rgba(245,242,237,0.5);
+  letter-spacing: 0.14em;
   text-transform: uppercase;
-  margin-bottom: 60px;
+  margin-bottom: 36px;
+  line-height: 1.6;
 }
 
 .contact-email {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(20px, 2.5vw, 32px);
+  font-size: 26px;
   color: var(--cream);
   text-decoration: none;
   border-bottom: 1px solid var(--oak);
   padding-bottom: 4px;
   transition: color 0.3s, border-color 0.3s;
   cursor: none;
+  align-self: flex-start;
+  margin-bottom: 40px;
 }
 
 .contact-email:hover { color: var(--oak); }
 
+.contact-socials {
+  display: flex;
+  gap: 24px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(200,169,126,0.2);
+}
+
+.contact-social {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(245,242,237,0.55);
+  text-decoration: none;
+  transition: color 0.25s ease;
+  cursor: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 3px;
+}
+
+.contact-social:hover {
+  color: var(--oak);
+  border-color: var(--oak);
+}
+
 .contact-footer {
   position: absolute;
-  bottom: 32px;
+  bottom: 28px;
+  left: 50%;
+  transform: translateX(-50%);
   font-size: 10px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
   color: rgba(245,242,237,0.2);
+  white-space: nowrap;
+}
+
+/* Intake form */
+.contact-form {
+  background: var(--charcoal);
+  padding: 44px 40px;
+  border-left: 3px solid var(--oak);
+}
+
+.contact-form-heading {
+  font-size: 11px;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: var(--oak);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.contact-form-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 16px;
+  color: rgba(245,242,237,0.55);
+  margin-bottom: 28px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-field {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: rgba(245,242,237,0.55);
+  margin-bottom: 6px;
+  font-weight: 500;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(200,169,126,0.3);
+  padding: 8px 0 10px;
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+  transition: border-color 0.25s ease;
+  outline: none;
+  cursor: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-bottom-color: var(--oak);
+}
+
+.form-input::placeholder,
+.form-textarea::placeholder {
+  color: rgba(245,242,237,0.25);
+  font-style: italic;
+}
+
+.form-select {
+  appearance: none;
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'><path d='M1 1l4 4 4-4' stroke='%23c8a97e' stroke-width='1.2' fill='none'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 2px center;
+  padding-right: 20px;
+}
+
+.form-select option {
+  background: var(--charcoal);
+  color: var(--cream);
+}
+
+.form-textarea {
+  border: 1px solid rgba(200,169,126,0.3);
+  padding: 12px 14px;
+  min-height: 96px;
+  resize: vertical;
+  font-family: 'DM Sans', sans-serif;
+}
+.form-textarea:focus { border-color: var(--oak); }
+
+.form-submit {
+  display: inline-block;
+  width: 100%;
+  padding: 16px 28px;
+  background: var(--oak);
+  color: var(--charcoal);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  border: none;
+  cursor: none;
+  transition: background 0.25s ease, letter-spacing 0.25s ease;
+  margin-top: 8px;
+}
+
+.form-submit:hover {
+  background: var(--cream);
+  letter-spacing: 0.32em;
+}
+
+.form-success {
+  display: none;
+  padding: 20px;
+  background: rgba(122,132,112,0.15);
+  border-left: 2px solid var(--sage);
+  color: var(--cream);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  line-height: 1.4;
+  text-align: center;
+}
+
+.form-success.active {
+  display: block;
+}
+
+/* Contact responsive */
+@media (max-width: 1100px) {
+  #contact {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 60px 40px;
+    height: auto;
+    min-height: 100vh;
+  }
 }
 
 /* ── Post-it ── */
@@ -627,15 +1120,18 @@ section {
   <div class="nav-dot" data-section="2"></div>
   <div class="nav-dot" data-section="3"></div>
   <div class="nav-dot" data-section="4"></div>
+  <div class="nav-dot" data-section="5"></div>
+  <div class="nav-dot" data-section="6"></div>
+  <div class="nav-dot" data-section="7"></div>
 </nav>
 
 <!-- HERO -->
 <section id="hero">
   <div class="hero-photo"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Social Media Strategist — San Ramon, CA</p>
+    <p class="hero-eyebrow">Content + Email Marketing for DTC Brands — San Ramon, CA</p>
     <h1 class="hero-name">Daniel</h1>
-    <p class="hero-tagline">Building brands that people<br>actually care about.</p>
+    <p class="hero-tagline">Content that earns attention.<br>Emails that earn the click.</p>
   </div>
   <div class="hero-scroll">
     <span>Scroll</span>
@@ -645,9 +1141,9 @@ section {
   <!-- Post-it -->
   <div class="postit">
     <div class="postit-header">Currently Working On:</div>
-    <div class="postit-item"><div class="postit-check">□</div><div>Q2 Content Calendar</div></div>
-    <div class="postit-item"><div class="postit-check done">✓</div><div>Pilates Rebrand</div></div>
-    <div class="postit-item"><div class="postit-check">□</div><div>New Client Onboarding</div></div>
+    <div class="postit-item"><div class="postit-check done">✓</div><div>TMU Business Network IG</div></div>
+    <div class="postit-item"><div class="postit-check done">✓</div><div>JCIM Gathering Place</div></div>
+    <div class="postit-item"><div class="postit-check">□</div><div>Email Marketing Samples</div></div>
     <div class="postit-item"><div class="postit-check">□</div><div>This Website lol</div></div>
   </div>
 </section>
@@ -656,8 +1152,8 @@ section {
 <section id="about">
   <div class="about-left">
     <p class="section-label">About</p>
-    <h2 class="about-headline">Strategy meets<br><em>creative instinct.</em></h2>
-    <p class="about-body">I help brands find their voice online—and make it impossible to ignore. Leveraging experience in content creation and web design, I ensure every business has a chance to stand out.</p>
+    <h2 class="about-headline">A marketer who<br><em>happens to design.</em></h2>
+    <p class="about-body">I help DTC brands — beauty, fashion, CPG — show up with content and email that actually looks like something worth opening. I design the feeds. I write the captions. I build the emails that convert. One brain, one voice, across every touchpoint a customer sees.</p>
   </div>
   <div class="about-right">
     <div class="collage-wrap">
@@ -684,34 +1180,27 @@ section {
       <span class="service-price">From $50/post</span>
     </li>
     <li class="service-item">
-      <span class="service-name">Full Social Management</span>
-      <span class="service-price">From $1,000/mo</span>
+      <span class="service-name">Email Marketing & Design</span>
+      <span class="service-price">From $500/mo</span>
     </li>
     <li class="service-item">
       <span class="service-name">Strategy & Planning</span>
       <span class="service-price">From $500</span>
-    </li>
-    <li class="service-item">
-      <span class="service-name">Reels & Short-Form Video</span>
-      <span class="service-price">From $100/video</span>
-    </li>
-    <li class="service-item">
-      <span class="service-name">Gmail Marketing</span>
-      <span class="service-price">From $500/mo</span>
     </li>
   </ul>
 </section>
 
 <!-- WORK -->
 <section id="work">
-  <p class="section-label">Work</p>
+  <p class="section-label">Email Spec Work</p>
+  <p class="work-subtitle">Concept pieces — brand redesigns I've produced to flex range across verticals.</p>
   <div class="work-grid">
 
     <div class="work-card" data-card="1">
       <div class="work-card-header">
         <div class="work-num">01</div>
-        <div class="work-result">Aritzia — SS25 Campaign</div>
-        <div class="work-detail">Gmail marketing · Fashion</div>
+        <div class="work-result">Aritzia — SS25</div>
+        <div class="work-detail">Spec · Fashion · Seasonal launch</div>
       </div>
       <div class="work-preview" id="preview-1">
         <iframe scrolling="no" loading="lazy" title="Aritzia Spring Summer 2025 email" srcdoc="<!DOCTYPE html>
@@ -1606,7 +2095,7 @@ section {
       <div class="work-card-header">
         <div class="work-num">02</div>
         <div class="work-result">CELSIUS — Playa Vibe</div>
-        <div class="work-detail">Gmail marketing · Beverage</div>
+        <div class="work-detail">Spec · Beverage · Product drop</div>
       </div>
       <div class="work-preview" id="preview-2">
         <iframe scrolling="no" loading="lazy" title="Celsius Playa Vibe email" srcdoc="<!DOCTYPE html>
@@ -1913,7 +2402,7 @@ body { background: #F2F4F8; font-family: 'Barlow', sans-serif; display: flex; ju
       <div class="work-card-header">
         <div class="work-num">03</div>
         <div class="work-result">innisfree — Pure from Jeju</div>
-        <div class="work-detail">Gmail marketing · Skincare</div>
+        <div class="work-detail">Spec · Skincare · Brand story</div>
       </div>
       <div class="work-preview" id="preview-3">
         <iframe scrolling="no" loading="lazy" title="Innisfree Jeju email" srcdoc="<!DOCTYPE html>
@@ -2243,13 +2732,189 @@ body { background: #EDEDEA; font-family: 'DM Sans', sans-serif; display: flex; j
   </div>
 </section>
 
+
+<!-- CLIENTS (real work) -->
+<section id="clients">
+  <p class="section-label">Clients</p>
+  <p class="clients-subtitle">Real projects, real accounts. What I've been building while in school.</p>
+  <div class="clients-grid">
+
+    <div class="client-card">
+      <div>
+        <div class="client-num">01</div>
+        <div class="client-name">The Master's University<br>Business Network</div>
+        <a href="https://instagram.com/tmu.businessnetwork" target="_blank" rel="noopener" class="client-handle">@tmu.businessnetwork ↗</a>
+        <div class="client-did">What I did</div>
+        <p class="client-proud">Built the Instagram presence from the ground up — visual identity, content strategy, and end-to-end management. Every post, every caption, every story.</p>
+      </div>
+      <div>
+        <p class="client-quote">wait lwky this jawn is kinda cleannnnn</p>
+        <p class="client-attr">— Jon O.</p>
+      </div>
+    </div>
+
+    <div class="client-card">
+      <div>
+        <div class="client-num">02</div>
+        <div class="client-name">Leslie Bess<br>JCIM Gathering Place</div>
+        <a href="https://instagram.com/jcinmethegatheringplace" target="_blank" rel="noopener" class="client-handle">@jcinmethegatheringplace ↗</a>
+        <div class="client-did">What I did</div>
+        <p class="client-proud">Took over an existing Instagram and brought structure, consistency, and a fresh voice to the feed.</p>
+        <span class="client-stat">650 followers in month one</span>
+      </div>
+      <div>
+        <p class="client-quote">What am I gonna do without you!!!</p>
+        <p class="client-attr">— Leslie B.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <p class="section-label">Process</p>
+  <p class="process-subtitle">How we'll actually work together — no mystery, no surprises.</p>
+  <div class="process-grid">
+
+    <div class="process-step">
+      <div class="process-num">01</div>
+      <div>
+        <div class="process-name">Strategy<br>& Planning</div>
+        <p class="process-desc">We start with the why. Audience, voice, goals, platforms. I map out what we're building before a single post goes up.</p>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="process-num">02</div>
+      <div>
+        <div class="process-name">Design &<br>Production</div>
+        <p class="process-desc">Content gets made — posts, carousels, reels, emails. Everything on-brand, on-schedule, and ready to ship.</p>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="process-num">03</div>
+      <div>
+        <div class="process-name">Review &<br>Revisions</div>
+        <p class="process-desc">You see everything before it goes live. Two rounds of revisions included so we land it exactly where you want it.</p>
+      </div>
+    </div>
+
+    <div class="process-step">
+      <div class="process-num">04</div>
+      <div>
+        <div class="process-name">Launch &<br>Handoff</div>
+        <p class="process-desc">Content ships on the calendar we set. You get everything organized, labeled, and ready — plus a wrap-up on what's working.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <p class="section-label">Kind Words</p>
+  <p class="testimonials-subtitle">Unfiltered reactions from the people I've actually worked with.</p>
+  <div class="testimonials-grid">
+
+    <div class="testimonial-card">
+      <span class="testimonial-mark">"</span>
+      <p class="testimonial-quote">wait lwky this jawn is kinda cleannnnn</p>
+      <div class="testimonial-attr">
+        <div class="testimonial-dot"></div>
+        <div class="testimonial-name">Jon O.</div>
+        <div class="testimonial-context">TMU Business Network</div>
+      </div>
+    </div>
+
+    <div class="testimonial-card">
+      <span class="testimonial-mark">"</span>
+      <p class="testimonial-quote">What am I gonna do without you!!!</p>
+      <div class="testimonial-attr">
+        <div class="testimonial-dot"></div>
+        <div class="testimonial-name">Leslie B.</div>
+        <div class="testimonial-context">JCIM Gathering Place</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <!-- CONTACT -->
 <section id="contact">
-  <p class="contact-pre">Ready to grow?</p>
-  <h2 class="contact-headline">Let's build<br><em>something real.</em></h2>
-  <p class="contact-sub">San Ramon, CA &nbsp;·&nbsp; Available for new clients</p>
-  <a href="mailto:kangd4u@gmail.com" class="contact-email">kangd4u@gmail.com</a>
-  <p class="contact-footer">© 2026 Daniel &nbsp;—&nbsp; Social Media Strategist</p>
+
+  <div class="contact-left">
+    <p class="contact-pre">Ready to grow?</p>
+    <h2 class="contact-headline">Let's build<br><em>something real.</em></h2>
+    <p class="contact-sub">San Ramon, CA &nbsp;·&nbsp; Available for new clients</p>
+    <a href="mailto:kangd4u@gmail.com" class="contact-email">kangd4u@gmail.com</a>
+
+    <div class="contact-socials">
+      <a href="https://instagram.com/daniellllkang1" target="_blank" rel="noopener" class="contact-social">Instagram ↗</a>
+      <a href="https://tiktok.com/@kangdaniel_1" target="_blank" rel="noopener" class="contact-social">TikTok ↗</a>
+      <a href="https://www.linkedin.com/in/danielkanggg" target="_blank" rel="noopener" class="contact-social">LinkedIn ↗</a>
+    </div>
+  </div>
+
+  <form class="contact-form" id="intake-form" novalidate>
+    <div class="contact-form-heading">Project Inquiry</div>
+    <div class="contact-form-sub">Tell me a little about what you're working on.</div>
+
+    <div class="form-row">
+      <div class="form-field" style="margin-bottom:0">
+        <label class="form-label" for="f-name">Name</label>
+        <input class="form-input" type="text" id="f-name" name="name" required placeholder="Your name">
+      </div>
+      <div class="form-field" style="margin-bottom:0">
+        <label class="form-label" for="f-email">Email</label>
+        <input class="form-input" type="email" id="f-email" name="email" required placeholder="you@company.com">
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label class="form-label" for="f-business">Business / Brand</label>
+      <input class="form-input" type="text" id="f-business" name="business" placeholder="Brand name or website">
+    </div>
+
+    <div class="form-row">
+      <div class="form-field" style="margin-bottom:0">
+        <label class="form-label" for="f-project">Project type</label>
+        <select class="form-select" id="f-project" name="project">
+          <option value="">Select one</option>
+          <option>Content creation</option>
+          <option>Email marketing</option>
+          <option>Strategy & planning</option>
+          <option>Full package</option>
+          <option>Not sure yet</option>
+        </select>
+      </div>
+      <div class="form-field" style="margin-bottom:0">
+        <label class="form-label" for="f-budget">Budget range</label>
+        <select class="form-select" id="f-budget" name="budget">
+          <option value="">Select one</option>
+          <option>Under $500</option>
+          <option>$500 – $1,500</option>
+          <option>$1,500 – $3,000</option>
+          <option>$3,000+</option>
+          <option>Still figuring it out</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label class="form-label" for="f-msg">What are you working on?</label>
+      <textarea class="form-textarea" id="f-msg" name="message" placeholder="A few sentences on your brand, your goals, and what you need help with."></textarea>
+    </div>
+
+    <button type="submit" class="form-submit">Send Inquiry →</button>
+
+    <div class="form-success" id="form-success">
+      Thanks — I'll be in touch within 48 hours.
+    </div>
+  </form>
+
+  <p class="contact-footer">© 2026 Daniel Kang &nbsp;—&nbsp; Content + Email for DTC Brands</p>
 </section>
 
 <script>
@@ -2392,6 +3057,47 @@ function setupWorkCard(cardId) {
 setupWorkCard('preview-1');
 setupWorkCard('preview-2');
 setupWorkCard('preview-3');
+
+// ── Intake form: graceful submit ──
+const intakeForm = document.getElementById('intake-form');
+if (intakeForm) {
+  intakeForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    // Basic validation
+    const name = document.getElementById('f-name').value.trim();
+    const email = document.getElementById('f-email').value.trim();
+    if (!name || !email) {
+      // Visually flag empties
+      [['f-name', name], ['f-email', email]].forEach(([id, val]) => {
+        const el = document.getElementById(id);
+        el.style.borderBottomColor = val ? '' : '#c45a4a';
+      });
+      return;
+    }
+
+    // Compose mailto fallback so Daniel actually receives the inquiry
+    const fields = {
+      Name: name,
+      Email: email,
+      Business: document.getElementById('f-business').value.trim() || '—',
+      'Project type': document.getElementById('f-project').value || '—',
+      'Budget range': document.getElementById('f-budget').value || '—',
+      Message: document.getElementById('f-msg').value.trim() || '—'
+    };
+    const body = Object.entries(fields).map(([k, v]) => `${k}: ${v}`).join('\n\n');
+    const mailto = `mailto:kangd4u@gmail.com?subject=${encodeURIComponent('New project inquiry from ' + name)}&body=${encodeURIComponent(body)}`;
+
+    // Open user's mail client
+    window.location.href = mailto;
+
+    // Show success state, hide form fields
+    intakeForm.querySelectorAll('.form-field, .form-row, .form-submit, .contact-form-sub').forEach(el => {
+      el.style.display = 'none';
+    });
+    document.getElementById('form-success').classList.add('active');
+  });
+}
 </script>
 </body>
 </html>
