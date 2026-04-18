@@ -319,45 +319,126 @@ section {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   height: 100%;
-  padding-top: 140px;
+  padding-top: 120px;
   gap: 2px;
 }
 
 .work-card {
   background: var(--cream);
-  padding: 40px;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   border-top: 3px solid transparent;
   transition: border-color 0.3s ease, background 0.3s ease;
   cursor: none;
+  overflow: hidden;
+  position: relative;
 }
 
 .work-card:hover {
   border-color: var(--oak);
-  background: var(--warm);
+}
+
+.work-card-header {
+  padding: 24px 28px 16px;
+  background: var(--cream);
+  border-bottom: 1px solid rgba(42,43,37,0.08);
+  flex-shrink: 0;
 }
 
 .work-num {
   font-family: 'Bebas Neue', sans-serif;
-  font-size: 48px;
-  color: rgba(42,43,37,0.12);
+  font-size: 36px;
+  color: rgba(42,43,37,0.15);
   letter-spacing: 0.02em;
+  line-height: 1;
+  margin-bottom: 10px;
 }
 
 .work-result {
   font-family: 'Cormorant Garamond', serif;
-  font-size: 28px;
+  font-size: 20px;
   line-height: 1.2;
   color: var(--dark);
+  margin-bottom: 6px;
 }
 
 .work-detail {
-  font-size: 12px;
-  letter-spacing: 0.15em;
+  font-size: 10px;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
   color: var(--sage);
+}
+
+/* Email preview container */
+.work-preview {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #ECEAE6;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
+  cursor: none;
+}
+
+.work-preview::-webkit-scrollbar {
+  width: 4px;
+}
+.work-preview::-webkit-scrollbar-track {
+  background: transparent;
+}
+.work-preview::-webkit-scrollbar-thumb {
+  background: rgba(200, 169, 126, 0.4);
+  border-radius: 2px;
+}
+.work-preview::-webkit-scrollbar-thumb:hover {
+  background: var(--oak);
+}
+
+.work-preview iframe {
+  width: 100%;
+  border: 0;
+  display: block;
+  background: #ECEAE6;
+  pointer-events: none;
+}
+
+/* Scroll hint indicator */
+.work-scroll-hint {
+  position: absolute;
+  bottom: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--sage);
+  background: rgba(245, 242, 237, 0.92);
+  padding: 6px 14px;
+  border-radius: 20px;
+  pointer-events: none;
+  opacity: 0;
+  animation: hintFade 2.6s ease-in-out 0.6s infinite;
+  z-index: 3;
+  backdrop-filter: blur(4px);
+}
+
+@keyframes hintFade {
+  0%, 100% { opacity: 0; transform: translate(-50%, 6px); }
+  40%, 60% { opacity: 0.85; transform: translate(-50%, 0); }
+}
+
+/* Empty placeholder for unfilled cards */
+.work-empty {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--warm);
+  color: rgba(42,43,37,0.25);
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 14px;
+  letter-spacing: 0.08em;
 }
 
 /* ── CONTACT ── */
@@ -552,7 +633,7 @@ section {
 <section id="hero">
   <div class="hero-photo"></div>
   <div class="hero-content">
-    <p class="hero-eyebrow">Social Media Strategist — Huntington Beach, CA</p>
+    <p class="hero-eyebrow">Social Media Strategist — San Ramon, CA</p>
     <h1 class="hero-name">Daniel</h1>
     <p class="hero-tagline">Building brands that people<br>actually care about.</p>
   </div>
@@ -576,7 +657,7 @@ section {
   <div class="about-left">
     <p class="section-label">About</p>
     <h2 class="about-headline">Strategy meets<br><em>creative instinct.</em></h2>
-    <p class="about-body">I help brands find their voice online — and make it impossible to ignore. With 5+ years of experience across content creation, paid social, and full-stack management, I turn followers into fans and impressions into revenue.</p>
+    <p class="about-body">I help brands find their voice online—and make it impossible to ignore. Leveraging experience in content creation and web design, I ensure every business has a chance to stand out.</p>
   </div>
   <div class="about-right">
     <div class="collage-wrap">
@@ -615,8 +696,8 @@ section {
       <span class="service-price">From $100/video</span>
     </li>
     <li class="service-item">
-      <span class="service-name">Paid Social Ads</span>
-      <span class="service-price">From $300/mo</span>
+      <span class="service-name">Gmail Marketing</span>
+      <span class="service-price">From $500/mo</span>
     </li>
   </ul>
 </section>
@@ -625,27 +706,1540 @@ section {
 <section id="work">
   <p class="section-label">Work</p>
   <div class="work-grid">
-    <div class="work-card">
-      <div class="work-num">01</div>
+
+    <div class="work-card" data-card="1">
+      <div class="work-card-header">
+        <div class="work-num">01</div>
+        <div class="work-result">Aritzia — SS25 Campaign</div>
+        <div class="work-detail">Gmail marketing · Fashion</div>
+      </div>
+      <div class="work-preview" id="preview-1">
+        <iframe scrolling="no" loading="lazy" title="Aritzia Spring Summer 2025 email" srcdoc="<!DOCTYPE html>
+<html lang=&quot;en&quot;>
+<head>
+<meta charset=&quot;UTF-8&quot;>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+<title>Aritzia — Spring/Summer 2025</title>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&amp;family=Jost:wght@200;300;400&amp;display=swap&quot; rel=&quot;stylesheet&quot;>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --cream: #F5F2EE;
+    --warm-white: #FAF8F5;
+    --charcoal: #1C1C1A;
+    --mid: #6B6860;
+    --light: #B0ACA5;
+    --accent: #C4A882;
+    --sand: #E8E0D4;
+  }
+
+  body {
+    background: #ECEAE6;
+    font-family: 'Jost', sans-serif;
+    display: flex;
+    justify-content: center;
+    padding: 40px 16px;
+  }
+
+  .email-wrap {
+    width: 100%;
+    max-width: 480px;
+    background: var(--warm-white);
+    animation: fadeUp 0.8s ease both;
+  }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(24px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .header {
+    padding: 28px 32px 20px;
+    border-bottom: 1px solid var(--sand);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .header-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 300;
+    font-size: 22px;
+    letter-spacing: 0.18em;
+    color: var(--charcoal);
+    text-transform: uppercase;
+  }
+
+  .header-nav {
+    display: flex;
+    gap: 20px;
+    list-style: none;
+  }
+
+  .header-nav a {
+    font-size: 9px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    font-weight: 300;
+  }
+
+  .hero {
+    position: relative;
+    background: var(--charcoal);
+    height: 560px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+
+  .hero-bg {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, #2A2824 0%, #1C1C1A 60%, #0E0E0C 100%);
+  }
+
+  .hero-bg::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url(&quot;data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E&quot;);
+    opacity: 0.4;
+  }
+
+  .hero-lines {
+    position: absolute;
+    top: 40px;
+    right: 32px;
+    width: 1px;
+    height: 80px;
+    background: var(--accent);
+    opacity: 0.5;
+  }
+
+  .hero-lines::before {
+    content: '';
+    position: absolute;
+    top: 100px;
+    left: 0;
+    width: 1px;
+    height: 40px;
+    background: var(--accent);
+    opacity: 0.3;
+  }
+
+  .hero-season-bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -55%);
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 130px;
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: rgba(255,255,255,0.03);
+    white-space: nowrap;
+    pointer-events: none;
+    line-height: 1;
+  }
+
+  .hero-shape {
+    position: absolute;
+    top: 55px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 170px;
+    height: 300px;
+  }
+
+  .hero-shape-inner {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(165deg, #C8AE8A 0%, #8E7355 40%, #5C4A30 100%);
+    clip-path: polygon(30% 0%, 70% 0%, 90% 8%, 95% 50%, 80% 100%, 20% 100%, 5% 50%, 10% 8%);
+    opacity: 0.18;
+  }
+
+  .hero-label {
+    position: absolute;
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 300;
+    font-family: 'Jost', sans-serif;
+  }
+
+  .hero-label.tl { top: 90px; left: 32px; }
+  .hero-label.tr { top: 140px; right: 32px; text-align: right; }
+
+  .hero-content {
+    position: relative;
+    padding: 0 36px 44px;
+    z-index: 2;
+    animation: fadeUp 1s 0.2s ease both;
+  }
+
+  .hero-eyebrow {
+    font-size: 9px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 300;
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .hero-eyebrow::before {
+    content: '';
+    display: block;
+    width: 28px;
+    height: 1px;
+    background: var(--accent);
+    opacity: 0.6;
+  }
+
+  .hero-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 52px;
+    font-weight: 300;
+    line-height: 1.0;
+    color: #F5F0E8;
+    letter-spacing: -0.01em;
+    margin-bottom: 8px;
+  }
+
+  .hero-title em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .hero-subtitle {
+    font-size: 10px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--light);
+    font-weight: 200;
+    margin-bottom: 32px;
+    margin-top: 6px;
+  }
+
+  .btn-primary {
+    display: inline-block;
+    padding: 13px 32px;
+    border: 1px solid rgba(196, 168, 130, 0.5);
+    color: var(--accent);
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    background: transparent;
+  }
+
+  .btn-primary:hover {
+    background: var(--accent);
+    color: var(--charcoal);
+  }
+
+  .intro {
+    padding: 48px 36px 40px;
+    border-bottom: 1px solid var(--sand);
+    animation: fadeUp 1s 0.3s ease both;
+  }
+
+  .intro-tag {
+    font-size: 8px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 16px;
+    font-weight: 300;
+  }
+
+  .intro-headline {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 32px;
+    font-weight: 300;
+    line-height: 1.15;
+    color: var(--charcoal);
+    margin-bottom: 16px;
+    letter-spacing: 0.01em;
+  }
+
+  .intro-headline em { font-style: italic; }
+
+  .intro-body {
+    font-size: 12px;
+    line-height: 1.8;
+    color: var(--mid);
+    font-weight: 300;
+    max-width: 340px;
+  }
+
+  .look-section {
+    padding: 0;
+    animation: fadeUp 1s 0.4s ease both;
+  }
+
+  .look-header {
+    padding: 36px 36px 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+  }
+
+  .look-header-label {
+    font-size: 8px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--mid);
+    font-weight: 300;
+  }
+
+  .look-header-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: var(--charcoal);
+    margin-top: 6px;
+  }
+
+  .look-header-link {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    font-weight: 300;
+    border-bottom: 1px solid var(--light);
+    padding-bottom: 2px;
+  }
+
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2px;
+    background: var(--sand);
+    margin: 0;
+  }
+
+  .product-card {
+    background: var(--warm-white);
+    overflow: hidden;
+    cursor: pointer;
+    position: relative;
+  }
+
+  .product-img {
+    width: 100%;
+    aspect-ratio: 3/4;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .product-img.p1 { background: linear-gradient(145deg, #D4C9B8 0%, #BFB09B 50%, #A89478 100%); }
+  .product-img.p2 { background: linear-gradient(145deg, #C5CDD8 0%, #9AAABE 50%, #6E88A1 100%); }
+  .product-img.p3 { background: linear-gradient(145deg, #D8D0C4 0%, #C4B8A8 50%, #A89A88 100%); }
+  .product-img.p4 { background: linear-gradient(145deg, #E2D9CE 0%, #CBBFB0 50%, #B0A090 100%); }
+
+  .product-img::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.15) 100%);
+  }
+
+  .product-img-icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 64px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.2);
+    font-style: italic;
+    letter-spacing: -0.03em;
+    user-select: none;
+  }
+
+  .product-new {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    font-size: 7px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    background: var(--charcoal);
+    color: #F5F0E8;
+    padding: 4px 8px;
+    font-weight: 300;
+  }
+
+  .product-info {
+    padding: 16px 16px 20px;
+    background: var(--warm-white);
+  }
+
+  .product-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    font-weight: 400;
+    color: var(--charcoal);
+    line-height: 1.2;
+    margin-bottom: 4px;
+  }
+
+  .product-detail {
+    font-size: 9px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--mid);
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  .product-price {
+    font-size: 12px;
+    color: var(--charcoal);
+    font-weight: 300;
+    letter-spacing: 0.06em;
+  }
+
+  .full-look {
+    position: relative;
+    height: 440px;
+    background: linear-gradient(165deg, #1E1D1A 0%, #2C2A25 50%, #1A1917 100%);
+    display: flex;
+    align-items: flex-end;
+    overflow: hidden;
+    animation: fadeUp 1s 0.5s ease both;
+  }
+
+  .full-look-bg-text {
+    position: absolute;
+    top: 30px;
+    left: -20px;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 100px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.025);
+    white-space: nowrap;
+    pointer-events: none;
+    font-style: italic;
+  }
+
+  .full-look-shape {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    height: 380px;
+  }
+
+  .full-look-shape-gradient {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(160deg, rgba(196,168,130,0.15) 0%, rgba(196,168,130,0.05) 50%, transparent 100%);
+    clip-path: polygon(25% 0%, 75% 0%, 95% 30%, 90% 100%, 10% 100%, 5% 30%);
+  }
+
+  .full-look-content {
+    position: relative;
+    z-index: 2;
+    padding: 0 36px 40px;
+    width: 100%;
+  }
+
+  .full-look-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 300;
+    margin-bottom: 10px;
+  }
+
+  .full-look-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 42px;
+    font-weight: 300;
+    line-height: 1.05;
+    color: #F5F0E8;
+    margin-bottom: 20px;
+  }
+
+  .full-look-title em { font-style: italic; color: var(--accent); }
+
+  .full-look-cta {
+    display: inline-block;
+    padding: 12px 28px;
+    background: var(--accent);
+    color: var(--charcoal);
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .full-look-cta:hover { opacity: 0.85; }
+
+  .benefits {
+    padding: 44px 36px;
+    border-top: 1px solid var(--sand);
+    border-bottom: 1px solid var(--sand);
+    animation: fadeUp 1s 0.55s ease both;
+  }
+
+  .benefits-eyebrow {
+    font-size: 8px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--mid);
+    font-weight: 300;
+    margin-bottom: 28px;
+    text-align: center;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    text-align: center;
+  }
+
+  .benefit-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .benefit-icon {
+    width: 36px;
+    height: 36px;
+    border: 1px solid var(--sand);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 16px;
+    color: var(--accent);
+    font-style: italic;
+  }
+
+  .benefit-label {
+    font-size: 9px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  .benefit-sub {
+    font-size: 9px;
+    color: var(--light);
+    font-weight: 300;
+    line-height: 1.4;
+  }
+
+  .feature-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 280px;
+    animation: fadeUp 1s 0.6s ease both;
+  }
+
+  .feature-img {
+    background: linear-gradient(145deg, #B8C4CC 0%, #8FA4B4 50%, #6888A0 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 40px;
+    font-weight: 300;
+    color: rgba(255,255,255,0.2);
+    font-style: italic;
+  }
+
+  .feature-content {
+    background: var(--charcoal);
+    padding: 36px 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .feature-tag {
+    font-size: 8px;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 300;
+    margin-bottom: 14px;
+  }
+
+  .feature-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 26px;
+    font-weight: 300;
+    color: #F5F0E8;
+    line-height: 1.15;
+    margin-bottom: 14px;
+    font-style: italic;
+  }
+
+  .feature-desc {
+    font-size: 10px;
+    line-height: 1.75;
+    color: var(--light);
+    font-weight: 300;
+    margin-bottom: 24px;
+  }
+
+  .btn-ghost {
+    display: inline-block;
+    padding: 10px 20px;
+    border: 1px solid rgba(196, 168, 130, 0.4);
+    color: var(--accent);
+    font-size: 8px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+    transition: all 0.25s;
+    align-self: flex-start;
+    background: transparent;
+  }
+
+  .btn-ghost:hover { background: rgba(196,168,130,0.1); }
+
+  .editorial {
+    padding: 52px 36px;
+    text-align: center;
+    background: var(--cream);
+    animation: fadeUp 1s 0.65s ease both;
+  }
+
+  .editorial-rule {
+    width: 1px;
+    height: 48px;
+    background: var(--accent);
+    opacity: 0.4;
+    margin: 0 auto 28px;
+  }
+
+  .editorial-quote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28px;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--charcoal);
+    line-height: 1.3;
+    max-width: 320px;
+    margin: 0 auto 28px;
+    letter-spacing: 0.01em;
+  }
+
+  .editorial-cta {
+    display: inline-block;
+    padding: 14px 40px;
+    background: var(--charcoal);
+    color: #F5F0E8;
+    font-size: 9px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    cursor: pointer;
+    transition: opacity 0.2s;
+  }
+
+  .editorial-cta:hover { opacity: 0.8; }
+
+  .footer {
+    padding: 36px 36px 40px;
+    border-top: 1px solid var(--sand);
+    text-align: center;
+    animation: fadeUp 1s 0.7s ease both;
+  }
+
+  .footer-logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 18px;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--charcoal);
+    margin-bottom: 20px;
+  }
+
+  .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    margin-bottom: 20px;
+    list-style: none;
+  }
+
+  .footer-links a {
+    font-size: 8px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--mid);
+    text-decoration: none;
+    font-weight: 300;
+  }
+
+  .footer-rule {
+    width: 100%;
+    height: 1px;
+    background: var(--sand);
+    margin: 20px 0;
+  }
+
+  .footer-legal {
+    font-size: 9px;
+    color: var(--light);
+    font-weight: 300;
+    line-height: 1.7;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .footer-legal a {
+    color: var(--mid);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+<div class=&quot;email-wrap&quot;>
+
+  <div class=&quot;header&quot;>
+    <div class=&quot;header-logo&quot;>Aritzia</div>
+    <ul class=&quot;header-nav&quot;>
+      <li><a href=&quot;#&quot;>New</a></li>
+      <li><a href=&quot;#&quot;>Collections</a></li>
+      <li><a href=&quot;#&quot;>Sale</a></li>
+    </ul>
+  </div>
+
+  <div class=&quot;hero&quot;>
+    <div class=&quot;hero-bg&quot;></div>
+    <div class=&quot;hero-season-bg&quot;>Summer</div>
+    <div class=&quot;hero-lines&quot;></div>
+    <div class=&quot;hero-shape&quot;><div class=&quot;hero-shape-inner&quot;></div></div>
+
+    <span class=&quot;hero-label tl&quot;>Ss 2025</span>
+    <span class=&quot;hero-label tr&quot;>Collection<br>No. 01</span>
+
+    <div class=&quot;hero-content&quot;>
+      <div class=&quot;hero-eyebrow&quot;>Spring Summer 2025</div>
+      <h1 class=&quot;hero-title&quot;>
+        Light<br>
+        <em>Unfolds.</em>
+      </h1>
+      <p class=&quot;hero-subtitle&quot;>The new collection — now available</p>
+      <a href=&quot;#&quot; class=&quot;btn-primary&quot;>Shop the Lookbook</a>
+    </div>
+  </div>
+
+  <div class=&quot;intro&quot;>
+    <div class=&quot;intro-tag&quot;>The Season</div>
+    <h2 class=&quot;intro-headline&quot;>Dressed for every<br><em>moment of warmth.</em></h2>
+    <p class=&quot;intro-body&quot;>Spring/Summer 2025 is built on effortless ease — pieces that move with you from golden hour to dusk. Fluid silhouettes, considered fabrics, and a palette drawn from the season itself.</p>
+  </div>
+
+  <div class=&quot;look-section&quot;>
+    <div class=&quot;look-header&quot;>
       <div>
-        <div class="work-result">0 → 10K followers in 90 days</div>
-        <div class="work-detail" style="margin-top:12px">Organic growth strategy</div>
+        <div class=&quot;look-header-label&quot;>Featured Pieces</div>
+        <div class=&quot;look-header-title&quot;>Shop the Edit</div>
+      </div>
+      <a href=&quot;#&quot; class=&quot;look-header-link&quot;>View All</a>
+    </div>
+
+    <div class=&quot;product-grid&quot;>
+
+      <div class=&quot;product-card&quot;>
+        <div class=&quot;product-img p1&quot;>
+          <div class=&quot;product-img-icon&quot;>A</div>
+          <div class=&quot;product-new&quot;>New</div>
+        </div>
+        <div class=&quot;product-info&quot;>
+          <div class=&quot;product-name&quot;>Effortless Midi Dress</div>
+          <div class=&quot;product-detail&quot;>Wilfred — 3 colours</div>
+          <div class=&quot;product-price&quot;>$148</div>
+        </div>
+      </div>
+
+      <div class=&quot;product-card&quot;>
+        <div class=&quot;product-img p2&quot;>
+          <div class=&quot;product-img-icon&quot;>A</div>
+        </div>
+        <div class=&quot;product-info&quot;>
+          <div class=&quot;product-name&quot;>Linen Wrap Blazer</div>
+          <div class=&quot;product-detail&quot;>Sunday Best — 2 colours</div>
+          <div class=&quot;product-price&quot;>$195</div>
+        </div>
+      </div>
+
+      <div class=&quot;product-card&quot;>
+        <div class=&quot;product-img p3&quot;>
+          <div class=&quot;product-img-icon&quot;>A</div>
+          <div class=&quot;product-new&quot;>New</div>
+        </div>
+        <div class=&quot;product-info&quot;>
+          <div class=&quot;product-name&quot;>Relaxed Wide Leg Pant</div>
+          <div class=&quot;product-detail&quot;>TNA — 4 colours</div>
+          <div class=&quot;product-price&quot;>$118</div>
+        </div>
+      </div>
+
+      <div class=&quot;product-card&quot;>
+        <div class=&quot;product-img p4&quot;>
+          <div class=&quot;product-img-icon&quot;>A</div>
+        </div>
+        <div class=&quot;product-info&quot;>
+          <div class=&quot;product-name&quot;>Fluid Satin Cami</div>
+          <div class=&quot;product-detail&quot;>Wilfred — 5 colours</div>
+          <div class=&quot;product-price&quot;>$78</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class=&quot;full-look&quot;>
+    <div class=&quot;full-look-bg-text&quot;>Aritzia</div>
+    <div class=&quot;full-look-shape&quot;><div class=&quot;full-look-shape-gradient&quot;></div></div>
+    <div class=&quot;full-look-content&quot;>
+      <div class=&quot;full-look-eyebrow&quot;>The Full Look</div>
+      <h2 class=&quot;full-look-title&quot;>Wear the<br><em>whole season.</em></h2>
+      <a href=&quot;#&quot; class=&quot;full-look-cta&quot;>Shop Spring Looks</a>
+    </div>
+  </div>
+
+  <div class=&quot;benefits&quot;>
+    <div class=&quot;benefits-eyebrow&quot;>Why Aritzia</div>
+    <div class=&quot;benefits-grid&quot;>
+      <div class=&quot;benefit-item&quot;>
+        <div class=&quot;benefit-icon&quot;>✦</div>
+        <div class=&quot;benefit-label&quot;>Free Shipping</div>
+        <div class=&quot;benefit-sub&quot;>On orders over $50</div>
+      </div>
+      <div class=&quot;benefit-item&quot;>
+        <div class=&quot;benefit-icon&quot;>◇</div>
+        <div class=&quot;benefit-label&quot;>Easy Returns</div>
+        <div class=&quot;benefit-sub&quot;>30-day policy</div>
+      </div>
+      <div class=&quot;benefit-item&quot;>
+        <div class=&quot;benefit-icon&quot;>○</div>
+        <div class=&quot;benefit-label&quot;>Crafted to Last</div>
+        <div class=&quot;benefit-sub&quot;>Quality-first design</div>
       </div>
     </div>
-    <div class="work-card">
-      <div class="work-num">02</div>
-      <div>
-        <div class="work-result">4.2× ROAS on $8K ad spend</div>
-        <div class="work-detail" style="margin-top:12px">Paid social campaign</div>
+  </div>
+
+  <div class=&quot;feature-row&quot;>
+    <div class=&quot;feature-img&quot;>A</div>
+    <div class=&quot;feature-content&quot;>
+      <div class=&quot;feature-tag&quot;>Spotlight</div>
+      <div class=&quot;feature-title&quot;>The Wilfred Dress Edit</div>
+      <p class=&quot;feature-desc&quot;>Our most-loved silhouettes, refreshed for summer. Breathable, considered, impossible to overthink.</p>
+      <a href=&quot;#&quot; class=&quot;btn-ghost&quot;>Shop Wilfred</a>
+    </div>
+  </div>
+
+  <div class=&quot;editorial&quot;>
+    <div class=&quot;editorial-rule&quot;></div>
+    <p class=&quot;editorial-quote&quot;>&quot;Dress for the version of summer you actually want.&quot;</p>
+    <a href=&quot;#&quot; class=&quot;editorial-cta&quot;>Explore the Full Collection</a>
+  </div>
+
+  <div class=&quot;footer&quot;>
+    <div class=&quot;footer-logo&quot;>Aritzia</div>
+    <ul class=&quot;footer-links&quot;>
+      <li><a href=&quot;#&quot;>Shop</a></li>
+      <li><a href=&quot;#&quot;>Stores</a></li>
+      <li><a href=&quot;#&quot;>Instagram</a></li>
+      <li><a href=&quot;#&quot;>Contact</a></li>
+    </ul>
+    <div class=&quot;footer-rule&quot;></div>
+    <p class=&quot;footer-legal&quot;>
+      Hi there — you're receiving this because you opted in at aritzia.com.<br><br>
+      <a href=&quot;#&quot;>Unsubscribe</a> · <a href=&quot;#&quot;>Manage Preferences</a> · <a href=&quot;#&quot;>Privacy Policy</a><br><br>
+      © 2025 Aritzia LP. All rights reserved.<br>
+      611 Alexander Street, Vancouver, BC V6A 1E1
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
+"></iframe>
+      </div>
+      <div class="work-scroll-hint">Scroll ↓</div>
+    </div>
+
+    <div class="work-card" data-card="2">
+      <div class="work-card-header">
+        <div class="work-num">02</div>
+        <div class="work-result">CELSIUS — Playa Vibe</div>
+        <div class="work-detail">Gmail marketing · Beverage</div>
+      </div>
+      <div class="work-preview" id="preview-2">
+        <iframe scrolling="no" loading="lazy" title="Celsius Playa Vibe email" srcdoc="<!DOCTYPE html>
+<html lang=&quot;en&quot;>
+<head>
+<meta charset=&quot;UTF-8&quot;>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+<title>CELSIUS — Playa Vibe</title>
+<link href=&quot;https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Barlow+Condensed:ital,wght@0,300;0,400;0,600;0,700;1,400;1,700&amp;family=Barlow:wght@300;400&amp;display=swap&quot; rel=&quot;stylesheet&quot;>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --teal: #1565C0; --teal-dark:#0D47A1; --teal-mid: #42A5F5; --ocean: #1976D2;
+  --sand: #E8F4F2; --white: #FFFFFF; --off-white:#F2FAFA;
+  --charcoal: #0A1628; --mid: #1C2F4A; --coral: #1565C0; --yellow: #42A5F5;
+}
+body { background: #F2F4F8; font-family: 'Barlow', sans-serif; display: flex; justify-content: center; padding: 40px 16px; }
+.email-wrap { width: 100%; max-width: 480px; background: #FFFFFF; overflow: hidden; animation: fadeUp 0.7s ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.6; } }
+@keyframes wave { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+@keyframes float { 0%, 100% { transform: translateY(0px) rotate(-2deg); } 50% { transform: translateY(-10px) rotate(2deg); } }
+
+.header { background: #FFFFFF; padding: 20px 28px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(21,101,192,0.15); }
+.header-logo { font-family: 'Bebas Neue', sans-serif; font-size: 26px; letter-spacing: 0.12em; color: var(--charcoal); }
+.header-logo span { color: #1565C0; }
+.header-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 0.22em; text-transform: uppercase; color: var(--teal); font-weight: 600; border: 1px solid rgba(21,101,192,0.25); padding: 4px 10px; animation: pulse 2.5s ease infinite; }
+
+.hero { position: relative; height: 580px; overflow: hidden; background: linear-gradient(160deg, #050C0B 0%, #0E1E40 40%, #0F2520 70%, #0C1E1B 100%); }
+.hero-water { position: absolute; bottom: 0; left: 0; width: 200%; height: 180px; animation: wave 8s linear infinite; }
+.hero-water svg { width: 100%; height: 100%; }
+.hero-sun { position: absolute; top: 40px; right: 50px; width: 120px; height: 120px; border-radius: 50%; background: radial-gradient(circle, rgba(0,229,196,0.15) 0%, rgba(0,229,196,0.05) 50%, transparent 70%); filter: blur(8px); }
+.hero-can { position: absolute; top: 60px; right: 28px; width: 130px; animation: float 4s ease-in-out infinite; }
+.can-top { width: 80px; height: 14px; background: linear-gradient(180deg, #B0C8D0 0%, #8AAAB5 100%); border-radius: 50% 50% 0 0; margin: 0 auto; position: relative; }
+.can-top::after { content: ''; position: absolute; top: 3px; left: 50%; transform: translateX(-50%); width: 30px; height: 6px; background: #7A9AA8; border-radius: 3px; }
+.can-body { width: 90px; height: 200px; border-radius: 12px 12px 8px 8px; background: linear-gradient(135deg, #E8F4F8 0%, #B8DEE8 20%, #FFFFFF 45%, #C5E5EF 65%, #8BBFCC 100%); position: relative; overflow: hidden; box-shadow: -6px 0 20px rgba(0,0,0,0.3), inset -8px 0 20px rgba(0,0,0,0.1), 4px 0 12px rgba(255,255,255,0.3); }
+.can-stripe { position: absolute; top: 60px; left: 0; right: 0; height: 80px; background: linear-gradient(180deg, rgba(0,191,165,0.8) 0%, rgba(0,121,107,0.9) 100%); }
+.can-label { position: absolute; top: 65px; left: 8px; right: 8px; text-align: center; }
+.can-label-brand { font-family: 'Bebas Neue', sans-serif; font-size: 11px; color: white; letter-spacing: 0.1em; display: block; }
+.can-label-flavor { font-family: 'Bebas Neue', sans-serif; font-size: 20px; color: white; line-height: 0.9; display: block; text-shadow: 0 2px 4px rgba(0,0,0,0.4); }
+
+.hero-coconut { position: absolute; font-size: 48px; opacity: 0.7; }
+.hero-coconut.c1 { top: 180px; left: 16px; animation: float 5s 0.5s ease-in-out infinite; }
+.hero-coconut.c2 { top: 340px; left: 30px; font-size: 32px; animation: float 6s 1s ease-in-out infinite; }
+.hero-coconut.c3 { top: 120px; right: 20px; font-size: 28px; animation: float 4.5s 0.2s ease-in-out infinite; }
+.hero-splash { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: radial-gradient(ellipse at 50% 110%, rgba(0,212,188,0.12) 0%, transparent 65%); pointer-events: none; }
+
+.hero-content { position: absolute; bottom: 140px; left: 28px; right: 160px; z-index: 10; }
+.hero-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--teal-mid); font-weight: 600; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+.hero-eyebrow::before { content: ''; display: block; width: 20px; height: 2px; background: #42A5F5; }
+.hero-title { font-family: 'Bebas Neue', sans-serif; font-size: 72px; line-height: 0.88; color: var(--white); letter-spacing: 0.02em; margin-bottom: 6px; text-shadow: 0 4px 24px rgba(0,0,0,0.5); }
+.hero-title .teal { color: var(--teal-mid); }
+.hero-title .italic { font-style: italic; color: #FFFFFF; font-size: 80px; }
+.hero-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 13px; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.65); font-weight: 400; margin-bottom: 24px; }
+.btn-hero { display: inline-block; padding: 14px 32px; background: #1565C0; color: #FFFFFF; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; cursor: pointer; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); transition: background 0.2s; }
+.btn-hero:hover { background: #1976D2; }
+
+.launch-banner { background: #0A1628; padding: 14px 28px; display: flex; align-items: center; justify-content: center; gap: 16px; border-top: 1px solid rgba(21,101,192,0.2); border-bottom: 1px solid rgba(21,101,192,0.2); }
+.launch-banner-text { font-family: 'Bebas Neue', sans-serif; font-size: 20px; letter-spacing: 0.12em; color: #FFFFFF; }
+.launch-banner-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,255,255,0.5); opacity: 0.5; }
+
+.flavor-intro { background: #FFFFFF; padding: 44px 28px; position: relative; overflow: hidden; }
+.flavor-intro::before { content: 'PLAYA'; position: absolute; top: -10px; right: -20px; font-family: 'Bebas Neue', sans-serif; font-size: 120px; color: rgba(21,101,192,0.04); letter-spacing: 0.05em; pointer-events: none; line-height: 1; }
+.flavor-tag { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 0.26em; text-transform: uppercase; color: #1565C0; font-weight: 600; margin-bottom: 14px; }
+.flavor-headline { font-family: 'Bebas Neue', sans-serif; font-size: 48px; line-height: 0.92; color: #0A1628; letter-spacing: 0.03em; margin-bottom: 16px; }
+.flavor-headline em { font-style: italic; color: #1565C0; }
+.flavor-body { font-size: 13px; line-height: 1.75; color: rgba(10,22,40,0.6); font-weight: 300; max-width: 360px; margin-bottom: 28px; }
+.flavor-body strong { color: #1565C0; font-weight: 600; }
+
+.stats { display: grid; grid-template-columns: 1fr 1fr 1fr; border-top: 1px solid rgba(21,101,192,0.15); border-bottom: 1px solid rgba(21,101,192,0.15); }
+.stat-item { padding: 24px 16px; text-align: center; border-right: 1px solid rgba(21,101,192,0.15); background: #FFFFFF; }
+.stat-item:last-child { border-right: none; }
+.stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 36px; color: #1565C0; line-height: 1; letter-spacing: 0.04em; margin-bottom: 4px; }
+.stat-label { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(10,22,40,0.45); font-weight: 400; }
+
+.product-feature { background: linear-gradient(160deg, #050C0B 0%, #0D2144 100%); padding: 0; position: relative; overflow: hidden; }
+.product-img-real { width: 100%; height: 340px; display: block; background: linear-gradient(160deg, #0A2A5A 0%, #1565C0 40%, #1976D2 70%, #0A1628 100%); position: relative; }
+.product-img-real::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 45%, rgba(66,165,245,0.25) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(21,101,192,0.35) 0%, transparent 50%); }
+.product-img-real::after { content: 'PLAYA VIBE'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Bebas Neue', sans-serif; font-size: 56px; color: rgba(255,255,255,0.18); letter-spacing: 0.08em; font-style: italic; white-space: nowrap; }
+.product-overlay { position: absolute; bottom: 0; left: 0; right: 0; height: 160px; background: linear-gradient(transparent, #050C0B); }
+.product-caption { position: absolute; bottom: 0; left: 0; right: 0; padding: 0 28px 28px; z-index: 2; }
+.product-caption-title { font-family: 'Bebas Neue', sans-serif; font-size: 28px; color: var(--white); letter-spacing: 0.06em; margin-bottom: 4px; }
+.product-caption-sub { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--teal-mid); font-weight: 600; }
+
+.benefits { background: #F2F4F8; padding: 40px 28px; }
+.benefits-header { font-family: 'Bebas Neue', sans-serif; font-size: 32px; color: #0A1628; letter-spacing: 0.06em; margin-bottom: 24px; display: flex; align-items: center; gap: 14px; }
+.benefits-header::after { content: ''; flex: 1; height: 1px; background: rgba(21,101,192,0.2); }
+.benefit-row { display: flex; align-items: flex-start; gap: 16px; padding: 16px 0; border-bottom: 1px solid rgba(21,101,192,0.1); }
+.benefit-row:last-child { border-bottom: none; }
+.benefit-icon { width: 40px; height: 40px; border: 1px solid rgba(21,101,192,0.3); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 18px; flex-shrink: 0; background: rgba(21,101,192,0.04); }
+.benefit-text { flex: 1; }
+.benefit-title { font-family: 'Barlow Condensed', sans-serif; font-size: 15px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0A1628; margin-bottom: 3px; }
+.benefit-desc { font-size: 12px; line-height: 1.6; color: rgba(10,22,40,0.5); font-weight: 300; }
+
+.full-cta { background: #FFFFFF; padding: 52px 28px; text-align: center; position: relative; overflow: hidden; border-top: 1px solid rgba(21,101,192,0.2); border-bottom: 1px solid rgba(21,101,192,0.2); }
+.full-cta::before { content: 'LIVE FIT'; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-family: 'Bebas Neue', sans-serif; font-size: 100px; color: rgba(21,101,192,0.06); white-space: nowrap; pointer-events: none; letter-spacing: 0.1em; }
+.full-cta-eyebrow { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase; color: #1565C0; font-weight: 600; margin-bottom: 10px; }
+.full-cta-title { font-family: 'Bebas Neue', sans-serif; font-size: 52px; color: #0A1628; letter-spacing: 0.04em; line-height: 0.9; margin-bottom: 20px; position: relative; }
+.full-cta-sub { font-size: 13px; color: rgba(10,22,40,0.55); font-weight: 300; margin-bottom: 28px; line-height: 1.6; position: relative; }
+.btn-dark { display: inline-block; padding: 15px 40px; background: #1565C0; color: #FFFFFF; font-family: 'Barlow Condensed', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; text-decoration: none; cursor: pointer; clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px)); transition: opacity 0.2s; position: relative; }
+.btn-dark:hover { opacity: 0.85; }
+
+.wtb { background: #F7F9FC; padding: 36px 28px; text-align: center; }
+.wtb-title { font-family: 'Bebas Neue', sans-serif; font-size: 24px; color: #0A1628; letter-spacing: 0.1em; margin-bottom: 20px; }
+.wtb-logos { display: flex; justify-content: center; gap: 12px; flex-wrap: wrap; }
+.wtb-badge { padding: 8px 18px; border: 1px solid rgba(21,101,192,0.3); font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: rgba(10,22,40,0.6); font-weight: 600; cursor: pointer; transition: all 0.2s; }
+.wtb-badge:hover { border-color: #1565C0; color: #1565C0; }
+
+.social { background: #08122E; padding: 28px; display: flex; align-items: center; justify-content: space-between; border-top: 1px solid rgba(21,101,192,0.15); border-bottom: 1px solid rgba(21,101,192,0.15); }
+.social-text { font-family: 'Barlow Condensed', sans-serif; font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(255,255,255,0.55); font-weight: 400; }
+.social-text strong { display: block; font-size: 15px; color: #42A5F5; letter-spacing: 0.08em; margin-top: 2px; }
+.social-icons { display: flex; gap: 16px; }
+.social-icon { width: 36px; height: 36px; border: 1px solid rgba(66,165,245,0.25); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #42A5F5; font-size: 14px; cursor: pointer; transition: all 0.2s; text-decoration: none; }
+.social-icon:hover { background: rgba(66,165,245,0.15); }
+
+.footer { background: #FFFFFF; padding: 32px 28px 36px; text-align: center; }
+.footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 22px; letter-spacing: 0.14em; color: #0A1628; margin-bottom: 6px; }
+.footer-logo span { color: #1565C0; }
+.footer-tagline { font-family: 'Barlow Condensed', sans-serif; font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: rgba(10,22,40,0.4); margin-bottom: 20px; }
+.footer-rule { height: 1px; background: rgba(21,101,192,0.15); margin: 20px 0; }
+.footer-links { display: flex; justify-content: center; gap: 20px; list-style: none; margin-bottom: 20px; }
+.footer-links a { font-family: 'Barlow Condensed', sans-serif; font-size: 10px; letter-spacing: 0.16em; text-transform: uppercase; color: rgba(10,22,40,0.55); text-decoration: none; font-weight: 400; }
+.footer-links a:hover { color: #1565C0; }
+.footer-legal { font-size: 10px; line-height: 1.8; color: rgba(10,22,40,0.4); font-weight: 300; max-width: 360px; margin: 0 auto; }
+.footer-legal a { color: rgba(21,101,192,0.6); text-decoration: underline; text-underline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class=&quot;email-wrap&quot;>
+
+  <div class=&quot;header&quot;>
+    <div class=&quot;header-logo&quot;>CEL<span>S</span>IUS<span style=&quot;font-size:10px; vertical-align:super; color:rgba(10,22,40,0.3);&quot;>&amp;reg;</span></div>
+    <div class=&quot;header-tag&quot;>🌴 New Drop</div>
+  </div>
+
+  <div class=&quot;hero&quot;>
+    <div class=&quot;hero-sun&quot;></div>
+    <div class=&quot;hero-splash&quot;></div>
+    <div class=&quot;hero-coconut c1&quot;>🥥</div>
+    <div class=&quot;hero-coconut c2&quot;>🌴</div>
+    <div class=&quot;hero-coconut c3&quot;>🍍</div>
+
+    <div class=&quot;hero-can&quot;>
+      <div class=&quot;can-top&quot;></div>
+      <div class=&quot;can-body&quot;>
+        <div class=&quot;can-stripe&quot;></div>
+        <div class=&quot;can-label&quot;>
+          <span class=&quot;can-label-brand&quot;>CELSIUS&amp;reg;</span>
+          <span class=&quot;can-label-flavor&quot;>PLAYA<br>VIBE</span>
+        </div>
       </div>
     </div>
-    <div class="work-card">
-      <div class="work-num">03</div>
-      <div>
-        <div class="work-result">12-month content playbook</div>
-        <div class="work-detail" style="margin-top:12px">Editorial strategy</div>
+
+    <div class=&quot;hero-water&quot;>
+      <svg viewBox=&quot;0 0 960 180&quot; preserveAspectRatio=&quot;none&quot; xmlns=&quot;http://www.w3.org/2000/svg&quot;>
+        <path d=&quot;M0,60 C120,100 240,20 360,60 C480,100 600,20 720,60 C840,100 960,20 960,60 L960,180 L0,180 Z&quot; fill=&quot;rgba(21,101,192,0.15)&quot;/>
+        <path d=&quot;M0,90 C120,50 240,130 360,90 C480,50 600,130 720,90 C840,50 960,130 960,90 L960,180 L0,180 Z&quot; fill=&quot;rgba(21,101,192,0.2)&quot;/>
+        <path d=&quot;M0,120 C160,80 320,160 480,120 C640,80 800,160 960,120 L960,180 L0,180 Z&quot; fill=&quot;rgba(21,101,192,0.3)&quot;/>
+      </svg>
+    </div>
+
+    <div class=&quot;hero-content&quot;>
+      <div class=&quot;hero-eyebrow&quot;>New Flavor — Now Available</div>
+      <h1 class=&quot;hero-title&quot;>
+        <span class=&quot;teal&quot;>PLAYA</span><br>
+        <span class=&quot;italic&quot;>Vibe</span>
+      </h1>
+      <p class=&quot;hero-sub&quot;>Sparkling Piña Colada · 12 FL OZ</p>
+      <a href=&quot;#&quot; class=&quot;btn-hero&quot;>Try It Now →</a>
+    </div>
+  </div>
+
+  <div class=&quot;launch-banner&quot;>
+    <span class=&quot;launch-banner-text&quot;>JUST DROPPED</span>
+    <div class=&quot;launch-banner-dot&quot;></div>
+    <span class=&quot;launch-banner-text&quot;>LIMITED EDITION</span>
+    <div class=&quot;launch-banner-dot&quot;></div>
+    <span class=&quot;launch-banner-text&quot;>LIVE FIT</span>
+  </div>
+
+  <div class=&quot;flavor-intro&quot;>
+    <div class=&quot;flavor-tag&quot;>✦ The Flavor</div>
+    <h2 class=&quot;flavor-headline&quot;>Your Beach<br>In A <em>Can.</em></h2>
+    <p class=&quot;flavor-body&quot;>
+      Close your eyes. Sun on your skin. Salt in the air. Now crack open <strong>Playa Vibe</strong> — sparkling piña colada flavor that hits like a tropical getaway, with all the energy to actually go out and live it.
+      <br><br>
+      Zero sugar. Zero compromise. 200mg of clean caffeine to fuel whatever the day throws at you.
+    </p>
+    <a href=&quot;#&quot; class=&quot;btn-hero&quot;>Shop Playa Vibe</a>
+  </div>
+
+  <div class=&quot;stats&quot;>
+    <div class=&quot;stat-item&quot;>
+      <div class=&quot;stat-num&quot;>200<span style=&quot;font-size:18px;&quot;>mg</span></div>
+      <div class=&quot;stat-label&quot;>Caffeine</div>
+    </div>
+    <div class=&quot;stat-item&quot;>
+      <div class=&quot;stat-num&quot;>0<span style=&quot;font-size:18px;&quot;>g</span></div>
+      <div class=&quot;stat-label&quot;>Sugar</div>
+    </div>
+    <div class=&quot;stat-item&quot;>
+      <div class=&quot;stat-num&quot;>10<span style=&quot;font-size:18px;&quot;>cal</span></div>
+      <div class=&quot;stat-label&quot;>Per Can</div>
+    </div>
+  </div>
+
+  <div class=&quot;product-feature&quot;>
+    <div class=&quot;product-img-real&quot;></div>
+    <div class=&quot;product-overlay&quot;></div>
+    <div class=&quot;product-caption&quot;>
+      <div class=&quot;product-caption-title&quot;>Playa Vibe — Piña Colada</div>
+      <div class=&quot;product-caption-sub&quot;>✦ Available Now · 12 FL OZ · $2.49</div>
+    </div>
+  </div>
+
+  <div class=&quot;benefits&quot;>
+    <div class=&quot;benefits-header&quot;>Why Celsius</div>
+    <div class=&quot;benefit-row&quot;>
+      <div class=&quot;benefit-icon&quot;>⚡</div>
+      <div class=&quot;benefit-text&quot;>
+        <div class=&quot;benefit-title&quot;>Essential Energy</div>
+        <div class=&quot;benefit-desc&quot;>200mg of caffeine from natural sources — clean, smooth, no crash.</div>
       </div>
     </div>
+    <div class=&quot;benefit-row&quot;>
+      <div class=&quot;benefit-icon&quot;>🔥</div>
+      <div class=&quot;benefit-text&quot;>
+        <div class=&quot;benefit-title&quot;>Accelerates Metabolism</div>
+        <div class=&quot;benefit-desc&quot;>Clinically proven MetaPlus&amp;reg; formula supports your body's calorie burn during exercise.</div>
+      </div>
+    </div>
+    <div class=&quot;benefit-row&quot;>
+      <div class=&quot;benefit-icon&quot;>🌿</div>
+      <div class=&quot;benefit-text&quot;>
+        <div class=&quot;benefit-title&quot;>No Artificial Preservatives</div>
+        <div class=&quot;benefit-desc&quot;>No artificial colors, no aspartame, no high fructose corn syrup. Just the good stuff.</div>
+      </div>
+    </div>
+    <div class=&quot;benefit-row&quot;>
+      <div class=&quot;benefit-icon&quot;>🥥</div>
+      <div class=&quot;benefit-text&quot;>
+        <div class=&quot;benefit-title&quot;>Sparkling Piña Colada Flavor</div>
+        <div class=&quot;benefit-desc&quot;>Tropical, refreshing, and actually delicious — not like some energy drinks we know.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class=&quot;full-cta&quot;>
+    <div class=&quot;full-cta-eyebrow&quot;>Limited Time</div>
+    <div class=&quot;full-cta-title&quot;>GET YOUR<br>PLAYA VIBE</div>
+    <p class=&quot;full-cta-sub&quot;>Available online and at select retailers.<br>Don't sleep on it — this one won't last.</p>
+    <a href=&quot;#&quot; class=&quot;btn-dark&quot;>Shop Now →</a>
+  </div>
+
+  <div class=&quot;wtb&quot;>
+    <div class=&quot;wtb-title&quot;>Find It Here</div>
+    <div class=&quot;wtb-logos&quot;>
+      <div class=&quot;wtb-badge&quot;>Amazon</div>
+      <div class=&quot;wtb-badge&quot;>Target</div>
+      <div class=&quot;wtb-badge&quot;>Walmart</div>
+      <div class=&quot;wtb-badge&quot;>GNC</div>
+      <div class=&quot;wtb-badge&quot;>Celsius.com</div>
+    </div>
+  </div>
+
+  <div class=&quot;social&quot;>
+    <div class=&quot;social-text&quot;>
+      Tag your vibe
+      <strong>@celsius</strong>
+    </div>
+    <div class=&quot;social-icons&quot;>
+      <a href=&quot;#&quot; class=&quot;social-icon&quot;>📸</a>
+      <a href=&quot;#&quot; class=&quot;social-icon&quot;>🎵</a>
+      <a href=&quot;#&quot; class=&quot;social-icon&quot;>▶</a>
+    </div>
+  </div>
+
+  <div class=&quot;footer&quot;>
+    <div class=&quot;footer-logo&quot;>CEL<span>S</span>IUS<span style=&quot;font-size:8px; vertical-align:super; color:rgba(10,22,40,0.2);&quot;>&amp;reg;</span></div>
+    <div class=&quot;footer-tagline&quot;>Live Fit</div>
+    <ul class=&quot;footer-links&quot;>
+      <li><a href=&quot;#&quot;>Shop</a></li>
+      <li><a href=&quot;#&quot;>Products</a></li>
+      <li><a href=&quot;#&quot;>Live Fit</a></li>
+      <li><a href=&quot;#&quot;>Contact</a></li>
+    </ul>
+    <div class=&quot;footer-rule&quot;></div>
+    <p class=&quot;footer-legal&quot;>
+      Hi there — you're receiving this because you subscribed at celsius.com.<br><br>
+      <a href=&quot;#&quot;>Unsubscribe</a> · <a href=&quot;#&quot;>Manage Preferences</a> · <a href=&quot;#&quot;>Privacy Policy</a><br><br>
+      &amp;copy; 2025 Celsius Holdings, Inc. All rights reserved.<br>
+      2424 N Federal Hwy, Suite 208, Boca Raton, FL 33431
+    </p>
+  </div>
+
+</div>
+</body>
+</html>"></iframe>
+      </div>
+      <div class="work-scroll-hint">Scroll ↓</div>
+    </div>
+
+    <div class="work-card" data-card="3">
+      <div class="work-card-header">
+        <div class="work-num">03</div>
+        <div class="work-result">innisfree — Pure from Jeju</div>
+        <div class="work-detail">Gmail marketing · Skincare</div>
+      </div>
+      <div class="work-preview" id="preview-3">
+        <iframe scrolling="no" loading="lazy" title="Innisfree Jeju email" srcdoc="<!DOCTYPE html>
+<html lang=&quot;en&quot;>
+<head>
+<meta charset=&quot;UTF-8&quot;>
+<meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;>
+<title>innisfree — pure from Jeju</title>
+<link href=&quot;https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&amp;family=DM+Sans:wght@300;400;500&amp;display=swap&quot; rel=&quot;stylesheet&quot;>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+:root {
+  --white: #FFFFFF; --off-white: #FAFAF8; --cream: #F5F3EE;
+  --pale-green: #EEF2EC; --sage: #8FAF8A; --forest: #3D5C3A; --deep: #1E2E1C;
+  --text: #1A1F19; --mid: #6B7468; --light: #A8B0A5; --border: #E8EAE5; --accent: #5C8C57;
+}
+body { background: #EDEDEA; font-family: 'DM Sans', sans-serif; display: flex; justify-content: center; padding: 40px 16px; }
+.email-wrap { width: 100%; max-width: 480px; background: var(--white); animation: fadeUp 0.8s ease both; }
+@keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes breathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.012); } }
+
+.header { padding: 22px 32px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); background: var(--white); }
+.header-logo { font-family: 'DM Sans', sans-serif; font-size: 18px; font-weight: 300; letter-spacing: 0.22em; text-transform: lowercase; color: var(--deep); }
+.header-nav { display: flex; gap: 20px; list-style: none; }
+.header-nav a { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); text-decoration: none; font-weight: 400; }
+
+.hero { position: relative; background: var(--cream); overflow: hidden; min-height: 520px; display: flex; flex-direction: column; }
+.hero-blob { position: absolute; top: -60px; right: -80px; width: 360px; height: 360px; border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; background: radial-gradient(ellipse, rgba(143,175,138,0.18) 0%, rgba(143,175,138,0.04) 70%, transparent 100%); animation: breathe 8s ease-in-out infinite; }
+.hero-blob-2 { position: absolute; bottom: -40px; left: -60px; width: 280px; height: 280px; border-radius: 40% 60% 30% 70% / 60% 40% 60% 40%; background: radial-gradient(ellipse, rgba(92,140,87,0.1) 0%, transparent 70%); animation: breathe 10s 2s ease-in-out infinite; }
+.hero-line { position: absolute; top: 48px; left: 32px; width: 1px; height: 52px; background: linear-gradient(180deg, transparent, var(--sage), transparent); opacity: 0.5; }
+.hero-top { padding: 40px 32px 28px; position: relative; z-index: 2; }
+.hero-origin { font-size: 9px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+.hero-origin::before { content: ''; display: block; width: 24px; height: 1px; background: var(--accent); opacity: 0.6; }
+.hero-title { font-family: 'DM Serif Display', serif; font-size: 52px; font-weight: 400; line-height: 1.0; color: var(--deep); letter-spacing: -0.01em; margin-bottom: 4px; }
+.hero-title em { font-style: italic; color: var(--accent); }
+.hero-subtitle { font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--light); font-weight: 300; margin-top: 10px; margin-bottom: 28px; }
+.btn-outline { display: inline-block; padding: 11px 28px; border: 1px solid var(--forest); color: var(--forest); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: all 0.25s ease; cursor: pointer; background: transparent; }
+.btn-outline:hover { background: var(--forest); color: var(--white); }
+
+.hero-img { width: 100%; flex: 1; min-height: 280px; background: linear-gradient(160deg, #D6DFD4 0%, #C5D0C2 40%, #B8C8B4 70%, #AABFAA 100%); position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+.hero-img::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.35) 0%, transparent 50%), radial-gradient(ellipse at 75% 70%, rgba(255,255,255,0.2) 0%, transparent 45%); }
+.hero-img-label { position: relative; z-index: 2; text-align: center; padding: 20px; }
+.hero-img-text { font-family: 'DM Serif Display', serif; font-size: 80px; font-weight: 400; color: rgba(255,255,255,0.25); font-style: italic; line-height: 1; letter-spacing: -0.02em; }
+.hero-img-tag { position: absolute; bottom: 24px; left: 32px; background: rgba(255,255,255,0.88); backdrop-filter: blur(8px); padding: 10px 16px; border-left: 2px solid var(--accent); }
+.hero-img-tag-name { font-family: 'DM Serif Display', serif; font-size: 14px; color: var(--deep); margin-bottom: 2px; }
+.hero-img-tag-sub { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); font-weight: 400; }
+
+.intro { padding: 48px 32px; background: var(--white); border-bottom: 1px solid var(--border); }
+.intro-eyebrow { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 16px; }
+.intro-headline { font-family: 'DM Serif Display', serif; font-size: 34px; font-weight: 400; line-height: 1.15; color: var(--deep); margin-bottom: 16px; letter-spacing: -0.01em; }
+.intro-headline em { font-style: italic; }
+.intro-body { font-size: 13px; line-height: 1.85; color: var(--mid); font-weight: 300; max-width: 380px; }
+
+.products-header { padding: 36px 32px 20px; display: flex; justify-content: space-between; align-items: flex-end; background: var(--white); }
+.products-label { font-size: 9px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--light); font-weight: 400; margin-bottom: 4px; }
+.products-title { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--deep); font-weight: 400; }
+.products-link { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); text-decoration: none; font-weight: 400; border-bottom: 1px solid var(--border); padding-bottom: 2px; }
+
+.product-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--border); }
+.product-card { background: var(--white); cursor: pointer; overflow: hidden; }
+.product-card-img { width: 100%; aspect-ratio: 1 / 1.1; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+.product-card-img.p1 { background: linear-gradient(140deg, #E2EDE0 0%, #C8DBC4 100%); }
+.product-card-img.p2 { background: linear-gradient(140deg, #EDE8E0 0%, #DDD3C0 100%); }
+.product-card-img.p3 { background: linear-gradient(140deg, #E0E8ED 0%, #C4D4DC 100%); }
+.product-card-img.p4 { background: linear-gradient(140deg, #EDE2E8 0%, #DCC4D8 100%); }
+.product-card-img::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 40% 30%, rgba(255,255,255,0.4) 0%, transparent 60%); }
+.product-card-img-icon { font-family: 'DM Serif Display', serif; font-size: 52px; font-style: italic; color: rgba(255,255,255,0.35); position: relative; z-index: 1; }
+.product-card-new { position: absolute; top: 12px; left: 12px; font-size: 7px; letter-spacing: 0.18em; text-transform: uppercase; background: var(--deep); color: var(--white); padding: 3px 8px; font-weight: 400; }
+.product-card-info { padding: 14px 16px 18px; background: var(--white); }
+.product-card-brand { font-size: 8px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 4px; }
+.product-card-name { font-family: 'DM Serif Display', serif; font-size: 15px; color: var(--deep); margin-bottom: 4px; line-height: 1.2; }
+.product-card-desc { font-size: 10px; color: var(--light); font-weight: 300; margin-bottom: 10px; line-height: 1.5; }
+.product-card-price { font-size: 12px; color: var(--text); font-weight: 400; letter-spacing: 0.04em; }
+
+.ritual { background: var(--pale-green); padding: 52px 32px; position: relative; overflow: hidden; }
+.ritual::before { content: '제주'; position: absolute; bottom: -20px; right: -10px; font-family: 'DM Serif Display', serif; font-size: 110px; color: rgba(92,140,87,0.06); pointer-events: none; line-height: 1; }
+.ritual-eyebrow { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 18px; display: flex; align-items: center; gap: 10px; }
+.ritual-eyebrow::after { content: ''; display: block; width: 32px; height: 1px; background: var(--accent); opacity: 0.4; }
+.ritual-title { font-family: 'DM Serif Display', serif; font-size: 38px; font-weight: 400; color: var(--deep); line-height: 1.1; margin-bottom: 20px; letter-spacing: -0.01em; }
+.ritual-title em { font-style: italic; color: var(--accent); }
+.ritual-steps { display: flex; flex-direction: column; gap: 18px; margin-bottom: 32px; }
+.ritual-step { display: flex; align-items: flex-start; gap: 16px; }
+.ritual-step-num { font-family: 'DM Serif Display', serif; font-size: 22px; color: var(--sage); font-style: italic; line-height: 1; width: 24px; flex-shrink: 0; padding-top: 1px; }
+.ritual-step-name { font-size: 12px; font-weight: 500; color: var(--deep); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 3px; }
+.ritual-step-desc { font-size: 11px; line-height: 1.65; color: var(--mid); font-weight: 300; }
+.btn-solid { display: inline-block; padding: 13px 32px; background: var(--deep); color: var(--white); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; font-weight: 500; transition: opacity 0.2s; cursor: pointer; }
+.btn-solid:hover { opacity: 0.8; }
+
+.ingredient { display: grid; grid-template-columns: 1fr 1fr; min-height: 300px; border-top: 1px solid var(--border); }
+.ingredient-img { background: linear-gradient(145deg, #B8CEB5 0%, #8FAF8A 50%, #6E9669 100%); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+.ingredient-img::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 35% 25%, rgba(255,255,255,0.25) 0%, transparent 55%); }
+.ingredient-img-text { font-family: 'DM Serif Display', serif; font-size: 52px; color: rgba(255,255,255,0.2); font-style: italic; line-height: 1; position: relative; }
+.ingredient-content { background: var(--white); padding: 36px 28px; display: flex; flex-direction: column; justify-content: center; }
+.ingredient-tag { font-size: 8px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent); font-weight: 500; margin-bottom: 12px; }
+.ingredient-title { font-family: 'DM Serif Display', serif; font-size: 24px; color: var(--deep); line-height: 1.15; margin-bottom: 12px; font-style: italic; }
+.ingredient-desc { font-size: 11px; line-height: 1.75; color: var(--mid); font-weight: 300; margin-bottom: 22px; }
+.btn-text { font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase; color: var(--forest); font-weight: 500; text-decoration: none; border-bottom: 1px solid var(--sage); padding-bottom: 2px; display: inline-block; }
+
+.values { padding: 44px 32px; background: var(--white); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.values-eyebrow { font-size: 9px; letter-spacing: 0.26em; text-transform: uppercase; color: var(--light); font-weight: 400; margin-bottom: 28px; text-align: center; }
+.values-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 8px; text-align: center; }
+.value-item { display: flex; flex-direction: column; align-items: center; gap: 10px; padding: 20px 8px; background: var(--cream); }
+.value-icon { font-size: 22px; line-height: 1; }
+.value-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--deep); font-weight: 500; line-height: 1.4; }
+.value-sub { font-size: 9px; color: var(--light); font-weight: 300; line-height: 1.5; }
+
+.editorial { padding: 60px 40px; text-align: center; background: var(--deep); position: relative; overflow: hidden; }
+.editorial::before { content: ''; position: absolute; top: -60px; left: 50%; transform: translateX(-50%); width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, rgba(143,175,138,0.12) 0%, transparent 70%); pointer-events: none; }
+.editorial-rule { width: 1px; height: 44px; background: var(--sage); opacity: 0.4; margin: 0 auto 28px; }
+.editorial-quote { font-family: 'DM Serif Display', serif; font-size: 26px; font-weight: 400; font-style: italic; color: rgba(255,255,255,0.9); line-height: 1.4; max-width: 340px; margin: 0 auto 10px; letter-spacing: 0.01em; }
+.editorial-attr { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sage); font-weight: 400; margin-bottom: 36px; }
+.btn-light { display: inline-block; padding: 13px 36px; border: 1px solid rgba(143,175,138,0.4); color: rgba(255,255,255,0.85); font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; font-weight: 400; transition: all 0.25s; cursor: pointer; }
+.btn-light:hover { background: rgba(143,175,138,0.15); border-color: var(--sage); }
+
+.footer { padding: 36px 32px 40px; background: var(--white); border-top: 1px solid var(--border); text-align: center; }
+.footer-logo { font-family: 'DM Sans', sans-serif; font-size: 16px; font-weight: 300; letter-spacing: 0.24em; text-transform: lowercase; color: var(--deep); margin-bottom: 6px; }
+.footer-tagline { font-size: 9px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--light); font-weight: 300; margin-bottom: 22px; }
+.footer-links { display: flex; justify-content: center; gap: 22px; list-style: none; margin-bottom: 22px; }
+.footer-links a { font-size: 9px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--mid); text-decoration: none; font-weight: 400; }
+.footer-rule { height: 1px; background: var(--border); margin: 20px 0; }
+.footer-legal { font-size: 10px; line-height: 1.8; color: var(--light); font-weight: 300; max-width: 340px; margin: 0 auto; }
+.footer-legal a { color: var(--mid); text-decoration: underline; text-underline-offset: 2px; }
+</style>
+</head>
+<body>
+<div class=&quot;email-wrap&quot;>
+
+  <div class=&quot;header&quot;>
+    <div class=&quot;header-logo&quot;>innisfree</div>
+    <ul class=&quot;header-nav&quot;>
+      <li><a href=&quot;#&quot;>Skincare</a></li>
+      <li><a href=&quot;#&quot;>Sets</a></li>
+      <li><a href=&quot;#&quot;>Jeju</a></li>
+    </ul>
+  </div>
+
+  <div class=&quot;hero&quot;>
+    <div class=&quot;hero-blob&quot;></div>
+    <div class=&quot;hero-blob-2&quot;></div>
+    <div class=&quot;hero-line&quot;></div>
+    <div class=&quot;hero-top&quot;>
+      <div class=&quot;hero-origin&quot;>From Jeju Island, Korea</div>
+      <h1 class=&quot;hero-title&quot;>
+        Skin that<br>
+        <em>drinks</em> in<br>
+        nature.
+      </h1>
+      <p class=&quot;hero-subtitle&quot;>Pure ingredients. Lasting glow.</p>
+      <a href=&quot;#&quot; class=&quot;btn-outline&quot;>Discover Innisfree</a>
+    </div>
+    <div class=&quot;hero-img&quot;>
+      <div class=&quot;hero-img-label&quot;>
+        <div class=&quot;hero-img-text&quot;>glow.</div>
+      </div>
+      <div class=&quot;hero-img-tag&quot;>
+        <div class=&quot;hero-img-tag-name&quot;>Green Tea Seed Serum</div>
+        <div class=&quot;hero-img-tag-sub&quot;>Bestseller · From $28</div>
+      </div>
+    </div>
+  </div>
+
+  <div class=&quot;intro&quot;>
+    <div class=&quot;intro-eyebrow&quot;>Our Philosophy</div>
+    <h2 class=&quot;intro-headline&quot;>
+      Where nature<br>
+      <em>meets your skin.</em>
+    </h2>
+    <p class=&quot;intro-body&quot;>
+      Born on the volcanic island of Jeju — one of the world's most pristine natural environments — innisfree has spent over two decades distilling nature's most powerful ingredients into skincare that genuinely works. Clean, effective, and kind to the earth.
+    </p>
+  </div>
+
+  <div class=&quot;products-header&quot;>
+    <div>
+      <div class=&quot;products-label&quot;>Bestsellers</div>
+      <div class=&quot;products-title&quot;>The Edit</div>
+    </div>
+    <a href=&quot;#&quot; class=&quot;products-link&quot;>Shop All</a>
+  </div>
+
+  <div class=&quot;product-grid&quot;>
+    <div class=&quot;product-card&quot;>
+      <div class=&quot;product-card-img p1&quot;>
+        <div class=&quot;product-card-img-icon&quot;>i</div>
+        <div class=&quot;product-card-new&quot;>New</div>
+      </div>
+      <div class=&quot;product-card-info&quot;>
+        <div class=&quot;product-card-brand&quot;>innisfree</div>
+        <div class=&quot;product-card-name&quot;>Green Tea Hyaluronic Serum</div>
+        <div class=&quot;product-card-desc&quot;>72h hydration boost</div>
+        <div class=&quot;product-card-price&quot;>$35</div>
+      </div>
+    </div>
+    <div class=&quot;product-card&quot;>
+      <div class=&quot;product-card-img p2&quot;>
+        <div class=&quot;product-card-img-icon&quot;>i</div>
+      </div>
+      <div class=&quot;product-card-info&quot;>
+        <div class=&quot;product-card-brand&quot;>innisfree</div>
+        <div class=&quot;product-card-name&quot;>Jeju Volcanic Pore Clay Mask</div>
+        <div class=&quot;product-card-desc&quot;>Deep pore purifying</div>
+        <div class=&quot;product-card-price&quot;>$22</div>
+      </div>
+    </div>
+    <div class=&quot;product-card&quot;>
+      <div class=&quot;product-card-img p3&quot;>
+        <div class=&quot;product-card-img-icon&quot;>i</div>
+        <div class=&quot;product-card-new&quot;>New</div>
+      </div>
+      <div class=&quot;product-card-info&quot;>
+        <div class=&quot;product-card-brand&quot;>innisfree</div>
+        <div class=&quot;product-card-name&quot;>Dewy Glow Tone-Up Cream</div>
+        <div class=&quot;product-card-desc&quot;>Luminous, blurring finish</div>
+        <div class=&quot;product-card-price&quot;>$28</div>
+      </div>
+    </div>
+    <div class=&quot;product-card&quot;>
+      <div class=&quot;product-card-img p4&quot;>
+        <div class=&quot;product-card-img-icon&quot;>i</div>
+      </div>
+      <div class=&quot;product-card-info&quot;>
+        <div class=&quot;product-card-brand&quot;>innisfree</div>
+        <div class=&quot;product-card-name&quot;>Camellia Essential Lip Balm</div>
+        <div class=&quot;product-card-desc&quot;>Plump &amp;amp; nourish</div>
+        <div class=&quot;product-card-price&quot;>$16</div>
+      </div>
+    </div>
+  </div>
+
+  <div class=&quot;ritual&quot;>
+    <div class=&quot;ritual-eyebrow&quot;>Your Routine</div>
+    <h2 class=&quot;ritual-title&quot;>
+      The Jeju<br>
+      <em>Skin Ritual.</em>
+    </h2>
+    <div class=&quot;ritual-steps&quot;>
+      <div class=&quot;ritual-step&quot;>
+        <div class=&quot;ritual-step-num&quot;>1</div>
+        <div>
+          <div class=&quot;ritual-step-name&quot;>Cleanse</div>
+          <div class=&quot;ritual-step-desc&quot;>Start with Jeju volcanic water — remove impurities without stripping your skin's natural moisture barrier.</div>
+        </div>
+      </div>
+      <div class=&quot;ritual-step&quot;>
+        <div class=&quot;ritual-step-num&quot;>2</div>
+        <div>
+          <div class=&quot;ritual-step-name&quot;>Treat</div>
+          <div class=&quot;ritual-step-desc&quot;>Layer our Green Tea Seed Serum — 80% green tea extract penetrates deep to strengthen and hydrate.</div>
+        </div>
+      </div>
+      <div class=&quot;ritual-step&quot;>
+        <div class=&quot;ritual-step-num&quot;>3</div>
+        <div>
+          <div class=&quot;ritual-step-name&quot;>Protect</div>
+          <div class=&quot;ritual-step-desc&quot;>Seal in moisture with Dewy Glow Cream — your skin's final shield, glowing all day.</div>
+        </div>
+      </div>
+    </div>
+    <a href=&quot;#&quot; class=&quot;btn-solid&quot;>Build Your Routine</a>
+  </div>
+
+  <div class=&quot;ingredient&quot;>
+    <div class=&quot;ingredient-img&quot;>
+      <div class=&quot;ingredient-img-text&quot;>緑</div>
+    </div>
+    <div class=&quot;ingredient-content&quot;>
+      <div class=&quot;ingredient-tag&quot;>Star Ingredient</div>
+      <div class=&quot;ingredient-title&quot;>Jeju Green Tea Extract</div>
+      <p class=&quot;ingredient-desc&quot;>Hand-picked at peak season from Jeju's volcanic soil. Rich in amino acids and antioxidants — our most powerful hydrating ingredient.</p>
+      <a href=&quot;#&quot; class=&quot;btn-text&quot;>Learn More</a>
+    </div>
+  </div>
+
+  <div class=&quot;values&quot;>
+    <div class=&quot;values-eyebrow&quot;>Our Promise</div>
+    <div class=&quot;values-grid&quot;>
+      <div class=&quot;value-item&quot;>
+        <div class=&quot;value-icon&quot;>🌿</div>
+        <div class=&quot;value-label&quot;>Clean Formula</div>
+        <div class=&quot;value-sub&quot;>No parabens, sulfates or mineral oils</div>
+      </div>
+      <div class=&quot;value-item&quot;>
+        <div class=&quot;value-icon&quot;>🌋</div>
+        <div class=&quot;value-label&quot;>Jeju Sourced</div>
+        <div class=&quot;value-sub&quot;>Sustainably harvested from Jeju Island</div>
+      </div>
+      <div class=&quot;value-item&quot;>
+        <div class=&quot;value-icon&quot;>♻️</div>
+        <div class=&quot;value-label&quot;>Eco-Friendly</div>
+        <div class=&quot;value-sub&quot;>Refillable packaging since 2003</div>
+      </div>
+    </div>
+  </div>
+
+  <div class=&quot;editorial&quot;>
+    <div class=&quot;editorial-rule&quot;></div>
+    <p class=&quot;editorial-quote&quot;>&quot;Skin that feels like the first breath of morning air.&quot;</p>
+    <div class=&quot;editorial-attr&quot;>— The innisfree philosophy</div>
+    <a href=&quot;#&quot; class=&quot;btn-light&quot;>Shop the Full Collection</a>
+  </div>
+
+  <div class=&quot;footer&quot;>
+    <div class=&quot;footer-logo&quot;>innisfree</div>
+    <div class=&quot;footer-tagline&quot;>Pure from Jeju</div>
+    <ul class=&quot;footer-links&quot;>
+      <li><a href=&quot;#&quot;>Shop</a></li>
+      <li><a href=&quot;#&quot;>About</a></li>
+      <li><a href=&quot;#&quot;>Instagram</a></li>
+      <li><a href=&quot;#&quot;>Contact</a></li>
+    </ul>
+    <div class=&quot;footer-rule&quot;></div>
+    <p class=&quot;footer-legal&quot;>
+      Hi there — you're receiving this because you subscribed at innisfreeworld.com.<br><br>
+      <a href=&quot;#&quot;>Unsubscribe</a> · <a href=&quot;#&quot;>Manage Preferences</a> · <a href=&quot;#&quot;>Privacy Policy</a><br><br>
+      &amp;copy; 2025 innisfree Corporation. All rights reserved.<br>
+      737 N Michigan Ave, Chicago, IL 60611
+    </p>
+  </div>
+
+</div>
+</body>
+</html>"></iframe>
+      </div>
+      <div class="work-scroll-hint">Scroll ↓</div>
+    </div>
+
   </div>
 </section>
 
@@ -653,8 +2247,8 @@ section {
 <section id="contact">
   <p class="contact-pre">Ready to grow?</p>
   <h2 class="contact-headline">Let's build<br><em>something real.</em></h2>
-  <p class="contact-sub">Huntington Beach, CA &nbsp;·&nbsp; Available for new clients</p>
-  <a href="mailto:hello@daniel.com" class="contact-email">hello@daniel.com</a>
+  <p class="contact-sub">San Ramon, CA &nbsp;·&nbsp; Available for new clients</p>
+  <a href="mailto:kangd4u@gmail.com" class="contact-email">kangd4u@gmail.com</a>
   <p class="contact-footer">© 2026 Daniel &nbsp;—&nbsp; Social Media Strategist</p>
 </section>
 
@@ -665,7 +2259,7 @@ document.addEventListener('mousemove', e => {
   cursor.style.left = e.clientX + 'px';
   cursor.style.top = e.clientY + 'px';
 });
-document.querySelectorAll('a, .service-item, .work-card, .nav-dot').forEach(el => {
+document.querySelectorAll('a, .service-item, .work-card, .work-preview, .nav-dot').forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('bloom'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('bloom'));
 });
@@ -690,6 +2284,114 @@ dots.forEach(dot => {
     sections[+dot.dataset.section].scrollIntoView({ behavior: 'smooth' });
   });
 });
+
+// ── Work card: iframe auto-size + auto-scroll animation ──
+function setupWorkCard(cardId) {
+  const preview = document.getElementById(cardId);
+  if (!preview) return;
+  const iframe = preview.querySelector('iframe');
+  if (!iframe) return;
+
+  let scrollAnim = null;
+  let isUserScrolling = false;
+  let userScrollTimeout;
+
+  // Size the iframe to its content so it's fully rendered inside the preview
+  function sizeIframe() {
+    try {
+      const doc = iframe.contentDocument || iframe.contentWindow.document;
+      const h = Math.max(
+        doc.body.scrollHeight,
+        doc.documentElement.scrollHeight
+      );
+      iframe.style.height = h + 'px';
+    } catch (e) {
+      // cross-origin fallback
+      iframe.style.height = '2400px';
+    }
+  }
+
+  iframe.addEventListener('load', () => {
+    setTimeout(sizeIframe, 50);
+    setTimeout(sizeIframe, 400); // re-check after fonts load
+  });
+
+  // Smooth looping auto-scroll when card is in view
+  function startAutoScroll() {
+    stopAutoScroll();
+    const max = preview.scrollHeight - preview.clientHeight;
+    if (max <= 0) return;
+    const duration = 14000; // ms for full down scroll
+    let startTime = null;
+    let direction = 1; // 1 = down, -1 = up
+    let fromPos = preview.scrollTop;
+    let targetPos = max;
+
+    function step(ts) {
+      if (isUserScrolling) { scrollAnim = requestAnimationFrame(step); return; }
+      if (!startTime) startTime = ts;
+      const elapsed = ts - startTime;
+      const t = Math.min(elapsed / duration, 1);
+      // Ease in-out
+      const eased = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2)/2;
+      preview.scrollTop = fromPos + (targetPos - fromPos) * eased;
+
+      if (t >= 1) {
+        // reverse direction, pause briefly
+        direction *= -1;
+        fromPos = preview.scrollTop;
+        targetPos = direction === 1 ? max : 0;
+        startTime = null;
+        setTimeout(() => { scrollAnim = requestAnimationFrame(step); }, 900);
+        return;
+      }
+      scrollAnim = requestAnimationFrame(step);
+    }
+    scrollAnim = requestAnimationFrame(step);
+  }
+
+  function stopAutoScroll() {
+    if (scrollAnim) {
+      cancelAnimationFrame(scrollAnim);
+      scrollAnim = null;
+    }
+  }
+
+  // Pause auto-scroll when user interacts
+  preview.addEventListener('wheel', (e) => {
+    // Let the user scroll inside the preview; don't bubble to parent snap scroll
+    e.stopPropagation();
+    isUserScrolling = true;
+    clearTimeout(userScrollTimeout);
+    userScrollTimeout = setTimeout(() => { isUserScrolling = false; }, 1800);
+  }, { passive: true });
+
+  preview.addEventListener('mouseenter', () => {
+    isUserScrolling = true;
+  });
+  preview.addEventListener('mouseleave', () => {
+    clearTimeout(userScrollTimeout);
+    userScrollTimeout = setTimeout(() => { isUserScrolling = false; }, 600);
+  });
+
+  // Observe the work section; start animation when in view
+  const workSection = document.getElementById('work');
+  const workObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => { if (!isUserScrolling) startAutoScroll(); }, 600);
+      } else {
+        stopAutoScroll();
+        preview.scrollTop = 0;
+      }
+    });
+  }, { threshold: 0.4 });
+  workObserver.observe(workSection);
+}
+
+setupWorkCard('preview-1');
+setupWorkCard('preview-2');
+setupWorkCard('preview-3');
 </script>
 </body>
 </html>
