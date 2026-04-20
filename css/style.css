@@ -80,7 +80,7 @@ section {
 .hero-photo {
   position: absolute;
   inset: 0;
-  background-image: url('images/hero.jpeg');
+  background-image: url('../images/hero.jpeg');
   background-size: cover;
   background-position: center 30%;
   opacity: 0.35;
@@ -850,7 +850,7 @@ section {
 
 .form-select {
   appearance: none;
-  background-image: url('images/hero.jpeg');
+  background-image: url('../images/hero.jpeg');
   background-repeat: no-repeat;
   background-position: right 2px center;
   padding-right: 20px;
