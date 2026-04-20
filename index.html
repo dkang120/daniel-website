@@ -41,6 +41,7 @@ body {
   transform: translate(-50%, -50%);
   transition: transform 0.15s ease, width 0.25s ease, height 0.25s ease, background 0.25s ease;
   mix-blend-mode: multiply;
+  will-change: left, top;
 }
 #cursor.bloom {
   width: 40px;
@@ -345,6 +346,7 @@ section {
   cursor: none;
   overflow: hidden;
   position: relative;
+  contain: layout style; /* isolate reflow to each card */
 }
 
 .work-card:hover {
@@ -388,8 +390,8 @@ section {
   overflow-y: auto;
   overflow-x: hidden;
   background: #ECEAE6;
-  scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain; /* JS switches to auto on down-scroll so user can reach next section */
   cursor: none;
 }
 
@@ -1322,6 +1324,7 @@ section {
   overflow-x: hidden;
   scrollbar-width: none;
   -ms-overflow-style: none;
+  overscroll-behavior-y: contain; /* JS switches to auto on down-scroll so user can reach next section */
 }
 
 .wd-browser-body::-webkit-scrollbar {
@@ -1683,29 +1686,6 @@ section {
 </section>
 
 <!-- SERVICES -->
-<section id="services">
-  <p class="section-label">Services</p>
-  <ul class="services-list">
-    <li class="service-item">
-      <span class="service-name">Content Creation</span>
-      <span class="service-price">From $50/post</span>
-    </li>
-    <li class="service-item">
-      <span class="service-name">Email Marketing & Design</span>
-      <span class="service-price">From $500/mo</span>
-    </li>
-    <li class="service-item">
-      <span class="service-name">Strategy & Planning</span>
-      <span class="service-price">From $500</span>
-    </li>
-  </ul>
-</section>
-
-<!-- WORK -->
-
-
-
-<!-- CLIENTS (real work) -->
 <section id="clients">
   <p class="section-label">Clients</p>
   <p class="clients-subtitle">Real projects, real clients — social media and web, built while in school.</p>
@@ -3461,6 +3441,29 @@ body { background: #EDEDEA; font-family: 'DM Sans', sans-serif; display: flex; j
 </section>
 
 <!-- CONTACT -->
+<section id="services">
+  <p class="section-label">Services</p>
+  <ul class="services-list">
+    <li class="service-item">
+      <span class="service-name">Content Creation</span>
+      <span class="service-price">From $50/post</span>
+    </li>
+    <li class="service-item">
+      <span class="service-name">Email Marketing & Design</span>
+      <span class="service-price">From $500/mo</span>
+    </li>
+    <li class="service-item">
+      <span class="service-name">Strategy & Planning</span>
+      <span class="service-price">From $500</span>
+    </li>
+  </ul>
+</section>
+
+<!-- WORK -->
+
+
+
+<!-- CLIENTS (real work) -->
 <section id="contact">
 
   <div class="contact-left">
@@ -3537,22 +3540,30 @@ body { background: #EDEDEA; font-family: 'DM Sans', sans-serif; display: flex; j
 </section>
 
 <script>
-// Cursor
+// ── Cursor — rAF-throttled, zero jank ──
 const cursor = document.getElementById('cursor');
+let cursorX = 0, cursorY = 0, cursorRAF = null;
 document.addEventListener('mousemove', e => {
-  cursor.style.left = e.clientX + 'px';
-  cursor.style.top = e.clientY + 'px';
+  cursorX = e.clientX;
+  cursorY = e.clientY;
+  if (!cursorRAF) {
+    cursorRAF = requestAnimationFrame(() => {
+      cursor.style.left = cursorX + 'px';
+      cursor.style.top  = cursorY + 'px';
+      cursorRAF = null;
+    });
+  }
 });
 document.querySelectorAll('a, .service-item, .work-card, .work-preview, .nav-dot').forEach(el => {
   el.addEventListener('mouseenter', () => cursor.classList.add('bloom'));
   el.addEventListener('mouseleave', () => cursor.classList.remove('bloom'));
 });
 
-// Nav dots & scroll spy
+// ── Nav dots & scroll spy ──
 const sections = document.querySelectorAll('section');
-const dots = document.querySelectorAll('.nav-dot');
+const dots     = document.querySelectorAll('.nav-dot');
 
-const observer = new IntersectionObserver(entries => {
+const navObserver = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       const idx = Array.from(sections).indexOf(entry.target);
@@ -3561,7 +3572,7 @@ const observer = new IntersectionObserver(entries => {
   });
 }, { threshold: 0.5 });
 
-sections.forEach(s => observer.observe(s));
+sections.forEach(s => navObserver.observe(s));
 
 dots.forEach(dot => {
   dot.addEventListener('click', () => {
@@ -3569,64 +3580,74 @@ dots.forEach(dot => {
   });
 });
 
-// ── Work card: iframe auto-size + auto-scroll animation ──
-function setupWorkCard(cardId) {
+// ── Work / WebDesign preview: iframe auto-size + looping auto-scroll ──
+// FIX: loop is fully stopped when user interacts (no idle spin).
+// FIX: staggered starts so all 3 work cards never animate simultaneously.
+// FIX: preview-hk correctly watches #webdesign, not #work.
+function setupWorkCard(cardId, sectionId, startDelay) {
   const preview = document.getElementById(cardId);
   if (!preview) return;
-  const iframe = preview.querySelector('iframe');
-  if (!iframe) return;
+  const iframe  = preview.querySelector('iframe');
 
-  let scrollAnim = null;
-  let isUserScrolling = false;
-  let userScrollTimeout;
+  let scrollAnim     = null;
+  let pauseTimeout   = null;
+  let resumeTimeout  = null;
+  let isUserActive   = false;
 
-  // Size the iframe to its content so it's fully rendered inside the preview
+  // ── iframe height sizing ──
   function sizeIframe() {
+    if (!iframe) return;
     try {
       const doc = iframe.contentDocument || iframe.contentWindow.document;
-      const h = Math.max(
-        doc.body.scrollHeight,
-        doc.documentElement.scrollHeight
-      );
+      const h   = Math.max(doc.body.scrollHeight, doc.documentElement.scrollHeight);
       iframe.style.height = h + 'px';
     } catch (e) {
-      // cross-origin fallback
-      iframe.style.height = '2400px';
+      iframe.style.height = '2400px'; // cross-origin fallback
     }
   }
+  if (iframe) {
+    iframe.addEventListener('load', () => {
+      setTimeout(sizeIframe, 50);
+      setTimeout(sizeIframe, 400);
+    });
+  }
 
-  iframe.addEventListener('load', () => {
-    setTimeout(sizeIframe, 50);
-    setTimeout(sizeIframe, 400); // re-check after fonts load
-  });
+  // ── stop everything cleanly ──
+  function stopAutoScroll() {
+    if (scrollAnim)   { cancelAnimationFrame(scrollAnim);  scrollAnim  = null; }
+    if (pauseTimeout) { clearTimeout(pauseTimeout);         pauseTimeout = null; }
+    // do NOT cancel resumeTimeout here — that belongs to interaction handlers
+  }
 
-  // Smooth looping auto-scroll when card is in view
+  // ── looping scroll (NO idle spin when paused) ──
   function startAutoScroll() {
     stopAutoScroll();
     const max = preview.scrollHeight - preview.clientHeight;
     if (max <= 0) return;
-    const duration = 14000; // ms for full down scroll
+
+    const duration = 14000;
     let startTime = null;
-    let direction = 1; // 1 = down, -1 = up
-    let fromPos = preview.scrollTop;
+    let direction = 1;
+    let fromPos   = preview.scrollTop;
     let targetPos = max;
 
     function step(ts) {
-      if (isUserScrolling) { scrollAnim = requestAnimationFrame(step); return; }
+      // If user is active, the loop is fully stopped (this frame is never reached).
       if (!startTime) startTime = ts;
-      const elapsed = ts - startTime;
-      const t = Math.min(elapsed / duration, 1);
-      // Ease in-out
-      const eased = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2)/2;
+      const t      = Math.min((ts - startTime) / duration, 1);
+      const eased  = t < 0.5 ? 2*t*t : 1 - Math.pow(-2*t + 2, 2) / 2;
       preview.scrollTop = fromPos + (targetPos - fromPos) * eased;
 
       if (t >= 1) {
-        // reverse direction, pause briefly
         direction *= -1;
-        fromPos = preview.scrollTop;
-        targetPos = direction === 1 ? max : 0;
-        startTime = null;
-        setTimeout(() => { scrollAnim = requestAnimationFrame(step); }, 900);
+        fromPos    = preview.scrollTop;
+        targetPos  = direction === 1 ? max : 0;
+        startTime  = null;
+        scrollAnim = null;
+        pauseTimeout = setTimeout(() => {
+          pauseTimeout = null;
+          if (!isUserActive) scrollAnim = requestAnimationFrame(step);
+        }, 900);
         return;
       }
       scrollAnim = requestAnimationFrame(step);
@@ -3634,50 +3655,73 @@ function setupWorkCard(cardId) {
     scrollAnim = requestAnimationFrame(step);
   }
 
-  function stopAutoScroll() {
-    if (scrollAnim) {
-      cancelAnimationFrame(scrollAnim);
-      scrollAnim = null;
-    }
+  // ── user interaction: stop loop, restart after idle ──
+  function userPause(resumeAfterMs) {
+    isUserActive = true;
+    stopAutoScroll();
+    clearTimeout(resumeTimeout);
+    resumeTimeout = setTimeout(() => {
+      isUserActive  = false;
+      resumeTimeout = null;
+      startAutoScroll();
+    }, resumeAfterMs);
   }
 
-  // Pause auto-scroll when user interacts
-  preview.addEventListener('wheel', (e) => {
-    // Let the user scroll inside the preview; don't bubble to parent snap scroll
-    e.stopPropagation();
-    isUserScrolling = true;
-    clearTimeout(userScrollTimeout);
-    userScrollTimeout = setTimeout(() => { isUserScrolling = false; }, 1800);
+  // Wheel inside preview — directional overscroll control:
+  //   scrolling DOWN at preview bottom → allow chaining to page snap (next section)
+  //   scrolling UP   at preview top   → contain (don't snap back to previous section)
+  // No stopPropagation — letting the event reach html is what makes page snap work.
+  preview.addEventListener('wheel', e => {
+    if (e.deltaY > 0) {
+      // going down: allow chaining at bottom so user can scroll to next section
+      preview.style.overscrollBehaviorY = 'auto';
+    } else {
+      // going up: contain so we don't accidentally snap to previous section
+      preview.style.overscrollBehaviorY = 'contain';
+    }
+    userPause(1800);
   }, { passive: true });
 
+  // Hover — pause scroll; resume when mouse leaves
   preview.addEventListener('mouseenter', () => {
-    isUserScrolling = true;
+    isUserActive = true;
+    stopAutoScroll();
+    clearTimeout(resumeTimeout);
+    resumeTimeout = null;
   });
   preview.addEventListener('mouseleave', () => {
-    clearTimeout(userScrollTimeout);
-    userScrollTimeout = setTimeout(() => { isUserScrolling = false; }, 600);
+    userPause(600);
   });
 
-  // Observe the work section; start animation when in view
-  const workSection = document.getElementById('work');
-  const workObserver = new IntersectionObserver((entries) => {
+  // ── Intersection observer on the correct parent section ──
+  const targetSection = document.getElementById(sectionId || 'work');
+  if (!targetSection) return;
+
+  const sectionObserver = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
-        setTimeout(() => { if (!isUserScrolling) startAutoScroll(); }, 600);
+        // Staggered start to avoid all cards animating in the same frame
+        setTimeout(() => {
+          if (!isUserActive) startAutoScroll();
+        }, startDelay || 600);
       } else {
         stopAutoScroll();
+        clearTimeout(resumeTimeout);
+        resumeTimeout  = null;
+        isUserActive   = false;
         preview.scrollTop = 0;
       }
     });
   }, { threshold: 0.4 });
-  workObserver.observe(workSection);
+
+  sectionObserver.observe(targetSection);
 }
 
-setupWorkCard('preview-1');
-setupWorkCard('preview-2');
-setupWorkCard('preview-3');
-setupWorkCard('preview-hk');
-
+// Stagger work cards by 400ms each so RAF loops don't all start simultaneously
+setupWorkCard('preview-1',  'work',      600);
+setupWorkCard('preview-2',  'work',     1000);
+setupWorkCard('preview-3',  'work',     1400);
+setupWorkCard('preview-hk', 'webdesign', 600);
 
 // ── Intake form: graceful submit ──
 const intakeForm = document.getElementById('intake-form');
