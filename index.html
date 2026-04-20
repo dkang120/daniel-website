@@ -1122,7 +1122,6 @@ section {
   <div class="nav-dot" data-section="4"></div>
   <div class="nav-dot" data-section="5"></div>
   <div class="nav-dot" data-section="6"></div>
-  <div class="nav-dot" data-section="7"></div>
 </nav>
 
 <!-- HERO -->
@@ -1191,9 +1190,42 @@ section {
 </section>
 
 <!-- WORK -->
+
+
+
+<!-- CLIENTS (real work) -->
+<section id="clients">
+  <p class="section-label">Clients</p>
+  <p class="clients-subtitle">Real projects, real clients — social media and web, built while in school.</p>
+  <div class="clients-grid">
+
+    <div class="client-card">
+      <div>
+        <div class="client-num">01</div>
+        <div class="client-name">The Master's University<br>Business Network</div>
+        <a href="https://instagram.com/tmu.businessnetwork" target="_blank" rel="noopener" class="client-handle">@tmu.businessnetwork ↗</a>
+        <div class="client-did">What I did</div>
+        <p class="client-proud">Built the Instagram presence from the ground up — visual identity, content strategy, and end-to-end management. Every post, every caption, every story.</p>
+      </div>
+    </div>
+
+    <div class="client-card">
+      <div>
+        <div class="client-num">02</div>
+        <div class="client-name">Leslie Bess<br>JCIM Gathering Place</div>
+        <a href="https://instagram.com/jcinmethegatheringplace" target="_blank" rel="noopener" class="client-handle">@jcinmethegatheringplace ↗</a>
+        <div class="client-did">What I did</div>
+        <p class="client-proud">Took over an existing Instagram and brought structure, consistency, and a fresh voice to the feed.</p>
+        <span class="client-stat">650 followers in month one</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section id="work">
-  <p class="section-label">Email Spec Work</p>
-  <p class="work-subtitle">Concept pieces — brand redesigns I've produced to flex range across verticals.</p>
+  <p class="section-label">Work</p>
+  <p class="work-subtitle">Email spec pieces, live client sites — range across verticals.</p>
   <div class="work-grid">
 
     <div class="work-card" data-card="1">
@@ -2732,45 +2764,6 @@ body { background: #EDEDEA; font-family: 'DM Sans', sans-serif; display: flex; j
   </div>
 </section>
 
-
-<!-- CLIENTS (real work) -->
-<section id="clients">
-  <p class="section-label">Clients</p>
-  <p class="clients-subtitle">Real projects, real accounts. What I've been building while in school.</p>
-  <div class="clients-grid">
-
-    <div class="client-card">
-      <div>
-        <div class="client-num">01</div>
-        <div class="client-name">The Master's University<br>Business Network</div>
-        <a href="https://instagram.com/tmu.businessnetwork" target="_blank" rel="noopener" class="client-handle">@tmu.businessnetwork ↗</a>
-        <div class="client-did">What I did</div>
-        <p class="client-proud">Built the Instagram presence from the ground up — visual identity, content strategy, and end-to-end management. Every post, every caption, every story.</p>
-      </div>
-      <div>
-        <p class="client-quote">wait lwky this jawn is kinda cleannnnn</p>
-        <p class="client-attr">— Jon O.</p>
-      </div>
-    </div>
-
-    <div class="client-card">
-      <div>
-        <div class="client-num">02</div>
-        <div class="client-name">Leslie Bess<br>JCIM Gathering Place</div>
-        <a href="https://instagram.com/jcinmethegatheringplace" target="_blank" rel="noopener" class="client-handle">@jcinmethegatheringplace ↗</a>
-        <div class="client-did">What I did</div>
-        <p class="client-proud">Took over an existing Instagram and brought structure, consistency, and a fresh voice to the feed.</p>
-        <span class="client-stat">650 followers in month one</span>
-      </div>
-      <div>
-        <p class="client-quote">What am I gonna do without you!!!</p>
-        <p class="client-attr">— Leslie B.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
 <!-- PROCESS -->
 <section id="process">
   <p class="section-label">Process</p>
@@ -2806,35 +2799,6 @@ body { background: #EDEDEA; font-family: 'DM Sans', sans-serif; display: flex; j
       <div>
         <div class="process-name">Launch &<br>Handoff</div>
         <p class="process-desc">Content ships on the calendar we set. You get everything organized, labeled, and ready — plus a wrap-up on what's working.</p>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <p class="section-label">Kind Words</p>
-  <p class="testimonials-subtitle">Unfiltered reactions from the people I've actually worked with.</p>
-  <div class="testimonials-grid">
-
-    <div class="testimonial-card">
-      <span class="testimonial-mark">"</span>
-      <p class="testimonial-quote">wait lwky this jawn is kinda cleannnnn</p>
-      <div class="testimonial-attr">
-        <div class="testimonial-dot"></div>
-        <div class="testimonial-name">Jon O.</div>
-        <div class="testimonial-context">TMU Business Network</div>
-      </div>
-    </div>
-
-    <div class="testimonial-card">
-      <span class="testimonial-mark">"</span>
-      <p class="testimonial-quote">What am I gonna do without you!!!</p>
-      <div class="testimonial-attr">
-        <div class="testimonial-dot"></div>
-        <div class="testimonial-name">Leslie B.</div>
-        <div class="testimonial-context">JCIM Gathering Place</div>
       </div>
     </div>
 
@@ -3057,6 +3021,7 @@ function setupWorkCard(cardId) {
 setupWorkCard('preview-1');
 setupWorkCard('preview-2');
 setupWorkCard('preview-3');
+
 
 // ── Intake form: graceful submit ──
 const intakeForm = document.getElementById('intake-form');
