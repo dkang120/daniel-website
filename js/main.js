@@ -1,105 +1,63 @@
-// ── Cursor — rAF-throttled ──
-const cursor = document.getElementById('cursor');
-let cursorX = 0, cursorY = 0, cursorRAF = null;
-document.addEventListener('mousemove', e => {
-  cursorX = e.clientX;
-  cursorY = e.clientY;
-  if (!cursorRAF) {
-    cursorRAF = requestAnimationFrame(() => {
-      cursor.style.left = cursorX + 'px';
-      cursor.style.top  = cursorY + 'px';
-      cursorRAF = null;
-    });
-  }
-});
-document.querySelectorAll('a, button, .nav-dot, .num-item, .value-card, .exp-item').forEach(el => {
-  el.addEventListener('mouseenter', () => cursor.classList.add('bloom'));
-  el.addEventListener('mouseleave', () => cursor.classList.remove('bloom'));
-});
+// Daniel Kang — Portfolio 2027
 
-// ── Scroll spy: side dots + top nav ──
-const sections = document.querySelectorAll('section');
-const dots     = document.querySelectorAll('.nav-dot');
-const topLinks = document.querySelectorAll('.topnav-links a');
-const topnav   = document.getElementById('topnav');
+// Sticky nav: hairline appears once you scroll
+const nav = document.getElementById('nav');
+const onScroll = () => nav && nav.classList.toggle('scrolled', window.scrollY > 8);
+window.addEventListener('scroll', onScroll, { passive: true });
+onScroll();
 
-const spy = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    const idx = Array.from(sections).indexOf(entry.target);
-    dots.forEach((d, i) => d.classList.toggle('active', i === idx));
-    const id = entry.target.id;
-    topLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + id));
-    // Dark sections get light nav text
-    topnav.classList.toggle('on-dark', entry.target.dataset.dark === 'true');
-  });
-}, { threshold: 0.35 });
+// Mobile menu
+const menuBtn = document.querySelector('.menu-btn');
+const menu = document.getElementById('mobile-menu');
+if (menuBtn && menu) {
+  const closeBtn = menu.querySelector('.close');
+  const setOpen = (open) => {
+    menu.classList.toggle('open', open);
+    menuBtn.setAttribute('aria-expanded', String(open));
+    document.body.style.overflow = open ? 'hidden' : '';
+    if (open) closeBtn.focus(); else menuBtn.focus();
+  };
+  menuBtn.addEventListener('click', () => setOpen(true));
+  closeBtn.addEventListener('click', () => setOpen(false));
+  menu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => setOpen(false)));
+  document.addEventListener('keydown', e => { if (e.key === 'Escape' && menu.classList.contains('open')) setOpen(false); });
+}
 
-['hero', 'numbers', 'contact'].forEach(id => {
-  const s = document.getElementById(id);
-  if (s) s.dataset.dark = 'true';
-});
-sections.forEach(s => spy.observe(s));
+// Restrained reveal for case rows
+const reveals = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window && reveals.length) {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  reveals.forEach(el => io.observe(el));
+} else {
+  reveals.forEach(el => el.classList.add('in'));
+}
 
-dots.forEach(dot => {
-  dot.addEventListener('click', () => {
-    sections[+dot.dataset.section].scrollIntoView({ behavior: 'smooth' });
-  });
-});
-
-// ── Reveal-on-scroll ──
-const revealEls = document.querySelectorAll('.num-item, .exp-item, .value-card');
-const revealer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('in');
-      revealer.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.15 });
-revealEls.forEach((el, i) => {
-  el.style.transitionDelay = (i % 6) * 70 + 'ms';
-  revealer.observe(el);
-});
-
-// ── Contact form: Formspree via fetch, mailto fallback ──
-const form = document.getElementById('intake-form');
+// Contact form: Formspree, with a mailto fallback
+const form = document.getElementById('contact-form');
 if (form) {
-  form.addEventListener('submit', async e => {
+  const status = form.querySelector('.form-status');
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
-    const name  = document.getElementById('f-name').value.trim();
-    const email = document.getElementById('f-email').value.trim();
-    if (!name || !email) {
-      [['f-name', name], ['f-email', email]].forEach(([id, val]) => {
-        document.getElementById(id).style.borderBottomColor = val ? '' : '#c45a4a';
-      });
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    if (!name || !email || !/^\S+@\S+\.\S+$/.test(email)) {
+      status.textContent = 'Please add your name and a valid email.';
+      (!name ? form.name : form.email).focus();
       return;
     }
-
-    const showSuccess = () => {
-      form.querySelectorAll('.form-field, .form-row, .form-submit, .contact-form-sub').forEach(el => el.style.display = 'none');
-      document.getElementById('form-success').classList.add('active');
-    };
-
+    status.textContent = 'Sending…';
     try {
-      const res = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' }
-      });
-      if (!res.ok) throw new Error('Formspree error');
-      showSuccess();
+      const res = await fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } });
+      if (!res.ok) throw new Error('send failed');
+      form.classList.add('sent');
+      status.textContent = 'Thanks — I’ll reply within 48 hours.';
     } catch (err) {
-      const fields = {
-        Name: name,
-        Email: email,
-        Company: document.getElementById('f-company').value.trim() || '—',
-        'Reaching out about': document.getElementById('f-reason').value || '—',
-        Message: document.getElementById('f-msg').value.trim() || '—'
-      };
-      const body = Object.entries(fields).map(([k, v]) => `${k}: ${v}`).join('\n\n');
-      window.location.href = `mailto:kangd4u@gmail.com?subject=${encodeURIComponent('Hello from ' + name)}&body=${encodeURIComponent(body)}`;
-      showSuccess();
+      const body = ['Name: ' + name, 'Email: ' + email, 'Company: ' + (form.company.value || '—'),
+        'Reaching out about: ' + (form.reason.value || '—'), '', form.message.value].join('\n');
+      window.location.href = 'mailto:kangd4u@gmail.com?subject=' + encodeURIComponent('Hello from ' + name) + '&body=' + encodeURIComponent(body);
+      status.textContent = 'Opening your email app…';
     }
   });
 }
