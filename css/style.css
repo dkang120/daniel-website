@@ -1396,3 +1396,26 @@ section {
 }
 @media (hover: none) { .bento-item figcaption { transform: none; } }
 #values, #life, #experience { min-height: auto; }
+
+/* About: single framed portrait */
+.about-photo {
+  margin: 0;
+  width: min(440px, 100%);
+  background: #fff;
+  padding: 14px 14px 18px;
+  box-shadow: 0 18px 50px rgba(43,38,33,.18), 0 2px 8px rgba(43,38,33,.08);
+  transform: rotate(1.5deg);
+  transition: transform .5s cubic-bezier(.34,1.56,.64,1), box-shadow .4s ease;
+  cursor: none;
+}
+.about-photo:hover { transform: rotate(0deg) scale(1.02); box-shadow: 0 24px 60px rgba(43,38,33,.22); }
+.about-photo img { width: 100%; height: auto; display: block; aspect-ratio: 900 / 919; object-fit: cover; }
+.about-photo figcaption {
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  font-size: 18px;
+  color: rgba(43,38,33,.7);
+  text-align: center;
+  margin-top: 14px;
+}
+@media (max-width: 768px) { .about-photo { width: min(320px, 100%); } }
