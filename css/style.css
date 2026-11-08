@@ -1375,7 +1375,8 @@ section {
 .b-cafe   { grid-column: 3;     grid-row: 2; }
 .b-han img { object-position: center 60%; }
 .b-uji img { object-position: center 70%; }
-.b-street img { object-position: center 8%; }
+.b-street img { object-position: center 0%; }
+.b-cafe img { object-position: center 72%; }
 .b-deer img { object-position: center 40%; }
 
 @media (max-width: 900px) {
