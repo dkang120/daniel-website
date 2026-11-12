@@ -80,6 +80,51 @@ def case_row(c, prefix):
 </article>"""
 
 
+LETTERS = [
+    {
+        "id": "jcinme",
+        "org": "JC in Me",
+        "role": "Social Media Manager",
+        "name": "Leslie Bess",
+        "quote": "Daniel is remarkably creative, but equally practical.",
+        "excerpt": "If you are hiring for a marketing, social media, or brand role, Daniel will bring energy, initiative, and genuine care for results. I recommend him without hesitation.",
+        "paras": [
+            "I had the pleasure of working with Daniel as our Social Media Manager at JC in Me, where he handled everything end-to-end: strategy, content creation, design, and posting.",
+            "What makes Daniel truly stand out is that he works like an owner. He doesn't wait to be told what to do - he brings fresh ideas, takes feedback quickly, and continuously refines his work until it\u2019s right. He understood our brand voice and target audience rapidly, and every piece of content he created felt completely true to who we are.",
+            "Daniel is remarkably creative, but equally practical. He focuses on what will genuinely connect with people and drive action, not just what looks good visually. Beyond his technical skills, he is a clear communicator, highly dependable, and an absolute pleasure to work with.",
+            "If you are hiring for a marketing, social media, or brand role, Daniel will bring energy, initiative, and genuine care for results. I recommend him without hesitation.",
+        ],
+        "close": "Love JC in Me &amp; Sincerely,",
+    },
+]
+
+
+def letters_section():
+    cards, dialogs = "", ""
+    for i, L in enumerate(LETTERS, 1):
+        cards += (f'<article class="letter reveal"><p class="mono c-accent">Letter {i:02d} \u2014 {L["org"]}</p>'
+                  f'<blockquote class="letter-quote">\u201c{L["quote"]}\u201d</blockquote>'
+                  f'<p class="letter-excerpt">{L["excerpt"]}</p>'
+                  f'<div class="letter-foot"><p class="letter-by"><strong>{L["name"]}</strong><span>{L["org"]}</span></p>'
+                  f'<button class="link letter-open" type="button" data-letter="letter-{L["id"]}">Read full letter <span class="arr">\u2192</span></button></div></article>')
+        paras = "".join(f"<p>{x}</p>" for x in L["paras"])
+        dialogs += (f'<dialog class="letter-dialog" id="letter-{L["id"]}" aria-label="Letter of recommendation from {L["name"]}">'
+                    f'<button class="letter-close label-m" type="button" aria-label="Close letter">Close</button>'
+                    f'<div class="letter-paper"><p class="letter-org">{L["org"]}</p><div class="letter-rule"></div>'
+                    f'<p class="letter-kicker">Letter of recommendation</p><p>To Whom It May Concern,</p>{paras}'
+                    f'<p class="letter-signoff">{L["close"]}</p><p class="letter-sig"><strong>{L["name"]}</strong><br>{L["org"]}</p></div></dialog>')
+    return f"""<section class="section" id="letters" aria-labelledby="letters-title">
+  <div class="inner">
+    <div class="head">
+      <p class="label-m">References</p>
+      <h2 class="h1" id="letters-title">Letters of <em>Recommendation</em></h2>
+    </div>
+    <div class="letters">{cards}</div>
+    {dialogs}
+  </div>
+</section>"""
+
+
 def home():
     p = ""
     order = ["tmu", "fieldnote", "close"]
@@ -146,10 +191,7 @@ def home():
 
 <section class="section" aria-labelledby="numbers-label">
   <div class="inner">
-    <div class="bento-head">
-      <p class="label-m c-muted" id="numbers-label">By the numbers</p>
-      <h2 class="bento-title">Results, <em>not adjectives.</em></h2>
-    </div>
+    <p class="label-m c-muted" id="numbers-label">By the numbers</p>
     <div class="bento">
       {stat_html}
       <a class="bcta" href="#contact">
@@ -225,6 +267,8 @@ def home():
     </div>
   </div>
 </section>
+
+{letters_section()}
 
 {contact(p)}
 </main>

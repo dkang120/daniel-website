@@ -95,3 +95,12 @@ if (counters.length) {
     counters.forEach(el => { el.textContent = fmt(el, 0); cio.observe(el); });
   }
 }
+
+// Letters of recommendation: full-letter dialog
+document.querySelectorAll('.letter-open').forEach(btn => {
+  const dlg = document.getElementById(btn.dataset.letter);
+  if (!dlg || typeof dlg.showModal !== 'function') return;
+  btn.addEventListener('click', () => dlg.showModal());
+  dlg.querySelector('.letter-close').addEventListener('click', () => dlg.close());
+  dlg.addEventListener('click', e => { if (e.target === dlg) dlg.close(); });
+});
