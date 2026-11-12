@@ -61,3 +61,37 @@ if (form) {
     }
   });
 }
+
+// Stats bento: count-up when each cell scrolls into view
+const counters = document.querySelectorAll('.count');
+if (counters.length) {
+  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const fmt = (el, v) => {
+    const dec = +el.dataset.dec;
+    let out = dec ? v.toFixed(dec) : Math.round(v).toString();
+    if (el.dataset.comma === '1') out = Number(out).toLocaleString('en-US', { minimumFractionDigits: dec, maximumFractionDigits: dec });
+    return el.dataset.pre + out + el.dataset.suf;
+  };
+  const run = (el) => {
+    const to = parseFloat(el.dataset.to), dur = 1400, t0 = performance.now();
+    const tick = (now) => {
+      const p = Math.min((now - t0) / dur, 1), e = 1 - Math.pow(1 - p, 4);
+      el.textContent = fmt(el, to * e);
+      if (p < 1) requestAnimationFrame(tick); else el.textContent = fmt(el, to);
+    };
+    requestAnimationFrame(tick);
+  };
+  if (!reduce && 'IntersectionObserver' in window) {
+    const cio = new IntersectionObserver(entries => {
+      entries.forEach(en => {
+        if (en.isIntersecting) {
+          const el = en.target, i = +(el.closest('.bcell')?.style.getPropertyValue('--i') || 0);
+          el.textContent = fmt(el, 0);
+          setTimeout(() => run(el), i * 90 + 150);
+          cio.unobserve(el);
+        }
+      });
+    }, { threshold: 0.4 });
+    counters.forEach(el => { el.textContent = fmt(el, 0); cio.observe(el); });
+  }
+}
