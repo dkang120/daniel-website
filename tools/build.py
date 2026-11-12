@@ -194,10 +194,12 @@ def experience():
 </div>"""
 
 # ---------- Beyond ----------
-LIFE = [("life-han-river.webp", "Daniel and a friend by the Han River at night", "Han River", "Seoul, South Korea"),
-        ("life-nara-deer.webp", "Feeding deer in Nara", "Feeding the deer", "Nara, Japan"),
-        ("life-cafe-hopping.webp", "Matcha from Wabicha café", "Café hopping", "Bay Area, California"),
-        ("life-uji-bridge.webp", "Daniel on a bridge in Kyoto", "Bridge walk", "Uji, Japan")]
+LIFE = [
+    ('life-cafe-hopping.webp', 'Matcha from Wabicha café', 'Café hopping', 'Bay Area, California'),
+    ('life-uji-bridge.webp', 'Daniel on a bridge in Kyoto', 'Bridge walk', 'Uji, Japan'),
+    ('life-han-river.webp', 'Daniel and a friend by the Han River at night', 'Han River', 'Seoul, South Korea'),
+    ('life-nara-deer.webp', 'Feeding deer in Nara', 'Feeding the deer', 'Nara, Japan'),
+]
 
 def beyond():
     items = "".join(f'<li class="gal__item"><img src="../images/{s}" alt="{e(a)}" loading="lazy"><div class="gal__text"><p>{e(t)}</p><p class="muted">{e(pl)}</p></div></li>' for s, a, t, pl in LIFE)
