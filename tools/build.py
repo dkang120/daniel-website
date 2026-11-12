@@ -15,7 +15,7 @@ EMAIL = "kangd4u@gmail.com"
 
 # Hero gallery: (alt, caption, object-position desktop, object-position mobile, header tone over the image)
 HERO = [
-    ("Nara, Japan", "Nara, Japan", "50% 30%", "50% 50%", "dark"),
+    ("Nara, Japan", "Nara, Japan", "50% 40%", "50% 50%", "dark"),
     ("Byodo-in, Uji, Japan", "Uji, Japan", "50% 55%", "50% 60%", "light"),
     ("Fitting room mirror selfie", "Seoul, South Korea", "50% 60%", "50% 50%", "light"),
     ("Jerusalem at sunset", "Jerusalem, Israel", "50% 25%", "45% 50%", "light"),
