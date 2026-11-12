@@ -171,20 +171,12 @@ def case(k):
 
 # ---------- Experience ----------
 EXP = [
-    ("fitness-19", "Fitness 19", "Lead Service Specialist", "Dublin, CA", "Sep 2026 – Now",
-     "Convert 60% of facility tours into memberships (industry average ~38%) with needs-based tours; sell 15 memberships a month against an 8-member target; sell personal training on commission."),
-    ("synk", "SYNK", "Digital Marketing Intern", "Pleasanton, CA", "Jun 2026 – Now",
-     "Support Meta and TikTok paid campaigns; build weekly Sprout Social + GA4 reports; coordinate creator briefs."),
-    ("coaching", "Online fitness coaching", "High-Ticket Sales Closer", "Remote", "Aug – Oct 2026",
-     "Closed high-ticket coaching offers on commission from a 14K-follower audience."),
-    ("tmu-bn", "TMU Business Network", "Co-Founder & Director of Marketing", "Newhall, CA", "Mar 2026 – Now",
-     "Grew to 650+ members in 3 months; matched students with Big Four professionals."),
-    ("tmu", "The Master’s University", "Student Recruitment Associate", "Newhall, CA", "Jan – May 2026",
-     "Cold-called 1,000+ prospective students across CA, AZ and TX."),
-    ("jcinme", "JC in Me", "Social Media Manager", "Santa Clarita, CA", "Sep 2025 – May 2026",
-     "3.5% interaction rate on 18,500+ views in the first 30 days; AI-assisted content workflow."),
-    ("freelance", "Dos Bros · HK Animal Hospital", "Freelance Web Designer", "California", "2025 – 2026",
-     'Designed and launched sites for <a class="u" href="https://dosbrosdetailing.club" target="_blank" rel="noopener">a detailing business</a> and <a class="u" href="https://hkanimalhospital.vet" target="_blank" rel="noopener">a veterinary hospital</a>.'),
+    ('tmu-bn', 'TMU Business Network', 'Co-Founder & Director of Marketing', 'Newhall, CA', 'Mar 2026 – Now', 'Grew to 650+ members in 3 months; matched students with Big Four professionals.'),
+    ('jcinme', 'JC in Me', 'Social Media Manager', 'Santa Clarita, CA', 'Sep 2025 – May 2026', '3.5% interaction rate on 18,500+ views in the first 30 days; AI-assisted content workflow.'),
+    ('fitness-19', 'Fitness 19', 'Lead Service Specialist', 'Dublin, CA', 'Sep 2026 – Now', 'Convert 60% of facility tours into memberships (industry average ~38%) with needs-based tours; sell 15 memberships a month against an 8-member target; sell personal training on commission.'),
+    ('coaching', 'Online fitness coaching', 'High-Ticket Sales Closer', 'Remote', 'Aug – Oct 2026', 'Closed high-ticket coaching offers on commission from a 14K-follower audience.'),
+    ('tmu', 'The Master’s University', 'Student Recruitment Associate', 'Newhall, CA', 'Jan – May 2026', 'Cold-called 1,000+ prospective students across CA, AZ and TX.'),
+    ('freelance', 'Dos Bros · HK Animal Hospital', 'Freelance Web Designer', 'California', '2025 – 2026', 'Designed and launched sites for <a class="u" href="https://dosbrosdetailing.club" target="_blank" rel="noopener">a detailing business</a> and <a class="u" href="https://hkanimalhospital.vet" target="_blank" rel="noopener">a veterinary hospital</a>.'),
 ]
 
 def experience():
@@ -194,8 +186,9 @@ def experience():
     return f"""<div class="care">
   <aside class="care__side"><h1>Experience</h1><ul>{side}</ul></aside>
   <div class="care__main">
-    <p>Marketing and sales, from the first touch to the signed membership. Seven roles since 2025.</p>
+    <p>Marketing and sales, from the first touch to the signed membership. Six roles since 2025.</p>
     <table class="tbl"><thead><tr><th>Role</th><th>Dates</th></tr></thead><tbody>{rows}</tbody></table>
+    <hr class="care__rule">
     {det}
   </div>
 </div>"""

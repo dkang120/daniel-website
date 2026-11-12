@@ -149,7 +149,8 @@ p{margin:0}
 .care__side a:hover{color:#212121}
 .care__main{flex:0 1 650px;min-width:0}
 .care__main>p:first-child{margin-bottom:30px}
-.tbl{width:100%;border-collapse:collapse;margin-bottom:40px}
+.tbl{width:100%;border-collapse:collapse;margin-bottom:0}
+.care__rule{border:0;border-top:1px solid #d6d6d6;margin:30px 0}
 .tbl th{font-style:italic;font-weight:400;text-align:left;padding:0 0 6px}
 .tbl td{padding:6px 16px 6px 0;vertical-align:top}
 .tbl td:last-child,.tbl th:last-child{width:34%}
