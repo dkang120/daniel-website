@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Connect – Daniel Kang</title>
-<meta name="description" content="Daniel Kang — social media, paid social and sales.">
+<meta name="description" content="Get in touch with Daniel Kang.">
 <link rel="icon" href="../images/favicon.svg">
 <link rel="stylesheet" href="../css/style.css">
 </head>
@@ -24,7 +24,20 @@
   <ul class="drawer__list"><li><a href="../about/">About</a></li><li><a href="../work/">Work</a></li><li><a href="../experience/">Experience</a></li><li><a href="../beyond/">Beyond</a></li><li><a href="../recommendation/">Recommendation</a></li><li><a href="../connect/">Connect</a></li></ul>
   <ul class="drawer__list drawer__list--secondary"><li><a href="https://www.linkedin.com/in/danielkanggg" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://instagram.com/daniellllkang1" target="_blank" rel="noopener">Instagram</a></li><li><a href="../assets/Daniel-Kang-Resume.pdf">Résumé</a></li></ul>
 </div>
-<main class="page"><div class="toolbar"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="../">Daniel Kang</a><span class="dot">•</span><span>Connect</span></nav></div><div class="page__body"></div></main>
+<main class="page"><div class="care">
+  <aside class="care__side"><h1>Connect</h1><ul><li><a href="mailto:kangd4u@gmail.com">Email</a></li><li><a href="https://www.linkedin.com/in/danielkanggg" target="_blank" rel="noopener">LinkedIn</a></li><li><a href="https://instagram.com/daniellllkang1" target="_blank" rel="noopener">Instagram</a></li><li><a href="../assets/Daniel-Kang-Resume.pdf" target="_blank" rel="noopener">Résumé</a></li></ul></aside>
+  <div class="care__main">
+    <p>Looking for a marketer who can close? Send a note and I’ll reply within a day.</p>
+    <form class="form" id="contact-form" action="https://formspree.io/f/xvzdbkqk" method="POST" novalidate>
+      <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="f-reason">Reaching out about</label><select id="f-reason" name="reason"><option value="">Select one</option><option>Full-time role</option><option>Internship</option><option>Freelance project</option><option>Just connecting</option></select></div>
+      <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" rows="5"></textarea></div>
+      <button class="btn btn--dark" type="submit">Send message</button>
+      <p class="form__status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</div></main>
 <footer class="footer">
   <div class="footer__inner">
     <div class="footer__col footer__col--lead"><p>Daniel Kang</p><p class="muted">Bay Area, California</p></div>

@@ -7,6 +7,39 @@
   b.addEventListener('click', function () { setMenu(true); });
   c.addEventListener('click', function () { setMenu(false); });
 
+
+  /* Letter of recommendation dialog */
+  [].forEach.call(document.querySelectorAll('[data-letter]'), function (btn) {
+    var dlg = document.getElementById(btn.dataset.letter);
+    if (!dlg || typeof dlg.showModal !== 'function') return;
+    btn.addEventListener('click', function () { dlg.showModal(); });
+    dlg.querySelector('.letter__close').addEventListener('click', function () { dlg.close(); });
+    dlg.addEventListener('click', function (e) { if (e.target === dlg) dlg.close(); });
+  });
+
+  /* Contact form: Formspree, with a mailto fallback */
+  var form = document.getElementById('contact-form');
+  if (form) {
+    var status = form.querySelector('.form__status');
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var name = form.name.value.trim(), email = form.email.value.trim();
+      if (!name || !/^\S+@\S+\.\S+$/.test(email)) {
+        status.textContent = 'Please add your name and a valid email.';
+        (!name ? form.name : form.email).focus();
+        return;
+      }
+      status.textContent = 'Sending…';
+      fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
+        .then(function (r) { if (!r.ok) throw new Error('send failed'); form.classList.add('sent'); status.textContent = 'Thanks — I’ll reply within a day.'; })
+        .catch(function () {
+          var body = ['Name: ' + name, 'Email: ' + email, 'Reaching out about: ' + (form.reason.value || '—'), '', form.message.value].join('\n');
+          window.location.href = 'mailto:kangd4u@gmail.com?subject=' + encodeURIComponent('Hello from ' + name) + '&body=' + encodeURIComponent(body);
+          status.textContent = 'Opening your email app…';
+        });
+    });
+  }
+
   /* hero gallery: one image at a time; click / arrow keys / swipe */
   var hero = document.querySelector('.hero');
   if (!hero) { document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); }); return; }

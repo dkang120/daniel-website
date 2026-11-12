@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """Daniel Kang portfolio — layout draft modelled on therow.com (measured spec in THE-ROW-SPEC.md)."""
-import os, pathlib
+import os, pathlib, json, html
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 NAME = "Daniel Kang"
@@ -15,7 +15,7 @@ EMAIL = "kangd4u@gmail.com"
 
 # Hero gallery: (alt, caption, object-position desktop, object-position mobile, header tone over the image)
 HERO = [
-    ("Nara, Japan", "Nara, Japan", "50% 64%", "50% 50%", "dark"),
+    ("Nara, Japan", "Nara, Japan", "50% 35%", "50% 50%", "dark"),
     ("Byodo-in, Uji, Japan", "Uji, Japan", "50% 55%", "50% 60%", "light"),
     ("Fitting room mirror selfie", "Seoul, South Korea", "50% 60%", "50% 50%", "light"),
     ("Jerusalem at sunset", "Jerusalem, Israel", "50% 25%", "45% 50%", "light"),
@@ -24,15 +24,25 @@ HERO = [
 ]
 
 
+ORDER = [2, 1, 3, 4, 5, 6]  # file numbers in display order: Uji first, Nara second
+
+
+ARROW = ('<svg class="hero__arrow" viewBox="0 0 240 120" fill="none" aria-hidden="true" focusable="false">'
+         '<path d="M236 100 C200 112 182 58 150 78 S128 122 104 90 S70 22 26 38"/><path d="M46 20 L24 38 L48 54"/></svg>')
+
+
 def hero_html():
     slides = []
-    for i, (alt, cap, pos, posm, tone) in enumerate(HERO, 1):
-        eager = 'loading="eager"' + (' fetchpriority="high"' if i == 1 else ' fetchpriority="low"')
+    for pos_i, n in enumerate(ORDER, 1):
+        i = n
+        alt, cap, pos, posm, tone = HERO[n - 1]
+        eager = 'loading="eager"' + (' fetchpriority="high"' if pos_i == 1 else ' fetchpriority="low"')
         slides.append(
-            f'<div class="hero__slide" data-tone="{tone}"{"" if i == 1 else " aria-hidden=\"true\""}>'
+            f'<div class="hero__slide" data-tone="{tone}"{"" if pos_i == 1 else " aria-hidden=\"true\""}>'
             f'<img class="hero__img" src="images/hero-{i}-2000.webp" '
             f'srcset="images/hero-{i}-900.webp 900w, images/hero-{i}-2000.webp 2000w" sizes="100vw" '
             f'alt="{alt}" style="--pd:{pos};--pm:{posm}" draggable="false" {eager}>'
+            + (ARROW + '<span class="hero__note" aria-hidden="true">hi, it\'s me!</span>' if n == 2 else "")
             + (f'<span class="hero__caption">{cap}</span>' if cap else "") + "</div>"
         )
     return (
@@ -41,10 +51,11 @@ def hero_html():
     )
 
 
-def page(slug, label):
+def page(slug, label, content=None, prefix=None, cls="is-inner", title=None, desc=None):
     home = slug is None
-    prefix = "" if home else "../"
-    title = NAME if home else f"{label} – {NAME}"
+    if prefix is None:
+        prefix = "" if home else "../"
+    title = title or (NAME if home else f"{label} – {NAME}")
     nav = "".join(
         f'<li><a href="{prefix}{s}/"{" aria-current=\"page\"" if s == slug else ""}>{l}</a></li>' for l, s in NAV
     )
@@ -60,12 +71,8 @@ def page(slug, label):
         main = hero_html()
         body_cls = "is-home"
     else:
-        main = (
-            f'<main class="page"><div class="toolbar"><nav class="breadcrumbs" aria-label="Breadcrumb">'
-            f'<a href="{prefix}">{NAME}</a><span class="dot">•</span><span>{label}</span></nav></div>'
-            f'<div class="page__body"></div></main>'
-        )
-        body_cls = "is-inner"
+        main = f'<main class="page">{content or ""}</main>'
+        body_cls = cls
     if home:
         main = f"<main>{main}</main>"
     return f"""<!doctype html>
@@ -74,7 +81,7 @@ def page(slug, label):
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
-<meta name="description" content="Daniel Kang — social media, paid social and sales.">
+<meta name="description" content="{desc or "Daniel Kang — social media, paid social and sales."}">
 <link rel="icon" href="{prefix}images/favicon.svg">
 <link rel="stylesheet" href="{prefix}css/style.css">
 </head>
@@ -111,13 +118,168 @@ def page(slug, label):
 """
 
 
+
+e = html.escape
+CASES = json.load(open(ROOT / "tools" / "cases.json"))
+CASE_ORDER = ["tmu", "fieldnote", "close"]
+TOOLBAR = lambda prefix, label: (f'<div class="toolbar"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{prefix}">{NAME}</a>'
+                                 f'<span class="dot">•</span><span>{label}</span></nav></div>')
+
+# ---------- About ----------
+def about():
+    return """<section class="editorial">
+  <div class="editorial__text">
+    <p>I’m a marketer who knows how to close. I’ve worked both ends of the funnel: building audiences and communities online, then turning that interest into sign-ups face to face.</p>
+    <p>Fluent in English and Korean. Certified in HubSpot Inbound and Social Media Marketing, and a NASM-certified personal trainer, which is how I ended up selling gym memberships.</p>
+    <p>Graduating May 2027 from The Master’s University, and looking for the team where social, paid and sales meet.</p>
+  </div>
+  <figure class="editorial__figure"><img src="../images/about-portrait.webp" alt="Daniel mid-swing at a golf range at dusk" width="1000" height="1333" loading="eager"><figcaption>Daniel Kang.</figcaption></figure>
+</section>"""
+
+# ---------- Work ----------
+def work():
+    cards = ""
+    for k in CASE_ORDER:
+        c = CASES[k]
+        no = c["no"].split(" — ")[0]
+        cards += (f'<li class="card"><a href="{c["slug"]}/"><div class="card__img"><img src="../images/{c["image"]}" alt="{e(c["imageAlt"])}" loading="lazy"></div>'
+                  f'<div class="card__meta"><span class="card__title">{e(c["title"])}</span><span class="card__no">{no}</span></div></a></li>')
+    return TOOLBAR("../", "Work") + f'<ul class="grid">{cards}</ul>'
+
+def case(k):
+    c = CASES[k]
+    nxt = CASES[c["next"]]
+    meta = "".join(f'<div><dt>{e(a)}</dt><dd>{e(b)}</dd></div>' for a, b in c["meta"])
+    steps = "".join(f'<li><span class="acc__h">{e(h)}</span><span class="acc__b">{e(b)}</span></li>' for h, b in c["approach"])
+    stats = "".join(f'<li><span class="stat__n">{e(n)}</span><span class="stat__l">{e(l)}</span></li>' for n, l in c["results"])
+    acc = (f'<details class="acc" open><summary>The challenge<span class="acc__i"></span></summary><p>{e(c["challenge"])}</p></details>'
+           f'<details class="acc"><summary>Approach<span class="acc__i"></span></summary><ol class="steps">{steps}</ol></details>'
+           f'<details class="acc"><summary>Results<span class="acc__i"></span></summary><ul class="stats">{stats}</ul></details>'
+           f'<details class="acc"><summary>{e(c.get("takeawayTitle","Takeaway"))}<span class="acc__i"></span></summary><p>{e(c["takeaway"])}</p></details>')
+    return f"""<section class="pdp">
+  <div class="pdp__gallery"><img src="../../images/{c['image']}" alt="{e(c['imageAlt'])}" width="1248" height="954" loading="eager"></div>
+  <div class="pdp__info">
+    <nav class="pdp__crumbs" aria-label="Breadcrumb"><a href="../">Work</a><span class="dot">•</span><span>{e(c['title'])}</span></nav>
+    <h1 class="pdp__title">{e(c['title'])}</h1>
+    <p class="pdp__no">{e(c['no'])}</p>
+    <p class="pdp__lede">{e(c['lede'])}</p>
+    <dl class="pdp__meta">{meta}</dl>
+    <div class="accs">{acc}</div>
+    <a class="btn" href="../{nxt['slug']}/">Next: {e(nxt['title'])}</a>
+  </div>
+</section>"""
+
+# ---------- Experience ----------
+EXP = [
+    ("fitness-19", "Fitness 19", "Lead Service Specialist", "Dublin, CA", "Sep 2026 – Now",
+     "Convert 60% of facility tours into memberships (industry average ~38%) with needs-based tours; sell 15 memberships a month against an 8-member target; sell personal training on commission."),
+    ("synk", "SYNK", "Digital Marketing Intern", "Pleasanton, CA", "Jun 2026 – Now",
+     "Support Meta and TikTok paid campaigns; build weekly Sprout Social + GA4 reports; coordinate creator briefs."),
+    ("coaching", "Online fitness coaching", "High-Ticket Sales Closer", "Remote", "Aug – Oct 2026",
+     "Closed high-ticket coaching offers on commission from a 14K-follower audience."),
+    ("tmu-bn", "TMU Business Network", "Co-Founder & Director of Marketing", "Newhall, CA", "Mar 2026 – Now",
+     "Grew to 650+ members in 3 months; matched students with Big Four professionals."),
+    ("tmu", "The Master’s University", "Student Recruitment Associate", "Newhall, CA", "Jan – May 2026",
+     "Cold-called 1,000+ prospective students across CA, AZ and TX."),
+    ("jcinme", "JC in Me", "Social Media Manager", "Santa Clarita, CA", "Sep 2025 – May 2026",
+     "3.5% interaction rate on 18,500+ views in the first 30 days; AI-assisted content workflow."),
+    ("freelance", "Dos Bros · HK Animal Hospital", "Freelance Web Designer", "California", "2025 – 2026",
+     'Designed and launched sites for <a class="u" href="https://dosbrosdetailing.club" target="_blank" rel="noopener">a detailing business</a> and <a class="u" href="https://hkanimalhospital.vet" target="_blank" rel="noopener">a veterinary hospital</a>.'),
+]
+
+def experience():
+    side = "".join(f'<li><a href="#{i}">{e(c)}</a></li>' for i, c, *_ in EXP)
+    rows = "".join(f'<tr><td><a href="#{i}">{e(r)}</a><span class="muted"> · {e(c)}</span></td><td>{e(d)}</td></tr>' for i, c, r, w, d, _ in EXP)
+    det = "".join(f'<section class="exp" id="{i}"><h2>{e(r)} · {e(c)}</h2><p class="muted">{e(w)} · {e(d)}</p><p>{b}</p></section>' for i, c, r, w, d, b in EXP)
+    return f"""<div class="care">
+  <aside class="care__side"><h1>Experience</h1><ul>{side}</ul></aside>
+  <div class="care__main">
+    <p>Marketing and sales, from the first touch to the signed membership. Seven roles since 2025.</p>
+    <table class="tbl"><thead><tr><th>Role</th><th>Dates</th></tr></thead><tbody>{rows}</tbody></table>
+    {det}
+  </div>
+</div>"""
+
+# ---------- Beyond ----------
+LIFE = [("life-han-river.webp", "Daniel and a friend by the Han River at night", "Han River", "Seoul, South Korea"),
+        ("life-nara-deer.webp", "Feeding deer in Nara", "Feeding the deer", "Nara, Japan"),
+        ("life-cafe-hopping.webp", "Matcha from Wabicha café", "Café hopping", "Bay Area, California"),
+        ("life-uji-bridge.webp", "Daniel on a bridge in Kyoto", "Bridge walk", "Uji, Japan")]
+
+def beyond():
+    items = "".join(f'<li class="gal__item"><img src="../images/{s}" alt="{e(a)}" loading="lazy"><div class="gal__text"><p>{e(t)}</p><p class="muted">{e(pl)}</p></div></li>' for s, a, t, pl in LIFE)
+    return f'<ul class="gal">{items}</ul>'
+
+# ---------- Recommendation ----------
+LETTER = {
+    "org": "JC in Me", "name": "Leslie Bess", "role": "JC in Me",
+    "quote": "Daniel is remarkably creative, but equally practical.",
+    "paras": [
+        "I had the pleasure of working with Daniel as our Social Media Manager at JC in Me, where he handled everything end-to-end: strategy, content creation, design, and posting.",
+        "What makes Daniel truly stand out is that he works like an owner. He doesn’t wait to be told what to do - he brings fresh ideas, takes feedback quickly, and continuously refines his work until it’s right. He understood our brand voice and target audience rapidly, and every piece of content he created felt completely true to who we are.",
+        "Daniel is remarkably creative, but equally practical. He focuses on what will genuinely connect with people and drive action, not just what looks good visually. Beyond his technical skills, he is a clear communicator, highly dependable, and an absolute pleasure to work with.",
+        "If you are hiring for a marketing, social media, or brand role, Daniel will bring energy, initiative, and genuine care for results. I recommend him without hesitation."],
+    "close": "Love JC in Me & Sincerely,",
+}
+
+def recommendation():
+    L = LETTER
+    paras = "".join(f"<p>{e(x)}</p>" for x in L["paras"])
+    return f"""<section class="centered">
+  <blockquote class="centered__quote">“{e(L['quote'])}”</blockquote>
+  <p class="centered__by"><em>{e(L['name'])}, {e(L['role'])}</em></p>
+  <button class="linkbtn" type="button" data-letter="letter-1">Read the full letter</button>
+</section>
+<dialog class="letter" id="letter-1" aria-label="Letter of recommendation from {e(L['name'])}">
+  <button class="letter__close" type="button" aria-label="Close letter">Close</button>
+  <div class="letter__paper"><p class="letter__org">{e(L['org'])}</p><p>To Whom It May Concern,</p>{paras}<p class="letter__sign">{e(L['close'])}</p><p><strong>{e(L['name'])}</strong><br>{e(L['org'])}</p></div>
+</dialog>"""
+
+# ---------- Connect ----------
+def connect():
+    side = (f'<li><a href="mailto:{EMAIL}">Email</a></li>'
+            f'<li><a href="{LINKS["LinkedIn"]}" target="_blank" rel="noopener">LinkedIn</a></li>'
+            f'<li><a href="{LINKS["Instagram"]}" target="_blank" rel="noopener">Instagram</a></li>'
+            f'<li><a href="../{LINKS["Résumé"]}" target="_blank" rel="noopener">Résumé</a></li>')
+    return f"""<div class="care">
+  <aside class="care__side"><h1>Connect</h1><ul>{side}</ul></aside>
+  <div class="care__main">
+    <p>Looking for a marketer who can close? Send a note and I’ll reply within a day.</p>
+    <form class="form" id="contact-form" action="https://formspree.io/f/xvzdbkqk" method="POST" novalidate>
+      <div class="field"><label for="f-name">Name</label><input id="f-name" name="name" type="text" autocomplete="name" required></div>
+      <div class="field"><label for="f-email">Email</label><input id="f-email" name="email" type="email" autocomplete="email" required></div>
+      <div class="field"><label for="f-reason">Reaching out about</label><select id="f-reason" name="reason"><option value="">Select one</option><option>Full-time role</option><option>Internship</option><option>Freelance project</option><option>Just connecting</option></select></div>
+      <div class="field"><label for="f-msg">Message</label><textarea id="f-msg" name="message" rows="5"></textarea></div>
+      <button class="btn btn--dark" type="submit">Send message</button>
+      <p class="form__status" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</div>"""
+
+
+def write(path, text):
+    path.parent.mkdir(parents=True, exist_ok=True)
+    path.write_text(text)
+
+
 def main():
-    (ROOT / "index.html").write_text(page(None, ""))
+    write(ROOT / "index.html", page(None, ""))
+    builders = {"about": about, "work": work, "experience": experience, "beyond": beyond,
+                "recommendation": recommendation, "connect": connect}
+    descs = {"about": "About Daniel Kang — a marketer who knows how to close.",
+             "work": "Selected work: TMU Business Network, Fieldnote and The Close.",
+             "experience": "Marketing and sales experience, 2025 to now.",
+             "beyond": "Beyond work: Seoul, Nara, Uji and the Bay Area.",
+             "recommendation": "A letter of recommendation for Daniel Kang.",
+             "connect": "Get in touch with Daniel Kang."}
     for label, slug in NAV:
-        d = ROOT / slug
-        d.mkdir(exist_ok=True)
-        (d / "index.html").write_text(page(slug, label))
-    print("built", 1 + len(NAV), "pages")
+        write(ROOT / slug / "index.html", page(slug, label, builders[slug](), desc=descs[slug]))
+    for k in CASE_ORDER:
+        c = CASES[k]
+        write(ROOT / "work" / c["slug"] / "index.html",
+              page("work", "Work", case(k), prefix="../../", cls="is-inner is-case",
+                   title=f"{c['title']} – {NAME}", desc=c["lede"]))
+    print("built", 1 + len(NAV) + len(CASE_ORDER), "pages")
 
 
 if __name__ == "__main__":
