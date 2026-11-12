@@ -134,18 +134,7 @@ def home():
              ("3.5%", "Interaction rate, first 30 days", "JC in Me · 18,500+ views"),
              ("14K", "Audience I sold into", "High-ticket coaching · commission"),
              ("$20K", "Funding pitch", "Texas youth nonprofit · board pitch")]
-    def stat_cell(i, n, l, c):
-        m = re.match(r"^(\$?)([\d,.]+)(.*)$", n)
-        pre, num, suf = m.group(1), m.group(2), m.group(3)
-        to = num.replace(",", "")
-        dec = len(to.split(".")[1]) if "." in to else 0
-        pos = BENTO_POS[i]
-        return (f'<div class="bcell reveal" style="--col:{pos[0]};--row:{pos[1]};--i:{i}" tabindex="0">'
-                f'<div class="bcell-top"><p class="bcell-title">{l}</p><p class="bcell-sub">{c}</p></div>'
-                f'<div class="bcell-bot"><p class="numeral count" data-pre="{pre}" data-to="{to}" data-dec="{dec}" data-suf="{suf}" data-comma="{1 if "," in num else 0}">{n}</p>'
-                f'<span class="bcell-plus" aria-hidden="true">+</span></div></div>')
-    BENTO_POS = [(1, 1), (3, 1), (2, 2), (1, 3), (3, 3), (4, 3)]
-    stat_html = "".join(stat_cell(i, n, l, c) for i, (n, l, c) in enumerate(stats))
+    stat_html = "".join(f'<div class="stat"><p class="numeral">{n}</p><p class="h3-italic">{l}</p><p class="label-s">{c}</p></div>' for n, l, c in stats)
     exp = [("[01] Sales", "Lead Service Specialist", "Fitness 19", "Convert 25% of leads and walk-ins into memberships through consultative tours; sell personal training on commission.", "Dublin, CA · Sep 2026 – Now"),
            ("[02] Marketing", "Digital Marketing Intern", "SYNK", "Support Meta and TikTok paid campaigns; build weekly Sprout Social + GA4 reports; coordinate creator briefs.", "Pleasanton, CA · Jun 2026 – Now"),
            ("[03] Sales", "High-Ticket Sales Closer", "Online fitness coaching", "Closed high-ticket coaching offers on commission from a 14K-follower audience.", "Remote · Aug – Oct 2026"),
@@ -189,16 +178,10 @@ def home():
   </div>
 </section>
 
-<section class="section" aria-labelledby="numbers-label">
+<section class="section bg-inverse" aria-labelledby="numbers-label">
   <div class="inner">
     <p class="label-m c-muted" id="numbers-label">By the numbers</p>
-    <div class="bento">
-      {stat_html}
-      <a class="bcta" href="#contact">
-        <div class="bcta-copy"><p class="bcta-head">Hiring for sales or social?</p><p class="bcta-head"><em>Let&rsquo;s talk.</em></p><span class="mono bcta-link">Contact me <span class="arr">&#8599;</span></span></div>
-        <img src="images/hero-portrait.webp" alt="" width="900" height="919" loading="lazy">
-      </a>
-    </div>
+    <div class="stats">{stat_html}</div>
   </div>
 </section>
 

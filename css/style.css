@@ -154,34 +154,6 @@ em, .accent { font-style: italic; color: var(--accent); }
 .stat .label-s { color: var(--text-muted); }
 
 
-/* ---------- numbers: bento ---------- */
-.bento-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 32px; flex-wrap: wrap; }
-.bento-title { font-family: var(--serif); font-weight: 400; font-size: clamp(40px, 4.6vw, 64px); line-height: 1; letter-spacing: -0.02em; }
-.bento-title em { color: var(--accent); }
-.bento { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 264px; margin-top: 56px; border-top: 1px solid transparent; }
-.bento .bcell { grid-column: var(--col); grid-row: var(--row); position: relative; display: flex; flex-direction: column; justify-content: space-between; padding: 28px 28px 24px; border: 1px solid var(--rule); margin: 0 -1px -1px 0; background: var(--bg); overflow: hidden; isolation: isolate; cursor: default;
-  transition: opacity .7s ease, transform .7s ease, color .35s ease; transition-delay: calc(var(--i) * 90ms), calc(var(--i) * 90ms), 0s; }
-.bcell::before { content: ""; position: absolute; inset: 0; background: var(--espresso); transform: translateY(101%); transition: transform .55s cubic-bezier(.2,.7,.2,1); z-index: -1; }
-.bcell:hover::before, .bcell:focus-visible::before { transform: translateY(0); }
-.bcell:hover, .bcell:focus-visible { color: var(--linen); outline: none; }
-.bcell-title { font-size: 15px; font-weight: 500; line-height: 1.3; }
-.bcell-sub { font-size: 12px; line-height: 1.4; color: var(--text-2); margin-top: 6px; transition: color .35s ease; }
-.bcell:hover .bcell-sub, .bcell:focus-visible .bcell-sub { color: var(--stone); }
-.bcell-bot { display: flex; justify-content: space-between; align-items: flex-end; }
-.bcell .numeral { font-size: clamp(64px, 7.2vw, 104px); letter-spacing: -0.02em; line-height: .9; font-variant-numeric: tabular-nums; transition: transform .5s cubic-bezier(.2,.7,.2,1); transform-origin: left bottom; }
-.bcell:hover .numeral, .bcell:focus-visible .numeral { transform: translateY(-6px) scale(1.04); }
-.bcell-plus { font-size: 28px; line-height: 1; color: var(--stone); transition: transform .5s cubic-bezier(.2,.7,.2,1), color .35s ease; }
-.bcell:hover .bcell-plus, .bcell:focus-visible .bcell-plus { transform: rotate(90deg) scale(1.2); color: #D98F6F; }
-.bcta { grid-column: 4; grid-row: 1 / span 2; display: flex; flex-direction: column; background: var(--espresso); color: var(--linen); margin: 0 -1px -1px 0; overflow: hidden; }
-.bcta-copy { padding: 28px 28px 24px; display: flex; flex-direction: column; gap: 6px; }
-.bcta-head { font-family: var(--serif); font-size: clamp(26px, 2.6vw, 34px); line-height: 1.05; letter-spacing: -0.01em; }
-.bcta-head em { color: #D98F6F; }
-.bcta-link { margin-top: 14px; letter-spacing: .08em; text-transform: uppercase; }
-.bcta-link .arr { display: inline-block; transition: transform .25s cubic-bezier(.2,.7,.2,1); }
-.bcta:hover .bcta-link .arr { transform: translate(3px, -3px); }
-.bcta img { flex: 1; min-height: 0; width: 100%; object-fit: cover; object-position: center 35%; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
-.bcta:hover img { transform: scale(1.05); }
-
 /* ---------- case rows ---------- */
 .cases { display: flex; flex-direction: column; gap: 80px; margin-top: 80px; }
 .case { display: grid; grid-template-columns: 680fr 504fr; gap: 64px; align-items: center; }
@@ -333,13 +305,6 @@ em, .accent { font-style: italic; color: var(--accent); }
   .cs-stats { grid-template-columns: 1fr 1fr; }
 }
 
-@media (max-width: 900px) {
-  .bento { grid-template-columns: 1fr 1fr; grid-auto-rows: 220px; }
-  .bcell, .bcta { grid-column: auto; grid-row: auto; }
-  .bcta { grid-column: 1 / -1; flex-direction: row; min-height: 260px; }
-  .bcta-copy { flex: 1; }
-  .bcta img { flex: 1; width: 50%; }
-}
 @media (max-width: 640px) {
   :root { --gutter: 24px; --section: 64px; }
   .announce { padding: 10px 16px; font-size: 10px; }
@@ -353,15 +318,6 @@ em, .accent { font-style: italic; color: var(--accent); }
   .stat { padding: 20px 16px; gap: 6px; }
   .stat .h3-italic { font-size: 17px; }
   .stat .label-s { font-size: 10px; }
-  .bento { margin-top: 32px; grid-auto-rows: 188px; }
-  .bcell { padding: 16px 14px 14px; }
-  .bcell-title { font-size: 13px; }
-  .bcell-sub { font-size: 10px; }
-  .bcell .numeral { font-size: 52px; }
-  .bcell-plus { font-size: 20px; }
-  .bcta { flex-direction: column; }
-  .bcta img { width: 100%; height: 200px; flex: none; }
-  .bcta-copy { padding: 20px 16px; }
   .cases { gap: 64px; margin-top: 48px; }
   .case-copy .link { padding: 14px 0; }
   .bento { grid-template-columns: 1fr 1fr; grid-template-rows: 300px 180px 216px; gap: 12px; margin-top: 32px; }
