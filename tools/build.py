@@ -17,9 +17,9 @@ EMAIL = "kangd4u@gmail.com"
 HERO = [
     ("Nara, Japan", "Nara, Japan", "50% 30%", "50% 50%", "dark"),
     ("Byodo-in, Uji, Japan", "Uji, Japan", "50% 55%", "50% 60%", "light"),
-    ("Fitting room mirror selfie", "", "50% 60%", "50% 50%", "light"),
+    ("Fitting room mirror selfie", "Seoul, South Korea", "50% 60%", "50% 50%", "light"),
     ("Jerusalem at sunset", "Jerusalem, Israel", "50% 25%", "45% 50%", "light"),
-    ("Café", "", "50% 55%", "20% 50%", "dark"),
+    ("Café", "San Francisco, USA", "50% 55%", "20% 50%", "dark"),
     ("Street reflected in a convex mirror", "Seoul, South Korea", "50% 55%", "50% 50%", "dark"),
 ]
 
