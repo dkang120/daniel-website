@@ -128,18 +128,18 @@ def letters_section():
 def home():
     p = ""
     order = ["tmu", "fieldnote", "close"]
-    stats = [("25%", "Lead-to-member conversion", "Fitness 19 · consultative tours"),
+    stats = [("60%", "Tour-to-member conversion", "Fitness 19 · industry avg ~38%"),
              ("650+", "Members in 3 months", "TMU Business Network · 54% of campus"),
              ("1,000+", "Prospects called", "University recruitment · CA, AZ, TX"),
              ("3.5%", "Interaction rate, first 30 days", "JC in Me · 18,500+ views"),
              ("14K", "Audience I sold into", "High-ticket coaching · commission"),
              ("$20K", "Funding pitch", "Texas youth nonprofit · board pitch")]
     stat_html = "".join(f'<div class="stat"><p class="numeral">{n}</p><p class="h3-italic">{l}</p><p class="label-s">{c}</p></div>' for n, l, c in stats)
-    exp = [("[01] Sales", "Lead Service Specialist", "Fitness 19", "Convert 25% of leads and walk-ins into memberships through consultative tours; sell personal training on commission.", "Dublin, CA · Sep 2026 – Now"),
+    exp = [("[01] Sales", "Lead Service Specialist", "Fitness 19", "Convert 60% of facility tours into memberships (industry average ~38%) with needs-based tours; sell 15 memberships a month against an 8-member target; sell personal training on commission.", "Dublin, CA · Sep 2026 – Now"),
            ("[02] Marketing", "Digital Marketing Intern", "SYNK", "Support Meta and TikTok paid campaigns; build weekly Sprout Social + GA4 reports; coordinate creator briefs.", "Pleasanton, CA · Jun 2026 – Now"),
            ("[03] Sales", "High-Ticket Sales Closer", "Online fitness coaching", "Closed high-ticket coaching offers on commission from a 14K-follower audience.", "Remote · Aug – Oct 2026"),
-           ("[04] Growth", "Co-Founder &amp; Social Media Manager", "TMU Business Network", "Grew to 650+ members in 3 months; matched students with Big Four professionals.", "Santa Clarita, CA · Mar 2026 – Now"),
-           ("[05] Sales", "Student Recruitment Associate", "The Master’s University", "Cold-called 1,000+ prospective students across CA, AZ and TX.", "Santa Clarita, CA · Jan – May 2026"),
+           ("[04] Growth", "Co-Founder &amp; Director of Marketing", "TMU Business Network", "Grew to 650+ members in 3 months; matched students with Big Four professionals.", "Newhall, CA · Mar 2026 – Now"),
+           ("[05] Sales", "Student Recruitment Associate", "The Master’s University", "Cold-called 1,000+ prospective students across CA, AZ and TX.", "Newhall, CA · Jan – May 2026"),
            ("[06] Social", "Social Media Manager", "JC in Me", "3.5% interaction rate on 18,500+ views in the first 30 days; AI-assisted content workflow.", "Santa Clarita, CA · Sep 2025 – May 2026"),
            ("[07] Web", "Freelance Web Designer", 'Dos Bros Detailing · HK Animal Hospital', 'Designed and launched sites for <a class="u" href="https://dosbrosdetailing.club" target="_blank" rel="noopener">a detailing business</a> and <a class="u" href="https://hkanimalhospital.vet" target="_blank" rel="noopener">a veterinary hospital</a>.', "California · 2025 – 2026")]
     exp_html = "".join(f'<li class="exp"><p class="mono">{t}</p><div class="exp-main"><h3 class="h3">{r}</h3><p class="co">{c}</p><p class="body-m pretty">{d}</p></div><p class="meta label-s">{m}</p></li>' for t, r, c, d, m in exp)
@@ -151,7 +151,7 @@ def home():
     life_html = "".join(f'<figure class="{c}"><img src="images/{s}" alt="{a}" loading="lazy"><figcaption class="label-s">{cap}</figcaption></figure>' for c, s, a, cap in life)
     cases_html = "\n".join(case_row(CASES[k], p) for k in order)
     out = head("Daniel Kang — Sales + Marketing",
-               "Daniel Kang — sales and marketing in the San Francisco Bay Area. 25% lead-to-member conversion, a 650+ member business network built from scratch, and a brand taken from name to live storefront. Business Marketing, The Master’s University ’27.",
+               "Daniel Kang — sales and marketing in the San Francisco Bay Area. 60% tour-to-member conversion, a 650+ member business network built from scratch, and a brand taken from name to live storefront. Business Marketing, The Master’s University ’27.",
                p, SITE)
     out += nav(p, home=True)
     out += f"""<main id="main">
