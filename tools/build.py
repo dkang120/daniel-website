@@ -43,7 +43,7 @@ def head(title, desc, prefix, url, image="images/og.jpg"):
 
 def nav(prefix, home=False):
     h = "" if home else f"{prefix}index.html"
-    links = [("Work", f"{h}#work"), ("About", f"{h}#about"), ("Experience", f"{h}#experience"), ("Contact", f"{h}#contact")]
+    links = [("Work", f"{h}#work"), ("About", f"{prefix}about/"), ("Experience", f"{h}#experience"), ("Contact", f"{h}#contact")]
     items = "".join(f'<a href="{u}">{t}</a>' for t, u in links)
     brand = "Daniel Kang" if home else "← Daniel Kang"
     return f"""<div class="announce label-s">Open to sales &amp; marketing roles · Graduating May 2027 · <a href="{prefix}assets/Daniel-Kang-Resume.pdf" target="_blank" rel="noopener">Download résumé ↗</a></div>
@@ -197,20 +197,6 @@ def home():
   </div>
 </section>
 
-<section class="section bg-alt" id="about" aria-labelledby="about-title">
-  <div class="inner">
-    <p class="label-m c-2">About</p>
-    <div class="about-grid">
-      <h2 class="h1" id="about-title">A marketer who<br><em>knows how to close.</em></h2>
-      <div class="about-copy">
-        <p class="body-l">I’ve worked both ends of the funnel: building audiences and communities online, then turning that interest into sign-ups face to face.</p>
-        <p class="body-m c-2">Fluent in English and Korean. Certified in HubSpot Inbound and Social Media Marketing, and a NASM-certified personal trainer, which is how I ended up selling gym memberships.</p>
-        <p class="mono c-2">Meta Ads · TikTok&nbsp;Ads · GA4 · Sprout&nbsp;Social · HubSpot · Klaviyo<br>Figma · Canva · Claude</p>
-      </div>
-    </div>
-  </div>
-</section>
-
 <section class="section" id="experience" aria-labelledby="exp-title">
   <div class="inner">
     <div class="head-row">
@@ -224,7 +210,7 @@ def home():
   </div>
 </section>
 
-<section class="section" style="padding-top:0" aria-labelledby="life-title">
+<section class="section" id="life" style="padding-top:0" aria-labelledby="life-title">
   <div class="inner">
     <div class="life-head">
       <div class="head">
@@ -356,8 +342,48 @@ def case_page(key):
     return out
 
 
+def about_page():
+    p = "../"
+    url = f"{SITE}about/"
+    out = head("About — Daniel Kang", "Marketer who knows how to close: social, paid and sales. Bilingual, HubSpot and NASM certified, graduating May 2027.", p, url, image="images/og.jpg")
+    out += nav(p)
+    chips = lambda xs: "".join(f"<li>{x}</li>" for x in xs)
+    out += f"""<main id="main">
+<section class="about-hero">
+  <div class="inner">
+    <p class="label-m">About</p>
+    <div class="about-spread">
+      <div class="about-text">
+        <h1 class="about-title"><em>my</em> Story</h1>
+        <div class="about-copy">
+          <p>I’m a marketer who knows how to close. I’ve worked both ends of the funnel: building audiences and communities online, then turning that interest into sign-ups face to face.</p>
+          <p>Fluent in English and Korean. Certified in HubSpot Inbound and Social Media Marketing, and a NASM-certified personal trainer, which is how I ended up selling gym memberships.</p>
+          <p>Graduating May 2027 from The Master’s University, and looking for the team where social, paid and sales meet.</p>
+        </div>
+      </div>
+      <figure class="about-photo">
+        <img src="{p}images/about-portrait.webp" alt="Daniel mid-swing at a golf range at dusk" width="1000" height="1333" fetchpriority="high">
+        <span class="about-mark" aria-hidden="true">DK</span>
+      </figure>
+    </div>
+    <div class="about-kit">
+      <div class="kit-row"><p class="label-s">Certified</p><ul class="chips">{chips(["HubSpot Inbound","HubSpot Social Media","NASM CPT"])}</ul></div>
+      <div class="kit-row"><p class="label-s">Languages</p><ul class="chips">{chips(["English","Korean"])}</ul></div>
+      <div class="kit-row"><p class="label-s">Toolkit</p><ul class="chips">{chips(["Meta Ads","TikTok Ads","GA4","Sprout Social","HubSpot","Klaviyo","Figma","Canva","Claude"])}</ul></div>
+    </div>
+  </div>
+</section>
+{contact(p)}
+</main>
+"""
+    out += foot(p)
+    return out
+
+
 if __name__ == "__main__":
     (ROOT / "index.html").write_text(home())
+    (ROOT / "about").mkdir(exist_ok=True)
+    (ROOT / "about" / "index.html").write_text(about_page())
     for k, c in CASES.items():
         d = ROOT / "work" / c["slug"]
         d.mkdir(parents=True, exist_ok=True)

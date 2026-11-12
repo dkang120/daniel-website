@@ -364,3 +364,32 @@ em, .accent { font-style: italic; color: var(--accent); }
 .letter-sig strong { color: #2a3550; }
 .letter-close { position: absolute; top: -40px; right: 0; background: none; border: 0; color: var(--linen); cursor: pointer; }
 @media (max-width: 900px) { .letters { grid-template-columns: 1fr; } .letter-paper { padding: 36px 24px; font-size: 16px; } }
+
+/* ---------- about (inside life section) ---------- */
+
+/* ---------- about page ---------- */
+.about-hero { padding: 72px var(--gutter) 96px; }
+.about-spread { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 32px; background: var(--bone); border: 1px solid var(--hairline); min-height: 640px; }
+.about-text { padding: 56px 56px 56px 64px; display: flex; flex-direction: column; justify-content: center; gap: 36px; }
+.about-title { font-family: 'Instrument Serif', serif; font-weight: 400; font-size: clamp(56px, 6vw, 88px); line-height: 1; letter-spacing: -0.01em; color: var(--ink); }
+.about-title em { color: var(--clay); }
+.about-copy { display: flex; flex-direction: column; gap: 22px; max-width: 46ch; }
+.about-copy p { font-size: 12px; line-height: 1.75; letter-spacing: 0.14em; text-transform: uppercase; color: var(--taupe); }
+.about-photo { position: relative; margin: 0; display: flex; align-items: center; justify-content: center; padding: 48px 56px; }
+.about-photo img { width: min(100%, 380px); aspect-ratio: 3 / 4; object-fit: cover; }
+.about-mark { position: absolute; left: 24px; bottom: 36px; font-family: 'Instrument Serif', serif; font-style: italic; font-size: 44px; color: var(--espresso); }
+.about-kit { margin-top: 40px; display: flex; flex-direction: column; gap: 18px; }
+.kit-row { display: grid; grid-template-columns: 120px 1fr; gap: 16px; align-items: baseline; }
+.kit-row .label-s { color: var(--taupe); }
+.chips { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { font-family: 'JetBrains Mono', monospace; font-size: 12px; padding: 6px 12px; border: 1px solid var(--hairline); border-radius: 999px; background: var(--linen); color: var(--ink); transition: background .2s, color .2s, border-color .2s, transform .2s; }
+.chips li:hover { background: var(--clay); color: var(--linen); border-color: var(--clay); transform: translateY(-2px); }
+@media (max-width: 900px) {
+  .about-hero { padding: 40px var(--gutter) 64px; }
+  .about-spread { grid-template-columns: 1fr; min-height: 0; }
+  .about-text { padding: 36px 24px 12px; gap: 24px; }
+  .about-photo { padding: 20px 24px 64px; }
+  .about-photo img { width: min(100%, 340px); }
+  .about-mark { left: 24px; bottom: 14px; font-size: 36px; }
+  .kit-row { grid-template-columns: 1fr; gap: 8px; }
+}
