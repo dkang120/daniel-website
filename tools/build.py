@@ -157,7 +157,7 @@ def case(k):
            f'<details class="acc"><summary>Results<span class="acc__i"></span></summary><ul class="stats">{stats}</ul></details>'
            f'<details class="acc"><summary>{e(c.get("takeawayTitle","Takeaway"))}<span class="acc__i"></span></summary><p>{e(c["takeaway"])}</p></details>')
     return f"""<section class="pdp">
-  <div class="pdp__gallery"><img src="../../images/{c['image']}" alt="{e(c['imageAlt'])}" width="1248" height="954" loading="eager"></div>
+  <div class="pdp__gallery"><img src="../../images/{c.get('pageImage', c['image'])}" alt="{e(c['imageAlt'])}" width="{c.get('pageDims',[1234,1851])[0]}" height="{c.get('pageDims',[1234,1851])[1]}" loading="eager"></div>
   <div class="pdp__info">
     <nav class="pdp__crumbs" aria-label="Breadcrumb"><a href="../">Work</a><span class="dot">•</span><span>{e(c['title'])}</span></nav>
     <h1 class="pdp__title">{e(c['title'])}</h1>

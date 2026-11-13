@@ -62,7 +62,7 @@
   "takeaway": "Growing a community runs like a sales funnel: reach people where they already are, make one clear offer, and repeat it on a schedule they can count on.",
   "next": "fieldnote",
   "image": "case-tmu.webp",
-  "imageAlt": "The Network: TMU Business Network connecting students with Deloitte, EY and KPMG professionals",
+  "imageAlt": "A student and a professional shaking hands beside a leather portfolio",
   "summary": "Co-founded the university’s official networking society and grew it with weekly events, campus-fair booths, bulletins and social outreach.",
   "outcomes": [
    "650+ members (54% of campus) in 3 months",
@@ -134,14 +134,19 @@
   "takeaway": "Validate before you scale: the site and brand are real, but the next step is proving people want it — with sample packs, before any inventory.",
   "next": "close",
   "image": "case-fieldnote.webp",
-  "imageAlt": "The Fieldnote storefront homepage: “Made the day you order it.”",
+  "imageAlt": "A hand spraying a Fieldnote cologne bottle onto the collarbone",
   "summary": "A fresh-filled cologne brand for college students, taken from name to business plan to a live storefront at fieldnotela.com.",
   "outcomes": [
    "Named, positioned and planned the brand end to end",
    "Designed the full storefront system in Figma",
    "Shipped a live site with a custom label builder"
   ],
-  "takeawayTitle": "Why it matters"
+  "takeawayTitle": "Why it matters",
+  "pageImage": "case-fieldnote-page.webp",
+  "pageDims": [
+   1200,
+   1500
+  ]
  },
  "close": {
   "slug": "the-close",
@@ -210,7 +215,7 @@
   "takeaway": "Cold-calling across California, Arizona and Texas using the 7 P’s; closing high-ticket coaching offers on commission; and converting leads and walk-ins at Fitness 19 while meeting or exceeding monthly targets.",
   "next": "tmu",
   "image": "case-close.webp",
-  "imageAlt": "The Close as a rising bar chart of five moves: Discovery, The offer, Benefit stack, Urgency, Same-call decision, ending in SOLD",
+  "imageAlt": "Two people in a one-on-one consultation, a card slid across the table",
   "summary": "How I sell: discovery first, then the offer against stated goals, then urgency. Used in gym memberships, high-ticket coaching and university recruitment.",
   "outcomes": [
    "60% tour-to-member conversion at Fitness 19",
