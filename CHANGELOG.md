@@ -13,13 +13,18 @@
 - Work order: TMU, ModelLab, The Close, Fieldnote.
 - Added alt text for every thumbnail.
 
+### Mobile menu
+- Added "Core Values" to the menu list (after the first four pages).
+- Added an info block under the list: Location (Bay Area, California) and Email (mailto link).
+- Secondary links (elsewhere) spacing reduced from 60px to 40px; info block sits 60px below the main list, rows 20px apart, labels in the light grey.
+
 ### Fieldnote brand concept deck
 - Rebuilt to measured reference specs (type sizes, hairlines, margins, swatches).
 - All photography remade in an editorial style with the new frosted bottle (text printed on the glass, black cylinder cap).
 
 ### Code
 - `tools/build.py`: `WORK_ORDER`, `WORK_CAT`, `EXTERNAL`, `THUMB_ALT`; thumbnails rendered via `<img>`.
-- `css/style.css`: `.card__img` sizing and cover fit.
+- `css/style.css`: `.card__img` sizing and cover fit; Work grid is 2-up (single column under 640px, 24px gap, max width 1130px); card meta gap 7px; drawer info styles.
 - All pages regenerated.
 
 ### Known caveats
