@@ -213,7 +213,7 @@
    ]
   ],
   "takeaway": "Cold-calling across California, Arizona and Texas using the 7 P’s; closing high-ticket coaching offers on commission; and converting leads and walk-ins at Fitness 19 while meeting or exceeding monthly targets.",
-  "next": "tmu",
+  "next": "modellab",
   "image": "case-close.webp",
   "imageAlt": "Two people in a one-on-one consultation, a card slid across the table",
   "summary": "How I sell: discovery first, then the offer against stated goals, then urgency. Used in gym memberships, high-ticket coaching and university recruitment.",
@@ -223,5 +223,78 @@
    "1,000+ prospects called across three states"
   ],
   "takeawayTitle": "Where I’ve run it"
+ },
+ "modellab": {
+  "slug": "modellab",
+  "no": "No. 04 — Founder Project",
+  "title": "ModelLab",
+  "lede": "Founded and built an interactive investing education website that simplifies investing strategies for beginners, showing each philosophy as an example portfolio they can explore and compare.",
+  "meta": [
+   [
+    "Role",
+    "Founder"
+   ],
+   [
+    "Timeline",
+    "Nov 2026 – present"
+   ],
+   [
+    "Where",
+    "Online · GitHub Pages"
+   ],
+   [
+    "Built with",
+    "Figma · Klaviyo · GitHub Pages"
+   ]
+  ],
+  "challenge": "Investing content mostly explains philosophies in the abstract. I wanted beginners to see each one as an actual portfolio they can open, browse and compare, in a product that looks like a startup, not a blog.",
+  "approach": [
+   [
+    "Concept and brand",
+    "Defined the purpose, what ModelLab offers and how it benefits beginners, and chose the name."
+   ],
+   [
+    "Rule-based portfolios",
+    "Every portfolio follows published rules or an industry-standard method, never hand-picked, so there is no bias."
+   ],
+   [
+    "Product and design",
+    "A Library, Compare and a dollar calculator, designed in Figma first around startup sites like Turbo, then recoded in HTML."
+   ],
+   [
+    "Launch and growth",
+    "Deployed on GitHub Pages with a free email signup (Klaviyo) that unlocks price data and Compare, plus a weekly Lab Drop email that adds one model at a time, starting with Dogs of the Dow."
+   ]
+  ],
+  "results": [],
+  "learnedTitle": "What I learned",
+  "learned": [
+   [
+    "Gate with an email, not a paywall",
+    "For a new product, an audience comes first, so I dropped the password and the idea of charging."
+   ],
+   [
+    "Take my own judgment out",
+    "Removing hand-picking from portfolio selection made the product more credible."
+   ],
+   [
+    "Pick a cadence I can keep",
+    "One new model a week is a content system I can sustain, and it gives the list a reason to open emails."
+   ],
+   [
+    "Design before code",
+    "Working out decisions in Figma first made them faster and cheaper to change."
+   ]
+  ],
+  "takeaway": "ModelLab is a small product exercise in positioning, a free email funnel and a weekly content cadence, the same skills I bring to any consumer or community brand. For education, not investment advice.",
+  "next": "tmu",
+  "image": "case-modellab.webp",
+  "imageAlt": "An open notebook with a pencil sketch of a chart, a pencil and index cards on a stone desk",
+  "summary": "Founded and built an interactive investing education site that simplifies investing strategies for beginners.",
+  "outcomes": [
+   "Library of rule-based example portfolios",
+   "Free email signup with weekly Lab Drop"
+  ],
+  "takeawayTitle": "Why it matters"
  }
 }

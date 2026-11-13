@@ -121,7 +121,7 @@ def page(slug, label, content=None, prefix=None, cls="is-inner", title=None, des
 
 e = html.escape
 CASES = json.load(open(ROOT / "tools" / "cases.json"))
-CASE_ORDER = ["tmu", "fieldnote", "close"]
+CASE_ORDER = ["tmu", "fieldnote", "close", "modellab"]
 TOOLBAR = lambda prefix, label: (f'<div class="toolbar"><nav class="breadcrumbs" aria-label="Breadcrumb"><a href="{prefix}">{NAME}</a>'
                                  f'<span class="dot">•</span><span>{label}</span></nav></div>')
 
@@ -152,9 +152,10 @@ def case(k):
     meta = "".join(f'<div><dt>{e(a)}</dt><dd>{e(b)}</dd></div>' for a, b in c["meta"])
     steps = "".join(f'<li><span class="acc__h">{e(h)}</span><span class="acc__b">{e(b)}</span></li>' for h, b in c["approach"])
     stats = "".join(f'<li><span class="stat__n">{e(n)}</span><span class="stat__l">{e(l)}</span></li>' for n, l in c["results"])
+    learned = "".join(f'<li><span class="acc__h">{e(h)}</span><span class="acc__b">{e(b)}</span></li>' for h, b in c.get("learned", []))
     acc = (f'<details class="acc" open><summary>The challenge<span class="acc__i"></span></summary><p>{e(c["challenge"])}</p></details>'
            f'<details class="acc"><summary>Approach<span class="acc__i"></span></summary><ol class="steps">{steps}</ol></details>'
-           f'<details class="acc"><summary>Results<span class="acc__i"></span></summary><ul class="stats">{stats}</ul></details>'
+           + (f'<details class="acc"><summary>{e(c["learnedTitle"])}<span class="acc__i"></span></summary><ol class="steps">{learned}</ol></details>' if c.get("learned") else f'<details class="acc"><summary>Results<span class="acc__i"></span></summary><ul class="stats">{stats}</ul></details>') +
            f'<details class="acc"><summary>{e(c.get("takeawayTitle","Takeaway"))}<span class="acc__i"></span></summary><p>{e(c["takeaway"])}</p></details>')
     return f"""<section class="pdp">
   <div class="pdp__gallery"><img src="../../images/{c.get('pageImage', c['image'])}" alt="{e(c['imageAlt'])}" width="{c.get('pageDims',[1234,1851])[0]}" height="{c.get('pageDims',[1234,1851])[1]}" loading="eager"></div>
@@ -262,7 +263,7 @@ def main():
     builders = {"about": about, "work": work, "experience": experience, "beyond": beyond,
                 "recommendation": recommendation, "connect": connect}
     descs = {"about": "About Daniel Kang — a marketer who knows how to close.",
-             "work": "Selected work: TMU Business Network, Fieldnote and The Close.",
+             "work": "Selected work: TMU Business Network, Fieldnote, The Close and ModelLab.",
              "experience": "Marketing and sales experience, 2025 to now.",
              "beyond": "Beyond work: Seoul, Nara, Uji and the Bay Area.",
              "recommendation": "A letter of recommendation for Daniel Kang.",
