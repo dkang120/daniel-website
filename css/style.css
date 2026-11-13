@@ -167,6 +167,8 @@ p{margin:0}
 
 /* Recommendation — centred text template */
 .centered{max-width:640px;margin:0 auto;padding:200px 0 320px;text-align:center}
+.centered--first{padding-bottom:0}
+.centered--last{padding-top:100px}
 .centered__quote{margin:0 0 21.45px}
 .centered__by{margin-bottom:21.45px}
 .linkbtn{text-decoration:underline;text-underline-offset:2px}
@@ -203,6 +205,8 @@ p{margin:0}
   .gal__item img{width:100%;height:auto;aspect-ratio:2/3}
   .gal__text{margin:50px 0 0 50px;width:auto}
   .centered{padding:120px 24px 200px}
+  .centered--first{padding-bottom:0}
+  .centered--last{padding-top:80px}
   .letter__paper{padding:40px 28px 44px}
 }
 

@@ -248,7 +248,8 @@ def beyond():
     return f'<ul class="gal">{items}</ul>'
 
 # ---------- Recommendation ----------
-LETTER = {
+LETTERS = [
+  {
     "org": "JC in Me", "name": "Leslie Bess", "role": "JC in Me",
     "quote": "Daniel is remarkably creative, but equally practical.",
     "paras": [
@@ -257,20 +258,37 @@ LETTER = {
         "Daniel is remarkably creative, but equally practical. He focuses on what will genuinely connect with people and drive action, not just what looks good visually. Beyond his technical skills, he is a clear communicator, highly dependable, and an absolute pleasure to work with.",
         "If you are hiring for a marketing, social media, or brand role, Daniel will bring energy, initiative, and genuine care for results. I recommend him without hesitation."],
     "close": "Love JC in Me & Sincerely,",
-}
+  },
+  {
+    "org": "HK Animal Hospital", "name": "Dr. K", "role": "Owner, HK Animal Hospital",
+    "quote": "Daniel’s main professional strength is his ability to take initiative.",
+    "paras": [
+        "This letter confirms that Daniel Kang completed 120 hours as a Veterinary Intern with HK Animal Hospital from May to July. As the on-site supervisor, I am pleased to give the following performance appraisal for Daniel and his faculty advisor.",
+        "Daniel’s main professional strength is his ability to take initiative. He did not wait to be told what to do next. He looked for ways to improve our processes and brought forward ideas that were practical and well thought out. His communication skills are strong in both written and verbal settings, and he adjusted his tone easily whether he was speaking with team members, clients, or customers. He also showed a good understanding of how decisions connect to business outcomes, which is uncommon for an intern at his stage.",
+        "In terms of areas for growth, Daniel sometimes takes on more responsibilities at once than he can comfortably manage, which on occasion stretched his timelines on lower-priority tasks. He would benefit from setting priorities earlier in a project and checking in sooner when a deadline is at risk. He is also very detail-driven in his own work and could continue developing his confidence in delegating and trusting collaborative input. These are normal areas of development for a young professional, and Daniel was receptive to feedback each time it was given.",
+        "Daniel was consistently reliable throughout his internship. He arrived on time, met his commitments, and followed through on assigned tasks without needing repeated reminders. When issues arose, he communicated them directly rather than allowing them to go unaddressed. I was able to trust him with independent work and with representing our organization professionally in front of others.",
+        "Furthermore, Daniel demonstrated a strong interest in communicating with clients and building positive relationships with customers. He interacted with clients easily and professionally, listened attentively, and communicated information clearly and respectfully. His strong interpersonal and customer communication skills were a valuable asset to our organization.",
+        "Daniel’s professional character is excellent. He is respectful, humble, and coachable, and he treated everyone he worked with courteously. He showed integrity in his work, took ownership of his mistakes, and kept a positive attitude even during busy periods. He was a valued member of our team, and I am confident he will be successful in his future career."],
+    "close": "Sincerely,",
+  },
+]
 
 def recommendation():
-    L = LETTER
-    paras = "".join(f"<p>{e(x)}</p>" for x in L["paras"])
-    return f"""<section class="centered">
+    out = []
+    n = len(LETTERS)
+    for i, L in enumerate(LETTERS, 1):
+        paras = "".join(f"<p>{e(x)}</p>" for x in L["paras"])
+        cls = "centered" + (" centered--first" if i == 1 and n > 1 else "") + (" centered--last" if i == n and n > 1 else "") + (" centered--mid" if 1 < i < n else "")
+        out.append(f"""<section class="{cls}">
   <blockquote class="centered__quote">“{e(L['quote'])}”</blockquote>
   <p class="centered__by"><em>{e(L['name'])}, {e(L['role'])}</em></p>
-  <button class="linkbtn" type="button" data-letter="letter-1">Read the full letter</button>
+  <button class="linkbtn" type="button" data-letter="letter-{i}">Read the full letter</button>
 </section>
-<dialog class="letter" id="letter-1" aria-label="Letter of recommendation from {e(L['name'])}">
+<dialog class="letter" id="letter-{i}" aria-label="Letter of recommendation from {e(L['name'])}">
   <button class="letter__close" type="button" aria-label="Close letter">Close</button>
-  <div class="letter__paper"><p class="letter__org">{e(L['org'])}</p><p>To Whom It May Concern,</p>{paras}<p class="letter__sign">{e(L['close'])}</p><p><strong>{e(L['name'])}</strong><br>{e(L['org'])}</p></div>
-</dialog>"""
+  <div class="letter__paper"><p class="letter__org">{e(L['org'])}</p><p>To Whom It May Concern,</p>{paras}<p class="letter__sign">{e(L['close'])}</p><p><strong>{e(L['name'])}</strong><br>{e(L['role'])}</p></div>
+</dialog>""")
+    return "\n".join(out)
 
 # ---------- Connect ----------
 def connect():
