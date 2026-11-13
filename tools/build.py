@@ -12,6 +12,8 @@ LINKS = {
     "Résumé": "assets/Daniel-Kang-Resume.pdf",
 }
 EMAIL = "kangd4u@gmail.com"
+import hashlib as _h
+ASSET_V = _h.md5((ROOT / "css/style.css").read_bytes() + (ROOT / "js/main.js").read_bytes()).hexdigest()[:8]
 
 # Hero gallery: (alt, caption, object-position desktop, object-position mobile, header tone over the image)
 HERO = [
@@ -83,7 +85,7 @@ def page(slug, label, content=None, prefix=None, cls="is-inner", title=None, des
 <title>{title}</title>
 <meta name="description" content="{desc or "Daniel Kang — social media, paid social and sales."}">
 <link rel="icon" href="{prefix}images/favicon.svg">
-<link rel="stylesheet" href="{prefix}css/style.css">
+<link rel="stylesheet" href="{prefix}css/style.css?v={ASSET_V}">
 </head>
 <body class="{body_cls}">
 <header class="header" id="header">
@@ -112,7 +114,7 @@ def page(slug, label, content=None, prefix=None, cls="is-inner", title=None, des
   </div>
   <p class="footer__copy">{NAME} © 2026</p>
 </footer>
-<script src="{prefix}js/main.js"></script>
+<script src="{prefix}js/main.js?v={ASSET_V}"></script>
 </body>
 </html>
 """
@@ -234,8 +236,8 @@ def experience():
 # ---------- Beyond ----------
 LIFE = [
     ('life-olives.webp', 'Walking in Jerusalem at sunset', 'Mount of Olives', 'Jerusalem, Israel'),
-    ('life-yummy-matcha.webp', 'Daniel and friends with matcha and soft serve', 'Soft serve', 'Bay Area, California'),
-    ('life-cafe-hopping.webp', 'Matcha from Wabicha café', 'Yummy matcha', 'Bay Area, California'),
+    ('life-yummy-matcha.webp', 'Daniel and friends with matcha and soft serve', 'Soft serve', 'Palo Alto, California'),
+    ('life-cafe-hopping.webp', 'Matcha from Wabicha café', 'Yummy matcha', 'Osaka, Japan'),
     ('life-uji-bridge.webp', 'Daniel on a bridge in Kyoto', 'Uji bridge', 'Uji, Japan'),
     ('life-nara-deer.webp', 'Feeding deer in Nara', 'Feeding the deer', 'Nara, Japan'),
     ('life-han-river.webp', 'Daniel and a friend by the Han River at night', 'Han River', 'Seoul, South Korea'),

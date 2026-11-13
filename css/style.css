@@ -62,7 +62,7 @@ p{margin:0}
 .footer__col li{margin-bottom:8.55px}
 .footer__col a{color:#212121}
 .footer__col a:hover{color:var(--light)}
-.footer__col--last a{text-decoration:underline;text-underline-offset:3px}
+.footer__col--last a{text-decoration:underline!important;text-underline-offset:3px}
 .footer__copy{text-align:center;padding-top:12.55px;color:var(--light)}
 
 /* Below 1008: mobile header + drawer */
@@ -225,7 +225,7 @@ p{margin:0}
   .hero__slide--fit5::before{background-image:url(../images/hero-5-900.webp)}
 }
 
-.footer__cv{margin-top:8.55px}.footer__cv a{color:#212121}.footer__cv a:hover{color:var(--light)}
+.footer__col--lead p{margin:0 0 8.55px}.footer__cv{margin-top:0}.footer__cv a{color:#212121}.footer__cv a:hover{color:var(--light)}
 .vals{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
 .vals ol{margin:0;padding:0 0 0 28px}.vals li{margin-bottom:26px;padding-left:6px}
 @media (max-width:1007px){.vals{grid-template-columns:1fr}.vals ol+ol{margin-top:0}}
