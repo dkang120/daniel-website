@@ -104,7 +104,7 @@ def page(slug, label, content=None, prefix=None, cls="is-inner", title=None, des
 {main}
 <footer class="footer">
   <div class="footer__inner">
-    <div class="footer__col footer__col--lead"><p>{NAME}</p><p class="muted">Bay Area, California</p></div>
+    <div class="footer__col footer__col--lead"><p>{NAME}</p><p class="muted">Bay Area, California</p><p class="footer__cv"><a href="{prefix}core-values/">Core Values</a></p></div>
     <ul class="footer__col">{pages_a}</ul>
     <ul class="footer__col">{pages_b}</ul>
     <ul class="footer__col">{elsewhere}</ul>
@@ -129,16 +129,42 @@ TOOLBAR = lambda prefix, label: (f'<div class="toolbar"><nav class="breadcrumbs"
 def about():
     return """<section class="editorial">
   <div class="editorial__text">
-    <p>I’m a marketer who knows how to close. I’ve worked both ends of the funnel: building audiences and communities online, then turning that interest into sign-ups face to face.</p>
-    <p>Fluent in English and Korean. Certified in HubSpot Inbound and Social Media Marketing, and a NASM-certified personal trainer, which is how I ended up selling gym memberships.</p>
-    <p>Graduating May 2027 from The Master’s University, and looking for the team where social, paid and sales meet.</p>
+    <p>I’m drawn to the place where content, design and technology meet, and to how combining them changes the way people live, create and connect. Nothing moves me more than watching someone grow in something they love.</p>
+    <p>That’s why I’m a marketer who knows how to close. I’ve worked both ends of the funnel, building audiences and communities online, then turning that interest into sign-ups in person.</p>
+    <p>Along the way I picked up the credentials to match: HubSpot certifications in Inbound and Social Media Marketing, and a NASM personal training certification, which is how I ended up selling gym memberships.</p>
+    <p>Fluent in Korean and English.</p>
   </div>
   <figure class="editorial__figure"><img src="../images/about-portrait.webp" alt="Daniel mid-swing at a golf range at dusk" width="1000" height="1333" loading="eager"><figcaption>Daniel Kang.</figcaption></figure>
 </section>"""
 
+VALUES = [
+    "live boldly. you miss 100% of the shots you don’t take.",
+    "always be grateful for what you have in pursuit of what you want.",
+    "be the least important person in the room. surround yourself with people you aspire to be.",
+    "be humble enough to learn from anyone, but strong enough to stand for what you believe.",
+    "money ≠ wealth. true wealth comes from relationships.",
+    "mistakes only prove you are trying.",
+    "true beauty comes from within: the kindness you show and the way you make others feel.",
+    "you only live once, so say yes more than you say no.",
+    "starting today is always better than never starting :D",
+    "everyone’s path is different. learn to embrace yours.",
+    "don’t worry about anything. pray instead!",
+    "pain is inevitable, suffering is an option.",
+]
+
+def values():
+    half = (len(VALUES) + 1) // 2
+    def col(items, start):
+        return "<ol start=\"%d\">%s</ol>" % (start, "".join(f"<li>{e(v)}</li>" for v in items))
+    return f'''<div class="care">
+  <aside class="care__side"><h1>Core Values</h1></aside>
+  <div class="care__main vals">{col(VALUES[:half], 1)}{col(VALUES[half:], half + 1)}</div>
+</div>'''
+
 # ---------- Work ----------
 def work():
     cards = ""
+    write(ROOT / "core-values" / "index.html", page("core-values", "Core Values", values(), desc="Core values: Daniel Kang."))
     for k in CASE_ORDER:
         c = CASES[k]
         no = c["no"].split(" — ")[0]
@@ -288,7 +314,7 @@ def main():
         write(ROOT / "work" / c["slug"] / "index.html",
               page("work", "Work", case(k), prefix="../../", cls="is-inner is-case",
                    title=f"{c['title']} – {NAME}", desc=c["lede"]))
-    print("built", 1 + len(NAV) + len(CASE_ORDER), "pages")
+    print("built", 2 + len(NAV) + len(CASE_ORDER), "pages")
 
 
 if __name__ == "__main__":
