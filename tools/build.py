@@ -174,7 +174,7 @@ def case(k):
 EXP = [
     ('Marketing and social', [
         ('tmu-bn', 'TMU Business Network', 'Co-Founder & Director of Marketing', 'Newhall, CA', 'Mar 2026 – Now', 'Grew to 650+ members in 3 months; matched students with Big Four professionals.'),
-        ('modellab', 'ModelLab', 'Founder', 'Online', 'Nov 2026 – Now', 'Built an interactive investing education website to simplify investing strategies for beginners. <a class="u" href="../work/modellab/">Read the case</a>.'),
+        ('modellab', 'ModelLab', 'Founder', 'Online', 'Nov 2026 – Now', 'Built an interactive investing education website to simplify investing strategies for beginners.'),
         ('jcinme', 'JC in Me', 'Social Media Manager', 'Santa Clarita, CA', 'Sep 2025 – May 2026', '3.5% interaction rate on 18,500+ views in the first 30 days; AI-assisted content workflow.'),
     ]),
     ('Sales', [
@@ -187,6 +187,7 @@ EXP = [
     ]),
 ]
 FLAT = [x for _, g in EXP for x in g]
+CASE_OF = {'tmu-bn':'tmu','modellab':'modellab','fitness-19':'close','coaching':'close','tmu':'close'}
 
 def experience():
     side = "".join(f'<li><a href="#{i}">{e(c)}</a></li>' for i, c, *_ in FLAT)
@@ -194,11 +195,10 @@ def experience():
     for g, items in EXP:
         rows += f'<tr class="tbl__group"><td colspan="2">{e(g)}</td></tr>'
         rows += "".join(f'<tr><td><a href="#{i}">{e(r)}</a><span class="muted"> · {e(c)}</span></td><td>{e(d)}</td></tr>' for i, c, r, w, d, _ in items)
-    det = "".join(f'<section class="exp" id="{i}"><h2>{e(r)} · {e(c)}</h2><p class="muted">{e(w)} · {e(d)}</p><p>{b}</p></section>' for i, c, r, w, d, b in FLAT)
+    det = "".join(f'<section class="exp" id="{i}"><h2>{e(r)} · {e(c)}</h2><p class="muted">{e(w)} · {e(d)}</p><p>{b}</p>' + (f'<p><a class="u" href="../work/{CASE_OF[i]}/">Read the case</a></p>' if i in CASE_OF else '') + '</section>' for i, c, r, w, d, b in FLAT)
     return f"""<div class="care">
   <aside class="care__side"><h1>Experience</h1><ul>{side}</ul></aside>
   <div class="care__main">
-    <p>Marketing and sales, from the first touch to the signed membership. Seven roles since 2025.</p>
     <table class="tbl"><thead><tr><th>Role</th><th>Dates</th></tr></thead><tbody>{rows}</tbody></table>
     <hr class="care__rule">
     {det}
