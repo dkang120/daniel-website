@@ -61,7 +61,7 @@ def page(slug, label, content=None, prefix=None, cls="is-inner", title=None, des
     nav = "".join(
         f'<li><a href="{prefix}{s}/"{" aria-current=\"page\"" if s == slug else ""}>{l}</a></li>' for l, s in NAV
     )
-    drawer = "".join(f'<li><a href="{prefix}{s}/">{l}</a></li>' for l, s in NAV)
+    drawer = "".join(f'<li><a href="{prefix}{s}/">{l}</a></li>' for l, s in NAV[:4] + [("Core Values", "core-values")] + NAV[4:])
     def lis(items):
         return "".join(f'<li><a href="{prefix}{s}/">{l}</a></li>' for l, s in items)
     pages_a, pages_b = lis(NAV[:3]), lis(NAV[3:])
@@ -101,6 +101,7 @@ def page(slug, label, content=None, prefix=None, cls="is-inner", title=None, des
 <div class="drawer" id="drawer" hidden>
   <div class="drawer__top"><span>Menu</span><button class="drawer__close" type="button" aria-label="Close menu"><svg width="15" height="15" viewBox="0 0 15 15" fill="none" stroke="currentColor"><path d="M.5.5l14 14M14.5.5l-14 14"/></svg></button></div>
   <ul class="drawer__list">{drawer}</ul>
+  <dl class="drawer__info"><div><dt>Location</dt><dd>Bay Area, California</dd></div><div><dt>Email</dt><dd><a href="mailto:{EMAIL}">{EMAIL}</a></dd></div></dl>
   <ul class="drawer__list drawer__list--secondary">{elsewhere}</ul>
 </div>
 {main}
@@ -164,14 +165,20 @@ def values():
 </div>'''
 
 # ---------- Work ----------
+WORK_ORDER = ["tmu", "modellab", "close", "fieldnote"]
+WORK_CAT = {"close": "Sales", "fieldnote": "Brand Concept"}
+EXTERNAL = {"modellab": "https://dkang120.github.io/modellab/", "fieldnote": "../files/Fieldnote-Brand-Concept.pdf"}
+THUMB_ALT = {"tmu": "Client and partner logos: Deloitte, KPMG, EY, Thrivent, Elegant Writing, Fractional Controller", "modellab": "ModelLab logo", "close": "Sales dashboard mock-up with conversion and outreach stats", "fieldnote": "Fieldnote brand concept slide deck, four slides"}
 def work():
-    cards = ""
     write(ROOT / "core-values" / "index.html", page("core-values", "Core Values", values(), desc="Core values: Daniel Kang."))
-    for k in CASE_ORDER:
+    cards = ""
+    for k in WORK_ORDER:
         c = CASES[k]
-        no = c["no"].split(" — ")[0]
-        cards += (f'<li class="card"><a href="{c["slug"]}/"><div class="card__img"><img src="../images/{c["image"]}" alt="{e(c["imageAlt"])}" loading="lazy"></div>'
-                  f'<div class="card__meta"><span class="card__title">{e(c["title"])}</span><span class="card__no">{no}</span></div></a></li>')
+        cat = WORK_CAT.get(k) or c["no"].split(" — ", 1)[1]
+        href = EXTERNAL.get(k, c["slug"] + "/")
+        ext = ' target="_blank" rel="noopener"' if k in EXTERNAL else ""
+        cards += (f'<li class="card"><a href="{href}"{ext}><div class="card__img"><img src="../images/thumb-{k}.webp" width="1106" height="772" alt="{e(THUMB_ALT[k])}" loading="lazy"></div>'
+                         f'<div class="card__meta"><span>{e(c["title"])}<span class="muted"> · {e(cat)}</span></span><span class="muted">2026</span></div></a></li>')
     return TOOLBAR("../", "Work") + f'<ul class="grid">{cards}</ul>'
 
 def case(k):

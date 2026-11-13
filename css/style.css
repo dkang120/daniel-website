@@ -34,7 +34,12 @@ p{margin:0}
 .drawer__top{display:flex;justify-content:space-between;align-items:flex-start;height:68px;padding:15px 20px}
 .drawer__close{margin-top:5px}
 .drawer__list a{display:block;padding:10px 20px;color:#000}
-.drawer__list--secondary{margin-top:60px}
+.drawer__list--secondary{margin-top:40px}
+.drawer__info{margin:60px 0 0;padding:0 20px}
+.drawer__info div+div{margin-top:20px}
+.drawer__info dt{color:var(--light)}
+.drawer__info dd{margin:0}
+.drawer__info a{color:inherit}
 
 /* Home hero */
 .hero{margin-top:calc(var(--header-h) * -1);height:calc(100vh - 90px);min-height:480px;position:relative;overflow:hidden;background:var(--tile);cursor:pointer;outline:none;touch-action:pan-y;-webkit-tap-highlight-color:transparent;user-select:none}
@@ -107,12 +112,12 @@ p{margin:0}
 .editorial__figure img{display:block;width:100%;height:552px;object-fit:cover;object-position:50% 38%;background:var(--tile)}
 .editorial__figure figcaption{margin-top:40px}
 
-/* Work — collection grid */
-.grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:100px 40px;padding:20px var(--gutter) 100px}
+/* Work — collection grid (2-up, rounded thumbnails) */
+.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;width:calc(100% - 40px);max-width:1130px;margin:0 auto;padding:20px 0 100px}
 .card a{display:block}
-.card__img{aspect-ratio:285/427;background:var(--tile);overflow:hidden}
-.card__img img{display:block;width:100%;height:100%;object-fit:contain}
-.card__meta{display:flex;justify-content:space-between;gap:12px;margin-top:15px}
+.card__img{aspect-ratio:553/386;background:var(--tile);border-radius:20px;overflow:hidden}
+.card__img img{display:block;width:100%;height:100%;object-fit:cover}
+.card__meta{display:flex;justify-content:space-between;gap:12px;margin-top:7px}
 
 /* Case study — product page template */
 .pdp{display:flex;align-items:flex-start;padding:20px 0 100px 90px}
@@ -193,8 +198,7 @@ p{margin:0}
 @media (max-width:1007px){
   .editorial{padding:89px 24px 80px}
   .editorial__figure img{height:auto;aspect-ratio:342/278}
-  .grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:30px 10px;padding:15px 0 80px}
-  .card__meta{flex-direction:column;gap:0;padding:0 10px}
+  .grid{padding:15px 0 80px}
   .pdp{flex-direction:column;padding:0 0 60px}
   .pdp__gallery{flex:none;width:100%}
   .pdp__info{flex:none;width:100%;max-width:none;padding:30px 24px 0}
@@ -233,3 +237,4 @@ p{margin:0}
 .vals{display:grid;grid-template-columns:1fr 1fr;gap:0 40px}
 .vals ol{margin:0;padding:0 0 0 28px}.vals li{margin-bottom:26px;padding-left:6px}
 @media (max-width:1007px){.vals{grid-template-columns:1fr}.vals ol+ol{margin-top:0}}
+@media (max-width:640px){.grid{grid-template-columns:1fr;gap:28px}.card__img{border-radius:16px}}
