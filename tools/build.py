@@ -172,22 +172,33 @@ def case(k):
 
 # ---------- Experience ----------
 EXP = [
-    ('tmu-bn', 'TMU Business Network', 'Co-Founder & Director of Marketing', 'Newhall, CA', 'Mar 2026 – Now', 'Grew to 650+ members in 3 months; matched students with Big Four professionals.'),
-    ('jcinme', 'JC in Me', 'Social Media Manager', 'Santa Clarita, CA', 'Sep 2025 – May 2026', '3.5% interaction rate on 18,500+ views in the first 30 days; AI-assisted content workflow.'),
-    ('fitness-19', 'Fitness 19', 'Lead Service Specialist', 'Dublin, CA', 'Sep 2026 – Now', 'Convert 60% of facility tours into memberships (industry average ~38%) with needs-based tours; sell 15 memberships a month against an 8-member target; sell personal training on commission.'),
-    ('coaching', 'Online fitness coaching', 'High-Ticket Sales Closer', 'Remote', 'Aug – Oct 2026', 'Closed high-ticket coaching offers on commission from a 14K-follower audience.'),
-    ('tmu', 'The Master’s University', 'Student Recruitment Associate', 'Newhall, CA', 'Jan – May 2026', 'Cold-called 1,000+ prospective students across CA, AZ and TX.'),
-    ('freelance', 'Dos Bros · HK Animal Hospital', 'Freelance Web Designer', 'California', '2025 – 2026', 'Designed and launched sites for <a class="u" href="https://dosbrosdetailing.club" target="_blank" rel="noopener">a detailing business</a> and <a class="u" href="https://hkanimalhospital.vet" target="_blank" rel="noopener">a veterinary hospital</a>.'),
+    ('Marketing and social', [
+        ('tmu-bn', 'TMU Business Network', 'Co-Founder & Director of Marketing', 'Newhall, CA', 'Mar 2026 – Now', 'Grew to 650+ members in 3 months; matched students with Big Four professionals.'),
+        ('modellab', 'ModelLab', 'Founder', 'Online', 'Nov 2026 – Now', 'Built an interactive investing education website to simplify investing strategies for beginners. <a class="u" href="../work/modellab/">Read the case</a>.'),
+        ('jcinme', 'JC in Me', 'Social Media Manager', 'Santa Clarita, CA', 'Sep 2025 – May 2026', '3.5% interaction rate on 18,500+ views in the first 30 days; AI-assisted content workflow.'),
+    ]),
+    ('Sales', [
+        ('fitness-19', 'Fitness 19', 'Lead Service Specialist', 'Dublin, CA', 'Sep 2026 – Now', 'Convert 60% of facility tours into memberships (industry average ~38%) with needs-based tours; sell 15 memberships a month against an 8-member target; sell personal training on commission.'),
+        ('coaching', 'Online fitness coaching', 'High-Ticket Sales Closer', 'Remote', 'Aug – Oct 2026', 'Closed high-ticket coaching offers on commission from a 14K-follower audience.'),
+    ]),
+    ('Other', [
+        ('tmu', 'The Master’s University', 'Student Recruitment Associate', 'Newhall, CA', 'Jan – May 2026', 'Cold-called 1,000+ prospective students across CA, AZ and TX.'),
+        ('freelance', 'Dos Bros · HK Animal Hospital', 'Freelance Web Designer', 'California', '2025 – 2026', 'Designed and launched sites for <a class="u" href="https://dosbrosdetailing.club" target="_blank" rel="noopener">a detailing business</a> and <a class="u" href="https://hkanimalhospital.vet" target="_blank" rel="noopener">a veterinary hospital</a>.'),
+    ]),
 ]
+FLAT = [x for _, g in EXP for x in g]
 
 def experience():
-    side = "".join(f'<li><a href="#{i}">{e(c)}</a></li>' for i, c, *_ in EXP)
-    rows = "".join(f'<tr><td><a href="#{i}">{e(r)}</a><span class="muted"> · {e(c)}</span></td><td>{e(d)}</td></tr>' for i, c, r, w, d, _ in EXP)
-    det = "".join(f'<section class="exp" id="{i}"><h2>{e(r)} · {e(c)}</h2><p class="muted">{e(w)} · {e(d)}</p><p>{b}</p></section>' for i, c, r, w, d, b in EXP)
+    side = "".join(f'<li><a href="#{i}">{e(c)}</a></li>' for i, c, *_ in FLAT)
+    rows = ""
+    for g, items in EXP:
+        rows += f'<tr class="tbl__group"><td colspan="2">{e(g)}</td></tr>'
+        rows += "".join(f'<tr><td><a href="#{i}">{e(r)}</a><span class="muted"> · {e(c)}</span></td><td>{e(d)}</td></tr>' for i, c, r, w, d, _ in items)
+    det = "".join(f'<section class="exp" id="{i}"><h2>{e(r)} · {e(c)}</h2><p class="muted">{e(w)} · {e(d)}</p><p>{b}</p></section>' for i, c, r, w, d, b in FLAT)
     return f"""<div class="care">
   <aside class="care__side"><h1>Experience</h1><ul>{side}</ul></aside>
   <div class="care__main">
-    <p>Marketing and sales, from the first touch to the signed membership. Six roles since 2025.</p>
+    <p>Marketing and sales, from the first touch to the signed membership. Seven roles since 2025.</p>
     <table class="tbl"><thead><tr><th>Role</th><th>Dates</th></tr></thead><tbody>{rows}</tbody></table>
     <hr class="care__rule">
     {det}
@@ -196,10 +207,12 @@ def experience():
 
 # ---------- Beyond ----------
 LIFE = [
-    ('life-cafe-hopping.webp', 'Matcha from Wabicha café', 'Café hopping', 'Bay Area, California'),
-    ('life-uji-bridge.webp', 'Daniel on a bridge in Kyoto', 'Bridge walk', 'Uji, Japan'),
-    ('life-han-river.webp', 'Daniel and a friend by the Han River at night', 'Han River', 'Seoul, South Korea'),
+    ('life-olives.webp', 'Walking in Jerusalem at sunset', 'Mount of Olives', 'Jerusalem, Israel'),
+    ('life-yummy-matcha.webp', 'Daniel and friends with matcha and soft serve', 'Soft serve', 'Bay Area, California'),
+    ('life-cafe-hopping.webp', 'Matcha from Wabicha café', 'Yummy matcha', 'Bay Area, California'),
+    ('life-uji-bridge.webp', 'Daniel on a bridge in Kyoto', 'Uji bridge', 'Uji, Japan'),
     ('life-nara-deer.webp', 'Feeding deer in Nara', 'Feeding the deer', 'Nara, Japan'),
+    ('life-han-river.webp', 'Daniel and a friend by the Han River at night', 'Han River', 'Seoul, South Korea'),
 ]
 
 def beyond():

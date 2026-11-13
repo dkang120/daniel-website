@@ -153,6 +153,7 @@ p{margin:0}
 .care__rule{border:0;border-top:1px solid #d6d6d6;margin:30px 0}
 .tbl th{font-style:italic;font-weight:400;text-align:left;padding:0 0 6px}
 .tbl td{padding:6px 16px 6px 0;vertical-align:top}
+.tbl__group td{font-style:italic;padding-top:18px;opacity:.6}
 .tbl td:last-child,.tbl th:last-child{width:34%}
 .u{text-decoration:underline;text-underline-offset:2px}
 .exp{margin-bottom:28px;scroll-margin-top:80px}
