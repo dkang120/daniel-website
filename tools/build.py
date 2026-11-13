@@ -18,8 +18,8 @@ HERO = [
     ("Nara, Japan", "Nara, Japan", "50% 35%", "50% 50%", "dark"),
     ("Byodo-in, Uji, Japan", "Uji, Japan", "50% 55%", "50% 60%", "light"),
     ("Fitting room mirror selfie", "Seoul, South Korea", "50% 60%", "50% 50%", "light"),
-    ("Jerusalem at sunset", "Jerusalem, Israel", "50% 25%", "45% 50%", "light"),
-    ("Café", "San Francisco, USA", "50% 55%", "20% 50%", "dark"),
+    ("Jerusalem at sunset", "Jerusalem, Israel", "50% 25%", "10% 50%", "light"),
+    ("Café", "San Francisco, USA", "50% 55%", "85% 50%", "dark"),
     ("Street reflected in a convex mirror", "Seoul, South Korea", "50% 55%", "50% 50%", "dark"),
 ]
 
@@ -38,7 +38,7 @@ def hero_html():
         alt, cap, pos, posm, tone = HERO[n - 1]
         eager = 'loading="eager"' + (' fetchpriority="high"' if pos_i == 1 else ' fetchpriority="low"')
         slides.append(
-            f'<div class="hero__slide" data-tone="{tone}"{"" if pos_i == 1 else " aria-hidden=\"true\""}>'
+            f'<div class="hero__slide{f" hero__slide--fit hero__slide--fit{n}" if n in (4, 5) else ""}" data-tone="{tone}"{"" if pos_i == 1 else " aria-hidden=\"true\""}>'
             f'<img class="hero__img" src="images/hero-{i}-2000.webp" '
             f'srcset="images/hero-{i}-900.webp 900w, images/hero-{i}-2000.webp 2000w" sizes="100vw" '
             f'alt="{alt}" style="--pd:{pos};--pm:{posm}" draggable="false" {eager}>'

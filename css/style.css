@@ -212,3 +212,13 @@ p{margin:0}
 @font-face{font-family:"Caveat";font-weight:600;font-style:normal;font-display:swap;src:url("../fonts/caveat-latin-600-normal.woff2") format("woff2")}
 .hero__note{position:absolute;left:77.6%;top:40%;font-family:"Caveat",cursive;font-weight:600;font-size:clamp(22px,2.1vw,30px);color:#fff;transform:rotate(-4deg);transform-origin:left center;white-space:nowrap;pointer-events:none;text-shadow:0 0 6px rgba(0,0,0,.25)}
 @media (max-width:1007px){.hero__note{left:60%;top:43%;font-size:24px}}
+
+@media (max-width:1007px){
+  .hero__slide--fit{overflow:hidden;background:#2a1d14}
+  .hero__slide--fit::before{content:"";position:absolute;inset:-60px;background:center/cover no-repeat;filter:blur(30px) saturate(1.15) brightness(.9)}
+  .hero__slide--fit .hero__img{position:relative;object-fit:contain;object-position:50% 50%}
+}
+@media (max-width:1007px){
+  .hero__slide--fit4::before{background-image:url(../images/hero-4-900.webp)}
+  .hero__slide--fit5::before{background-image:url(../images/hero-5-900.webp)}
+}
