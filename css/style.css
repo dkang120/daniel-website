@@ -252,3 +252,6 @@ p{margin:0}
 .cs__card.no-tr{transition:none!important}
 .cs__sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 @media (prefers-reduced-motion:reduce){.cs__card{transition:none}}
+
+.cs--p{aspect-ratio:4/5.2}
+.cs--p .cs__card{left:10%;width:80%;aspect-ratio:4/5;margin-top:-50%;box-shadow:0 0 0 1px rgba(0,0,0,.09),0 10px 28px rgba(0,0,0,.10)}

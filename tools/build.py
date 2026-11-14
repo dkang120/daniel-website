@@ -181,7 +181,18 @@ def work():
                          f'<div class="card__meta"><span>{e(c["title"])}<span class="muted"> · {e(cat)}</span></span><span class="muted">2026</span></div></a></li>')
     return TOOLBAR("../", "Work") + f'<ul class="grid">{cards}</ul>'
 
-CASE_PHOTOS = {"tmu": [
+CASE_PHOTOS = {
+    "close": [
+        ("case-close-1.webp", 'Cover slide: How I run a sales call', 960, 1200),
+        ("case-close-2.webp", 'The shape of every call: open 10%, discover 80%, close 10%', 960, 1200),
+        ("case-close-3.webp", 'Discover: four questions in order', 960, 1200),
+        ("case-close-4.webp", 'Present it in their words: tie the offer to each pain they named', 960, 1200),
+        ("case-close-5.webp", 'Close: micro-commitment, two options, say the price, then stop talking', 960, 1200),
+        ("case-close-6.webp", 'When they push back: acknowledge, ask, reframe, reclose', 960, 1200),
+        ("case-close-7.webp", "When it's a not yet: find what's behind the smoke screen", 960, 1200),
+        ("case-close-8.webp", 'After the call: milestone check-in and accountability', 960, 1200),
+    ],
+    "tmu": [
     ("case-tmu-1.webp", "Students and professionals mingling at a networking mixer", 1234, 925),
     ("case-tmu-2.webp", "Students watching a presentation in a classroom", 1234, 925),
     ("case-tmu-3.webp", "Students visiting a firm's conference room for a Q&A", 1234, 925),
@@ -194,11 +205,12 @@ def gallery(k, c):
         return (f'<img src="../../images/{c.get('pageImage', c['image'])}" alt="{e(c['imageAlt'])}" width="{c.get('pageDims',[1234,1851])[0]}" '
                 f'height="{c.get('pageDims',[1234,1851])[1]}" loading="eager">')
     n = len(photos)
+    pcls = " cs--p" if k == "close" else ""
     cards = "".join(
         f'<div class="cs__card" data-p="{i}" role="group" aria-roledescription="slide" aria-label="{i + 1} of {n}">'
         f'<img src="../../images/{f}" alt="{e(a)}" width="{w}" height="{h}" loading="{"eager" if i < 2 else "lazy"}" draggable="false"></div>'
         for i, (f, a, w, h) in enumerate(photos))
-    return (f'<div class="cs" tabindex="0" aria-roledescription="carousel" aria-label="{e(c["title"])} photos">{cards}'
+    return (f'<div class="cs{pcls}" tabindex="0" aria-roledescription="carousel" aria-label="{e(c["title"])} photos">{cards}'
             f'<span class="cs__sr" aria-live="polite">Photo 1 of {n}</span></div>')
 
 def case(k):

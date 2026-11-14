@@ -44,6 +44,12 @@
 - `css/style.css`: `.card__img` sizing and cover fit; Work grid is 2-up (single column under 640px, 24px gap, max width 1130px); card meta gap 7px; drawer info styles.
 - All pages regenerated.
 
-### Known caveats
+### The Close case page: sales carousel
+- Replaced the AI hero image with an 8-slide hand-drawn carousel ("How I run a sales call"), shown as the same click/swipe photo stack as the TMU case page, in a portrait 4:5 variant.
+- Slides follow Shelby Sapp's public call framework in my own words: cover, 10/80/10 shape, four Discover questions, presenting in their words, the close, objections, "not yet", after the call.
+- New portrait gallery style (`.cs--p`), slide images `case-close-1..8.webp`, updated image alt text.
+- `tools/cases.json` was re-saved with 2-space indent, so its diff is noisy.
+
+## Known caveats
 - Deloitte, KPMG and EY marks are typeset approximations, not official artwork.
 - Elegant Writing and Fractional Controller marks are placeholder wordmarks.
