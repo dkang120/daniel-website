@@ -1,300 +1,297 @@
 {
- "tmu": {
-  "slug": "tmu-business-network",
-  "no": "No. 01 — Community + Growth",
-  "title": "TMU Business Network",
-  "lede": "I co-founded The Master's University's official networking society and grew it from zero to 650+ members — more than half the student body — in three months.",
-  "meta": [
-   [
-    "Role",
-    "Co-Founder & Director of Marketing"
-   ],
-   [
-    "Timeline",
-    "Mar 2026 – present"
-   ],
-   [
-    "Where",
-    "The Master's University · Santa Clarita, CA"
-   ],
-   [
-    "Channels",
-    "Campus fairs · bulletins · Instagram · LinkedIn"
-   ]
-  ],
-  "challenge": "Connect a campus of about 1,200 students with working professionals in respected fields — starting with zero members and no events.",
-  "approach": [
-   [
-    "Give people a reason to join",
-    "A clear offer: time with a working professional through coffee chats, Zoom meetings and one-on-one matching."
-   ],
-   [
-    "Meet students where they are",
-    "Campus-fair booths, weekly event bulletins, online invites and social outreach, run in person and across channels."
-   ],
-   [
-    "Keep a steady cadence",
-    "One to two events a week, averaging about 20 attendees each."
-   ],
-   [
-    "Build the industry pipeline",
-    "Matched 10+ students with professionals from Big Four firms including Deloitte, EY and KPMG."
-   ]
-  ],
-  "results": [
-   [
-    "650+",
-    "members in 3 months"
-   ],
-   [
-    "54%",
-    "of the student body"
-   ],
-   [
-    "10+",
-    "Big Four matches"
-   ],
-   [
-    "1,300+",
-    "LinkedIn engagements"
-   ]
-  ],
-  "takeaway": "Growing a community runs like a sales funnel: reach people where they already are, make one clear offer, and repeat it on a schedule they can count on.",
-  "next": "fieldnote",
-  "image": "case-tmu.webp",
-  "imageAlt": "A student and a professional shaking hands beside a leather portfolio",
-  "summary": "Co-founded the university’s official networking society and grew it with weekly events, campus-fair booths, bulletins and social outreach.",
-  "outcomes": [
-   "650+ members (54% of campus) in 3 months",
-   "10+ students matched with Deloitte, EY and KPMG pros",
-   "1,300+ LinkedIn engagements"
-  ],
-  "takeawayTitle": "Why it matters"
- },
- "fieldnote": {
-  "slug": "fieldnote",
-  "no": "No. 02 — Brand + Design",
-  "title": "Fieldnote",
-  "lede": "A fresh-filled cologne brand for college students. I took it from a name to a business plan to a live storefront at fieldnotela.com.",
-  "meta": [
-   [
-    "Role",
-    "Founder — brand, strategy, design"
-   ],
-   [
-    "Timeline",
-    "Oct 2026 – present"
-   ],
-   [
-    "Status",
-    "Pre-launch · validating demand"
-   ],
-   [
-    "Tools",
-    "Figma · live site at fieldnotela.com"
-   ]
-  ],
-  "challenge": "Fragrance is usually sold as a finished bottle off a shelf. Fieldnote's idea: fill each bottle the day it's ordered and label it with the buyer's name, city and fill date — at a price that works for students.",
-  "approach": [
-   [
-    "Name and position it",
-    "Chose the name Fieldnote and built the brand around one promise: made the day you order it."
-   ],
-   [
-    "Plan the business",
-    "A full plan covering market sizing, competitive analysis, marketing, operations and a three-year financial model."
-   ],
-   [
-    "Design the storefront in Figma",
-    "A warm editorial system — espresso, bone, linen and a clay accent — with product pages, a discovery set and a photo guide."
-   ],
-   [
-    "Ship it, then test demand",
-    "A live site with six house scents and a label builder. Next: 2ml sample packs to measure real demand before making house scents."
-   ]
-  ],
-  "results": [
-   [
-    "6",
-    "house scents defined"
-   ],
-   [
-    "1",
-    "live storefront"
-   ],
-   [
-    "3-yr",
-    "financial plan"
-   ],
-   [
-    "2ml",
-    "sample-pack demand test"
-   ]
-  ],
-  "takeaway": "Validate before you scale: the site and brand are real, but the next step is proving people want it — with sample packs, before any inventory.",
-  "next": "close",
-  "image": "case-fieldnote.webp",
-  "imageAlt": "A hand spraying a Fieldnote cologne bottle onto the collarbone",
-  "summary": "A fresh-filled cologne brand for college students, taken from name to business plan to a live storefront at fieldnotela.com.",
-  "outcomes": [
-   "Named, positioned and planned the brand end to end",
-   "Designed the full storefront system in Figma",
-   "Shipped a live site with a custom label builder"
-  ],
-  "takeawayTitle": "Why it matters",
-  "pageImage": "case-fieldnote-page.webp",
-  "pageDims": [
-   1200,
-   1500
-  ]
- },
- "close": {
-  "slug": "the-close",
-  "no": "No. 03 — Sales + Process",
-  "title": "The Close",
-  "lede": "How I sell. One framework, used across university recruitment, high-ticket coaching and gym memberships.",
-  "meta": [
-   [
-    "Roles",
-    "Recruitment associate · Sales closer · Lead service specialist"
-   ],
-   [
-    "Timeline",
-    "Jan 2026 – present"
-   ],
-   [
-    "Where",
-    "Santa Clarita · remote · Dublin, CA"
-   ],
-   [
-    "Tools",
-    "Phone · video calls · facility tours"
-   ]
-  ],
-  "challenge": "Three very different sales motions — cold calls to prospective students, high-ticket coaching calls, and walk-in gym tours — with the same job: turn interest into a decision.",
-  "approach": [
-   [
-    "I · Discovery",
-    "Open by surfacing the prospect's pain points and goals."
-   ],
-   [
-    "II · The offer",
-    "Present the offer against the needs they just described."
-   ],
-   [
-    "III · Benefit stack",
-    "Stack the benefits so the value is clear."
-   ],
-   [
-    "IV · Urgency",
-    "Use loss aversion and scarcity to move toward a decision."
-   ],
-   [
-    "V · Same-call decision",
-    "Ask for the commitment on the call."
-   ]
-  ],
-  "results": [
-   [
-    "60%",
-    "tour-to-member conversion at Fitness 19"
-   ],
-   [
-    "14K",
-    "audience I sold into"
-   ],
-   [
-    "1,000+",
-    "prospective students called"
-   ],
-   [
-    "3",
-    "states in the recruitment funnel"
-   ]
-  ],
-  "takeaway": "Cold-calling across California, Arizona and Texas using the 7 P’s; closing high-ticket coaching offers on commission; and converting leads and walk-ins at Fitness 19 while meeting or exceeding monthly targets.",
-  "next": "modellab",
-  "image": "case-close.webp",
-  "imageAlt": "Two people in a one-on-one consultation, a card slid across the table",
-  "summary": "How I sell: discovery first, then the offer against stated goals, then urgency. Used in gym memberships, high-ticket coaching and university recruitment.",
-  "outcomes": [
-   "60% tour-to-member conversion at Fitness 19",
-   "High-ticket offers closed from a 14K-follower audience",
-   "1,000+ prospects called across three states"
-  ],
-  "takeawayTitle": "Where I’ve run it"
- },
- "modellab": {
-  "slug": "modellab",
-  "no": "No. 04 — Founder Project",
-  "title": "ModelLab",
-  "lede": "Founded and built an interactive investing education website that simplifies investing strategies for beginners, showing each philosophy as an example portfolio they can explore and compare.",
-  "meta": [
-   [
-    "Role",
-    "Founder"
-   ],
-   [
-    "Timeline",
-    "Nov 2026 – present"
-   ],
-   [
-    "Where",
-    "Online · GitHub Pages"
-   ],
-   [
-    "Built with",
-    "Figma · Klaviyo · GitHub Pages"
-   ]
-  ],
-  "challenge": "Investing content mostly explains philosophies in the abstract. I wanted beginners to see each one as an actual portfolio they can open, browse and compare, in a product that looks like a startup, not a blog.",
-  "approach": [
-   [
-    "Concept and brand",
-    "Defined the purpose, what ModelLab offers and how it benefits beginners, and chose the name."
-   ],
-   [
-    "Rule-based portfolios",
-    "Every portfolio follows published rules or an industry-standard method, never hand-picked, so there is no bias."
-   ],
-   [
-    "Product and design",
-    "A Library, Compare and a dollar calculator, designed in Figma first around startup sites like Turbo, then recoded in HTML."
-   ],
-   [
-    "Launch and growth",
-    "Deployed on GitHub Pages with a free email signup (Klaviyo) that unlocks price data and Compare, plus a weekly Lab Drop email that adds one model at a time, starting with Dogs of the Dow."
-   ]
-  ],
-  "results": [],
-  "learnedTitle": "What I learned",
-  "learned": [
-   [
-    "Gate with an email, not a paywall",
-    "For a new product, an audience comes first, so I dropped the password and the idea of charging."
-   ],
-   [
-    "Take my own judgment out",
-    "Removing hand-picking from portfolio selection made the product more credible."
-   ],
-   [
-    "Pick a cadence I can keep",
-    "One new model a week is a content system I can sustain, and it gives the list a reason to open emails."
-   ],
-   [
-    "Design before code",
-    "Working out decisions in Figma first made them faster and cheaper to change."
-   ]
-  ],
-  "takeaway": "ModelLab is a small product exercise in positioning, a free email funnel and a weekly content cadence, the same skills I bring to any consumer or community brand. For education, not investment advice.",
-  "next": "tmu",
-  "image": "case-modellab.webp",
-  "imageAlt": "An open notebook with a pencil sketch of a chart, a pencil and index cards on a stone desk",
-  "summary": "Founded and built an interactive investing education site that simplifies investing strategies for beginners.",
-  "outcomes": [
-   "Library of rule-based example portfolios",
-   "Free email signup with weekly Lab Drop"
-  ],
-  "takeawayTitle": "Why it matters"
- }
+  "tmu": {
+    "slug": "tmu-business-network",
+    "no": "No. 01 — Community + Growth",
+    "title": "TMU Business Network",
+    "lede": "I co-founded The Master's University's official networking society and grew it from zero to 650+ members — more than half the student body — in three months.",
+    "meta": [
+      [
+        "Role",
+        "Co-Founder & Director of Marketing"
+      ],
+      [
+        "Timeline",
+        "Mar 2026 – present"
+      ],
+      [
+        "Where",
+        "The Master's University · Santa Clarita, CA"
+      ],
+      [
+        "Channels",
+        "Campus fairs · bulletins · Instagram · LinkedIn"
+      ]
+    ],
+    "challenge": "Connect a campus of about 1,200 students with working professionals in respected fields — starting with zero members and no events.",
+    "approach": [
+      [
+        "Give people a reason to join",
+        "A clear offer: time with a working professional through coffee chats, Zoom meetings and one-on-one matching."
+      ],
+      [
+        "Meet students where they are",
+        "Campus-fair booths, weekly event bulletins, online invites and social outreach, run in person and across channels."
+      ],
+      [
+        "Keep a steady cadence",
+        "One to two events a week, averaging about 20 attendees each."
+      ],
+      [
+        "Build the industry pipeline",
+        "Matched 10+ students with professionals from Big Four firms including Deloitte, EY and KPMG."
+      ]
+    ],
+    "results": [
+      [
+        "650+",
+        "members in 3 months"
+      ],
+      [
+        "54%",
+        "of the student body"
+      ],
+      [
+        "10+",
+        "Big Four matches"
+      ],
+      [
+        "1,300+",
+        "LinkedIn engagements"
+      ]
+    ],
+    "takeaway": "Growing a community runs like a sales funnel: reach people where they already are, make one clear offer, and repeat it on a schedule they can count on.",
+    "next": "fieldnote",
+    "image": "case-tmu.webp",
+    "imageAlt": "A student and a professional shaking hands beside a leather portfolio",
+    "summary": "Co-founded the university’s official networking society and grew it with weekly events, campus-fair booths, bulletins and social outreach.",
+    "outcomes": [
+      "650+ members (54% of campus) in 3 months",
+      "10+ students matched with Deloitte, EY and KPMG pros",
+      "1,300+ LinkedIn engagements"
+    ],
+    "takeawayTitle": "Why it matters"
+  },
+  "fieldnote": {
+    "slug": "fieldnote",
+    "no": "No. 02 — Brand + Design",
+    "title": "Fieldnote",
+    "lede": "A fresh-filled cologne brand for college students. I took it from a name to a business plan to a live storefront at fieldnotela.com.",
+    "meta": [
+      [
+        "Role",
+        "Founder — brand, strategy, design"
+      ],
+      [
+        "Timeline",
+        "Oct 2026 – present"
+      ],
+      [
+        "Status",
+        "Pre-launch · validating demand"
+      ],
+      [
+        "Tools",
+        "Figma · live site at fieldnotela.com"
+      ]
+    ],
+    "challenge": "Fragrance is usually sold as a finished bottle off a shelf. Fieldnote's idea: fill each bottle the day it's ordered and label it with the buyer's name, city and fill date — at a price that works for students.",
+    "approach": [
+      [
+        "Name and position it",
+        "Chose the name Fieldnote and built the brand around one promise: made the day you order it."
+      ],
+      [
+        "Plan the business",
+        "A full plan covering market sizing, competitive analysis, marketing, operations and a three-year financial model."
+      ],
+      [
+        "Design the storefront in Figma",
+        "A warm editorial system — espresso, bone, linen and a clay accent — with product pages, a discovery set and a photo guide."
+      ],
+      [
+        "Ship it, then test demand",
+        "A live site with six house scents and a label builder. Next: 2ml sample packs to measure real demand before making house scents."
+      ]
+    ],
+    "results": [
+      [
+        "6",
+        "house scents defined"
+      ],
+      [
+        "1",
+        "live storefront"
+      ],
+      [
+        "3-yr",
+        "financial plan"
+      ],
+      [
+        "2ml",
+        "sample-pack demand test"
+      ]
+    ],
+    "takeaway": "Validate before you scale: the site and brand are real, but the next step is proving people want it — with sample packs, before any inventory.",
+    "next": "close",
+    "image": "case-fieldnote.webp",
+    "imageAlt": "A hand spraying a Fieldnote cologne bottle onto the collarbone",
+    "summary": "A fresh-filled cologne brand for college students, taken from name to business plan to a live storefront at fieldnotela.com.",
+    "outcomes": [
+      "Named, positioned and planned the brand end to end",
+      "Designed the full storefront system in Figma",
+      "Shipped a live site with a custom label builder"
+    ],
+    "takeawayTitle": "Why it matters",
+    "pageImage": "case-fieldnote-page.webp",
+    "pageDims": [
+      1200,
+      1500
+    ]
+  },
+  "close": {
+    "slug": "the-close",
+    "no": "No. 03 — Sales + Process",
+    "title": "The Close",
+    "lede": "How I sell: let the prospect do the talking, find the gap between where they are and where they want to be, then make the decision easy. One framework, used across university recruitment, high-ticket coaching and gym memberships.",
+    "meta": [
+      [
+        "Roles",
+        "Recruitment associate · Sales closer · Lead service specialist"
+      ],
+      [
+        "Timeline",
+        "Jan 2026 – present"
+      ],
+      [
+        "Where",
+        "Santa Clarita · remote · Dublin, CA"
+      ],
+      [
+        "Tools",
+        "Phone · video calls · facility tours"
+      ]
+    ],
+    "challenge": "Three very different sales motions (cold calls to prospective students, high-ticket coaching calls and walk-in gym tours) with the same job: turn interest into a decision. The framework is built on one idea: people hate being sold to but love to buy, so I ask more than I pitch.",
+    "approach": [
+      [
+        "I · Open (about 10% of the call)",
+        "I say who I am, why I’m calling and why now, and get to the point. I skip fake rapport because they know why I’m there."
+      ],
+      [
+        "II · Discover (about 80%)",
+        "The prospect talks about 80% of the time. I ask where they are now, why it frustrates them, what success looks like and what happens if nothing changes, and I keep their own words to use later."
+      ],
+      [
+        "III · Close (about 10%)",
+        "I match the offer only to the pains they named and get a small yes before the price. I state the price as an investment, then stay quiet. If there’s pushback, I acknowledge it, ask what’s behind it, reframe it and reclose."
+      ],
+      [
+        "IV · Follow up",
+        "After a yes, I stay in touch and check on their first milestone. After a “not yet,” I send a recap in their own words and follow up on the date we agreed."
+      ]
+    ],
+    "results": [
+      [
+        "60%",
+        "tour-to-member conversion at Fitness 19"
+      ],
+      [
+        "14K",
+        "audience I sold into"
+      ],
+      [
+        "1,000+",
+        "prospective students called"
+      ],
+      [
+        "3",
+        "states in the recruitment funnel"
+      ]
+    ],
+    "takeaway": "Cold-calling across California, Arizona and Texas; closing high-ticket coaching offers on commission; and converting leads and walk-ins at Fitness 19 while meeting or exceeding monthly targets.",
+    "next": "modellab",
+    "image": "case-close.webp",
+    "imageAlt": "Two people in a one-on-one consultation, a card slid across the table",
+    "summary": "How I sell: discovery first, then an offer built from the prospect’s own words, then a calm close and follow-up. Used in gym memberships, high-ticket coaching and university recruitment.",
+    "outcomes": [
+      "60% tour-to-member conversion at Fitness 19",
+      "High-ticket offers closed from a 14K-follower audience",
+      "1,000+ prospects called across three states"
+    ],
+    "takeawayTitle": "Where I’ve run it",
+    "approachTitle": "How I run a call"
+  },
+  "modellab": {
+    "slug": "modellab",
+    "no": "No. 04 — Founder Project",
+    "title": "ModelLab",
+    "lede": "Founded and built an interactive investing education website that simplifies investing strategies for beginners, showing each philosophy as an example portfolio they can explore and compare.",
+    "meta": [
+      [
+        "Role",
+        "Founder"
+      ],
+      [
+        "Timeline",
+        "Nov 2026 – present"
+      ],
+      [
+        "Where",
+        "Online · GitHub Pages"
+      ],
+      [
+        "Built with",
+        "Figma · Klaviyo · GitHub Pages"
+      ]
+    ],
+    "challenge": "Investing content mostly explains philosophies in the abstract. I wanted beginners to see each one as an actual portfolio they can open, browse and compare, in a product that looks like a startup, not a blog.",
+    "approach": [
+      [
+        "Concept and brand",
+        "Defined the purpose, what ModelLab offers and how it benefits beginners, and chose the name."
+      ],
+      [
+        "Rule-based portfolios",
+        "Every portfolio follows published rules or an industry-standard method, never hand-picked, so there is no bias."
+      ],
+      [
+        "Product and design",
+        "A Library, Compare and a dollar calculator, designed in Figma first around startup sites like Turbo, then recoded in HTML."
+      ],
+      [
+        "Launch and growth",
+        "Deployed on GitHub Pages with a free email signup (Klaviyo) that unlocks price data and Compare, plus a weekly Lab Drop email that adds one model at a time, starting with Dogs of the Dow."
+      ]
+    ],
+    "results": [],
+    "learnedTitle": "What I learned",
+    "learned": [
+      [
+        "Gate with an email, not a paywall",
+        "For a new product, an audience comes first, so I dropped the password and the idea of charging."
+      ],
+      [
+        "Take my own judgment out",
+        "Removing hand-picking from portfolio selection made the product more credible."
+      ],
+      [
+        "Pick a cadence I can keep",
+        "One new model a week is a content system I can sustain, and it gives the list a reason to open emails."
+      ],
+      [
+        "Design before code",
+        "Working out decisions in Figma first made them faster and cheaper to change."
+      ]
+    ],
+    "takeaway": "ModelLab is a small product exercise in positioning, a free email funnel and a weekly content cadence, the same skills I bring to any consumer or community brand. For education, not investment advice.",
+    "next": "tmu",
+    "image": "case-modellab.webp",
+    "imageAlt": "An open notebook with a pencil sketch of a chart, a pencil and index cards on a stone desk",
+    "summary": "Founded and built an interactive investing education site that simplifies investing strategies for beginners.",
+    "outcomes": [
+      "Library of rule-based example portfolios",
+      "Free email signup with weekly Lab Drop"
+    ],
+    "takeawayTitle": "Why it matters"
+  }
 }

@@ -18,6 +18,15 @@
 - New photo-stack gallery: tilted cards, click or swipe sends the top photo to the back; touch drag follows the finger; arrow keys work; left arrow brings the last photo back.
 - Gallery code: `gallery()` in `tools/build.py`, `.cs` styles in `css/style.css`, stack logic in `js/main.js`.
 
+### The Close case page
+- Content rewritten to the new sales framework: new lede, challenge and summary line.
+- Approach section renamed "How I run a call" with four phases: Open (~10%), Discover (~80%), Close (~10%), Follow up.
+- Removed the "7 P's" mention from the takeaway.
+
+### Case study "Next" buttons
+- Now follow the Work order: TMU, ModelLab, The Close, Fieldnote, back to TMU.
+- ModelLab and Fieldnote open externally (live site, PDF) in a new tab.
+
 ### TMU thumbnail
 - Row spacing tightened (96px to 78px).
 

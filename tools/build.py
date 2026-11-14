@@ -203,13 +203,17 @@ def gallery(k, c):
 
 def case(k):
     c = CASES[k]
-    nxt = CASES[c["next"]]
+    nk = WORK_ORDER[(WORK_ORDER.index(k) + 1) % len(WORK_ORDER)]
+    nxt = CASES[nk]
+    nhref = EXTERNAL.get(nk, "../" + nxt["slug"] + "/")
+    if nhref.startswith("../files/"): nhref = "../" + nhref
+    next_ext = ' target="_blank" rel="noopener"' if nk in EXTERNAL else ""
     meta = "".join(f'<div><dt>{e(a)}</dt><dd>{e(b)}</dd></div>' for a, b in c["meta"])
     steps = "".join(f'<li><span class="acc__h">{e(h)}</span><span class="acc__b">{e(b)}</span></li>' for h, b in c["approach"])
     stats = "".join(f'<li><span class="stat__n">{e(n)}</span><span class="stat__l">{e(l)}</span></li>' for n, l in c["results"])
     learned = "".join(f'<li><span class="acc__h">{e(h)}</span><span class="acc__b">{e(b)}</span></li>' for h, b in c.get("learned", []))
     acc = (f'<details class="acc" open><summary>The challenge<span class="acc__i"></span></summary><p>{e(c["challenge"])}</p></details>'
-           f'<details class="acc"><summary>Approach<span class="acc__i"></span></summary><ol class="steps">{steps}</ol></details>'
+           f'<details class="acc"><summary>{e(c.get('approachTitle','Approach'))}<span class="acc__i"></span></summary><ol class="steps">{steps}</ol></details>'
            + (f'<details class="acc"><summary>{e(c["learnedTitle"])}<span class="acc__i"></span></summary><ol class="steps">{learned}</ol></details>' if c.get("learned") else f'<details class="acc"><summary>Results<span class="acc__i"></span></summary><ul class="stats">{stats}</ul></details>') +
            f'<details class="acc"><summary>{e(c.get("takeawayTitle","Takeaway"))}<span class="acc__i"></span></summary><p>{e(c["takeaway"])}</p></details>')
     return f"""<section class="pdp">
@@ -221,7 +225,7 @@ def case(k):
     <p class="pdp__lede">{e(c['lede'])}</p>
     <dl class="pdp__meta">{meta}</dl>
     <div class="accs">{acc}</div>
-    <a class="btn" href="../{nxt['slug']}/">Next: {e(nxt['title'])}</a>
+    <a class="btn" href="{nhref}"{next_ext}>Next: {e(nxt['title'])}</a>
   </div>
 </section>"""
 
