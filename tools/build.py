@@ -181,6 +181,26 @@ def work():
                          f'<div class="card__meta"><span>{e(c["title"])}<span class="muted"> · {e(cat)}</span></span><span class="muted">2026</span></div></a></li>')
     return TOOLBAR("../", "Work") + f'<ul class="grid">{cards}</ul>'
 
+CASE_PHOTOS = {"tmu": [
+    ("case-tmu-1.webp", "Students and professionals mingling at a networking mixer", 1234, 925),
+    ("case-tmu-2.webp", "Students watching a presentation in a classroom", 1234, 925),
+    ("case-tmu-3.webp", "Students visiting a firm's conference room for a Q&A", 1234, 925),
+    ("case-tmu-4.webp", "Students in the university library on a video call with a speaker", 1234, 823),
+]}
+
+def gallery(k, c):
+    photos = CASE_PHOTOS.get(k)
+    if not photos:
+        return (f'<img src="../../images/{c.get('pageImage', c['image'])}" alt="{e(c['imageAlt'])}" width="{c.get('pageDims',[1234,1851])[0]}" '
+                f'height="{c.get('pageDims',[1234,1851])[1]}" loading="eager">')
+    n = len(photos)
+    cards = "".join(
+        f'<div class="cs__card" data-p="{i}" role="group" aria-roledescription="slide" aria-label="{i + 1} of {n}">'
+        f'<img src="../../images/{f}" alt="{e(a)}" width="{w}" height="{h}" loading="{"eager" if i < 2 else "lazy"}" draggable="false"></div>'
+        for i, (f, a, w, h) in enumerate(photos))
+    return (f'<div class="cs" tabindex="0" aria-roledescription="carousel" aria-label="{e(c["title"])} photos">{cards}'
+            f'<span class="cs__sr" aria-live="polite">Photo 1 of {n}</span></div>')
+
 def case(k):
     c = CASES[k]
     nxt = CASES[c["next"]]
@@ -193,7 +213,7 @@ def case(k):
            + (f'<details class="acc"><summary>{e(c["learnedTitle"])}<span class="acc__i"></span></summary><ol class="steps">{learned}</ol></details>' if c.get("learned") else f'<details class="acc"><summary>Results<span class="acc__i"></span></summary><ul class="stats">{stats}</ul></details>') +
            f'<details class="acc"><summary>{e(c.get("takeawayTitle","Takeaway"))}<span class="acc__i"></span></summary><p>{e(c["takeaway"])}</p></details>')
     return f"""<section class="pdp">
-  <div class="pdp__gallery"><img src="../../images/{c.get('pageImage', c['image'])}" alt="{e(c['imageAlt'])}" width="{c.get('pageDims',[1234,1851])[0]}" height="{c.get('pageDims',[1234,1851])[1]}" loading="eager"></div>
+  <div class="pdp__gallery">{gallery(k, c)}</div>
   <div class="pdp__info">
     <nav class="pdp__crumbs" aria-label="Breadcrumb"><a href="../">Work</a><span class="dot">•</span><span>{e(c['title'])}</span></nav>
     <h1 class="pdp__title">{e(c['title'])}</h1>

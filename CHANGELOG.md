@@ -13,6 +13,14 @@
 - Work order: TMU, ModelLab, The Close, Fieldnote.
 - Added alt text for every thumbnail.
 
+### TMU Business Network case page
+- Replaced the AI-generated image with four real event photos (`images/case-tmu-1..4.webp`).
+- New photo-stack gallery: tilted cards, click or swipe sends the top photo to the back; touch drag follows the finger; arrow keys work; left arrow brings the last photo back.
+- Gallery code: `gallery()` in `tools/build.py`, `.cs` styles in `css/style.css`, stack logic in `js/main.js`.
+
+### TMU thumbnail
+- Row spacing tightened (96px to 78px).
+
 ### Mobile menu
 - Added "Core Values" to the menu list (after the first four pages).
 - Added an info block under the list: Location (Bay Area, California) and Email (mailto link).

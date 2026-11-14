@@ -40,6 +40,75 @@
     });
   }
 
+
+  /* case-study photo stack: click / arrow keys / swipe sends the top photo away to the back */
+  (function () {
+    var cs = document.querySelector('.cs');
+    if (!cs) return;
+    var cards = [].slice.call(cs.querySelectorAll('.cs__card')), n = cards.length;
+    var live = cs.querySelector('.cs__sr'), top = 0, busy = false, drag = null, moved = false;
+    var red = window.matchMedia('(prefers-reduced-motion: reduce)');
+    function pos(i) { return (i - top + n) % n; }
+    function layout() {
+      cards.forEach(function (c, i) { c.dataset.p = pos(i); });
+      live.textContent = 'Photo ' + (top + 1) + ' of ' + n;
+    }
+    function reflow(el) { void el.offsetWidth; }
+    function next(dirSide) {                       /* top card leaves toward dirSide (-1 left, 1 right) and goes to the back */
+      if (busy || n < 2) return;
+      busy = true;
+      var out = cards[top], cls = dirSide > 0 ? 'is-out-r' : 'is-out-l';
+      var wait = red.matches ? 0 : 520;
+      out.classList.add(cls);
+      top = (top + 1) % n;
+      cards.forEach(function (c, i) { if (c !== out) c.dataset.p = pos(i); });
+      live.textContent = 'Photo ' + (top + 1) + ' of ' + n;
+      setTimeout(function () {
+        out.classList.add('no-tr'); out.dataset.p = n - 1; out.classList.remove(cls); out.style.transform = '';
+        reflow(out); out.classList.remove('no-tr'); busy = false;
+      }, wait);
+    }
+    function prev() {                              /* back card returns to the top from the left */
+      if (busy || n < 2) return;
+      busy = true;
+      var back = cards[(top - 1 + n) % n];
+      back.classList.add('no-tr', 'is-out-l'); back.dataset.p = 0; reflow(back);
+      back.classList.remove('no-tr');
+      top = (top - 1 + n) % n;
+      cards.forEach(function (c, i) { if (c !== back) c.dataset.p = pos(i); });
+      reflow(back); back.classList.remove('is-out-l');
+      live.textContent = 'Photo ' + (top + 1) + ' of ' + n;
+      setTimeout(function () { busy = false; }, red.matches ? 0 : 720);
+    }
+    cs.addEventListener('click', function () { if (moved) { moved = false; return; } next(-1); });
+    cs.addEventListener('keydown', function (e) {
+      if (e.key === 'ArrowRight') { e.preventDefault(); next(-1); } else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
+    });
+    cs.addEventListener('touchstart', function (e) {
+      if (busy) return;
+      drag = { x: e.touches[0].clientX, y: e.touches[0].clientY, on: false, dx: 0, el: cards[top] };
+    }, { passive: true });
+    cs.addEventListener('touchmove', function (e) {
+      if (!drag) return;
+      var dx = e.touches[0].clientX - drag.x, dy = e.touches[0].clientY - drag.y;
+      if (!drag.on) {
+        if (Math.abs(dx) < 8 || Math.abs(dx) < Math.abs(dy)) return;
+        drag.on = true; drag.el.classList.add('no-tr');
+      }
+      drag.dx = dx;
+      drag.el.style.transform = 'translateX(' + dx + 'px) rotate(' + (dx / 14) + 'deg)';
+    }, { passive: true });
+    cs.addEventListener('touchend', function () {
+      if (!drag) return;
+      var s = drag; drag = null;
+      if (!s.on) return;
+      moved = true; setTimeout(function () { moved = false; }, 400);
+      s.el.classList.remove('no-tr'); reflow(s.el);
+      if (Math.abs(s.dx) > cs.offsetWidth * 0.18) { s.el.style.transform = ''; next(s.dx > 0 ? 1 : -1); }
+      else { s.el.style.transform = ''; }
+    }, { passive: true });
+  })();
+
   /* hero gallery: one image at a time; click / arrow keys / swipe */
   var hero = document.querySelector('.hero');
   if (!hero) { document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setMenu(false); }); return; }

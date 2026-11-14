@@ -238,3 +238,17 @@ p{margin:0}
 .vals ol{margin:0;padding:0 0 0 28px}.vals li{margin-bottom:26px;padding-left:6px}
 @media (max-width:1007px){.vals{grid-template-columns:1fr}.vals ol+ol{margin-top:0}}
 @media (max-width:640px){.grid{grid-template-columns:1fr;gap:28px}.card__img{border-radius:16px}}
+
+/* Case study photo stack (click / swipe the top photo away) */
+.cs{position:relative;aspect-ratio:617/540;cursor:pointer;touch-action:pan-y;user-select:none;-webkit-tap-highlight-color:transparent;outline:none;overflow:hidden}
+.cs__card{position:absolute;left:12%;top:50%;width:76%;aspect-ratio:4/3;margin-top:-28.5%;transition:transform .7s cubic-bezier(.645,.045,.355,1);will-change:transform;backface-visibility:hidden}
+.cs__card img{display:block;width:100%;height:100%;object-fit:cover;pointer-events:none;background:var(--tile)}
+.cs__card[data-p="0"]{z-index:4;transform:none}
+.cs__card[data-p="1"]{z-index:3;transform:translate(-1.5%,1%) rotate(-4deg)}
+.cs__card[data-p="2"]{z-index:2;transform:translate(1.5%,0) rotate(4.5deg)}
+.cs__card[data-p="3"]{z-index:1;transform:translate(0,1.5%) rotate(-1.5deg)}
+.cs__card.is-out-l{transform:translate(-125%,2%) rotate(-12deg)!important}
+.cs__card.is-out-r{transform:translate(125%,2%) rotate(12deg)!important}
+.cs__card.no-tr{transition:none!important}
+.cs__sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+@media (prefers-reduced-motion:reduce){.cs__card{transition:none}}
