@@ -159,4 +159,28 @@
     if (Math.abs(dx) > 40 && Math.abs(dx) > Math.abs(dy)) { swiped = true; go(dx < 0 ? 1 : -1); }
   }, { passive: true });
   hero.addEventListener('click', function (e) { if (swiped) { e.stopImmediatePropagation(); swiped = false; } }, true);
+
+  /* one-time nudge: the photo slides over a little to reveal the next one, then settles back */
+  (function () {
+    var KEY = 'dk-hero-nudged', touched = false;
+    try { if (localStorage.getItem(KEY)) return; } catch (e) {}
+    if (reduce.matches || slides.length < 2 || !slides[0].animate) return;
+    ['click', 'keydown', 'touchstart'].forEach(function (t) {
+      (t === 'keydown' ? document : hero).addEventListener(t, function () { touched = true; }, { once: true, passive: true });
+    });
+    setTimeout(function () {
+      if (touched || busy || cur !== 0 || document.hidden) return;
+      try { localStorage.setItem(KEY, '1'); } catch (e) {}
+      var a = slides[0], n = slides[1];
+      busy = true;
+      a.classList.add('is-moving'); n.classList.add('is-moving');
+      var o = { duration: 1500, easing: 'ease-in-out', fill: 'both' };
+      a.animate([{ transform: 'translateX(0)' }, { transform: 'translateX(-9%)', offset: .45 }, { transform: 'translateX(0)' }], o);
+      var anim = n.animate([{ transform: 'translateX(100%)' }, { transform: 'translateX(91%)', offset: .45 }, { transform: 'translateX(100%)' }], o);
+      anim.onfinish = function () {
+        a.getAnimations().forEach(function (x) { x.cancel(); }); n.getAnimations().forEach(function (x) { x.cancel(); });
+        a.classList.remove('is-moving'); n.classList.remove('is-moving'); busy = false;
+      };
+    }, 2400);
+  })();
 })();
