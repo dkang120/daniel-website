@@ -53,7 +53,7 @@ def hero_html():
     )
 
 
-SITE_URL = "https://dkang120.github.io/daniel-website"
+SITE_URL = "https://hidanielkang.com"
 
 
 def page(slug, label, content=None, prefix=None, cls="is-inner", title=None, desc=None):
