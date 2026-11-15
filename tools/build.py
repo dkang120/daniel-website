@@ -97,7 +97,9 @@ def page(slug, label, content=None, prefix=None, cls="is-inner", title=None, des
 <meta property="og:image:alt" content="Daniel Kang in an Acne Studios jacket, taking a mirror selfie in a fitting room">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="{SITE_URL}/images/og.jpg?v=2">
-<link rel="icon" href="{prefix}images/favicon.svg">
+<link rel="icon" href="{prefix}images/favicon.svg?v=3" type="image/svg+xml">
+<link rel="icon" href="{prefix}images/favicon-64.png?v=3" type="image/png" sizes="64x64">
+<link rel="apple-touch-icon" href="{prefix}images/apple-touch-icon.png?v=3">
 <link rel="stylesheet" href="{prefix}css/style.css?v={ASSET_V}">
 </head>
 <body class="{body_cls}">
