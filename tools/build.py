@@ -53,6 +53,9 @@ def hero_html():
     )
 
 
+SITE_URL = "https://dkang120.github.io/daniel-website"
+
+
 def page(slug, label, content=None, prefix=None, cls="is-inner", title=None, desc=None):
     home = slug is None
     if prefix is None:
@@ -84,6 +87,16 @@ def page(slug, label, content=None, prefix=None, cls="is-inner", title=None, des
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>{title}</title>
 <meta name="description" content="{desc or "Daniel Kang — social media, paid social and sales."}">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="{NAME}">
+<meta property="og:title" content="{title}">
+<meta property="og:description" content="{desc or "Daniel Kang — social media, paid social and sales."}">
+<meta property="og:image" content="{SITE_URL}/images/og.jpg?v=2">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Daniel Kang in an Acne Studios jacket, taking a mirror selfie in a fitting room">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="{SITE_URL}/images/og.jpg?v=2">
 <link rel="icon" href="{prefix}images/favicon.svg">
 <link rel="stylesheet" href="{prefix}css/style.css?v={ASSET_V}">
 </head>
