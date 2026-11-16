@@ -53,3 +53,6 @@
 ## Known caveats
 - Deloitte, KPMG and EY marks are typeset approximations, not official artwork.
 - Elegant Writing and Fractional Controller marks are placeholder wordmarks.
+
+### ModelLab thumbnail
+- `images/thumb-modellab.webp` now shows the redesigned ModelLab logo (curve mark + lowercase wordmark), same 1106x772 canvas, background and text height (37px) as before. Other thumbnails untouched.
