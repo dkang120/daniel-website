@@ -59,3 +59,4 @@
 
 - 2026-11-16: Fieldnote brand concept deck: recentered slide 1 bottle photos; slides 3 and 4 bottles moved down with the added headroom filled in brand clay tones (slide 3 cap completed).
 - 2026-11-16: Fieldnote card thumbnail (`images/thumb-fieldnote.webp`) regenerated from the updated deck slides, same 2×2 layout.
+- 2026-11-16: Résumé PDF replaced with the new version (`assets/Daniel-Kang-Resume.pdf`, link cache-buster ?v=2).
