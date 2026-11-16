@@ -182,7 +182,7 @@ def values():
 # ---------- Work ----------
 WORK_ORDER = ["tmu", "modellab", "close", "fieldnote"]
 WORK_CAT = {"close": "Sales", "fieldnote": "Brand Concept"}
-EXTERNAL = {"modellab": "https://dkang120.github.io/modellab/", "fieldnote": "../files/Fieldnote-Brand-Concept.pdf"}
+EXTERNAL = {"modellab": "https://dkang120.github.io/modellab/", "fieldnote": "../files/Fieldnote-Brand-Concept.pdf?v=2"}
 THUMB_ALT = {"tmu": "Client and partner logos: Deloitte, KPMG, EY, Thrivent, Elegant Writing, Fractional Controller", "modellab": "ModelLab logo", "close": "Sales dashboard mock-up with conversion and outreach stats", "fieldnote": "Fieldnote brand concept slide deck, four slides"}
 def work():
     write(ROOT / "core-values" / "index.html", page("core-values", "Core Values", values(), desc="Core values: Daniel Kang."))
