@@ -192,7 +192,7 @@ def work():
         cat = WORK_CAT.get(k) or c["no"].split(" — ", 1)[1]
         href = EXTERNAL.get(k, c["slug"] + "/")
         ext = ' target="_blank" rel="noopener"' if k in EXTERNAL else ""
-        cards += (f'<li class="card"><a href="{href}"{ext}><div class="card__img"><img src="../images/thumb-{k}.webp" width="1106" height="772" alt="{e(THUMB_ALT[k])}" loading="lazy"></div>'
+        cards += (f'<li class="card"><a href="{href}"{ext}><div class="card__img"><img src="../images/thumb-{k}.webp{"?v=2" if k=="fieldnote" else ""}" width="1106" height="772" alt="{e(THUMB_ALT[k])}" loading="lazy"></div>'
                          f'<div class="card__meta"><span>{e(c["title"])}<span class="muted"> · {e(cat)}</span></span><span class="muted">2026</span></div></a></li>')
     return TOOLBAR("../", "Work") + f'<ul class="grid">{cards}</ul>'
 
