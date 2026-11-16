@@ -57,4 +57,4 @@
 ### ModelLab thumbnail
 - `images/thumb-modellab.webp` now shows the redesigned ModelLab logo (curve mark + lowercase wordmark), same 1106x772 canvas, background and text height (37px) as before. Other thumbnails untouched.
 
-- 2026-11-16: Fieldnote brand concept deck, slide 1: recentered and tightened the four bottle photos, added light film grain. Slides 3 and 4 unchanged (cap and headroom are cropped in the source images).
+- 2026-11-16: Fieldnote brand concept deck: recentered slide 1 bottle photos; slides 3 and 4 bottles moved down with the added headroom filled in brand clay tones (slide 3 cap completed).
