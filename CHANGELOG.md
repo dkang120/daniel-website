@@ -2,7 +2,7 @@
 
 ## 2026-11-20 — ModelLab refresh
 
-- New ModelLab thumbnail: current purple app icon + Open Sauce wordmark (`images/thumb-modellab.webp`, cache-busted `?v=2`).
+- New ModelLab thumbnail: current purple app icon + Open Sauce wordmark (`images/thumb-modellab.webp`, cache-busted `?v=2`). Geometry matches the measured original: wordmark at the same letter positions (x 494–706, y 367–404, ±1px), icon 64×64 at x 397 in the old mark's width, centered on the tile midline.
 - ModelLab links now point to modellab.hidanielkang.com (Work card, TMU "Next" button, case page).
 - Case page copy updated: text buddy as the core (Claude on Twilio), dropped email gate, $4.99/mo Pro plan on Stripe, updated stack.
 - Experience entry for ModelLab updated to match.
