@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-20 — Color pass (Charles Liu color-analysis skill)
+
+Measured all 12 pages at 1440×900 and 390×844, plus all 6 hero slides (APCA Lc).
+- Neutrals merged into one warm family, tinted to the #f8f6f5 tile (H 49°, C 0.005): text #1D1B19 (was #1c1b1b/#212121/#000), grey text #6D6967 (was #6a6a6a, Lc 77), rules #DAD6D5 (was #ddd/#d6d6d6). 7 greys → 4. *Deviates slightly from the measured therow.com values.*
+- Form field lines #d8d7d5 → #C8C5C3 (Lc 21 → 31, field-edge floor 30).
+- Experience group labels: opacity .6 → var(--light) (Lc 71.5 → 77).
+- Home header: dark fade on dark slides .32 → .55 and 110 → 140px (white nav over bright sky Lc 42 → 58–83); new white fade (.4) on light slides so the 11px logo reaches Lc 74–83. *Not in the therow reference.*
+- Hero captions: tighter shadow plus a soft eased shade in the bottom-right corner. Worst case Lc 26–65 → 75–106 across all slides and sizes. *Not in the therow reference.*
+
 ## 2026-11-20 — ModelLab refresh
 
 - New ModelLab thumbnail: current purple app icon + Open Sauce wordmark (`images/thumb-modellab.webp`, cache-busted `?v=2`). Geometry matches the measured original: wordmark at the same letter positions (x 494–706, y 367–404, ±1px), icon 64×64 at x 397 in the old mark's width, centered on the tile midline.
