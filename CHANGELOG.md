@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-20 — ModelLab case page removed
+
+- Deleted `work/modellab/` and its images (`case-modellab.webp`, `case-modellab-og.jpg`); removed from the sitemap.
+- Experience → ModelLab link now opens modellab.hidanielkang.com in a new tab ("Visit ModelLab"). The Work card and TMU "Next" button already link out.
+
 ## 2026-11-20 — Color pass (Charles Liu color-analysis skill)
 
 Measured all 12 pages at 1440×900 and 390×844, plus all 6 hero slides (APCA Lc).
