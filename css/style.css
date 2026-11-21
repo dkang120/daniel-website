@@ -433,3 +433,5 @@ p{margin:0}
 .campus{grid-template-columns:none;grid-template-rows:repeat(2,auto);grid-auto-flow:column;grid-auto-columns:1fr}
 .campus__key{font-size:11px;color:var(--light);margin:0;white-space:nowrap}
 @media (max-width:640px){.campus{grid-template-rows:repeat(4,auto);gap:4px}}
+
+.exp h2 .exp__co{font-weight:400}

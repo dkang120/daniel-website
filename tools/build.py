@@ -281,7 +281,7 @@ def experience():
     for g, items in EXP:
         rows += f'<tr class="tbl__group"><td colspan="2">{e(g)}</td></tr>'
         rows += "".join(f'<tr><td><a href="#{i}">{e(r)}</a>{f'<span class="muted"> · {e(c)}</span>' if c else ''}</td><td>{e(d)}</td></tr>' for i, c, r, w, d, _ in items)
-    det = "".join(f'<section class="exp" id="{i}"><h2>{e(r)}{' · ' + e(c) if c else ''}</h2><p class="muted">{e(w)} · {e(d)}</p><p>{b}</p>' + (f'<p><a class="u" href="../work/{CASE_OF[i]}/">Read the case</a></p>' if i in CASE_OF else '') + '</section>' for i, c, r, w, d, b in FLAT)
+    det = "".join(f'<section class="exp" id="{i}"><h2>{e(r)}{f'<span class="exp__co muted"> · {e(c)}</span>' if c else ''}</h2><p class="muted">{e(w)} · {e(d)}</p><p>{b}</p>' + (f'<p><a class="u" href="../work/{CASE_OF[i]}/">Read the case</a></p>' if i in CASE_OF else '') + '</section>' for i, c, r, w, d, b in FLAT)
     return f"""<div class="care">
   <aside class="care__side"><h1>Experience</h1><ul>{side}</ul></aside>
   <div class="care__main">
