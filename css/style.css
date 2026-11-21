@@ -161,7 +161,8 @@ p{margin:0}
 .care__rule{border:0;border-top:1px solid var(--border);margin:30px 0}
 .tbl th{font-style:italic;font-weight:400;text-align:left;padding:0 0 6px}
 .tbl td{padding:6px 16px 6px 0;vertical-align:top}
-.tbl__group td{font-style:italic;padding-top:18px;color:var(--light)}
+.tbl__group td{padding-top:22px;color:var(--text);font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
+.tbl__group td::after{content:"";display:block;height:1px;margin-top:6px;background:var(--text);width:24px}
 .tbl td:last-child,.tbl th:last-child{width:34%}
 .u{text-decoration:underline;text-underline-offset:2px}
 .exp{margin-bottom:28px;scroll-margin-top:80px}

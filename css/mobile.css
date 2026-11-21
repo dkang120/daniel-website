@@ -152,7 +152,8 @@ p .u,dd .u{display:inline;padding:0;margin:0}
 .care__side{display:none}
 .care__main>.tbl,.care__main>.care__rule{display:none}
 .exp-group{min-height:var(--scr);padding:30px 24px 24px}
-.exp-group__label{font:inherit;font-style:italic;color:var(--light);margin:0 0 16px}
+.exp-group__label{font:inherit;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text);margin:0 0 18px;display:flex;align-items:center;gap:12px}
+.exp-group__label::after{content:"";flex:1;height:1px;background:var(--border)}
 .exp{margin-bottom:24px}
 .exp h2{line-height:1.4}
 .exp p.muted{font-size:13px;margin:2px 0 6px}

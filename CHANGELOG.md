@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-20 — Experience categories stand out
+
+- Category labels (Marketing & Social, Sales, Other) are now uppercase, letter-spaced ink labels: with a short rule on the desktop table, and a hairline running to the edge on mobile. Was italic grey.
+
 ## 2026-11-20 — Mobile rebuild (screen-by-screen)
 
 Desktop is pixel-identical (verified at 1440 and 1100 on all 11 pages). All mobile work lives in `css/mobile.css` + `js/mobile.js`, loaded only at ≤1007px; mobile-only markup uses `.m-only` (hidden on desktop).
