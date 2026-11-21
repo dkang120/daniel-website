@@ -154,3 +154,15 @@ main.page:has(.gal){background:#f3f0ec}
 @media (max-height:770px){.pdp--story .pdp__info{line-height:1.42}.pdp--story .pdp__lede{margin-bottom:6px}.pdp--story .story__sec{padding:5px 0 6px}.pdp--story .stats--4 .stat__n{font-size:16px}}
 @media (max-width:1240px){.nav--right li{margin-right:0;margin-left:20px}}
 @media (max-width:1100px){.nav--right li{margin-left:14px}}
+/* TMU: calmer spacing, bigger photos */
+.pdp--story .pdp__gallery{flex:0 0 clamp(500px,46vw,760px)}
+.pdp--story .cs{height:min(640px,calc(var(--dscr) - 40px))}
+.pdp--story .pdp__info{max-width:620px;padding-top:0}
+.pdp--story .pdp__lede{margin-bottom:22px}
+.pdp--story .pdp__meta{margin-bottom:26px}
+.pdp--story .story__sec{padding:20px 0 22px}
+.pdp--story .story__k{margin-bottom:12px}
+.pdp--story .soar{gap:12px}
+.pdp--story .steps--2{gap:14px 28px}
+.pdp--story .story{margin-bottom:28px}
+@media (max-height:820px){.pdp--story .story__sec{padding:14px 0 15px}.pdp--story .pdp__lede{margin-bottom:14px}.pdp--story .pdp__meta{margin-bottom:16px}.pdp--story .soar{gap:8px}}

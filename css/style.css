@@ -367,3 +367,4 @@ p{margin:0}
 
 /* header: links split around the logo — 4 left, 3 right */
 .nav--right li{margin:6px 0 6px 30px}
+.stats--4 .stat__l{white-space:nowrap}
