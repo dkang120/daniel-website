@@ -276,7 +276,7 @@ FLAT = [x for _, g in EXP for x in g]
 CASE_OF = {'tmu-bn':'tmu','modellab':'modellab','fitness-19':'close','coaching':'close','tmu':'close'}
 
 def experience():
-    side = "".join(f'<li><a href="#{i}">{e(c)}</a></li>' for i, c, *_ in FLAT)
+    side = "".join(f'<li><a href="#{i}">{e(r)}</a></li>' for i, c, r, *_ in FLAT)
     rows = ""
     for g, items in EXP:
         rows += f'<tr class="tbl__group"><td colspan="2">{e(g)}</td></tr>'
