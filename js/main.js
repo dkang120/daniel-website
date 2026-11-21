@@ -159,7 +159,8 @@
       var n5 = els.length, picks = [], rr = orbit;
       for (var tries = 0; tries < 8; tries++) {
         picks = [];
-        for (var j = 0; j < n5; j++) { var an = (-90 + j * 360 / n5) * Math.PI / 180; picks.push([cx + Math.cos(an) * rr * 1.75, cy + Math.sin(an) * rr * 1.05]); }
+        var ANG = [-90, -18, 54, -133, 198];   /* matcha top, plane, soft serve, dumbbell up over the head, golf */
+        for (var j = 0; j < n5; j++) { var an = ANG[j] * Math.PI / 180; picks.push([cx + Math.cos(an) * rr * 1.75, cy + Math.sin(an) * rr * 1.05]); }
         var ok = picks.every(function (q) { return q[0] - size / 2 >= 10 && q[0] + size / 2 <= W - 10 && q[1] - size / 2 >= top && q[1] + size / 2 <= H - 70; });
         if (ok) break; rr *= .9;
       }
