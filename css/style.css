@@ -397,3 +397,39 @@ p{margin:0}
 .star__sec.rv::before{transform:scaleY(0);transform-origin:top;transition:transform .9s cubic-bezier(.2,.7,.2,1) calc(var(--i,0) * 70ms + .25s)}
 .star__sec.rv.in::before{transform:none}
 @media (prefers-reduced-motion:reduce){.star__sec.rv::before{transform:none;transition:none}}
+
+/* ---------- TMU story visuals ---------- */
+.star__line{margin:0 0 10px}
+.star__line b{font-weight:600}
+/* campus: 100 dots, each ≈ 12 students */
+.campus{display:grid;grid-template-columns:repeat(50,1fr);gap:3px;max-width:400px}
+.campus i{aspect-ratio:1;border-radius:50%;background:var(--border)}
+.campus__key{margin:6px 0 0;font-size:11px;color:var(--light)}
+.campus--fill{margin:2px 0 12px}
+.campus--fill i{transition:background-color .35s ease calc(var(--d,0) * 14ms)}
+.campus--fill.on i:nth-child(-n+54){background:var(--text)}
+/* obstacle: student ✕ professional */
+.gap{display:flex;align-items:center;gap:10px;max-width:400px}
+.gap__ico{flex:none;width:34px;height:34px;border:1px solid var(--text);border-radius:50%;display:flex;align-items:center;justify-content:center}
+.gap__ico svg,.ways svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.gap__line{flex:1;height:0;border-top:1.5px dashed var(--light);position:relative}
+.gap__line i{position:absolute;left:50%;top:50%;transform:translate(-50%,-55%);background:#fff;padding:0 6px;font-style:normal;font-size:18px;line-height:1;color:var(--text)}
+.gap__lbl{display:flex;justify-content:space-between;max-width:400px;margin-top:5px;font-size:11px;color:var(--light)}
+/* action: three ways in */
+.ways{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+.ways li{display:flex;align-items:center;gap:7px;padding:6px 13px 6px 10px;border:1px solid var(--text);border-radius:999px;font-size:13px;transition:background .25s,color .25s}
+.star__sec.is-active .ways li{background:var(--text);color:#fff}
+
+/* active stage: guided walkthrough (desktop) */
+@media (min-width:1008px){
+  .star__sec{cursor:pointer;transition:opacity .4s ease}
+  .star:has(.is-active) .star__sec:not(.is-active){opacity:.42}
+  .star:has(.is-active) .star__sec:not(.is-active):hover{opacity:.8}
+  .star__n{transition:background .3s,color .3s,transform .3s}
+  .star__sec.is-active .star__n{background:var(--text);color:#fff;transform:scale(1.08)}
+  .star__sec:focus-visible{outline:1px dashed var(--light);outline-offset:4px}
+}
+.star__sec:focus{outline:none}
+.campus{grid-template-columns:none;grid-template-rows:repeat(2,auto);grid-auto-flow:column;grid-auto-columns:1fr}
+.campus__key{font-size:11px;color:var(--light);margin:0;white-space:nowrap}
+@media (max-width:640px){.campus{grid-template-rows:repeat(4,auto);gap:4px}}
