@@ -288,13 +288,22 @@ p{margin:0}
 
 @media (max-width:1007px){.d-only{display:none!important}}
 
-/* desktop hero hint: "psst… there's more →" in the hand-drawn style */
-.hero__more{position:absolute;right:calc(var(--gutter) + 6px);top:68%;z-index:4;display:flex;align-items:center;gap:6px;color:#fff;font-family:"Caveat",cursive;font-weight:600;font-size:26px;line-height:1;text-shadow:0 0 8px rgba(0,0,0,.45);transform:translate(10px,-50%) rotate(-4deg);opacity:0;pointer-events:none;transition:opacity .6s ease,transform .6s ease}
-.hero__more svg{width:64px;height:auto;overflow:visible;filter:drop-shadow(0 0 5px rgba(0,0,0,.35))}
-.hero__more path{stroke:#fff;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
-.hero__more.show{opacity:1;transform:translate(0,-50%) rotate(-4deg)}
-.hero__more.show svg{animation:moreNudge 1.4s ease-in-out .6s infinite}
-@keyframes moreNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(7px)}}
-.hero__more.gone{opacity:0;transform:translate(16px,-50%) rotate(-4deg)}
+/* desktop hero hint: small high-contrast arrow chip (white disc, ink arrow) — reads on any photo */
+.hero__more{position:absolute;right:calc(var(--gutter) + 6px);top:50%;z-index:4;display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.94);box-shadow:0 0 0 1px rgba(0,0,0,.08),0 4px 14px rgba(0,0,0,.22);transform:translate(10px,-50%);opacity:0;pointer-events:none;transition:opacity .5s ease,transform .5s ease}
+.hero__more svg{width:20px;height:20px}
+.hero__more path{stroke:#1D1B19;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.hero__more.show{opacity:1;transform:translate(0,-50%)}
+.hero__more.show svg{animation:moreNudge 1.4s ease-in-out .5s infinite}
+@keyframes moreNudge{0%,100%{transform:translateX(0)}50%{transform:translateX(4px)}}
+.hero__more.gone{opacity:0;transform:translate(14px,-50%)}
 @media (max-width:1007px){.hero__more{display:none}}
 @media (prefers-reduced-motion:reduce){.hero__more.show svg{animation:none}}
+
+/* legibility on any photo: tight dark casing + soft falloff around the white arrow and note (color-analysis pass) */
+.hero__arrow{filter:drop-shadow(0 0 1.2px rgba(0,0,0,.6)) drop-shadow(0 0 2.5px rgba(0,0,0,.35)) drop-shadow(0 0 10px rgba(0,0,0,.28))}
+.hero__note{text-shadow:0 0 1.5px rgba(0,0,0,.8),0 0 3px rgba(0,0,0,.6),0 0 6px rgba(0,0,0,.4),0 0 16px rgba(0,0,0,.35)}
+.hero__arrow.ink path{stroke:#1D1B19}
+.hero__arrow.ink{filter:drop-shadow(0 0 1.2px rgba(255,255,255,.75)) drop-shadow(0 0 3px rgba(255,255,255,.45)) drop-shadow(0 0 10px rgba(255,255,255,.3))}
+.hero__note.ink{color:#1D1B19;text-shadow:0 0 1.5px rgba(255,255,255,.8),0 0 3px rgba(255,255,255,.5),0 0 12px rgba(255,255,255,.4)}
+.hero__note::before{content:"";position:absolute;inset:-12px -18px;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.34),rgba(0,0,0,.16) 60%,rgba(0,0,0,0));pointer-events:none}
+.hero__note.ink::before{background:radial-gradient(closest-side,rgba(255,255,255,.55),rgba(255,255,255,.22) 60%,rgba(255,255,255,0))}

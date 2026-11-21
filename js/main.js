@@ -146,18 +146,37 @@
       var sc = fit === 'contain' ? Math.min(bw / iw, bh / ih) : Math.max(bw / iw, bh / ih);
       var rw = iw * sc, rh = ih * sc, ox = bx + (bw - rw) * (fit === 'contain' ? .5 : pos[0]), oy = by + (bh - rh) * (fit === 'contain' ? .5 : pos[1]);
       var tx = ox + me[0] * rw, ty = oy + me[1] * rh;
-      var aw = arrow.getBoundingClientRect().width || W * .17, ah = aw / 2, gap = Math.max(16, W * .02);
+      var aw = arrow.getBoundingClientRect().width || W * .17, ah = aw / 2, gap = Math.max(14, W * .018), mob = W < 1008;
       var nw0 = note.getBoundingClientRect().width || 120;
-      var flip = tx > W * .62 || (tx + gap + aw * .95 + nw0 > W - 10 && tx - gap - aw - nw0 > 10);
+      var flip = img.dataset.from === 'left' || tx > W * .62 || tx + aw * .9 > W - 8 || (!mob && tx + aw * .95 + nw0 > W - 10 && tx - aw - nw0 > 10);
       arrow.style.transform = flip ? 'scaleX(-1)' : '';
-      var al = flip ? tx - gap - aw * .9 : tx + gap - aw * .1, at = ty - ah * .32;
+      var al = flip ? tx - gap - aw * .9 : tx + gap - aw * .1, at = ty - ah * .32;   /* small gap between the tip and Daniel */
       arrow.style.left = al + 'px'; arrow.style.top = at + 'px';
       var nw = note.getBoundingClientRect().width, nh = note.getBoundingClientRect().height || 26;
-      var nl = flip ? al - nw * .92 : al + aw * .95, nt = at - ah * .3;
+      /* same note-to-arrow spacing as the original Uji layout: desktop beside the arrow, mobile above-left of it */
+      var nl = mob ? (flip ? al + aw * 1.19 - nw : al - aw * .19) : (flip ? al - nw * 1.036 + nw * .1 : al + aw * 1.036), nt = mob ? at - H * .067 : at - ah * .22;
       if (nl < 10 || nl + nw > W - 10) { nl = Math.min(Math.max(10, al + aw * .5 - nw / 2), W - nw - 10); nt = at - nh - 6; }   /* no side room: sit above the arrow */
       var minTop = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 60) + 10;
       if (nt < minTop) nt = at + ah + 6;                                                                                       /* too close to the menu: sit below */
       note.style.left = nl + 'px'; note.style.top = nt + 'px';
+      /* pick white or ink per element from the photo underneath (color-analysis: fix contrast by moving lightness) */
+      try {
+        var cv = place.cv || (place.cv = document.createElement('canvas')), k = 240 / iw;
+        cv.width = 240; cv.height = Math.round(ih * k);
+        var cx = cv.getContext('2d', { willReadFrequently: true }); cx.drawImage(img, 0, 0, cv.width, cv.height);
+        [arrow, note].forEach(function (el) {
+          var r = el.getBoundingClientRect(), x0 = (r.left - hb.left - ox) / rw * cv.width, y0 = (r.top - hb.top - oy) / rh * cv.height;
+          var w = Math.max(2, r.width / rw * cv.width), h = Math.max(2, r.height / rh * cv.height);
+          x0 = Math.max(0, Math.min(cv.width - 2, x0)); y0 = Math.max(0, Math.min(cv.height - 2, y0));
+          var d = cx.getImageData(x0, y0, Math.min(w, cv.width - x0), Math.min(h, cv.height - y0)).data, ys = [];
+          for (var i = 0; i < d.length; i += 4) {
+            var f = function (c) { c /= 255; return c <= .04045 ? c / 12.92 : Math.pow((c + .055) / 1.055, 2.4); };
+            ys.push(.2126 * f(d[i]) + .7152 * f(d[i + 1]) + .0722 * f(d[i + 2]));
+          }
+          ys.sort(function (a, b) { return a - b; });
+          el.classList.toggle('ink', ys[Math.floor(ys.length * .6)] > .34);
+        });
+      } catch (e) {}
       note.style.transformOrigin = flip ? 'right center' : 'left center';
     }
     if (img.complete) place(); else img.addEventListener('load', place);
@@ -168,7 +187,7 @@
   /* desktop: whimsical "there's more" hint, leaves after the first click/swipe/key */
   var more = (function () {
     var el = document.createElement('div'); el.className = 'hero__more'; el.setAttribute('aria-hidden', 'true');
-    el.innerHTML = '<span>psst\u2026 there\u2019s more</span><svg viewBox="0 0 90 40" fill="none"><path d="M4 24 C24 6 46 34 64 18 S82 14 86 20"/><path d="M74 10 L86 20 L72 28"/></svg>';
+    el.innerHTML = '<svg viewBox="0 0 24 24" fill="none"><path d="M5 12h13"/><path d="M13 6l6 6-6 6"/></svg>';
     hero.appendChild(el);
     var gone = false, t = setTimeout(function () { if (!gone) el.classList.add('show'); }, 2200);
     function hide() { if (gone) return; gone = true; clearTimeout(t); el.classList.remove('show'); el.classList.add('gone'); }

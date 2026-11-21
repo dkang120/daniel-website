@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-20 — Hero arrow placement + legibility, arrow chip, Beyond sizes
+
+- "hi, it's me!": arrow tip lands beside Daniel with a small gap (Uji target derived from the original layout), same note spacing as the original; Seoul arrow comes from the left. Openers unchanged (Uji / Nara / SF café / Seoul).
+- Legibility (color-analysis pass): dark casing and a soft shade behind the white arrow and note; they switch to ink with a white halo when the photo underneath is light. All four openers pass on desktop and mobile (arrows Lc 51–98, notes Lc 58–104).
+- Desktop hero hint is now a small white arrow chip (ink arrow, gentle nudge) instead of handwritten text.
+- Beyond (desktop): the smaller photo is ~84% of the large one; both 4:5, offset and alternating.
+
 ## 2026-11-20 — Hero openers, desktop hint, Beyond spreads, Experience polish
 
 - Hero: "hi, it's me!" now lands on whichever photo opens and points at Daniel (face positions stored as `data-me`; placed by measuring the rendered photo, mirrored or stacked when space is tight). Openers: morning Uji, afternoon Nara, evening SF café, night Seoul fitting room. Jerusalem is never the opener.
