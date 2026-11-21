@@ -198,3 +198,4 @@ Measured all 12 pages at 1440×900 and 390×844, plus all 6 hero slides (APCA Lc
 - 2026-11-21: TMU page trimmed: shorter lede, Where = university only, one-line Challenge/Opportunity, shorter stat labels, 'How' items cut to a few words each, 'Why it matters' removed. More spacing between sections; photo stack enlarged (gallery up to 46vw / 640px tall).
 - 2026-11-21: TMU page rewritten as a story: bigger title (24px), 2-sentence intro, then Situation / Obstacle / Action / Result as bullet lists (`.star`). Meta, C/O/R block and How grid removed.
 - 2026-11-21: TMU Situation/Obstacle/Action/Result bullets rewritten to Daniel's wording.
+- 2026-11-21: TMU story redesigned as a connected timeline: numbered nodes on a line (draws down on reveal), stage labels with taglines (Where it started / What stood in the way / What we did / Three months later), and a highlighted Result panel with big stats and the testimony as a pull-quote. Title 26px.

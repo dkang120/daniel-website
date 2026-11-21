@@ -371,15 +371,29 @@ p{margin:0}
 .nav--right li{margin:6px 0 6px 30px}
 .stats--4 .stat__l{white-space:nowrap}
 
-/* ---------- TMU: Situation / Obstacle / Action / Result ---------- */
-.pdp__title--lg{font-size:24px;line-height:1.2;letter-spacing:-.01em;margin-bottom:12px}
-.star{margin-bottom:28px;border-top:1px solid var(--border)}
-.star__sec{display:grid;grid-template-columns:130px 1fr;gap:0 20px;padding:16px 0;border-bottom:1px solid var(--border)}
-.star__k{font:inherit;font-weight:500;margin:0;display:flex;gap:10px;align-items:baseline}
-.star__k span{font-size:11px;color:var(--light);font-variant-numeric:tabular-nums;letter-spacing:.04em}
+/* ---------- TMU: Situation → Obstacle → Action → Result, as a connected timeline ---------- */
+.pdp__title--lg{font-size:26px;line-height:1.15;letter-spacing:-.015em;margin-bottom:12px}
+.star{position:relative;margin:0 0 28px;padding:0}
+.star__sec{position:relative;display:grid;grid-template-columns:30px 1fr;gap:0 18px;padding:0 0 22px}
+.star__sec:not(:last-child)::before{content:"";position:absolute;left:14.5px;top:30px;bottom:0;width:1px;background:linear-gradient(var(--text),var(--border))}
+.star__n{width:30px;height:30px;border-radius:50%;border:1px solid var(--text);background:#fff;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:500;font-variant-numeric:tabular-nums;position:relative;z-index:1}
+.star__c{padding-top:5px;min-width:0}
+.star__k{font:inherit;font-size:15px;font-weight:600;letter-spacing:-.005em;margin:0 0 8px;display:flex;align-items:baseline;gap:10px}
+.star__tag{font-size:11px;font-weight:400;letter-spacing:.12em;text-transform:uppercase;color:var(--light)}
 .star__list{list-style:none;margin:0;padding:0}
-.star__list li{position:relative;padding-left:14px;margin-bottom:5px}
+.star__list li{position:relative;padding-left:14px;margin-bottom:4px}
 .star__list li:last-child{margin-bottom:0}
-.star__list li::before{content:"";position:absolute;left:0;top:.68em;width:5px;height:5px;border-radius:50%;background:var(--text);opacity:.5}
-.star__list b{font-weight:600}
-@media (max-width:640px){.star__sec{grid-template-columns:1fr;gap:8px 0}}
+.star__list li::before{content:"";position:absolute;left:0;top:.68em;width:5px;height:5px;border-radius:50%;background:var(--text);opacity:.45}
+/* the payoff: filled node + tinted panel */
+.star__sec--result{padding-bottom:0}
+.star__sec--result .star__n{background:var(--text);color:#fff}
+.star__sec--result .star__c{background:var(--tile);border-radius:14px;padding:14px 18px 16px;margin-top:-4px}
+.star__stats{list-style:none;margin:2px 0 12px;padding:0;display:grid;grid-template-columns:auto auto 1fr;gap:0 26px}
+.star__stats b{display:block;font-size:30px;line-height:1.05;font-weight:500;letter-spacing:-.03em}
+.star__stats span{display:block;font-size:12px;color:var(--light);margin-top:4px;line-height:1.35}
+.star__quote{margin:0;padding-left:12px;border-left:2px solid var(--text);font-style:italic}
+@media (max-width:640px){.star__stats{grid-template-columns:1fr 1fr;gap:12px 18px}.star__stats li:last-child{grid-column:1/-1}.star__k{flex-wrap:wrap;gap:2px 10px}}
+/* timeline draws down as each stage reveals */
+.star__sec.rv::before{transform:scaleY(0);transform-origin:top;transition:transform .9s cubic-bezier(.2,.7,.2,1) calc(var(--i,0) * 70ms + .25s)}
+.star__sec.rv.in::before{transform:none}
+@media (prefers-reduced-motion:reduce){.star__sec.rv::before{transform:none;transition:none}}

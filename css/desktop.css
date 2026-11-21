@@ -168,6 +168,5 @@ main.page:has(.gal){background:#f3f0ec}
 @media (max-height:820px){.pdp--story .story__sec{padding:14px 0 15px}.pdp--story .pdp__lede{margin-bottom:14px}.pdp--story .pdp__meta{margin-bottom:16px}.pdp--story .soar{gap:8px}}
 .pdp--star .pdp__lede{margin-bottom:28px;max-width:520px}
 .pdp--star .pdp__crumbs{margin-bottom:14px}
-@media (max-height:820px){.pdp--star .star__sec{padding:12px 0}.pdp--star .pdp__lede{margin-bottom:20px}}
+@media (max-height:820px){.pdp--star .star__sec{padding-bottom:16px}.pdp--star .pdp__lede{margin-bottom:20px}.pdp--star .star__stats b{font-size:26px}}
 .pdp--star .pdp__info{max-width:660px}
-.pdp--star .star__sec{grid-template-columns:118px 1fr}
