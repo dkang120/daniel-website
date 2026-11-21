@@ -205,3 +205,4 @@ Measured all 12 pages at 1440×900 and 390×844, plus all 6 hero slides (APCA Lc
 - 2026-11-21: Home hero doodles now sit evenly on a ring around Daniel's head (5 icons, 72° apart, one at 12 o'clock; ring shrinks to stay on screen) instead of a 2/3 split.
 - 2026-11-21: TMU work thumbnail is now a framed print: mixer photo zoomed out (62% width) with a white mat border and soft shadow on the tile background.
 - 2026-11-21: Hero doodles back to the original arc placement (2 left, 3 right); the even ring was reverted. TMU framed-print thumbnail stays.
+- 2026-11-21: Hero doodles paired by row: plane level with soft serve, matcha level with golf; dumbbell centered above the head (moves up, or between plane and soft serve, if it would overlap).
