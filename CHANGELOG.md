@@ -197,3 +197,4 @@ Measured all 12 pages at 1440×900 and 390×844, plus all 6 hero slides (APCA Lc
 - 2026-11-21: Desktop header split around the centred logo: About, Work, Experience, Skills on the left; Beyond, Recommendation, Connect on the right (`.nav--right`). Mobile unchanged.
 - 2026-11-21: TMU page trimmed: shorter lede, Where = university only, one-line Challenge/Opportunity, shorter stat labels, 'How' items cut to a few words each, 'Why it matters' removed. More spacing between sections; photo stack enlarged (gallery up to 46vw / 640px tall).
 - 2026-11-21: TMU page rewritten as a story: bigger title (24px), 2-sentence intro, then Situation / Obstacle / Action / Result as bullet lists (`.star`). Meta, C/O/R block and How grid removed.
+- 2026-11-21: TMU Situation/Obstacle/Action/Result bullets rewritten to Daniel's wording.
