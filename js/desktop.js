@@ -53,33 +53,14 @@
     track();
   }, { threshold: [0, 0.3, 0.6, 1] });
   screens.forEach(function (s) { io.observe(s); });
-  window.addEventListener('scroll', track, { passive: true }); track();
+  var ticking = false;
+  window.addEventListener('scroll', function () { if (ticking) return; ticking = true; requestAnimationFrame(function () { ticking = false; track(); }); }, { passive: true }); track();
 
   /* case pages: if the details would run past the screen, start with accordions collapsed */
   var pdp = document.querySelector('.pdp[data-dscr]');
   if (pdp && pdp.scrollHeight > window.innerHeight - HH + 2) [].forEach.call(pdp.querySelectorAll('.acc'), function (d) { d.open = false; });
 
-  /* wheel / trackpad: one gesture = one screen; taller screens scroll normally until their edge */
-  var lock = false, lastWheel = 0, unlockAt = 0;
-  function idx() { var best = 0, bd = Infinity; screens.forEach(function (s, k) { var d = Math.abs(s.getBoundingClientRect().top - HH); if (d < bd) { bd = d; best = k; } }); return best; }
-  window.addEventListener('wheel', function (e) {
-    if (e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
-    var now = Date.now(), gap = now - lastWheel; lastWheel = now;
-    if (document.getElementById('drawer') && !document.getElementById('drawer').hidden) return;
-    if (e.target.closest && (e.target.closest('dialog[open]') || e.target.closest('.duo__frame--deck'))) return;
-    var i = idx(), s = screens[i], r = s.getBoundingClientRect(), down = e.deltaY > 0;
-    if (!lock) {
-      if (down && r.bottom > window.innerHeight + 2) return;      /* let a tall screen scroll to its end */
-      if (!down && r.top < HH - 2) return;
-    }
-    e.preventDefault();
-    if (lock) { if (now < unlockAt || gap < 140) return; lock = false; }
-    var t = screens[i + (down ? 1 : -1)];
-    if (!t && down) { var last = screens[screens.length - 1]; if (last.getBoundingClientRect().bottom > window.innerHeight + 2) { window.scrollBy({ top: e.deltaY, behavior: 'auto' }); } return; }
-    if (!t) return;
-    lock = true; unlockAt = now + 750;
-    go(t);
-  }, { passive: false });
+  /* scrolling is native (no wheel hijack): trackpad momentum and scrolling up both behave normally */
 
   var hero = document.querySelector('.hero');
   if (hero) {

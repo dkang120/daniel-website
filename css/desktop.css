@@ -5,9 +5,8 @@
 :root{--cpt:80px;--dhh:60px;--dscr:calc(100vh - var(--dhh));--ease:cubic-bezier(.2,.7,.2,1)}
 
 /* ---------- snapping ---------- */
-html:has([data-dscr]){scroll-snap-type:y mandatory;scroll-padding-top:var(--dhh)}
-[data-dscr]{scroll-snap-align:start;scroll-snap-stop:always}
-@media (prefers-reduced-motion:reduce){html:has([data-dscr]){scroll-snap-type:y proximity}}
+/* no snapping: free native scroll; the rail dots still jump to each screen */
+html:has([data-dscr]){scroll-padding-top:var(--dhh)}
 .page,.is-inner .page{min-height:0}
 
 /* ---------- reveal (classes added by desktop.js) ---------- */
