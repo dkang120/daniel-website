@@ -346,13 +346,16 @@ p{margin:0}
 .duo .card__meta{display:flex;justify-content:space-between;margin-top:8px}
 .duo .card__meta a:hover{color:var(--text)}
 @media (max-width:1007px){
-  .duo{padding:0 0 30px}
-  .duo .toolbar{padding-left:24px;padding-right:24px}
-  .duo__grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:86vw;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 24px 0;scroll-padding:0 24px;scrollbar-width:none}
-  .duo__grid::-webkit-scrollbar{display:none}
-  .duo__card{scroll-snap-align:start}
-  .duo__frame{border-radius:16px}
+  .duo{padding:0 20px 24px}
+  .duo .toolbar{padding-left:0;padding-right:0}
+  .duo__grid{grid-template-columns:1fr;gap:18px;padding:0;max-width:560px}
+  .duo__frame{border-radius:14px}
+  .duo__screen{border-radius:4px;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 6px 18px rgba(43,35,31,.08)}
+  .duo .card__meta{margin-top:7px;font-size:14px}
+  .duo__frame>img{transform:scale(1.14)}
 }
+@media (min-width:700px) and (max-width:1007px){.duo__grid{grid-template-columns:1fr 1fr;max-width:none}.duo__frame>img{transform:none}}
+
 
 /* ---------- skills ---------- */
 .skills__grp{padding:16px 0 18px;border-top:1px solid var(--border)}
