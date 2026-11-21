@@ -125,7 +125,7 @@
   /* open on the photo that fits the visitor's time of day */
   var hr = new Date().getHours();
   var part = hr >= 5 && hr < 12 ? 'morning' : hr < 17 ? 'afternoon' : hr < 21 ? 'evening' : 'night';
-  var START = { morning: 0, afternoon: 1, evening: 4, night: 2 }[part];   /* Uji, Nara, SF café, Seoul — never Jerusalem */
+  var START = { morning: 0, afternoon: 2, evening: 4, night: 4 }[part];   /* Uji, Seoul, SF café, SF café — never Jerusalem or Nara */
   if (START >= slides.length) START = 0;
   cur = START;
   slides.forEach(function (s, i) { s.setAttribute('aria-hidden', i === START ? 'false' : 'true'); });

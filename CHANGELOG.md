@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-20 — Beyond as an art gallery; Nara off the opener rotation
+
+- Hero openers: morning Uji, afternoon Seoul fitting room, evening and night SF café (never Jerusalem or Nara).
+- Beyond (desktop): art-gallery wall. Every print is the same size, two per screen, each in a thin black frame with a white mat on a warm wall (#f3f0ec) under a soft gallery light, with a white museum placard below ("No. 01", italic title, place, coordinates) and a centred "BEYOND" room title. Removed "Six snapshots from outside work."
+
 ## 2026-11-20 — Hero: life doodles replace "hi, it's me!"
 
 - Removed the "hi, it's me!" note and arrow.
