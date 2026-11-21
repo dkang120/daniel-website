@@ -173,3 +173,14 @@ main.page:has(.gal){background:#f3f0ec}
 /* The Close: smaller slide stack */
 .cs--p{height:min(680px,calc(var(--dscr) - 80px))}
 .cs--p .cs__card{--w:min(66%,calc((var(--dscr) - 160px) * .68))}
+
+/* ---------- home: positioning card over the opening photo (recruiters see role + next step immediately) ---------- */
+.is-home main{position:relative}
+.hero-intro{position:absolute;left:20px;bottom:24px;z-index:5;width:380px;padding:20px 22px 22px;background:rgba(255,255,255,.86);-webkit-backdrop-filter:blur(12px) saturate(1.1);backdrop-filter:blur(12px) saturate(1.1);box-shadow:0 1px 2px rgba(0,0,0,.06),0 12px 30px -12px rgba(0,0,0,.25);opacity:0;transform:translateY(12px);animation:introIn .7s cubic-bezier(.2,.7,.2,1) .5s forwards}
+.hero-intro__eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--light);margin:0 0 8px}
+.hero-intro__h{font-size:24px;line-height:1.15;font-weight:500;letter-spacing:-.015em;margin:0 0 10px;color:var(--text)}
+.hero-intro__p{margin:0 0 16px;color:var(--text)}
+.hero-intro__cta{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.hero-intro__cta .btn{width:auto;height:34px}
+@keyframes introIn{to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){.hero-intro{animation:none;opacity:1;transform:none}}

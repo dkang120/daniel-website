@@ -399,3 +399,8 @@ p{margin:0}
 @media (prefers-reduced-motion:reduce){.star__sec.rv::before{transform:none;transition:none}}
 
 .exp h2 .exp__co{font-weight:400}
+.card__sum{margin:2px 0 0;color:var(--light);font-size:12.5px;line-height:1.45}
+.duo__intro{max-width:640px;margin:0 0 18px}
+.duo__h{font:inherit;font-size:20px;font-weight:500;letter-spacing:-.01em;margin:0 0 6px}
+.duo__intro p{margin:0;color:var(--light)}
+@media (max-width:1007px){.duo__intro{padding:0;margin-bottom:14px}}

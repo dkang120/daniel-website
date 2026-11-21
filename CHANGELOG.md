@@ -212,3 +212,10 @@ Measured all 12 pages at 1440×900 and 390×844, plus all 6 hero slides (APCA Lc
 - 2026-11-21: Hero doodles paired by row: plane level with soft serve, matcha level with golf; dumbbell centered above the head (moves up, or between plane and soft serve, if it would overlap).
 - 2026-11-21: Hero doodles placed on a halo: one ~210° arc over Daniel's head (ear level → over the top → ear level), evenly spaced left to right: golf, plane, matcha, soft serve, dumbbell. Oval sized from the head (rx 2.25R, ry fits under the header).
 - 2026-11-21: Uji opener: halo icons 25% bigger and arc 15% wider (data-halo="1.25" on that slide) so they read against the temple roof. Seoul and SF openers unchanged.
+
+## 2026-11-21 — Fixes from the independent screening review (social-first positioning)
+- Home (desktop): positioning card over the opening photo — "Social media marketer who can close.", one-line intro, See my work / Résumé buttons. Mobile intro copy updated to match.
+- The Close: Results moved first and open by default (\`acc--keep\`, never auto-collapsed); "14K audience sold into" replaced with "188% of monthly membership target".
+- Experience: removed the unsourced "(industry average ~38%)".
+- TMU: intro now states Daniel's own role ("As Director of Marketing, I led outreach and our channels.").
+- Work: one-line summary under every card. Fieldnote page: title + 2-sentence intro on what it is and what Daniel did.

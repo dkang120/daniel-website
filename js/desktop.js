@@ -58,7 +58,7 @@
 
   /* case pages: if the details would run past the screen, start with accordions collapsed */
   var pdp = document.querySelector('.pdp[data-dscr]');
-  if (pdp && pdp.scrollHeight > window.innerHeight - HH + 2) [].forEach.call(pdp.querySelectorAll('.acc'), function (d) { d.open = false; });
+  if (pdp && pdp.scrollHeight > window.innerHeight - HH + 2) [].forEach.call(pdp.querySelectorAll('.acc:not(.acc--keep)'), function (d) { d.open = false; });
 
   /* scrolling is native (no wheel hijack): trackpad momentum and scrolling up both behave normally */
 
