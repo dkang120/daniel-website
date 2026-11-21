@@ -211,3 +211,4 @@ Measured all 12 pages at 1440×900 and 390×844, plus all 6 hero slides (APCA Lc
 - 2026-11-21: Hero doodles back to the original arc placement (2 left, 3 right); the even ring was reverted. TMU framed-print thumbnail stays.
 - 2026-11-21: Hero doodles paired by row: plane level with soft serve, matcha level with golf; dumbbell centered above the head (moves up, or between plane and soft serve, if it would overlap).
 - 2026-11-21: Hero doodles placed on a halo: one ~210° arc over Daniel's head (ear level → over the top → ear level), evenly spaced left to right: golf, plane, matcha, soft serve, dumbbell. Oval sized from the head (rx 2.25R, ry fits under the header).
+- 2026-11-21: Uji opener: halo icons 25% bigger and arc 15% wider (data-halo="1.25" on that slide) so they read against the temple roof. Seoul and SF openers unchanged.

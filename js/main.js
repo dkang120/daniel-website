@@ -153,7 +153,8 @@
       var sc = fit === 'contain' ? Math.min(bw / iw, bh / ih) : Math.max(bw / iw, bh / ih);
       var rw = iw * sc, rh = ih * sc, ox = bx + (bw - rw) * (fit === 'contain' ? .5 : pos[0]), oy = by + (bh - rh) * (fit === 'contain' ? .5 : pos[1]);
       var cx = ox + me[0] * rw, cy = oy + me[1] * rh, R = Math.max(me[2] * rw, W < 1008 ? 22 : 30);
-      var size = Math.max(R * .95, W < 1008 ? 28 : 40), orbit = R * 2.35 + size * .25;
+      var boost = parseFloat(img.dataset.halo || '1');                     /* per-photo halo scale (Uji: small head in a busy frame) */
+      var size = Math.max(R * .95, W < 1008 ? 28 : 40) * boost, orbit = R * 2.35 + size * .25;
       var top = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 60) + 8;
       /* fan the icons in an arc over the head; if there isn't room above, swing the arc down the sides */
       /* candidate spots every 12° around the head; keep the ones fully on screen and clear of the face, spread the icons across them */
@@ -175,7 +176,7 @@
       var picks = els.map(function (d, i) { return cands.length ? cands[Math.round(i * (cands.length - 1) / Math.max(1, els.length - 1))] : [cx, cy - orbit, -90]; });
       /* halo: five icons evenly spread on a ~210° arc over the head (from ear level, up and over, to ear level) */
       var SPAN = 210, n5 = els.length;
-      var rx = R * 2.25 + size * .1;                                            /* width: clear of the head and the raised phone */
+      var rx = (R * 2.25 + size * .1) * (boost > 1 ? 1.15 : 1);                                            /* width: clear of the head and the raised phone */
       var ry = Math.max(R * 1.5 + size * .5, Math.min(R * 2.3, cy - top - size / 2));   /* height: as much as fits under the header */
       picks = [];
       for (var j = 0; j < n5; j++) {
