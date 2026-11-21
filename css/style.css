@@ -269,8 +269,16 @@ p{margin:0}
 .board__t i{font-style:normal;display:block;transform-origin:50% 50%}
 .board__t.f i{animation:flap .1s ease-in}
 @keyframes flap{0%{transform:rotateX(70deg);opacity:.4}100%{transform:none;opacity:1}}
-@media (max-width:1007px){.board{right:15px;bottom:15px;gap:1.5px}.board__t{width:12.5px;height:19px;font-size:11px}.board__p{font-size:11px;margin-right:5px}}
+@media (max-width:1007px){.board{right:15px;bottom:15px;gap:1.5px}.board__t{width:12px;height:19px;font-size:11px}.board__p{font-size:11px;margin-right:5px}}
 @media (prefers-reduced-motion:reduce){.board__t.f i{animation:none}}
 .board-hi{position:absolute;right:var(--gutter);bottom:calc(var(--gutter) + 30px);z-index:3;font-family:"Caveat",cursive;font-weight:600;font-size:22px;line-height:1;color:#fff;text-shadow:0 0 8px rgba(0,0,0,.45);transform:rotate(-3deg) translateY(6px);opacity:0;transition:opacity .6s ease .5s,transform .6s ease .5s;pointer-events:none}
 .board-hi.show{opacity:1;transform:rotate(-3deg)}
 @media (max-width:1007px){.board-hi{right:15px;bottom:42px;font-size:20px}}
+
+/* About: handwritten "keep going" nudge at the bottom of the first screen; fades once you scroll */
+.editorial__text{position:relative}
+.keep-going{position:absolute;left:50%;bottom:26px;transform:translateX(-50%) rotate(-3deg);margin:0!important;font-family:"Caveat",cursive;font-weight:600;font-size:22px;line-height:1;color:var(--light);white-space:nowrap;pointer-events:none;transition:opacity .5s ease}
+.keep-going span{display:inline-block;animation:kg 1.6s ease-in-out infinite}
+@keyframes kg{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+.keep-going.gone{opacity:0!important}
+@media (prefers-reduced-motion:reduce){.keep-going span{animation:none}}

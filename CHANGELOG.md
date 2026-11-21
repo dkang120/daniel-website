@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-20 — About: "keep going" nudge
+
+- Handwritten "keep going ↓" (Caveat, soft grey, bobbing arrow) at the bottom of About's first screen on mobile and desktop; fades after the first scroll.
+
 ## 2026-11-20 — Departures board, time-of-day hero, desktop screen-by-screen
 
 - Hero caption is now a split-flap departures board ("✈ NARA, JAPAN") that flips letter by letter on every slide change (desktop + mobile).

@@ -41,6 +41,10 @@
   }
 
 
+  /* "keep going" nudge disappears after the first scroll */
+  var kg = document.querySelector('.keep-going');
+  if (kg) window.addEventListener('scroll', function () { if (window.scrollY > 40) kg.classList.add('gone'); }, { passive: true });
+
   /* case-study photo stack: click / arrow keys / swipe sends the top photo away to the back */
   (function () {
     var cs = document.querySelector('.cs');
