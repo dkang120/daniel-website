@@ -155,24 +155,14 @@
       var cx = ox + me[0] * rw, cy = oy + me[1] * rh, R = Math.max(me[2] * rw, W < 1008 ? 22 : 30);
       var size = Math.max(R * .95, W < 1008 ? 28 : 40), orbit = R * 2.35 + size * .25;
       var top = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 60) + 8;
-      /* fan the icons in an arc over the head; if there isn't room above, swing the arc down the sides */
-      /* candidate spots every 12° around the head; keep the ones fully on screen and clear of the face, spread the icons across them */
-      var cands = [];
-      for (var deg = -230; deg <= 50; deg += 12) {
-        var ra = deg * Math.PI / 180, x = cx + Math.cos(ra) * orbit * 1.12, y = cy + Math.sin(ra) * orbit;
-        if (x - size / 2 < 10 || x + size / 2 > W - 10 || y - size / 2 < top || y + size / 2 > H - 70) continue;
-        if (y > cy + R * 1.1) continue;                                   /* stay at head height or above, off the body */
-        cands.push([x, y, deg]);
+      /* five icons evenly spaced on a ring around the head (72° apart, one at 12 o'clock); ring shrinks to stay on screen */
+      var n5 = els.length, picks = [], rr = orbit;
+      for (var tries = 0; tries < 8; tries++) {
+        picks = [];
+        for (var j = 0; j < n5; j++) { var an = (-90 + j * 360 / n5) * Math.PI / 180; picks.push([cx + Math.cos(an) * rr * 1.75, cy + Math.sin(an) * rr * 1.05]); }
+        var ok = picks.every(function (q) { return q[0] - size / 2 >= 10 && q[0] + size / 2 <= W - 10 && q[1] - size / 2 >= top && q[1] + size / 2 <= H - 70; });
+        if (ok) break; rr *= .9;
       }
-      if (cands.length < els.length) {                                     /* tight frame: widen the orbit and try again */
-        orbit *= 1.35; cands = [];
-        for (var deg2 = -230; deg2 <= 50; deg2 += 10) {
-          var rb = deg2 * Math.PI / 180, x2 = cx + Math.cos(rb) * orbit * 1.12, y2 = cy + Math.sin(rb) * orbit;
-          if (x2 - size / 2 < 10 || x2 + size / 2 > W - 10 || y2 - size / 2 < top || y2 + size / 2 > H - 70 || y2 > cy + R * 1.4) continue;
-          cands.push([x2, y2, deg2]);
-        }
-      }
-      var picks = els.map(function (d, i) { return cands.length ? cands[Math.round(i * (cands.length - 1) / Math.max(1, els.length - 1))] : [cx, cy - orbit, -90]; });
       els.forEach(function (d, i) {
         var x = picks[i][0], y = picks[i][1];
         d.style.width = d.style.height = size + 'px'; d.style.left = (x - size / 2) + 'px'; d.style.top = (y - size / 2) + 'px';
