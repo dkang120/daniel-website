@@ -170,6 +170,3 @@ main.page:has(.gal){background:#f3f0ec}
 .pdp--star .pdp__crumbs{margin-bottom:14px}
 @media (max-height:820px){.pdp--star .star__sec{padding-bottom:16px}.pdp--star .pdp__lede{margin-bottom:20px}.pdp--star .star__stats b{font-size:26px}}
 .pdp--star .pdp__info{max-width:660px}
-.pdp--star .star__sec{padding-bottom:18px}
-.pdp--star .pdp__lede{margin-bottom:22px}
-@media (max-height:820px){.pdp--star .star__sec{padding-bottom:12px}.pdp--star .star__line{margin-bottom:7px}.pdp--star .pdp__lede{margin-bottom:14px}.pdp--star .star__sec--result .star__c{padding:10px 16px 12px}.pdp--star .star__stats{margin-bottom:8px}.pdp--star .campus--fill{margin-bottom:9px}}

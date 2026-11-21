@@ -85,13 +85,6 @@
       setTimeout(function () { busy = false; }, red.matches ? 0 : 720);
     }
     cs.addEventListener('click', function () { if (moved) { moved = false; return; } next(-1); });
-    /* let other scripts bring a given photo to the top (used by the TMU story stages) */
-    cs.goTo = function (i) {
-      if (i === top || i < 0 || i >= n) return;
-      var back = ((top - i + n) % n) < ((i - top + n) % n);
-      (function step() { if (top === i) return; if (busy) { setTimeout(step, 60); return; } if (back) prev(); else next(-1); setTimeout(step, red.matches ? 0 : 140); })();
-    };
-    cs.dispatchEvent(new Event('cs:ready'));
     cs.addEventListener('keydown', function (e) {
       if (e.key === 'ArrowRight') { e.preventDefault(); next(-1); } else if (e.key === 'ArrowLeft') { e.preventDefault(); prev(); }
     });
