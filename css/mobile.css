@@ -216,3 +216,36 @@ p .u,dd .u{display:inline;padding:0;margin:0}
 .acc>ol.steps{padding-left:20px}
 .breadcrumbs a{display:inline-flex;align-items:center;min-height:44px}
 .rail button{width:28px;height:28px}
+
+/* ---- preview: smaller screen dots + higher-contrast Experience ---- */
+.rail button::before{width:4px;height:4px;opacity:.3}
+.rail button[aria-current="true"]::before{transform:scale(1.25)}
+.exp-group .m-title{font-size:28px;font-weight:600;letter-spacing:-.02em}
+.exp{margin-bottom:0;padding:18px 0}
+.exp+.exp{border-top:1px solid var(--border)}
+.exp-group__label{margin-bottom:4px}
+.exp h2{font-size:16px;font-weight:600;line-height:1.35;color:var(--text)}
+.exp p.muted{font-size:13px;margin:3px 0 8px;color:var(--light)}
+.exp p:not(.muted){color:var(--text)}
+.exp p:last-child>.u:only-child{font-size:14px;font-weight:500}
+.vals li.rv{transform:translateX(-28px);transition-duration:.55s}
+.vals li.rv.in{transform:none}
+@media (prefers-reduced-motion:reduce){.vals li.rv{transform:none}}
+@media (max-height:780px){
+  .exp{padding:10px 0}
+  .exp-group .m-title{font-size:24px;margin-bottom:12px}
+  .exp p.muted{margin:2px 0 4px}
+}
+.centered__quote{font-size:17px;line-height:1.45}
+.centered__by{font-size:14px}
+.rec .linkbtn{font-size:14px}
+
+/* ---- pinned page title (Experience, Core Values): title stays, content screens move under it ---- */
+:root{--th:64px}
+html:has(.m-pagehead){scroll-padding-top:calc(var(--hh) + var(--th))}
+.m-pagehead{position:sticky;top:var(--hh);z-index:30;height:var(--th);margin:0;padding:0 24px;display:flex;align-items:center;background:var(--bg);font-size:26px;font-weight:600;letter-spacing:-.02em}
+.m-pagehead::after{content:"";position:absolute;left:0;right:0;top:100%;height:14px;background:linear-gradient(var(--bg),rgba(255,255,255,0));pointer-events:none}
+.exp-group,.vals__scr{min-height:calc(var(--scr) - var(--th))}
+.exp-group{padding-top:14px}
+.vals__scr{padding-top:14px;justify-content:flex-start}
+@media (max-height:780px){:root{--th:54px}.m-pagehead{font-size:22px}.exp-group,.vals__scr{padding-top:8px}}

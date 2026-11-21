@@ -20,7 +20,7 @@
     'pdp__body': '.pdp__meta, .accs, .pdp__body > .btn',
     'exp-group': '.m-title, .exp-group__label, .exp',
     'gal__item': '.gal__text',
-    'vals__scr': '.m-title, li',
+    'vals__scr': 'li',
     'rec': '.m-title, .centered',
     'care': '.m-title, .care__main > p, .field, .btn',
     'footer': '.footer__next, .footer__inner, .footer__copy'

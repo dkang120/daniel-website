@@ -115,7 +115,7 @@
   var slides = [].slice.call(hero.querySelectorAll('.hero__slide'));
   var cur = 0, busy = false;
   var reduce = window.matchMedia('(prefers-reduced-motion: reduce)');
-  var DUR = 900, EASE = 'cubic-bezier(0.645, 0.045, 0.355, 1)';
+  var DUR = 560, EASE = 'cubic-bezier(0.65, 0, 0.35, 1)';
 
   function tone(i) { document.body.classList.toggle('hero-dark', slides[i].dataset.tone === 'dark'); }
   slides[0].classList.add('is-active'); tone(0);

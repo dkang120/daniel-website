@@ -1,5 +1,13 @@
 # Changelog
 
+## 2026-11-20 — Mobile polish + faster hero
+
+- Hero photos slide faster on mobile and desktop (900ms → 560ms, crisper ease).
+- Experience (mobile): "Experience" title pinned under the header while the three groups move beneath it; bolder role titles, smaller grey meta, hairlines between roles.
+- Core Values (mobile): title pinned; only the values slide in (from the left, staggered).
+- Recommendation (mobile): quotes 19 → 17px, names and links 14px.
+- Screen dots on the right slightly smaller.
+
 ## 2026-11-20 — Experience categories stand out
 
 - Category labels (Marketing & Social, Sales, Other) are now uppercase, letter-spaced ink labels: with a short rule on the desktop table, and a hairline running to the edge on mobile. Was italic grey.
