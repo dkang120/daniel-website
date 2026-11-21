@@ -173,16 +173,17 @@
         }
       }
       var picks = els.map(function (d, i) { return cands.length ? cands[Math.round(i * (cands.length - 1) / Math.max(1, els.length - 1))] : [cx, cy - orbit, -90]; });
-      /* pair the rows: plane level with the soft serve, matcha level with golf; dumbbell centered above the head */
-      picks = picks.map(function (q) { return q.slice(); });
-      picks[1][1] = picks[2][1];                     /* plane ↔ soft serve */
-      picks[0][1] = picks[4][1];                     /* matcha ↔ golf */
-      var others = [0, 1, 2, 4].map(function (k) { return picks[k]; });
-      var clear = function (q) { return others.every(function (o) { return Math.hypot(o[0] - q[0], o[1] - q[1]) > size * 1.15; }); };
-      var dumb = [cx, Math.max(top + size / 2, cy - orbit * 1.05)];                       /* dumbbell above the head */
-      if (!clear(dumb)) dumb = [cx, Math.max(top + size / 2, Math.min(picks[1][1], picks[2][1]) - size * 1.15)];
-      if (!clear(dumb)) dumb = [(picks[1][0] + picks[2][0]) / 2, picks[2][1]];            /* no room above: between plane and soft serve */
-      picks[3] = dumb;
+      /* halo: five icons evenly spread on a ~210° arc over the head (from ear level, up and over, to ear level) */
+      var SPAN = 210, n5 = els.length;
+      var rx = R * 2.25 + size * .1;                                            /* width: clear of the head and the raised phone */
+      var ry = Math.max(R * 1.5 + size * .5, Math.min(R * 2.3, cy - top - size / 2));   /* height: as much as fits under the header */
+      picks = [];
+      for (var j = 0; j < n5; j++) {
+        var an = (-90 - SPAN / 2 + j * SPAN / (n5 - 1)) * Math.PI / 180;
+        picks.push([cx + Math.cos(an) * rx, Math.max(top + size / 2, cy + Math.sin(an) * ry)]);
+      }
+      /* left to right around the arc: golf, plane, matcha (top), soft serve, dumbbell */
+      var ARC = [4, 1, 0, 2, 3]; var arcPicks = []; ARC.forEach(function (k, j) { arcPicks[k] = picks[j]; }); picks = arcPicks;
       els.forEach(function (d, i) {
         var x = picks[i][0], y = picks[i][1];
         d.style.width = d.style.height = size + 'px'; d.style.left = (x - size / 2) + 'px'; d.style.top = (y - size / 2) + 'px';
