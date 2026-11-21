@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-21 — Unslop pass (Charles Liu's skill)
+
+- About (desktop): the long text is now left-aligned in a 560px column instead of centred (a deliberate deviation from The Row's centred editorial template, for readability).
+- Work: Fieldnote thumbnail background recoloured from #f4f0ed to the card's #f8f6f5, so it no longer reads as a box inside the card.
+- Cache tags bumped: style.css v=f2, thumb-fieldnote v=3.
+
 ## 2026-11-20 — Beyond as an art gallery; Nara off the opener rotation
 
 - Hero openers: morning Uji, afternoon Seoul fitting room, evening and night SF café (never Jerusalem or Nara).

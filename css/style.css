@@ -307,3 +307,5 @@ p{margin:0}
 @keyframes doodleIn{to{opacity:1;transform:rotate(var(--r,0deg)) scale(1)}}
 @keyframes doodleBob{0%,100%{translate:0 0}50%{translate:0 -4px}}
 @media (prefers-reduced-motion:reduce){.doodle{animation:none;opacity:1;transform:rotate(var(--r,0deg))}.doodle svg{animation:none}}
+/* unslop (Charles): long About text left-aligned in a readable column */
+.editorial__text{text-align:left;max-width:560px;margin-left:auto;margin-right:auto}
