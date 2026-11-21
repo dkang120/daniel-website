@@ -217,14 +217,9 @@ p{margin:0}
   .letter__paper{padding:40px 28px 44px}
 }
 
-/* hand-drawn note arrow on the Nara slide, pointing at Daniel */
-.hero__arrow{position:absolute;left:60.3%;top:43.3%;width:16.7%;height:auto;overflow:visible;pointer-events:none;filter:drop-shadow(0 0 6px rgba(0,0,0,.25))}
-.hero__arrow path{stroke:#fff;stroke-width:3.2;stroke-linecap:round;stroke-linejoin:round}
-@media (max-width:1007px){.hero__arrow{left:66%;top:49.7%;width:32%}}
+/* draw-on: the marker stroke draws toward Daniel, then the two barbs flick out, then the note pops in */
 
 @font-face{font-family:"Caveat";font-weight:600;font-style:normal;font-display:swap;src:url("../fonts/caveat-latin-600-normal.woff2") format("woff2")}
-.hero__note{position:absolute;left:77.6%;top:40%;font-family:"Caveat",cursive;font-weight:600;font-size:clamp(22px,2.1vw,30px);color:#fff;transform:rotate(-4deg);transform-origin:left center;white-space:nowrap;pointer-events:none;text-shadow:0 0 6px rgba(0,0,0,.25)}
-@media (max-width:1007px){.hero__note{left:60%;top:43%;font-size:24px}}
 
 @media (max-width:1007px){
   .hero__slide--fit{overflow:hidden;background:#2a1d14}
@@ -300,10 +295,15 @@ p{margin:0}
 @media (prefers-reduced-motion:reduce){.hero__more.show svg{animation:none}}
 
 /* legibility on any photo: tight dark casing + soft falloff around the white arrow and note (color-analysis pass) */
-.hero__arrow{filter:drop-shadow(0 0 1.2px rgba(0,0,0,.6)) drop-shadow(0 0 2.5px rgba(0,0,0,.35)) drop-shadow(0 0 10px rgba(0,0,0,.28))}
-.hero__note{text-shadow:0 0 1.5px rgba(0,0,0,.8),0 0 3px rgba(0,0,0,.6),0 0 6px rgba(0,0,0,.4),0 0 16px rgba(0,0,0,.35)}
-.hero__arrow.ink path{stroke:#1D1B19}
-.hero__arrow.ink{filter:drop-shadow(0 0 1.2px rgba(255,255,255,.75)) drop-shadow(0 0 3px rgba(255,255,255,.45)) drop-shadow(0 0 10px rgba(255,255,255,.3))}
-.hero__note.ink{color:#1D1B19;text-shadow:0 0 1.5px rgba(255,255,255,.8),0 0 3px rgba(255,255,255,.5),0 0 12px rgba(255,255,255,.4)}
-.hero__note::before{content:"";position:absolute;inset:-12px -18px;z-index:-1;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.34),rgba(0,0,0,.16) 60%,rgba(0,0,0,0));pointer-events:none}
-.hero__note.ink::before{background:radial-gradient(closest-side,rgba(255,255,255,.55),rgba(255,255,255,.22) 60%,rgba(255,255,255,0))}
+
+/* hand-drawn life doodles around Daniel on the opening photo */
+.doodles{position:absolute;inset:0;z-index:2;pointer-events:none}
+.doodle{position:absolute;display:block;transform:rotate(var(--r,0deg)) scale(.3);opacity:0;animation:doodleIn .55s cubic-bezier(.3,1.6,.5,1) calc(.7s + var(--i) * .14s) forwards}
+.doodle::before{content:"";position:absolute;inset:-28%;border-radius:50%;background:radial-gradient(closest-side,rgba(0,0,0,.27),rgba(0,0,0,.11) 55%,rgba(0,0,0,0));pointer-events:none}
+.doodle svg{position:relative;display:block;width:100%;height:100%;overflow:visible;filter:drop-shadow(0 0 1px rgba(0,0,0,.85)) drop-shadow(0 0 2.2px rgba(0,0,0,.55)) drop-shadow(0 0 7px rgba(0,0,0,.3));animation:doodleBob 3.2s ease-in-out calc(1.6s + var(--i) * .4s) infinite}
+.doodle path{fill:#fff}
+.doodle.ink path{fill:#1D1B19}
+.doodle.ink svg{filter:drop-shadow(0 0 1.2px rgba(255,255,255,.8)) drop-shadow(0 0 3px rgba(255,255,255,.5)) drop-shadow(0 0 10px rgba(255,255,255,.3))}
+@keyframes doodleIn{to{opacity:1;transform:rotate(var(--r,0deg)) scale(1)}}
+@keyframes doodleBob{0%,100%{translate:0 0}50%{translate:0 -4px}}
+@media (prefers-reduced-motion:reduce){.doodle{animation:none;opacity:1;transform:rotate(var(--r,0deg))}.doodle svg{animation:none}}

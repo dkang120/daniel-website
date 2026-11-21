@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-20 — Hero: life doodles replace "hi, it's me!"
+
+- Removed the "hi, it's me!" note and arrow.
+- Five hand-drawn doodles of Daniel's life (iced matcha, soft serve, paper plane, dumbbell, golf flag), drawn as tapered marker strokes, pop in one by one around his head on whichever photo opens, then bob gently. Spots are chosen from candidates around the head that are fully on screen, clear of the face and off the body (`data-me` = face centre + radius).
+- Legibility (color-analysis pass): white strokes with a tight dark casing and a soft shade; every doodle passes on all four openers at 1440/1280 desktop and 393/360 mobile (min Lc 54, median 84).
+- Beyond unchanged.
+
 ## 2026-11-20 — Hero arrow placement + legibility, arrow chip, Beyond sizes
 
 - "hi, it's me!": arrow tip lands beside Daniel with a small gap (Uji target derived from the original layout), same note spacing as the original; Seoul arrow comes from the left. Openers unchanged (Uji / Nara / SF café / Seoul).
