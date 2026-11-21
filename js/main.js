@@ -122,14 +122,60 @@
   var DUR = 560, EASE = 'cubic-bezier(0.65, 0, 0.35, 1)';
 
   function tone(i) { document.body.classList.toggle('hero-dark', slides[i].dataset.tone === 'dark'); }
-  /* open on the photo that fits the visitor's time of day: morning Uji, afternoon Nara, evening Jerusalem sunset, night SF café */
+  /* open on the photo that fits the visitor's time of day */
   var hr = new Date().getHours();
   var part = hr >= 5 && hr < 12 ? 'morning' : hr < 17 ? 'afternoon' : hr < 21 ? 'evening' : 'night';
-  var START = { morning: 0, afternoon: 1, evening: 3, night: 4 }[part];
+  var START = { morning: 0, afternoon: 1, evening: 4, night: 2 }[part];   /* Uji, Nara, SF café, Seoul — never Jerusalem */
   if (START >= slides.length) START = 0;
   cur = START;
   slides.forEach(function (s, i) { s.setAttribute('aria-hidden', i === START ? 'false' : 'true'); });
   slides[START].classList.add('is-active'); tone(START);
+  /* "hi, it's me!" lands on the opening photo, pointing at Daniel (data-me = face position in the image) */
+  (function () {
+    var note = hero.querySelector('.hero__note'), arrow = hero.querySelector('.hero__arrow');
+    var img = slides[START].querySelector('.hero__img');
+    if (!note || !arrow || !img || !img.dataset.me) { if (note) note.style.display = 'none'; if (arrow) arrow.style.display = 'none'; return; }
+    slides[START].appendChild(arrow); slides[START].appendChild(note);
+    var me = img.dataset.me.split(',').map(parseFloat);
+    function place() {
+      var W = hero.clientWidth, H = hero.clientHeight, iw = img.naturalWidth, ih = img.naturalHeight;
+      if (!iw) return;
+      var cs = getComputedStyle(img), fit = cs.objectFit, pos = cs.objectPosition.split(' ').map(function (v) { return parseFloat(v) / 100; });
+      var box = img.getBoundingClientRect(), hb = hero.getBoundingClientRect();
+      var bw = box.width, bh = box.height, bx = box.left - hb.left, by = box.top - hb.top;
+      var sc = fit === 'contain' ? Math.min(bw / iw, bh / ih) : Math.max(bw / iw, bh / ih);
+      var rw = iw * sc, rh = ih * sc, ox = bx + (bw - rw) * (fit === 'contain' ? .5 : pos[0]), oy = by + (bh - rh) * (fit === 'contain' ? .5 : pos[1]);
+      var tx = ox + me[0] * rw, ty = oy + me[1] * rh;
+      var aw = arrow.getBoundingClientRect().width || W * .17, ah = aw / 2, gap = Math.max(16, W * .02);
+      var nw0 = note.getBoundingClientRect().width || 120;
+      var flip = tx > W * .62 || (tx + gap + aw * .95 + nw0 > W - 10 && tx - gap - aw - nw0 > 10);
+      arrow.style.transform = flip ? 'scaleX(-1)' : '';
+      var al = flip ? tx - gap - aw * .9 : tx + gap - aw * .1, at = ty - ah * .32;
+      arrow.style.left = al + 'px'; arrow.style.top = at + 'px';
+      var nw = note.getBoundingClientRect().width, nh = note.getBoundingClientRect().height || 26;
+      var nl = flip ? al - nw * .92 : al + aw * .95, nt = at - ah * .3;
+      if (nl < 10 || nl + nw > W - 10) { nl = Math.min(Math.max(10, al + aw * .5 - nw / 2), W - nw - 10); nt = at - nh - 6; }   /* no side room: sit above the arrow */
+      var minTop = (parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--header-h')) || 60) + 10;
+      if (nt < minTop) nt = at + ah + 6;                                                                                       /* too close to the menu: sit below */
+      note.style.left = nl + 'px'; note.style.top = nt + 'px';
+      note.style.transformOrigin = flip ? 'right center' : 'left center';
+    }
+    if (img.complete) place(); else img.addEventListener('load', place);
+    window.addEventListener('resize', place);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(place);
+  })();
+
+  /* desktop: whimsical "there's more" hint, leaves after the first click/swipe/key */
+  var more = (function () {
+    var el = document.createElement('div'); el.className = 'hero__more'; el.setAttribute('aria-hidden', 'true');
+    el.innerHTML = '<span>psst\u2026 there\u2019s more</span><svg viewBox="0 0 90 40" fill="none"><path d="M4 24 C24 6 46 34 64 18 S82 14 86 20"/><path d="M74 10 L86 20 L72 28"/></svg>';
+    hero.appendChild(el);
+    var gone = false, t = setTimeout(function () { if (!gone) el.classList.add('show'); }, 2200);
+    function hide() { if (gone) return; gone = true; clearTimeout(t); el.classList.remove('show'); el.classList.add('gone'); }
+    hero.addEventListener('pointerdown', hide, { once: true });
+    return { hide: hide };
+  })();
+
   var hi = document.createElement('span'); hi.className = 'board-hi'; hi.setAttribute('aria-hidden', 'true');
   hi.textContent = part === 'night' ? 'good night ☾' : 'good ' + part + ' ✦';
   hero.appendChild(hi);
@@ -169,26 +215,13 @@
     return { to: function (i) { set(caps[i]); } };
   })();
 
-  /* Stories-style progress bars: one segment per photo; viewed ones full, the current one fills in */
-  var bars = (function () {
-    var el = document.createElement('div'); el.className = 'hero__bars'; el.setAttribute('aria-hidden', 'true');
-    var segs = slides.map(function () { var s = document.createElement('span'); s.appendChild(document.createElement('i')); el.appendChild(s); return s; });
-    hero.appendChild(el);
-    function to(i) {
-      segs.forEach(function (s, k) {
-        s.classList.toggle('done', k < i);
-        s.classList.remove('on'); if (k === i) { void s.offsetWidth; s.classList.add('on'); }
-      });
-    }
-    to(START);
-    return { to: to };
-  })();
+
 
   function go(dir) {
     if (busy || slides.length < 2) return;
     var next = (cur + dir + slides.length) % slides.length;
     var a = slides[cur], n = slides[next];
-    tone(next); board.to(next); bars.to(next);
+    tone(next); board.to(next); more.hide();
     n.setAttribute('aria-hidden', 'false'); a.setAttribute('aria-hidden', 'true');
     function done() {
       a.classList.remove('is-active', 'is-moving'); n.classList.remove('is-moving'); n.classList.add('is-active');

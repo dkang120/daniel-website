@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-20 — Hero openers, desktop hint, Beyond spreads, Experience polish
+
+- Hero: "hi, it's me!" now lands on whichever photo opens and points at Daniel (face positions stored as `data-me`; placed by measuring the rendered photo, mirrored or stacked when space is tight). Openers: morning Uji, afternoon Nara, evening SF café, night Seoul fitting room. Jerusalem is never the opener.
+- Desktop hero: progress bars removed; handwritten "psst… there's more →" appears after ~2s and leaves on first click.
+- Beyond (desktop): editorial spreads with one large and one offset small photo per screen, alternating sides, 01–06 index numbers, small-caps city and coordinates, big "Beyond" title.
+- Experience: smaller content type on mobile; "keep going ↓" nudge on desktop and mobile (fades in ~2s after landing, here and on About; fixed to the viewport bottom).
+
 ## 2026-11-20 — Desktop hero progress bars
 
 - Desktop only: Stories-style progress bars under the header (one per photo; seen = solid, current fills in), layered above the header fade so they stay bright on dark photos. Mobile keeps its dots.

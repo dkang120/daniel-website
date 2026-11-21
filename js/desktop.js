@@ -16,7 +16,7 @@
     if (c.contains('pdp')) return q(s, '.pdp__head > *, .pdp__meta, .accs, .pdp__body > .btn');
     if (c.contains('exp-overview')) return q(document, '.care__side > *').concat(q(s, 'tr'));
     if (c.contains('exp-group')) return q(s, '.exp-group__label, .exp');
-    if (c.contains('gal__item')) { var n = s.nextElementSibling; return q(s, 'img, .gal__text').concat(n ? q(n, 'img, .gal__text') : []); }
+    if (c.contains('gal__item')) { var n = s.nextElementSibling; return q(s, 'img, .gal__text').concat(n ? q(n, '.gal__intro > *, img, .gal__text') : []); }
     if (c.contains('care') && s.querySelector('.exp-overview')) return q(s, '.care__side > *, .exp-overview tr');
     if (c.contains('care') && s.querySelector('.vals')) return q(s, '.vals li');
     if (c.contains('care')) return q(s, '.care__side > *, .care__main > p, .field, .btn');
