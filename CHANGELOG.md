@@ -190,3 +190,4 @@ Measured all 12 pages at 1440×900 and 390×844, plus all 6 hero slides (APCA Lc
 - 2026-11-21: Résumé PDF replaced with the latest Google Doc export (skills moved up top; High Ticket Sales → Conversion Optimization). Skills page updated to match. Résumé links now ?v=3.
 - 2026-11-21: TMU story block changed from SOAR to Challenge → Opportunity → Results (standalone challenge section folded in).
 - 2026-11-21: Desktop scrolling fixed: removed the wheel-hijack handler (it locked input for 750ms per gesture and swallowed trackpad momentum) and removed scroll snapping (each wheel notch was snapping back to the section top). Scroll is now native both ways; rail dots and reveal animations still work. desktop.css/js ?v=g3.
+- 2026-11-21: Desktop header split around the centred logo: About, Work, Experience, Skills on the left; Beyond, Recommendation, Connect on the right (`.nav--right`). Mobile unchanged.

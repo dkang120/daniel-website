@@ -364,3 +364,6 @@ p{margin:0}
 .chips li:hover{border-color:var(--text)}
 .skills__src{margin-top:22px}
 .skills__src a{color:var(--light)}
+
+/* header: links split around the logo — 4 left, 3 right */
+.nav--right li{margin:6px 0 6px 30px}
