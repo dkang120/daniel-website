@@ -1,0 +1,112 @@
+/* Desktop layer (≥1008px, loaded with a media query). Screen-by-screen snapping, reveal animations,
+   next-page end card, pinned Experience sidebar and higher-contrast Experience.
+   Deviations from therow.com: all of the above; hero is now a full 100vh. */
+
+:root{--cpt:80px;--dhh:60px;--dscr:calc(100vh - var(--dhh));--ease:cubic-bezier(.2,.7,.2,1)}
+
+/* ---------- snapping ---------- */
+html:has([data-dscr]){scroll-snap-type:y mandatory;scroll-padding-top:var(--dhh)}
+[data-dscr]{scroll-snap-align:start;scroll-snap-stop:always}
+@media (prefers-reduced-motion:reduce){html:has([data-dscr]){scroll-snap-type:y proximity}}
+.page,.is-inner .page{min-height:0}
+
+/* ---------- reveal (classes added by desktop.js) ---------- */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease);transition-delay:calc(var(--i,0) * 70ms)}
+.rv.in{opacity:1;transform:none}
+.vals li.rv{transform:translateX(-32px)}
+.vals li.rv.in{transform:none}
+@media (prefers-reduced-motion:reduce){.rv,.vals li.rv{transform:none;transition:opacity .3s}}
+
+/* ---------- screen rail ---------- */
+.rail{position:fixed;right:14px;top:50%;z-index:40;display:flex;flex-direction:column;gap:4px;transform:translateY(-50%);mix-blend-mode:difference;transition:opacity .3s}
+.rail button{display:flex;align-items:center;justify-content:center;width:20px;height:20px}
+.rail button::before{content:"";width:5px;height:5px;border-radius:50%;background:#fff;opacity:.35;transition:opacity .3s,transform .3s}
+.rail button:hover::before{opacity:.7}
+.rail button[aria-current="true"]::before{opacity:1;transform:scale(1.3)}
+.is-home:not(.d-past) .rail{opacity:0;pointer-events:none}
+
+/* ---------- home ---------- */
+.hero{height:100vh}
+.is-home.d-past .header{background:var(--bg)}
+.is-home.d-past .header,.is-home.d-past .header a,.is-home.d-past .logo{color:var(--text)!important}
+.is-home.d-past .header::before{opacity:0}
+.header{transition:background-color .3s ease}
+
+/* ---------- footer = end card ---------- */
+.footer{min-height:var(--dscr);display:flex;flex-direction:column;border-top:0;padding:40px 0 34px}
+.footer__next{display:flex;flex-direction:column;gap:6px;margin:0 56.8px;padding:36px 0 44px;border-bottom:1px solid var(--border);align-self:stretch}
+.footer__next .muted{font-size:13px}
+.footer__next-t{font-size:60px;line-height:1.05;font-weight:500;letter-spacing:-.03em;color:var(--text)}
+.footer__next-t span{display:inline-block;transition:transform .35s var(--ease)}
+.footer__next:hover .footer__next-t span{transform:translateX(10px)}
+.footer__inner{margin-top:auto}
+
+/* ---------- about ---------- */
+.editorial{padding:0}
+.editorial__text{min-height:var(--dscr);display:flex;flex-direction:column;justify-content:center;padding:40px 0}
+.editorial__figure{min-height:var(--dscr);margin:0;display:flex;flex-direction:column;justify-content:center;padding:30px 0}
+.editorial__figure img{height:min(552px,calc(var(--dscr) - 140px))}
+.editorial__figure figcaption{margin-top:22px}
+
+/* ---------- work: all four cards on one screen ---------- */
+.work{min-height:var(--dscr)}
+.work .grid{padding:8px 0 32px;--slot:calc((var(--dscr) - 71px - 8px - 32px - 24px) / 2)}
+.work .card{height:var(--slot)}
+.work .card a{display:flex;flex-direction:column;height:100%}
+.work .card__img{flex:1;min-height:0;aspect-ratio:auto}
+.work .card__img img{object-fit:contain;transition:transform .6s var(--ease)}
+.work .card a:hover .card__img img{transform:scale(1.035)}
+
+/* ---------- case studies ---------- */
+.pdp{min-height:var(--dscr);padding-top:20px;padding-bottom:20px}
+.pdp__gallery>img{height:min(771px,calc(var(--dscr) - 40px));width:100%;object-fit:cover}
+.cs{aspect-ratio:auto;height:min(540px,calc(var(--dscr) - 40px))}
+.cs--p{height:min(802px,calc(var(--dscr) - 40px))}
+.cs--p .cs__card{--w:min(80%,calc((var(--dscr) - 100px) * .76));width:var(--w);left:calc(50% - var(--w) / 2);margin-top:calc(var(--w) * -.625)}
+.pdp__info{padding-top:clamp(30px,9vh,108px)}
+
+/* ---------- experience: overview screen, then one group per screen; sidebar pinned ---------- */
+.care__side{position:sticky;top:calc(var(--dhh) + 40px);align-self:flex-start}
+.care{padding-top:var(--cpt)}
+.exp-overview{min-height:calc(var(--dscr) - var(--cpt));scroll-margin-top:var(--cpt)}
+.exp-overview .care__rule{display:none}
+.exp-group{min-height:var(--dscr);padding:var(--cpt) 0 40px}
+.exp-group__label{font:inherit;font-size:11px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text);display:flex;align-items:center;gap:14px;margin:0 0 4px}
+.exp-group__label::after{content:"";flex:1;height:1px;background:var(--border)}
+.exp{margin:0;padding:18px 0;scroll-margin-top:140px}
+.exp+.exp{border-top:1px solid var(--border)}
+.exp h2{font-size:14px;font-weight:600;line-height:1.4}
+.exp p.muted{font-size:12px;margin:2px 0 6px}
+.tbl td:first-child{font-weight:500}
+.tbl td:first-child .muted{font-weight:400}
+
+/* ---------- beyond: one row (two photos + captions) per screen ---------- */
+.gal{grid-template-columns:repeat(2,auto);gap:0 14px;padding:0}
+.gal__item{min-height:var(--dscr);display:flex;flex-direction:column;justify-content:center;padding:24px 0}
+.gal__item img{width:auto;height:min(677px,calc(var(--dscr) - 140px));aspect-ratio:452/677;cursor:pointer}
+.gal__text{margin:16px 0 0;width:auto}
+
+/* ---------- core values + connect: one screen ---------- */
+.care[data-dscr]:not(:has(.exp-group)){min-height:var(--dscr)}
+.care[data-dscr]:has(.vals){display:grid;grid-template-columns:250px minmax(0,650px);column-gap:80px;align-content:center;align-items:start;padding-top:0;padding-bottom:0}
+.care[data-dscr]:has(.vals) .care__side{position:static}
+
+/* ---------- recommendation: both quotes on one screen ---------- */
+.page.rec{min-height:var(--dscr);display:flex;flex-direction:column;justify-content:center}
+.centered,.centered--first,.centered--last{padding:0}
+.centered--last{margin-top:84px}
+
+@media (max-height:820px){
+  :root{--cpt:44px}
+  .field{margin-bottom:18px}
+  .care__main>p:first-of-type{margin-bottom:20px}
+  .pdp__meta{margin-bottom:20px}
+}
+@media (max-height:760px){
+  .tbl td{padding-top:4px;padding-bottom:4px}
+  .tbl__group td{padding-top:14px}
+  .pdp__info{padding-top:24px}
+  .pdp__lede{margin-bottom:16px}
+  .acc summary{padding:9px 0}
+}
+.care{padding-bottom:0}

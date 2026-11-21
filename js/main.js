@@ -118,13 +118,58 @@
   var DUR = 560, EASE = 'cubic-bezier(0.65, 0, 0.35, 1)';
 
   function tone(i) { document.body.classList.toggle('hero-dark', slides[i].dataset.tone === 'dark'); }
-  slides[0].classList.add('is-active'); tone(0);
+  /* open on the photo that fits the visitor's time of day: morning Uji, afternoon Nara, evening Jerusalem sunset, night SF café */
+  var hr = new Date().getHours();
+  var part = hr >= 5 && hr < 12 ? 'morning' : hr < 17 ? 'afternoon' : hr < 21 ? 'evening' : 'night';
+  var START = { morning: 0, afternoon: 1, evening: 3, night: 4 }[part];
+  if (START >= slides.length) START = 0;
+  cur = START;
+  slides.forEach(function (s, i) { s.setAttribute('aria-hidden', i === START ? 'false' : 'true'); });
+  slides[START].classList.add('is-active'); tone(START);
+  var hi = document.createElement('span'); hi.className = 'board-hi'; hi.setAttribute('aria-hidden', 'true');
+  hi.textContent = part === 'night' ? 'good night ☾' : 'good ' + part + ' ✦';
+  hero.appendChild(hi);
+
+  /* split-flap departures board: the caption flips letter by letter to the new city */
+  var board = (function () {
+    var caps = slides.map(function (s) { var c = s.querySelector('.hero__caption'); return c ? c.textContent.trim().toUpperCase() : ''; });
+    var el = document.createElement('div'); el.className = 'board'; el.setAttribute('aria-hidden', 'true');
+    var plane = document.createElement('span'); plane.className = 'board__p'; plane.textContent = '✈'; el.appendChild(plane);
+    hero.appendChild(el); hero.classList.add('has-board');
+    var CH = ' ABCDEFGHIJKLMNOPQRSTUVWXYZ,.', tiles = [], timers = [];
+    function tile() { var t = document.createElement('span'); t.className = 'board__t'; var i = document.createElement('i'); i.textContent = ' '; t.appendChild(i); el.appendChild(t); tiles.push(t); return t; }
+    function put(t, c) { var i = t.firstChild; if (i.textContent === c) return; i.textContent = c; t.classList.remove('f'); void t.offsetWidth; t.classList.add('f'); }
+    function set(text, instant) {
+      timers.forEach(clearTimeout); timers = [];
+      var n = Math.max(text.length, tiles.length);
+      while (tiles.length < n) tile();
+      for (var k = 0; k < n; k++) (function (k) {
+        var t = tiles[k], target = text[k] || ' ';
+        if (instant || reduce.matches) { t.firstChild.textContent = target; return; }
+        var cur = CH.indexOf(t.firstChild.textContent); if (cur < 0) cur = 0;
+        var steps = 4 + Math.floor(Math.random() * 4) + Math.min(k, 12) % 5, step = 0;
+        (function tick() {
+          step++;
+          if (step >= steps) { put(t, target); return; }
+          cur = (cur + 1) % CH.length; put(t, CH[cur]);
+          timers.push(setTimeout(tick, 42));
+        })();
+      })(k);
+      /* drop surplus tiles once the flip settles */
+      timers.push(setTimeout(function () {
+        while (tiles.length > text.length && tiles[tiles.length - 1].firstChild.textContent === ' ') el.removeChild(tiles.pop());
+      }, 700));
+    }
+    set(caps[START].replace(/./g, ' '), true);
+    setTimeout(function () { set(caps[START]); hi.classList.add('show'); }, 500);
+    return { to: function (i) { set(caps[i]); } };
+  })();
 
   function go(dir) {
     if (busy || slides.length < 2) return;
     var next = (cur + dir + slides.length) % slides.length;
     var a = slides[cur], n = slides[next];
-    tone(next);
+    tone(next); board.to(next);
     n.setAttribute('aria-hidden', 'false'); a.setAttribute('aria-hidden', 'true');
     function done() {
       a.classList.remove('is-active', 'is-moving'); n.classList.remove('is-moving'); n.classList.add('is-active');
@@ -169,9 +214,9 @@
       (t === 'keydown' ? document : hero).addEventListener(t, function () { touched = true; }, { once: true, passive: true });
     });
     setTimeout(function () {
-      if (touched || busy || cur !== 0 || document.hidden) return;
+      if (touched || busy || cur !== START || document.hidden) return;
       try { localStorage.setItem(KEY, '1'); } catch (e) {}
-      var a = slides[0], n = slides[1];
+      var a = slides[START], n = slides[(START + 1) % slides.length];
       busy = true;
       a.classList.add('is-moving'); n.classList.add('is-moving');
       var o = { duration: 1500, easing: 'ease-in-out', fill: 'both' };

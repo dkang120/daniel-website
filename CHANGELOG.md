@@ -1,5 +1,12 @@
 # Changelog
 
+## 2026-11-20 — Departures board, time-of-day hero, desktop screen-by-screen
+
+- Hero caption is now a split-flap departures board ("✈ NARA, JAPAN") that flips letter by letter on every slide change (desktop + mobile).
+- Hero opens on the photo that fits the visitor's local time (morning Uji, afternoon Nara, evening Jerusalem, night San Francisco), with a handwritten "good evening ✦"-style greeting.
+- Desktop (`css/desktop.css` + `js/desktop.js`, ≥1008px): screen-by-screen snapping, with one wheel notch or trackpad flick per screen; reveal animations; "Next: <page> →" end card above the footer; Experience sidebar pinned, plus category labels, bolder roles and hairlines; Work shows all four cards on one screen; Beyond one row per screen; Core Values, Recommendation and Connect one screen each; hero is a full 100vh. Verified at 1440×900, 1280×720 and 1920×1080.
+- About: removed "which is how I ended up selling gym memberships".
+
 ## 2026-11-20 — Mobile polish + faster hero
 
 - Hero photos slide faster on mobile and desktop (900ms → 560ms, crisper ease).

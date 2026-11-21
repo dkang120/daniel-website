@@ -150,7 +150,7 @@ p .u,dd .u{display:inline;padding:0;margin:0}
 /* ---------- EXPERIENCE: one group per screen, no duplicate table ---------- */
 .care{display:block;padding:0}
 .care__side{display:none}
-.care__main>.tbl,.care__main>.care__rule{display:none}
+.exp-overview{display:none}
 .exp-group{min-height:var(--scr);padding:30px 24px 24px}
 .exp-group__label{font:inherit;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--text);margin:0 0 18px;display:flex;align-items:center;gap:12px}
 .exp-group__label::after{content:"";flex:1;height:1px;background:var(--border)}
