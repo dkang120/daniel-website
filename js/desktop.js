@@ -13,7 +13,7 @@
     if (c.contains('hero')) return [];
     if (c.contains('editorial__text') || c.contains('editorial__figure')) return [].slice.call(s.children);
     if (c.contains('work')) return q(s, '.card');
-    if (c.contains('pdp')) return q(s, '.pdp__head > *, .pdp__meta, .accs, .story, .pdp__body > .btn');
+    if (c.contains('pdp')) return q(s, '.pdp__head > *, .pdp__meta, .accs, .story, .star__sec, .pdp__body > .btn');
     if (c.contains('exp-overview')) return q(document, '.care__side > *').concat(q(s, 'tr'));
     if (c.contains('exp-group')) return q(s, '.exp-group__label, .exp');
     if (c.contains('gal__item')) { var n = s.nextElementSibling; return q(s, 'img, .gal__text').concat(n ? q(n, '.gal__intro > *, img, .gal__text') : []); }

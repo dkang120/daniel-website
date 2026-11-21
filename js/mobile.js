@@ -17,7 +17,7 @@
     'editorial__figure': '.editorial__figure > *',
     'toolbar': null,
     'pdp__gallery': null,
-    'pdp__body': '.pdp__meta, .accs, .story, .pdp__body > .btn',
+    'pdp__body': '.pdp__meta, .accs, .story, .star__sec, .pdp__body > .btn',
     'exp-group': '.m-title, .exp-group__label, .exp',
     'gal__item': '.gal__text',
     'vals__scr': 'li',
