@@ -263,3 +263,6 @@ html:has(.m-pagehead){scroll-padding-top:calc(var(--hh) + var(--th))}
 .care.skills[data-scr]{padding:0 0 24px}
 .skills .care__main>.skills__grp,.skills .skills__src{margin-left:24px;margin-right:24px}
 .skills .skills__grp:first-of-type{border-top:0;padding-top:6px}
+/* The Close: smaller slide stack */
+.cs--p .cs__card{--w:min(66vw,28vh)}
+@supports (height:100svh){.cs--p .cs__card{--w:min(66vw,28svh)}}

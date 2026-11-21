@@ -170,3 +170,6 @@ main.page:has(.gal){background:#f3f0ec}
 .pdp--star .pdp__crumbs{margin-bottom:14px}
 @media (max-height:820px){.pdp--star .star__sec{padding-bottom:16px}.pdp--star .pdp__lede{margin-bottom:20px}.pdp--star .star__stats b{font-size:26px}}
 .pdp--star .pdp__info{max-width:660px}
+/* The Close: smaller slide stack */
+.cs--p{height:min(680px,calc(var(--dscr) - 80px))}
+.cs--p .cs__card{--w:min(66%,calc((var(--dscr) - 160px) * .68))}
