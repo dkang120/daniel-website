@@ -265,7 +265,7 @@ EXP = [
     ]),
     ('Sales', [
         ('fitness-19', 'Fitness 19', 'Lead Service Specialist', 'Dublin, CA', 'Sep 2026 – Now', 'Convert 60% of facility tours into memberships (industry average ~38%) with needs-based tours; sell 15 memberships a month against an 8-member target; sell personal training on commission.'),
-        ('coaching', '', 'High-Ticket Sales Closer', 'Remote', 'Aug – Oct 2026', 'Closed high-ticket coaching offers on commission from a 14K-follower audience.'),
+        ('coaching', '@lats', 'High-Ticket Sales Closer', 'Remote', 'Aug – Oct 2026', 'Closed high-ticket coaching offers on commission from a 14K-follower audience.'),
     ]),
     ('Other', [
         ('tmu', 'The Master’s University', 'Student Recruitment Associate', 'Newhall, CA', 'Jan – May 2026', 'Cold-called 1,000+ prospective students across CA, AZ and TX.'),
