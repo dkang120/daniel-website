@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-21 — Header jumping between pages
+- Cause: pages and CSS are cached for 10 minutes on GitHub Pages, and hand-set `?v=` tags collided (`h2` pointed at two different stylesheets), so pages could load mismatched header CSS/markup.
+- Fix: `tools/bust.py` sets every CSS/JS `?v=` to a hash of the file. Run it after any CSS/JS edit.
+
 ## 2026-11-21 — Fieldnote page
 - Website card moved to the left; its thumbnail now shows the whole desktop screen (live site scaled to fit, 1440×900).
 - Deck card back to the original 2×2 slide thumbnail, linking to the PDF.
