@@ -187,3 +187,4 @@ Measured all 12 pages at 1440×900 and 390×844, plus all 6 hero slides (APCA Lc
 ### Code
 - Asset versions bumped to `?v=g1`. `tools/build.py` NAV updated, but build.py is still behind the hand-edited HTML, so don't run it.
 - 2026-11-21 (later): TMU case page goes back to the original 4-photo gallery (SOAR slides removed; `tools/tmu_slides.py` kept if they're wanted again). SOAR, plan, results and a one-line "Why it matters" stay in the text column, which still fits one screen down to 1440×720. Asset versions bumped to `?v=g2`.
+- 2026-11-21: Résumé PDF replaced with the latest Google Doc export (skills moved up top; High Ticket Sales → Conversion Optimization). Skills page updated to match. Résumé links now ?v=3.
