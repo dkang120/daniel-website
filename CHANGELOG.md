@@ -200,3 +200,4 @@ Measured all 12 pages at 1440×900 and 390×844, plus all 6 hero slides (APCA Lc
 - 2026-11-21: TMU Situation/Obstacle/Action/Result bullets rewritten to Daniel's wording.
 - 2026-11-21: TMU story redesigned as a connected timeline: numbered nodes on a line (draws down on reveal), stage labels with taglines (Where it started / What stood in the way / What we did / Three months later), and a highlighted Result panel with big stats and the testimony as a pull-quote. Title 26px.
 - 2026-11-21: Reverted the TMU story visuals/walkthrough (too hard to read); back to the timeline version. Asset versions ?v=h3.
+- 2026-11-21: Header right side reordered: Recommendation, Beyond, Connect.
