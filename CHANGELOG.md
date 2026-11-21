@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-20 — Desktop hero progress bars
+
+- Desktop only: Stories-style progress bars under the header (one per photo; seen = solid, current fills in), layered above the header fade so they stay bright on dark photos. Mobile keeps its dots.
+
 ## 2026-11-20 — About: "keep going" nudge
 
 - Handwritten "keep going ↓" (Caveat, soft grey, bobbing arrow) at the bottom of About's first screen on mobile and desktop; fades after the first scroll.

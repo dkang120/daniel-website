@@ -282,3 +282,13 @@ p{margin:0}
 @keyframes kg{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
 .keep-going.gone{opacity:0!important}
 @media (prefers-reduced-motion:reduce){.keep-going span{animation:none}}
+
+/* hero progress bars (Stories-style) */
+.hero__bars{position:absolute;left:var(--gutter);right:var(--gutter);top:calc(var(--header-h) + 4px);z-index:60;display:flex;gap:5px;pointer-events:none}
+.hero__bars span{position:relative;flex:1;height:2.5px;border-radius:2px;background:rgba(255,255,255,.5);overflow:hidden;box-shadow:0 0 0 .5px rgba(0,0,0,.14),0 1px 5px rgba(0,0,0,.28)}
+.hero__bars i{position:absolute;inset:0;background:#fff;transform:scaleX(0);transform-origin:left}
+.hero__bars span.done i{transform:none}
+.hero__bars span.on i{animation:barfill .7s cubic-bezier(.2,.7,.2,1) .15s forwards}
+@keyframes barfill{to{transform:none}}
+@media (max-width:1007px){.hero__bars{display:none}}
+@media (prefers-reduced-motion:reduce){.hero__bars span.on i{animation:none;transform:none}}

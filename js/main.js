@@ -169,11 +169,26 @@
     return { to: function (i) { set(caps[i]); } };
   })();
 
+  /* Stories-style progress bars: one segment per photo; viewed ones full, the current one fills in */
+  var bars = (function () {
+    var el = document.createElement('div'); el.className = 'hero__bars'; el.setAttribute('aria-hidden', 'true');
+    var segs = slides.map(function () { var s = document.createElement('span'); s.appendChild(document.createElement('i')); el.appendChild(s); return s; });
+    hero.appendChild(el);
+    function to(i) {
+      segs.forEach(function (s, k) {
+        s.classList.toggle('done', k < i);
+        s.classList.remove('on'); if (k === i) { void s.offsetWidth; s.classList.add('on'); }
+      });
+    }
+    to(START);
+    return { to: to };
+  })();
+
   function go(dir) {
     if (busy || slides.length < 2) return;
     var next = (cur + dir + slides.length) % slides.length;
     var a = slides[cur], n = slides[next];
-    tone(next); board.to(next);
+    tone(next); board.to(next); bars.to(next);
     n.setAttribute('aria-hidden', 'false'); a.setAttribute('aria-hidden', 'true');
     function done() {
       a.classList.remove('is-active', 'is-moving'); n.classList.remove('is-moving'); n.classList.add('is-active');
