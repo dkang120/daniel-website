@@ -1,5 +1,29 @@
 # Changelog
 
+## 2026-11-20 — Mobile rebuild (screen-by-screen)
+
+Desktop is pixel-identical (verified at 1440 and 1100 on all 11 pages). All mobile work lives in `css/mobile.css` + `js/mobile.js`, loaded only at ≤1007px; mobile-only markup uses `.m-only` (hidden on desktop).
+
+**Audit fixes**
+- Fixed dead "Read the case" links on Experience (`/work/close/` → `/work/the-close/`, `/work/tmu/` → `/work/tmu-business-network/`).
+- Sticky header on mobile; on Home it turns solid once you pass the photo.
+- Tap targets 44–48px (menu button, drawer rows, footer links, buttons, accordions, breadcrumbs, form fields).
+- Form text 16px (no iOS zoom), dropdown chevron, full-width button, labels aligned.
+- Footer → end-card screen: "Next: <page>" link + compact 2-column links.
+- Page titles on About, Work, Experience, Beyond, Core Values, Recommendation, Connect.
+- Experience: duplicate table hidden; roles grouped (Marketing and social / Sales / Other).
+- Home: intro screen ("A marketer who can close.") with See my work / Résumé / Get in touch.
+- About text left-aligned; body text 15px on mobile.
+- Swipe indicators: hero dots + one-time "Swipe for more photos" hint; dots + "1 / 8 · swipe" on case photo stacks.
+- Recommendation: both quotes on one screen, letters open as a full-screen sheet.
+
+**Screen-by-screen**
+- Mandatory scroll snapping: every swipe moves exactly one screen (`[data-scr]`), sized to the phone (svh). Verified to fit exactly at 390×844, 375×667, 430×932 and 360×740.
+- Each screen is self-contained: Beyond = one photo + caption + "n / 6"; Work = two cards per screen; case studies = photo + headline, then details + Next; Core Values = six per screen; Experience = one group per screen.
+- Content eases in as each screen arrives; screen dots on the right (tap to jump); Beyond photos tap to advance; accordions open one at a time with a smooth height animation (start collapsed if they would overflow the screen).
+
+*Deviations from therow.com mobile:* sticky header, snapping, larger type/targets, end-card footer, page titles, home intro, indicators.
+
 ## 2026-11-20 — ModelLab case page removed
 
 - Deleted `work/modellab/` and its images (`case-modellab.webp`, `case-modellab-og.jpg`); removed from the sitemap.
