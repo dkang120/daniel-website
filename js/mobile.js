@@ -17,11 +17,12 @@
     'editorial__figure': '.editorial__figure > *',
     'toolbar': null,
     'pdp__gallery': null,
-    'pdp__body': '.pdp__meta, .accs, .pdp__body > .btn',
+    'pdp__body': '.pdp__meta, .accs, .story, .pdp__body > .btn',
     'exp-group': '.m-title, .exp-group__label, .exp',
     'gal__item': '.gal__text',
     'vals__scr': 'li',
     'rec': '.m-title, .centered',
+    'skills': '.m-title, .skills__grp, .skills__src',
     'care': '.m-title, .care__main > p, .field, .btn',
     'footer': '.footer__next, .footer__inner, .footer__copy'
   };

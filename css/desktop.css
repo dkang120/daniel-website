@@ -119,3 +119,26 @@ main.page:has(.gal){background:#f3f0ec}
   .acc summary{padding:9px 0}
 }
 .care{padding-bottom:0}
+
+/* ---------- case story (TMU): wider text column so the whole story fits beside the slides ---------- */
+.pdp--story .pdp__info{flex:1 1 auto;max-width:760px;padding:clamp(20px,4vh,56px) 70px 0 64px}
+.pdp--story .pdp__lede{margin-bottom:14px}
+.pdp--story .pdp__meta{margin-bottom:16px}
+.pdp--story .pdp__meta div{display:inline-flex;margin-right:22px}
+.pdp--story .pdp__meta dt{flex:none}
+.pdp--story .story__sec{padding:11px 0 12px}
+.pdp--story .soar{gap:7px}
+.pdp--story .pdp__crumbs{margin-bottom:10px}
+.pdp--story .pdp__no{margin-bottom:10px}
+.pdp--story .pdp__gallery{flex:0 0 560px}
+@media (max-height:820px){.pdp--story .pdp__info{padding-top:8px}.pdp--story .pdp__lede{margin-bottom:10px}.pdp--story .story__sec{padding:9px 0 10px}.pdp--story .story{margin-bottom:16px}}
+.pdp--story{padding-left:clamp(30px,4vw,90px)}
+.pdp--story .pdp__gallery{flex:0 0 clamp(440px,37vw,580px)}
+.pdp--story .pdp__info{padding-left:clamp(36px,4vw,64px);padding-right:clamp(40px,4.5vw,70px)}
+.care.skills[data-dscr]{min-height:var(--dscr);align-items:center;padding-top:0;padding-bottom:0}
+.care.skills .care__side{position:static;align-self:center}
+.care.skills[data-dscr]{display:grid;grid-template-columns:250px minmax(0,650px);column-gap:80px;align-content:center;align-items:start}
+.care.skills .care__side{align-self:start}
+/* 7 nav items: tighten spacing on narrower desktops so the logo stays centered */
+@media (max-width:1240px){.nav li{margin-right:20px}}
+@media (max-width:1100px){.nav li{margin-right:14px}}

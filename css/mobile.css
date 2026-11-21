@@ -259,3 +259,7 @@ html:has(.m-pagehead){scroll-padding-top:calc(var(--hh) + var(--th))}
 .exp{padding:13px 0!important}
 .exp-group__label{font-size:11px}
 .m-pagehead{font-size:22px!important}
+/* skills: page head spans full width, groups padded */
+.care.skills[data-scr]{padding:0 0 24px}
+.skills .care__main>.skills__grp,.skills .skills__src{margin-left:24px;margin-right:24px}
+.skills .skills__grp:first-of-type{border-top:0;padding-top:6px}

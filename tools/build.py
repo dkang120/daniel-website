@@ -4,7 +4,7 @@ import os, pathlib, json, html
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 NAME = "Daniel Kang"
-NAV = [("About", "about"), ("Work", "work"), ("Experience", "experience"),
+NAV = [("About", "about"), ("Work", "work"), ("Experience", "experience"), ("Skills", "skills"),
        ("Beyond", "beyond"), ("Recommendation", "recommendation"), ("Connect", "connect")]
 LINKS = {
     "LinkedIn": "https://www.linkedin.com/in/danielkanggg",

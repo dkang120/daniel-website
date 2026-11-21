@@ -13,12 +13,13 @@
     if (c.contains('hero')) return [];
     if (c.contains('editorial__text') || c.contains('editorial__figure')) return [].slice.call(s.children);
     if (c.contains('work')) return q(s, '.card');
-    if (c.contains('pdp')) return q(s, '.pdp__head > *, .pdp__meta, .accs, .pdp__body > .btn');
+    if (c.contains('pdp')) return q(s, '.pdp__head > *, .pdp__meta, .accs, .story, .pdp__body > .btn');
     if (c.contains('exp-overview')) return q(document, '.care__side > *').concat(q(s, 'tr'));
     if (c.contains('exp-group')) return q(s, '.exp-group__label, .exp');
     if (c.contains('gal__item')) { var n = s.nextElementSibling; return q(s, 'img, .gal__text').concat(n ? q(n, '.gal__intro > *, img, .gal__text') : []); }
     if (c.contains('care') && s.querySelector('.exp-overview')) return q(s, '.care__side > *, .exp-overview tr');
     if (c.contains('care') && s.querySelector('.vals')) return q(s, '.vals li');
+    if (c.contains('skills')) return q(s, '.care__side > *, .skills__grp, .skills__src');
     if (c.contains('care')) return q(s, '.care__side > *, .care__main > p, .field, .btn');
     if (c.contains('rec')) return q(s, '.centered');
     if (c.contains('footer')) return q(s, '.footer__next, .footer__inner, .footer__copy');
@@ -65,7 +66,7 @@
     if (e.ctrlKey || Math.abs(e.deltaY) < Math.abs(e.deltaX)) return;
     var now = Date.now(), gap = now - lastWheel; lastWheel = now;
     if (document.getElementById('drawer') && !document.getElementById('drawer').hidden) return;
-    if (e.target.closest && e.target.closest('dialog[open]')) return;
+    if (e.target.closest && (e.target.closest('dialog[open]') || e.target.closest('.duo__frame--deck'))) return;
     var i = idx(), s = screens[i], r = s.getBoundingClientRect(), down = e.deltaY > 0;
     if (!lock) {
       if (down && r.bottom > window.innerHeight + 2) return;      /* let a tall screen scroll to its end */
