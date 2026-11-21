@@ -334,14 +334,15 @@ p{margin:0}
 .stats--4 .stat__n,.stats--4 .stat__l{display:block}
 .card__img--photo img{object-fit:cover!important}
 
-/* ---------- Fieldnote: deck + live site, side by side ---------- */
+/* ---------- Fieldnote: live site + deck, side by side ---------- */
 .duo{padding:0 var(--gutter) 30px}
 .duo__grid{list-style:none;margin:0 auto;padding:8px 0 0;display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:1500px}
 .duo__card{display:flex;flex-direction:column;min-width:0}
-.duo__frame{height:calc(100vh - 60px - 71px - 8px - 30px - 32px);min-height:420px;background:var(--tile);border-radius:20px;overflow:hidden;position:relative}
-.duo__frame iframe{display:block;width:100%;height:100%;border:0;background:#fff}
-.duo__frame--deck{overflow-y:auto;overscroll-behavior:contain;padding:14px;display:flex;flex-direction:column;gap:14px;outline:none}
-.duo__frame--deck img{display:block;width:100%;height:auto;border-radius:8px;box-shadow:0 0 0 1px rgba(0,0,0,.06)}
+.duo__frame{display:block;aspect-ratio:553/386;background:var(--tile);border-radius:20px;overflow:hidden;position:relative}
+.duo__frame>img{display:block;width:100%;height:100%;object-fit:cover}
+.duo__frame--site{display:flex;align-items:center;justify-content:center}
+.duo__screen{position:relative;overflow:hidden;border-radius:6px;background:#fff;box-shadow:0 0 0 1px rgba(0,0,0,.06),0 10px 30px rgba(43,35,31,.08);flex:none}
+.duo__screen iframe{position:absolute;top:0;left:0;width:1440px;height:900px;border:0;transform:scale(var(--k,.4));transform-origin:0 0;pointer-events:none}
 .duo .card__meta{display:flex;justify-content:space-between;margin-top:8px}
 .duo .card__meta a:hover{color:var(--text)}
 @media (max-width:1007px){
@@ -350,10 +351,8 @@ p{margin:0}
   .duo__grid{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:86vw;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;padding:4px 24px 0;scroll-padding:0 24px;scrollbar-width:none}
   .duo__grid::-webkit-scrollbar{display:none}
   .duo__card{scroll-snap-align:start}
-  .duo__frame{height:68vh;min-height:0;border-radius:16px}
-  .duo__frame--deck{padding:10px;gap:10px}
+  .duo__frame{border-radius:16px}
 }
-@supports (height:100svh){@media (max-width:1007px){.duo__frame{height:68svh}}}
 
 /* ---------- skills ---------- */
 .skills__grp{padding:16px 0 18px;border-top:1px solid var(--border)}

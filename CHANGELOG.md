@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-21 — Fieldnote page
+- Website card moved to the left; its thumbnail now shows the whole desktop screen (live site scaled to fit, 1440×900).
+- Deck card back to the original 2×2 slide thumbnail, linking to the PDF.
+
 ## 2026-11-21 — Unslop pass (Charles Liu's skill)
 
 - About (desktop): the long text is now left-aligned in a 560px column instead of centred (a deliberate deviation from The Row's centred editorial template, for readability).
