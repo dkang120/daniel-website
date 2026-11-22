@@ -235,3 +235,4 @@ Measured all 12 pages at 1440×900 and 390×844, plus all 6 hero slides (APCA Lc
 - Skills: Meta Ads removed; "Korean" to match the résumé. Fieldnote page links fieldnotela.com.
 - 2026-11-21: Résumé: Fitness 19 metrics framed as first 2 months; 'Cold-called'. Links ?v=7.
 - 2026-11-21: New JC in Me case study (work/jc-in-me/): 10 posts from Daniel's tenure (Apr 2026 branded series + 3 Reels covers, pulled from the public account) in a portrait photo stack; Situation/Obstacle/Action/Result with 30-day results and Leslie Bess's quote; links to the account. Card leads the Work page (framed-prints thumbnail); Experience JC in Me entry links to it; sitemap updated.
+- 2026-11-21: Work trimmed to 4 cards: TMU, JC in Me, The Close, Fieldnote (ModelLab removed; still on Experience and the résumé). Next-buttons follow that order.
