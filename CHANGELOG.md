@@ -233,3 +233,4 @@ Measured all 12 pages at 1440×900 and 390×844, plus all 6 hero slides (APCA Lc
 - Home: proof row (650+ members in 3 months · 3.5% engagement rate · 60% tour-to-member) on the desktop card and mobile intro; phones now open with headline + proof + See my work over the photo (\`.hero-m\`, soft dark fade).
 - Experience: Student Recruitment moved to Sales; @lats line matches the résumé (no 14K claim); Fitness 19 numbers framed as "first 2 months"; ModelLab description aligned with the résumé; HK Animal Hospital 120-hour veterinary internship added under freelance.
 - Skills: Meta Ads removed; "Korean" to match the résumé. Fieldnote page links fieldnotela.com.
+- 2026-11-21: Résumé: Fitness 19 metrics framed as first 2 months; 'Cold-called'. Links ?v=7.

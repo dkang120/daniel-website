@@ -9,7 +9,7 @@ NAV = [("About", "about"), ("Work", "work"), ("Experience", "experience"), ("Ski
 LINKS = {
     "LinkedIn": "https://www.linkedin.com/in/danielkanggg",
     "Instagram": "https://instagram.com/daniellllkang1",
-    "Résumé": "assets/Daniel-Kang-Resume.pdf?v=6",
+    "Résumé": "assets/Daniel-Kang-Resume.pdf?v=7",
 }
 EMAIL = "kangd4u@gmail.com"
 import hashlib as _h
