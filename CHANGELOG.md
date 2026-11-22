@@ -219,3 +219,4 @@ Measured all 12 pages at 1440×900 and 390×844, plus all 6 hero slides (APCA Lc
 - Experience: removed the unsourced "(industry average ~38%)".
 - TMU: intro now states Daniel's own role ("As Director of Marketing, I led outreach and our channels.").
 - Work: one-line summary under every card. Fieldnote page: title + 2-sentence intro on what it is and what Daniel did.
+- 2026-11-21: Résumé PDF re-exported from the updated Google Doc (social-first: headline, Marketing & Social / Sales sections, closer role added, hidanielkang.com link, Meta Ads and the ~38% claim removed, YBTJ fixed; still one page). Links ?v=4.
