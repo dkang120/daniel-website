@@ -410,3 +410,7 @@ p{margin:0}
 .proof b{display:block;font-size:20px;line-height:1.1;font-weight:500;letter-spacing:-.02em;color:var(--text)}
 .proof span{display:block;font-size:11px;line-height:1.3;color:var(--light);margin-top:3px}
 .proof--m{margin:18px 0 22px}
+
+/* colour audit 2026-11-21: small grey labels reach APCA floors (12px on white = Lc 77; tinted panel gets a deeper grey) */
+.proof span,.star__tag,.skills__k{font-size:12px}
+.star__sec--result .star__tag,.star__sec--result .star__stats span{color:#5F5B59}
