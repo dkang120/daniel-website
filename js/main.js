@@ -175,20 +175,35 @@
       }
       var picks = els.map(function (d, i) { return cands.length ? cands[Math.round(i * (cands.length - 1) / Math.max(1, els.length - 1))] : [cx, cy - orbit, -90]; });
       /* halo: five icons evenly spread on a ~210° arc over the head (from ear level, up and over, to ear level) */
-      var SPAN = 210, n5 = els.length;
-      var rx = (R * 2.25 + size * .1) * (boost > 1 ? 1.15 : 1);                                            /* width: clear of the head and the raised phone */
-      var ry = Math.max(R * 1.5 + size * .5, Math.min(R * 2.3, cy - top - size / 2));   /* height: as much as fits under the header */
+      var SPAN = 180, n5 = els.length;
+      var rx = (R * 2.55 + size * .2) * (boost > 1 ? 1.1 : 1);                                            /* width: clear of the head and the raised phone */
+      var ry = Math.max(R * 2.1 + size * .6, Math.min(R * 3.2, cy - top - size / 2));   /* height: as much as fits under the header */
       picks = [];
+      /* data-scatter: loosen the arc into a hand-placed, uneven scatter (fixed offsets, so it looks the same every visit) */
+      var sc5 = 'scatter' in img.dataset, JA = [-8, -14, 10, -6, 14], JR = [0.9, 1.2, 0.86, 1.2, 0.95];
       for (var j = 0; j < n5; j++) {
-        var an = (-90 - SPAN / 2 + j * SPAN / (n5 - 1)) * Math.PI / 180;
-        picks.push([cx + Math.cos(an) * rx, Math.max(top + size / 2, cy + Math.sin(an) * ry)]);
+        var an = (-90 - SPAN / 2 + j * SPAN / (n5 - 1) + (sc5 ? JA[j] : 0)) * Math.PI / 180, jr = sc5 ? JR[j] : 1;
+        picks.push([Math.max(10 + size / 2, Math.min(W - 10 - size / 2, cx + Math.cos(an) * rx * jr)), Math.max(top + size / 2, cy + Math.sin(an) * ry * jr)]);
+      }
+      /* data-avoid: x0,y0,x1,y1 of something to keep clear (e.g. the phone); push a doodle out along its ray until it clears */
+      if (img.dataset.avoid) {
+        var av = img.dataset.avoid.split(',').map(parseFloat), ax0 = ox + av[0] * rw, ay0 = oy + av[1] * rh, ax1 = ox + av[2] * rw, ay1 = oy + av[3] * rh;
+        picks = picks.map(function (pt) {
+          for (var t = 0; t < 30; t++) {
+            if (pt[0] + size / 2 < ax0 - 8 || pt[0] - size / 2 > ax1 + 8 || pt[1] + size / 2 < ay0 - 8 || pt[1] - size / 2 > ay1 + 8) break;
+            var dx = pt[0] - cx, dy = pt[1] - cy, dl = Math.hypot(dx, dy) || 1;
+            pt = [Math.min(W - 10 - size / 2, pt[0] + dx / dl * 6), Math.max(top + size / 2, pt[1] + dy / dl * 6)];
+          }
+          return pt;
+        });
       }
       /* left to right around the arc: golf, plane, matcha (top), soft serve, dumbbell */
       var ARC = [4, 1, 0, 2, 3]; var arcPicks = []; ARC.forEach(function (k, j) { arcPicks[k] = picks[j]; }); picks = arcPicks;
       els.forEach(function (d, i) {
         var x = picks[i][0], y = picks[i][1];
         d.style.width = d.style.height = size + 'px'; d.style.left = (x - size / 2) + 'px'; d.style.top = (y - size / 2) + 'px';
-        d.style.setProperty('--r', ((i % 2 ? 1 : -1) * (6 + i * 2)) + 'deg');
+        d.style.setProperty('--r', ('scatter' in img.dataset ? [-14, 8, -3, 17, -9][i] : (i % 2 ? 1 : -1) * (6 + i * 2)) + 'deg');
+        if ('scatter' in img.dataset) { var zs = [1.08, .9, 1, .94, 1.12][i]; d.style.width = d.style.height = size * zs + 'px'; d.style.left = (x - size * zs / 2) + 'px'; d.style.top = (y - size * zs / 2) + 'px'; }
       });
       /* white or ink per doodle, from the photo underneath (color-analysis: fix contrast by moving lightness) */
       try {

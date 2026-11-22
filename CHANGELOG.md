@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-21 — Hero doodles: more breathing room
+- Doodles sit on a wider, taller arc around Daniel's head (less cramped).
+- SF café: loose, uneven scatter instead of a neat arc (`data-scatter`: fixed angle/distance/size/tilt offsets).
+- Seoul fitting room: doodles keep clear of the phone (`data-avoid`).
+
 ## 2026-11-21 — Header jumping between pages
 - Cause: pages and CSS are cached for 10 minutes on GitHub Pages, and hand-set `?v=` tags collided (`h2` pointed at two different stylesheets), so pages could load mismatched header CSS/markup.
 - Fix: `tools/bust.py` sets every CSS/JS `?v=` to a hash of the file. Run it after any CSS/JS edit.
