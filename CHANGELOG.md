@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-21 (late)
+- Hero always opens on Uji (12am–12pm) or Acne Studios Seoul (12pm–12am), moved to slide 1.
+- Home intro rebuilt in the site language: caption-style 13px white type + shadow, 20px title, square .btn (inverted for photos), soft vignette instead of a card.
+
 ## 2026-11-21 — Hero doodles: more breathing room
 - Doodles sit on a wider, taller arc around Daniel's head (less cramped).
 - SF café: loose, uneven scatter instead of a neat arc (`data-scatter`: fixed angle/distance/size/tilt offsets).

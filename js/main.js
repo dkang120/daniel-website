@@ -125,8 +125,14 @@
   /* open on the photo that fits the visitor's time of day */
   var hr = new Date().getHours();
   var part = hr >= 5 && hr < 12 ? 'morning' : hr < 17 ? 'afternoon' : hr < 21 ? 'evening' : 'night';
-  var START = { morning: 0, afternoon: 2, evening: 4, night: 4 }[part];   /* Uji, Seoul, SF café, SF café — never Jerusalem or Nara */
-  if (START >= slides.length) START = 0;
+  /* always open on Uji (mornings) or the Acne Studios fitting room (every other time), and make that photo #1 */
+  var pick = hr < 12 ? 0 : 2;                            /* 12am–12pm Uji, 12pm–12am Acne Studios (Seoul). DOM order: 0 Uji, 1 Nara, 2 Seoul, … */
+  if (pick && slides[pick]) {
+    slides[pick].parentNode.insertBefore(slides[pick], slides[0]);
+    slides = [].slice.call(hero.querySelectorAll('.hero__slide'));
+    var fi = slides[0].querySelector('.hero__img'); if (fi) fi.setAttribute('fetchpriority', 'high');
+  }
+  var START = 0;
   cur = START;
   slides.forEach(function (s, i) { s.setAttribute('aria-hidden', i === START ? 'false' : 'true'); });
   slides[START].classList.add('is-active'); tone(START);

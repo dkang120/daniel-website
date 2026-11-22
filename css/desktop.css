@@ -185,3 +185,29 @@ main.page:has(.gal){background:#f3f0ec}
 @keyframes introIn{to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.hero-intro{animation:none;opacity:1;transform:none}}
 .hero-intro__eyebrow{font-size:12px}
+
+/* ---------- home intro, v2: type on the photo, like the caption and the phone pitch (no card) ---------- */
+.hero-intro{left:var(--gutter,20px);bottom:26px;width:min(460px,38vw);padding:0;background:none;-webkit-backdrop-filter:none;backdrop-filter:none;box-shadow:none;color:#fff;isolation:isolate}
+.hero-intro::before{content:"";position:absolute;z-index:-1;left:calc(var(--gutter,20px) * -1);bottom:-26px;width:min(760px,62vw);height:calc(100% + 190px);pointer-events:none;
+  background:radial-gradient(120% 100% at 0% 100%,rgba(0,0,0,.58) 0%,rgba(0,0,0,.5) 30%,rgba(0,0,0,.3) 55%,rgba(0,0,0,.1) 75%,rgba(0,0,0,0) 90%)}
+.hero-intro__h{font-size:32px;line-height:1.1;letter-spacing:-.02em;color:#fff;margin:0 0 10px;text-shadow:0 1px 14px rgba(0,0,0,.25)}
+.hero-intro__p{color:rgba(255,255,255,.92);margin:0 0 18px;max-width:400px}
+.hero-intro .proof--hero{border-top:1px solid rgba(255,255,255,.4);margin:0 0 18px;max-width:400px}
+.hero-intro .proof--hero b{color:#fff;font-size:22px}
+.hero-intro .proof--hero span{color:#fff;font-size:12px}
+.hero-intro__cta{display:flex;align-items:center;gap:20px}
+.hero-intro .hero-m__btn{display:inline-flex;align-items:center;height:38px;padding:0 18px;border-radius:999px;background:#fff;color:#111;font-size:13px;font-weight:500;transition:background .2s}
+.hero-intro .hero-m__btn:hover{background:#ececeb}
+.hero-intro__link{color:#fff;font-size:13px;text-decoration:underline;text-underline-offset:3px;text-decoration-thickness:1px}
+.hero-intro__link:hover{opacity:.8}
+.hero-intro::before{background:radial-gradient(125% 105% at 0% 100%,rgba(0,0,0,.7) 0%,rgba(0,0,0,.62) 32%,rgba(0,0,0,.4) 56%,rgba(0,0,0,.14) 76%,rgba(0,0,0,0) 92%)}
+/* v3: matches .hero__caption (13px white, same text-shadow), title at the site's title weight, a whisper of vignette only */
+.hero-intro{bottom:var(--gutter,20px);width:340px;text-shadow:0 0 2px rgba(0,0,0,.45),0 0 12px rgba(0,0,0,.6)}
+.hero-intro::before{bottom:calc(var(--gutter,20px) * -1);height:calc(100% + 140px);width:min(620px,50vw);background:radial-gradient(120% 100% at 0% 100%,rgba(0,0,0,.42) 0%,rgba(0,0,0,.34) 35%,rgba(0,0,0,.16) 62%,rgba(0,0,0,0) 85%)}
+.hero-intro__h{font-size:20px;line-height:1.25;font-weight:500;letter-spacing:-.01em;margin:0 0 6px;text-shadow:inherit}
+.hero-intro__p{font-size:13px;line-height:1.65;color:#fff;margin:0 0 14px}
+.hero-intro .proof--hero{margin:0 0 16px;padding-top:10px;border-top-color:rgba(255,255,255,.55)}
+.hero-intro .proof--hero b{font-size:15px;font-weight:500;letter-spacing:0}
+.hero-intro .proof--hero span{font-size:12px;color:#fff}
+.hero-intro__cta{gap:8px}
+.hero-intro__cta .btn{text-shadow:none}

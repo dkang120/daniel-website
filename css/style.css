@@ -414,3 +414,9 @@ p{margin:0}
 /* colour audit 2026-11-21: small grey labels reach APCA floors (12px on white = Lc 77; tinted panel gets a deeper grey) */
 .proof span,.star__tag,.skills__k{font-size:12px}
 .star__sec--result .star__tag,.star__sec--result .star__stats span{color:#5F5B59}
+
+/* ---------- hero intro in the site's own language: caption-style white type, square .btn inverted for photos ---------- */
+.btn--on-photo{width:auto;height:30px;padding:0 18px;background:#fff;color:var(--text);border-color:#fff;pointer-events:auto}
+.btn--on-photo:hover{background:transparent;color:#fff}
+.btn--on-photo.btn--ghost{background:transparent;color:#fff}
+.btn--on-photo.btn--ghost:hover{background:#fff;color:var(--text)}
