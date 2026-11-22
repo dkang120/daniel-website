@@ -227,3 +227,9 @@ Measured all 12 pages at 1440×900 and 390×844, plus all 6 hero slides (APCA Lc
 - 2026-11-21: Résumé PDF re-exported from the updated Google Doc (social-first: headline, Marketing & Social / Sales sections, closer role added, hidanielkang.com link, Meta Ads and the ~38% claim removed, YBTJ fixed; still one page). Links ?v=4.
 - 2026-11-21: Résumé redesigned for readability (two pages allowed): full bullet detail restored, 10.5pt body, 12pt section headings with matching 1pt rules, 115% line spacing, space between entries, entries kept together across the page break, HubSpot / en-dash fixes. Links ?v=5.
 - 2026-11-21: Résumé: added Fieldnote (Brand Concept) as first Volunteering & Projects entry; typography/spacing matched to Daniel's reference PDF (24/12/10pt TNR, 100% line spacing, 11.5pt pitch, 1.5pt rule under Education and 0.75pt under other headings, heading gaps 25.3–27.6pt). Links ?v=6.
+
+## 2026-11-21 — Fixes from the second screening review
+- Work: The Close thumbnail is now the real cover slide as a framed print (was a mock dashboard with an "Illustrative trend" chart).
+- Home: proof row (650+ members in 3 months · 3.5% engagement rate · 60% tour-to-member) on the desktop card and mobile intro; phones now open with headline + proof + See my work over the photo (\`.hero-m\`, soft dark fade).
+- Experience: Student Recruitment moved to Sales; @lats line matches the résumé (no 14K claim); Fitness 19 numbers framed as "first 2 months"; ModelLab description aligned with the résumé; HK Animal Hospital 120-hour veterinary internship added under freelance.
+- Skills: Meta Ads removed; "Korean" to match the résumé. Fieldnote page links fieldnotela.com.
