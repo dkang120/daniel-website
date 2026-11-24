@@ -29,13 +29,13 @@ html:has([data-scr]){scroll-snap-type:y proximity;scroll-padding-top:var(--hh)}
 .header::before{transition:opacity .3s ease}
 
 /* ---------- drawer: slide in, 48px rows ---------- */
-.drawer:not([hidden]){animation:dIn .35s var(--ease)}
+.drawer:not([hidden]){animation:dIn .25s cubic-bezier(.32,.72,0,1)}
 @keyframes dIn{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 .drawer__top{height:var(--hh);align-items:center;padding:0 15px 0 20px}
 .drawer__close{display:flex;align-items:center;justify-content:center;width:44px;height:44px;margin:0 -12px 0 0}
 .drawer__list a{display:flex;align-items:center;min-height:48px;padding:0 20px;font-size:17px}
 .drawer__list--secondary a{font-size:15px;min-height:44px}
-.drawer:not([hidden]) .drawer__list li{animation:dItem .45s var(--ease) both}
+.drawer:not([hidden]) .drawer__list li{animation:none}
 .drawer:not([hidden]) .drawer__list li:nth-child(2){animation-delay:.03s}
 .drawer:not([hidden]) .drawer__list li:nth-child(3){animation-delay:.06s}
 .drawer:not([hidden]) .drawer__list li:nth-child(4){animation-delay:.09s}
@@ -181,7 +181,7 @@ p .u,dd .u{display:inline;padding:0;margin:0}
 .centered__by{margin-bottom:6px;color:var(--light)}
 .letter{width:100vw;max-width:100vw;height:100vh;max-height:none;margin:0}
 @supports (height:100svh){.letter{height:100svh}}
-.letter[open]{animation:sheetUp .4s var(--ease)}
+.letter[open]{animation:sheetUp .3s cubic-bezier(.32,.72,0,1)}
 @keyframes sheetUp{from{transform:translateY(40px);opacity:0}to{transform:none;opacity:1}}
 .letter__close{position:sticky;top:0;float:right;min-height:44px;padding:0 18px;background:#fff;z-index:1}
 .letter__paper{padding:56px 24px 44px}
