@@ -11,8 +11,8 @@ body{font-size:15px;line-height:1.6}
 .page,.is-inner .page{min-height:0}
 
 /* ---------- screen snapping ---------- */
-html:has([data-scr]){scroll-snap-type:y mandatory;scroll-padding-top:var(--hh)}
-[data-scr]{scroll-snap-align:start;scroll-snap-stop:always}
+html:has([data-scr]){scroll-snap-type:y proximity;scroll-padding-top:var(--hh)}
+[data-scr]{scroll-snap-align:start}
 @media (prefers-reduced-motion:reduce){html:has([data-scr]){scroll-snap-type:y proximity}}
 
 /* ---------- header: sticky, 44px targets ---------- */
@@ -286,3 +286,8 @@ html:has(.m-pagehead){scroll-padding-top:calc(var(--hh) + var(--th))}
 .hero-m__h{font-size:20px;line-height:1.25;letter-spacing:-.01em;margin:0 0 10px;text-shadow:inherit}
 .proof--hero b{font-size:15px;font-weight:500;letter-spacing:0}
 .hero-m .btn{text-shadow:none}
+
+/* Menu: compact secondary row */
+.drawer__list--secondary{display:flex;gap:22px;margin-top:28px;padding:20px 20px 0;border-top:1px solid var(--border);margin-left:20px;margin-right:20px;padding-left:0}
+.drawer__list--secondary a{padding:0;min-height:44px;font-size:14px;color:var(--light)}
+.footer__col--lead{display:none}
