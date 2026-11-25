@@ -9,7 +9,7 @@ NAV = [("About", "about"), ("Work", "work"), ("Experience", "experience"), ("Ski
 LINKS = {
     "LinkedIn": "https://www.linkedin.com/in/danielkanggg",
     "Instagram": "https://instagram.com/daniellllkang1",
-    "Résumé": "assets/Daniel-Kang-Resume.pdf?v=8",
+    "Résumé": "assets/Daniel-Kang-Resume.pdf?v=9",
 }
 EMAIL = "kangd4u@gmail.com"
 import hashlib as _h
@@ -261,7 +261,7 @@ EXP = [
     ('Marketing and social', [
         ('tmu-bn', 'TMU Business Network', 'Co-Founder & Director of Marketing', 'Newhall, CA', 'Mar 2026 – Now', 'Grew to 650+ members in 3 months; matched students with Big Four professionals.'),
         ('modellab', 'ModelLab', 'Founder', 'Online', 'Nov 2026 – Now', 'Built an interactive investing education website to simplify investing strategies for beginners.'),
-        ('jcinme', 'JC in Me', 'Social Media Manager', 'Santa Clarita, CA', 'Sep 2025 – May 2026', '3.5% interaction rate on 18,500+ views in the first 30 days; AI-assisted content workflow.'),
+        ('jcinme', 'JC in Me', 'Social Media Manager', 'Santa Clarita, CA', 'Sep 2025 – May 2026', '155,000+ views in 90 days (+400%); grew the account 51% to 1,000+ followers; AI-assisted content workflow.'),
     ]),
     ('Sales', [
         ('fitness-19', 'Fitness 19', 'Lead Service Specialist', 'Dublin, CA', 'Sep 2026 – Now', 'Convert 60% of facility tours into memberships (industry average ~38%) with needs-based tours; sell 15 memberships a month against an 8-member target; sell personal training on commission.'),

@@ -1,5 +1,14 @@
 # Changelog
 
+## 2026-11-25 — Résumé refresh
+- Résumé PDF replaced with the latest Google Doc export (v=9 everywhere).
+- Experience: new TMU Business Network, JC in Me and recruitment copy.
+- Skills: trimmed Software/Skills lists, added Google Ads Search Certificate, languages marked native/fluent.
+- About: Google Ads Search certificate added.
+- Home proof row: 3.5% engagement → 155K+ views in 90 days.
+- Work + JC in Me case: 90-day results (155K+ views, +400%; 1,000+ followers, +51%; 69% non-follower views), new Instagram insights slide first in the gallery.
+- Ask Daniel: social and tools answers updated.
+
 ## 2026-11-21 (late)
 - Hero always opens on Uji (12am–12pm) or Acne Studios Seoul (12pm–12am), moved to slide 1.
 - Home intro rebuilt in the site language: caption-style 13px white type + shadow, 20px title, square .btn (inverted for photos), soft vignette instead of a card.

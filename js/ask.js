@@ -17,11 +17,11 @@
       link: ['How I run a call', 'work/the-close/'] },
     { id: 'social', q: 'What have you done in social media?',
       k: ['social', 'instagram', 'content', 'jc in me', 'engagement', 'followers', 'brand', 'rebrand'],
-      a: 'I ran JC in Me’s Instagram end to end: strategy, design and posting. In the first 30 days it hit a 3.5% interaction rate, 18,500+ views and 675+ followers.',
+      a: 'I ran JC in Me’s Instagram end to end: strategy, design and posting. In the last 90 days a Reels-led strategy drove 155,000+ views, up 400%+, and grew the account to 1,000+ followers, with 69% of views from non-followers.',
       link: ['See the work', 'work/jc-in-me/'] },
     { id: 'tools', q: 'What tools do you use?',
       k: ['tool', 'tools', 'software', 'skill', 'skills', 'figma', 'canva', 'hubspot', 'klaviyo', 'meta', 'ads', 'ai', 'certified', 'certification'],
-      a: 'Figma, Canva, Adobe Creative Suite, Meta Ads Manager, Klaviyo, HubSpot, Framer and Excel, plus AI tools like Claude, Midjourney and Gamma. I’m HubSpot certified in Inbound and Social Media Marketing.',
+      a: 'Meta Ads Manager, Klaviyo, HubSpot, Figma, Canva, Framer, Excel and Claude. I hold a Google Ads Search certificate and HubSpot certifications in Inbound and Social Media Marketing.',
       link: ['All skills', 'skills/'] },
     { id: 'where', q: 'Where are you based?',
       k: ['where', 'based', 'location', 'remote', 'hybrid', 'relocate', 'bay area', 'sf', 'san francisco', 'live'],
@@ -32,7 +32,7 @@
     { id: 'contact', q: 'How do I reach you?',
       k: ['contact', 'reach', 'email', 'call', 'talk', 'connect', 'linkedin', 'resume', 'résumé', 'cv', 'chat'],
       a: 'Email me at kangd4u@gmail.com, or connect with me on LinkedIn. My résumé is below.',
-      link: ['Résumé (PDF)', 'assets/Daniel-Kang-Resume.pdf?v=8'] }
+      link: ['Résumé (PDF)', 'assets/Daniel-Kang-Resume.pdf?v=9'] }
   ];
   var FALLBACK = 'I don’t have a written answer for that one yet. Email me at kangd4u@gmail.com and I’ll answer it myself.';
 
