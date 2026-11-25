@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-26 — Résumé + skills: video research pipeline
+- Résumé PDF replaced with the latest Google Doc export (v=10 everywhere): new "AI Video Research Pipeline (Personal Project)" entry.
+- Skills: added Supabase and Gemini API (Software) and Short-Form Video Analysis (Skills).
+- Ask Daniel: tools answer lists Supabase and the Gemini API.
+
 ## 2026-11-25 — Beyond: culture and community
 - New order: Ramallah (new), Jerusalem, Uji, Osaka (Wabicha), Palo Alto, Nara; Han River removed.
 - Placards get a one-line caption (`.gal__line`); Uji and Nara keep their original titles.

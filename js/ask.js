@@ -21,7 +21,7 @@
       link: ['See the work', 'work/jc-in-me/'] },
     { id: 'tools', q: 'What tools do you use?',
       k: ['tool', 'tools', 'software', 'skill', 'skills', 'figma', 'canva', 'hubspot', 'klaviyo', 'meta', 'ads', 'ai', 'certified', 'certification'],
-      a: 'Meta Ads Manager, Klaviyo, HubSpot, Figma, Canva, Framer, Excel and Claude. I hold a Google Ads Search certificate and HubSpot certifications in Inbound and Social Media Marketing.',
+      a: 'Meta Ads Manager, Klaviyo, HubSpot, Figma, Canva, Framer, Excel, Claude, Supabase and the Gemini API. I hold a Google Ads Search certificate and HubSpot certifications in Inbound and Social Media Marketing.',
       link: ['All skills', 'skills/'] },
     { id: 'where', q: 'Where are you based?',
       k: ['where', 'based', 'location', 'remote', 'hybrid', 'relocate', 'bay area', 'sf', 'san francisco', 'live'],
