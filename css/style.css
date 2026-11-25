@@ -172,6 +172,8 @@ p{margin:0}
 .gal{display:grid;grid-template-columns:repeat(2,452px);gap:130px 14px;justify-content:center;padding:50px 0 100px}
 .gal__item img{display:block;width:452px;height:677px;object-fit:cover;background:var(--tile)}
 .gal__text{margin:75px 0 0 50px;width:352px}
+.gal__line{margin-top:10px;font-size:14px;line-height:1.45}
+.gal__n{white-space:nowrap}
 
 /* Recommendation — centred text template */
 .centered{max-width:640px;margin:0 auto;padding:200px 0 320px;text-align:center}

@@ -16,7 +16,7 @@
     if (c.contains('pdp')) return q(s, '.pdp__head > *, .pdp__meta, .accs, .story, .star__sec, .pdp__body > .btn');
     if (c.contains('exp-overview')) return q(document, '.care__side > *').concat(q(s, 'tr'));
     if (c.contains('exp-group')) return q(s, '.exp-group__label, .exp');
-    if (c.contains('gal__item')) { var n = s.nextElementSibling; return q(s, 'img, .gal__text').concat(n ? q(n, '.gal__intro > *, img, .gal__text') : []); }
+    if (c.contains('gal__item')) { var out = q(s, 'img, .gal__text'), n = s.nextElementSibling; while (n && !n.hasAttribute('data-dscr')) { out = out.concat(q(n, '.gal__intro > *, img, .gal__text')); n = n.nextElementSibling; } return out; }
     if (c.contains('care') && s.querySelector('.exp-overview')) return q(s, '.care__side > *, .exp-overview tr');
     if (c.contains('care') && s.querySelector('.vals')) return q(s, '.vals li');
     if (c.contains('skills')) return q(s, '.care__side > *, .skills__grp, .skills__src');
@@ -70,7 +70,7 @@
 
   [].forEach.call(document.querySelectorAll('.gal__item img'), function (img) {
     img.addEventListener('click', function () {
-      var li = img.closest('.gal__item'); var row = li.hasAttribute('data-dscr') ? li : li.previousElementSibling;
+      var row = img.closest('.gal__item'); while (row && !row.hasAttribute('data-dscr')) row = row.previousElementSibling;
       go(screens[screens.indexOf(row) + 1]);
     });
   });

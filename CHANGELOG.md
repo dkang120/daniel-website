@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-25 — Beyond: culture and community
+- New order: Ramallah (new), Jerusalem, Uji, Osaka (Wabicha), Palo Alto, Nara; Han River removed.
+- Placards get a one-line caption (`.gal__line`); Uji and Nara keep their original titles.
+- Desktop wall now shows 3 frames per row (`--w` sizes frames to the narrower of width or height); frames top-aligned; BEYOND title centred over the middle frame.
+
 ## 2026-11-25 — Résumé refresh
 - Résumé PDF replaced with the latest Google Doc export (v=9 everywhere).
 - Experience: new TMU Business Network, JC in Me and recruitment copy.
