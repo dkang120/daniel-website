@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-11-27 (15) — Tab title nudge
+- After OFF+BRAND (itsoffbrand.com): 2s after the tab loses focus the title reads "I miss you 😢" (theirs: "We miss you 😢"); it resets on focus.
+
 ## 2026-11-27 (14) — Smooth page changes + stat counters
 - View Transitions: pages cross-fade, header stays put, and TMU / JC in Me / Fieldnote images grow from the Work and Home thumbnails into the case page (and back). Unsupported browsers load normally; off for reduced motion.
 - Hero stats count up once per visit the first time they show (real numbers stay in the HTML and aria-label).

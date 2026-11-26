@@ -384,3 +384,10 @@
   }, { threshold: .6 });
   els.forEach(function (b) { if (b.offsetParent !== null) io.observe(b); else b.textContent = b._final; });
 })();
+
+/* Tab title nudge (after OFF+BRAND): 2s after you leave the tab, the title says "I miss you 😢"; it resets when you come back */
+(function () {
+  var original = document.title, t = null;
+  window.addEventListener('blur', function () { clearTimeout(t); t = setTimeout(function () { document.title = 'I miss you 😢'; }, 2000); });
+  window.addEventListener('focus', function () { clearTimeout(t); document.title = original; });
+})();
