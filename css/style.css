@@ -683,6 +683,21 @@ p{margin:0}
 @media (max-width:1007px){.page--about .about__h{font-size:32px!important}}
 /* no screen dots on the side */
 .rail{display:none!important}
-/* Work scroll nudge: desktop only (mobile shows the first project right away) */
-.keep-going--work{color:var(--accent)}
-@media (max-width:1007px){.keep-going--work{display:none}}
+/* Work: interactive project index on the first screen (desktop) — hover floats the project image, click glides to it */
+.widx,.widx-pv{display:none}
+@media (min-width:1008px){
+  .work__intro{min-height:calc(var(--dscr) - 140px);display:flex;flex-direction:column}
+  .widx{display:block;list-style:none;margin:auto 0 0;padding:0;border-top:1px solid var(--text)}
+  .widx li{border-bottom:1px solid var(--border)}
+  .widx a{display:grid;grid-template-columns:56px 1fr auto;align-items:baseline;gap:16px;padding:18px 0;transition:opacity .35s ease,padding .35s var(--ease,ease)}
+  .widx__no{font-size:12px;color:var(--accent);font-variant-numeric:tabular-nums}
+  .widx__t{font-size:clamp(28px,3vw,40px);line-height:1.05;letter-spacing:-.03em}
+  .widx__k{font-size:13px;color:var(--light)}
+  .widx.is-hover a{opacity:.25}
+  .widx.is-hover a.is-on{opacity:1;padding-left:14px}
+  .widx-pv{display:block;position:fixed;left:0;top:0;z-index:30;width:300px;pointer-events:none;opacity:0;transition:opacity .25s ease}
+  .widx-pv img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:cover;background:var(--tile);transform:scale(.92) rotate(-3deg);transition:transform .45s var(--ease,ease);box-shadow:0 24px 50px -24px rgba(0,0,0,.35)}
+  .widx-pv.on{opacity:1}
+  .widx-pv.on img{transform:scale(1) rotate(-2deg)}
+}
+@media (prefers-reduced-motion:reduce){.widx a,.widx-pv,.widx-pv img{transition:none}}

@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-11-27 (13) — Work index
+- Removed the "scroll for the receipts" note. Work (desktop) first screen is now an interactive project index: hover a name and its image floats beside the cursor while the other rows dim; click glides to the full project. Projects below still reveal on first scroll.
+
 ## 2026-11-27 (12) — Scroll cues
 - Side screen dots (rail) hidden on every page.
 - Work (desktop): projects stay hidden until the first scroll again, then reveal in sequence; a handwritten "scroll for the receipts ↓" nudge sits at the bottom and fades once you scroll.
