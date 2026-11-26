@@ -701,3 +701,11 @@ p{margin:0}
   .widx-pv.on img{transform:scale(1) rotate(-2deg)}
 }
 @media (prefers-reduced-motion:reduce){.widx a,.widx-pv,.widx-pv img{transition:none}}
+/* Smooth page changes (View Transitions): pages cross-fade, the header stays put, and a project's image
+   grows from the Work/Home thumbnail into the case page's photo. Browsers without support just load normally. */
+@view-transition{navigation:auto}
+.header{view-transition-name:site-header}
+::view-transition-old(root),::view-transition-new(root){animation-duration:.32s;animation-timing-function:ease}
+::view-transition-group(*){animation-duration:.6s;animation-timing-function:cubic-bezier(.2,.7,.2,1)}
+::view-transition-old(*):not(::view-transition-old(root)),::view-transition-new(*){mix-blend-mode:normal}
+@media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}

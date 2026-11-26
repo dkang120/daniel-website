@@ -55,6 +55,10 @@
   screens.forEach(function (s) { io.observe(s); });
   /* Work: projects stay hidden until the first scroll (a handwritten nudge points down), then reveal in sequence */
   var wk = document.querySelector('main.work[data-dscr]');
+  function wkShow() { window.__wscr = true; (wk._rv || []).forEach(function (el) { el.classList.add('in'); }); }
+  /* arriving mid-page (back button, link to a project) shows the projects straight away */
+  if (wk && (window.scrollY > 8 || location.hash)) wkShow();
+  if (wk) window.addEventListener('pageshow', function () { if (window.scrollY > 8) wkShow(); });
   if (wk) window.addEventListener('scroll', function once() { if (window.scrollY < 8) return; window.__wscr = true; (wk._rv || []).forEach(function (el) { el.classList.add('in'); }); window.removeEventListener('scroll', once); }, { passive: true });
   var ticking = false;
   window.addEventListener('scroll', function () { if (ticking) return; ticking = true; requestAnimationFrame(function () { ticking = false; track(); }); }, { passive: true }); track();

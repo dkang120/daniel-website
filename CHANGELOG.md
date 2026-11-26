@@ -1,5 +1,10 @@
 # Changelog
 
+## 2026-11-27 (14) — Smooth page changes + stat counters
+- View Transitions: pages cross-fade, header stays put, and TMU / JC in Me / Fieldnote images grow from the Work and Home thumbnails into the case page (and back). Unsupported browsers load normally; off for reduced motion.
+- Hero stats count up once per visit the first time they show (real numbers stay in the HTML and aria-label).
+- Work: arriving mid-page (back button) shows the projects right away.
+
 ## 2026-11-27 (13) — Work index
 - Removed the "scroll for the receipts" note. Work (desktop) first screen is now an interactive project index: hover a name and its image floats beside the cursor while the other rows dim; click glides to the full project. Projects below still reveal on first scroll.
 
