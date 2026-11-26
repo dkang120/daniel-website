@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-11-27 (8) — About alignment
+- Desktop: text column bottom-aligned with the photo, so the credentials line sits on the same line as "Seoul, South Korea."
+
 ## 2026-11-27 (7) — Fieldnote desktop
 - Centered editorial intro (44px title) and full-width centered challenge / approach / outcome row above the two cards.
 

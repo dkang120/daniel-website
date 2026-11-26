@@ -645,3 +645,5 @@ p{margin:0}
   .duo .steps{max-width:none;margin:0 0 30px;padding:18px 0 0;border-top:1px solid var(--text);gap:40px;text-align:center}
   .duo .steps span{max-width:34ch;margin:0 auto}
 }
+/* About (desktop): credentials line sits on the same baseline as the photo caption */
+@media (min-width:1008px){.page--about .editorial{align-items:end}.page--about .creds-line{margin-bottom:0}.page--about .editorial__figure figcaption{margin-bottom:0;line-height:1.65}}
