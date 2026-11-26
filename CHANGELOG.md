@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-11-27 (3) — Menu order
+- "Next →" end cards and footer links now follow the menu: Home → Work → About → Experience → Beyond → Connect. Skills and Recommendation sit muted in the footer.
+
 ## 2026-11-27 (2) — Full audit list
 - Font: self-hosted TeX Gyre Heros (free Helvetica clone, closest to The Row's paid Basic Commercial), so every device matches what Macs showed. Caveat stays for handwritten notes only.
 - No beige anywhere: Beyond's warm wall and gallery-light gradient removed (plain white; frames and placards kept).
