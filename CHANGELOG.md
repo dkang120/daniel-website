@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-27 (12) — Scroll cues
+- Side screen dots (rail) hidden on every page.
+- Work (desktop): projects stay hidden until the first scroll again, then reveal in sequence; a handwritten "scroll for the receipts ↓" nudge sits at the bottom and fades once you scroll.
+
 ## 2026-11-27 (11) — About reverted
 - About v4 type scale and stretched photo reverted to the previous version; headline "I notice what makes people show up." reduced to 40px desktop / 32px mobile.
 

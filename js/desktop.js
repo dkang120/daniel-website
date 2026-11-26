@@ -49,10 +49,13 @@
     dots.forEach(function (d, k) { d.setAttribute('aria-current', k === best ? 'true' : 'false'); });
   }
   var io = new IntersectionObserver(function (es) {
-    es.forEach(function (e) { if (e.isIntersecting && (e.intersectionRatio >= 0.3 || e.intersectionRect.height >= window.innerHeight * 0.3)) (e.target._rv || []).forEach(function (el) { el.classList.add('in'); }); });
+    es.forEach(function (e) { if (e.isIntersecting && (e.intersectionRatio >= 0.3 || e.intersectionRect.height >= window.innerHeight * 0.3) && !(e.target.classList.contains('work') && !window.__wscr)) (e.target._rv || []).forEach(function (el) { el.classList.add('in'); }); });
     track();
   }, { threshold: [0, 0.3, 0.6, 1] });
   screens.forEach(function (s) { io.observe(s); });
+  /* Work: projects stay hidden until the first scroll (a handwritten nudge points down), then reveal in sequence */
+  var wk = document.querySelector('main.work[data-dscr]');
+  if (wk) window.addEventListener('scroll', function once() { if (window.scrollY < 8) return; window.__wscr = true; (wk._rv || []).forEach(function (el) { el.classList.add('in'); }); window.removeEventListener('scroll', once); }, { passive: true });
   var ticking = false;
   window.addEventListener('scroll', function () { if (ticking) return; ticking = true; requestAnimationFrame(function () { ticking = false; track(); }); }, { passive: true }); track();
 

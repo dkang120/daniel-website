@@ -681,3 +681,8 @@ p{margin:0}
 .page--about .about__h{font-size:40px!important;line-height:1.05;letter-spacing:-.03em;max-width:14ch}
 @media (min-width:1008px){.page--about .about__h{font-size:40px!important}}
 @media (max-width:1007px){.page--about .about__h{font-size:32px!important}}
+/* no screen dots on the side */
+.rail{display:none!important}
+/* Work scroll nudge: desktop only (mobile shows the first project right away) */
+.keep-going--work{color:var(--accent)}
+@media (max-width:1007px){.keep-going--work{display:none}}
