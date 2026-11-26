@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-27 (9) — Work option B + Beyond title
+- Work (desktop): editorial layout — 56px intro, one project per row with a 44px title, result line and image alternating sides between thin rules. Mobile keeps the stacked cards; the result now sits on its own line.
+- Beyond (desktop): title + framing line centered over the gallery (the reveal animation had been shifting it).
+
 ## 2026-11-27 (8) — About alignment
 - Desktop: text column bottom-aligned with the photo, so the credentials line sits on the same line as "Seoul, South Korea."
 

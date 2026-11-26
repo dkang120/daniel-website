@@ -647,3 +647,33 @@ p{margin:0}
 }
 /* About (desktop): credentials line sits on the same baseline as the photo caption */
 @media (min-width:1008px){.page--about .editorial{align-items:end}.page--about .creds-line{margin-bottom:0}.page--about .editorial__figure figcaption{margin-bottom:0;line-height:1.65}}
+/* Beyond (desktop): title + framing line truly centered (the reveal animation was overriding the old translateX centering) */
+@media (min-width:1008px){
+  .gal__intro{left:50%!important;width:640px;margin-left:0!important;text-align:center;white-space:normal!important}
+
+  .gal__intro .gal__frame{max-width:520px;margin:10px auto 0;font-size:13px;line-height:1.55}
+}
+@media (min-width:1008px){.gal__item:has(.gal__intro){position:static}}
+/* Work, option B (editorial): one project per row, big titles, images alternate sides */
+.work .card__k{display:block}
+@media (min-width:1008px){
+.work__intro{max-width:1130px;margin:30px auto 10px}
+.work__intro h1{font-size:56px;line-height:1.02;letter-spacing:-.035em;font-weight:400;max-width:14ch}
+.work__intro p{margin-top:12px;font-size:14px}
+.work__note{display:none}
+.work .grid{display:block!important;max-width:1130px;padding-top:20px}
+.work .card{height:auto!important;border-top:1px solid var(--text)}
+.work .card:last-child{border-bottom:1px solid var(--text)}
+.work .card a{display:grid!important;grid-template-columns:minmax(0,1fr) minmax(0,1.35fr);grid-template-areas:"lbl img" "t img" "s img";grid-template-rows:1fr auto 1fr;column-gap:64px;padding:44px 0;height:auto!important}
+.work .card:nth-child(even) a{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);grid-template-areas:"img lbl" "img t" "img s"}
+.work .card__img,.work .card--feature .card__img{grid-area:img;aspect-ratio:4/3!important;flex:none!important}
+.work .card:not(.card--feature) .card__img img{transform:scale(1.12)}
+.work .card:not(.card--feature) a:hover .card__img img{transform:scale(1.15)}
+.work .card--feature .card__img img{padding:22px 22px 0}
+.work .card__lbl{grid-area:lbl;margin:0!important;align-self:end}
+.work .card__meta{grid-area:t;display:block!important;margin-top:10px!important}
+.work .card__t{display:block;font-size:44px!important;line-height:1.02;letter-spacing:-.035em}
+.work .card__meta .muted{display:block;margin-top:8px}
+.work .card__sum{grid-area:s;align-self:start;margin-top:18px!important;font-size:15px!important;max-width:34ch}
+.work .card__k{font-size:20px;letter-spacing:-.01em;margin-bottom:6px}
+}
