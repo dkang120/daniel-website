@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-11-27 (7) — Fieldnote desktop
+- Centered editorial intro (44px title) and full-width centered challenge / approach / outcome row above the two cards.
+
 ## 2026-11-27 (6) — Hero fix
 - Desktop: the intro box (tagline, metrics, buttons) had dropped below the photo because the new Selected work strip sat inside <main>; the strip now sits after <main>. Metric context lines hidden in the hero (the strip below carries them).
 

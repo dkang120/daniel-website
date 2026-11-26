@@ -637,3 +637,11 @@ p{margin:0}
 .work .card__sum{margin-top:2px;font-size:13px;line-height:1.5;color:var(--light);max-width:60ch}
 .work .card__k{color:var(--text)}
 .hero-intro .proof small{display:none}
+/* Fieldnote (desktop): centered, editorial intro; steps span the full width under it */
+@media (min-width:1008px){
+  .duo__intro{max-width:620px;margin:10px auto 26px;text-align:center}
+  .duo__h{font-size:44px;line-height:1.02;letter-spacing:-.035em;font-weight:400;margin:0 0 14px}
+  .duo__intro p{font-size:14px;line-height:1.6}
+  .duo .steps{max-width:none;margin:0 0 30px;padding:18px 0 0;border-top:1px solid var(--text);gap:40px;text-align:center}
+  .duo .steps span{max-width:34ch;margin:0 auto}
+}
