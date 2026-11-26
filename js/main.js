@@ -391,3 +391,39 @@
   window.addEventListener('blur', function () { clearTimeout(t); t = setTimeout(function () { document.title = 'saving you a seat 🍵'; }, 2000); });
   window.addEventListener('focus', function () { clearTimeout(t); document.title = original; });
 })();
+
+/* Copy email (desktop): clicking the email copies it and shows a small toast instead of opening a mail app */
+(function () {
+  if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches || !navigator.clipboard) return;
+  var toast = null, tm = null;
+  function show(msg) {
+    if (!toast) { toast = document.createElement('div'); toast.className = 'toast'; toast.setAttribute('role', 'status'); document.body.appendChild(toast); }
+    toast.textContent = msg; toast.classList.add('on'); clearTimeout(tm); tm = setTimeout(function () { toast.classList.remove('on'); }, 1800);
+  }
+  window.__dkToast = show;
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href^="mailto:"]'); if (!a || a.closest('.rsm')) return;
+    var addr = a.getAttribute('href').slice(7).split('?')[0];
+    e.preventDefault();
+    navigator.clipboard.writeText(addr).then(function () { show('Email copied ✓  ' + addr); }, function () { location.href = a.href; });
+  });
+})();
+
+/* Résumé preview (desktop): opens the PDF in a panel with Download / Email, instead of jumping to the raw file */
+(function () {
+  if (!window.matchMedia('(min-width: 1008px)').matches) return;
+  var box = null, last = null;
+  function close() { if (!box) return; box.classList.remove('on'); document.body.classList.remove('no-scroll'); setTimeout(function () { box && box.remove(); box = null; }, 220); last && last.focus && last.focus(); }
+  document.addEventListener('click', function (e) {
+    var a = e.target.closest && e.target.closest('a[href*="Daniel-Kang-Resume.pdf"]'); if (!a || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault(); last = a; var url = a.href;
+    box = document.createElement('div'); box.className = 'rsm'; box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true'); box.setAttribute('aria-label', 'Résumé preview');
+    box.innerHTML = '<div class="rsm__bg" data-x></div><div class="rsm__card"><div class="rsm__top"><p>Résumé · Daniel Kang</p><div class="rsm__act">' +
+      '<a class="btn" href="' + url + '" download="Daniel-Kang-Resume.pdf">Download</a><a class="btn" href="mailto:kangd4u@gmail.com?subject=Hi%20Daniel">Email me</a>' +
+      '<button class="rsm__x" type="button" aria-label="Close" data-x>×</button></div></div><iframe src="' + url + '#view=FitH" title="Daniel Kang résumé"></iframe></div>';
+    document.body.appendChild(box); document.body.classList.add('no-scroll');
+    requestAnimationFrame(function () { box.classList.add('on'); box.querySelector('.rsm__x').focus(); });
+    box.addEventListener('click', function (ev) { if (ev.target.hasAttribute('data-x')) close(); });
+  });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+})();

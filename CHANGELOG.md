@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-27 (17) — Copy email, Now, résumé preview
+- Desktop: clicking any email link copies it and shows a "Email copied ✓" toast (mobile still opens the mail app).
+- Home: dated "Now" block (building ModelLab, Fitness 19, FL Studio, roles wanted).
+- Desktop: Résumé links open an in-page PDF preview with Download / Email me; Esc or click outside closes; cmd-click still opens the file.
+- Next-card copy: "Four projects, results first".
+
 ## 2026-11-27 (16)
 - Tab title nudge now reads "saving you a seat 🍵" (ties to the matcha doodle).
 

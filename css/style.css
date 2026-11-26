@@ -709,3 +709,26 @@ p{margin:0}
 ::view-transition-group(*){animation-duration:.6s;animation-timing-function:cubic-bezier(.2,.7,.2,1)}
 ::view-transition-old(*):not(::view-transition-old(root)),::view-transition-new(*){mix-blend-mode:normal}
 @media (prefers-reduced-motion:reduce){::view-transition-group(*),::view-transition-old(*),::view-transition-new(*){animation:none!important}}
+/* Now (home) */
+.now{width:calc(100% - 40px);max-width:1130px;margin:0 auto;padding:8px 0 64px}
+.now__in{border-top:1px solid var(--text);padding-top:16px;display:grid;grid-template-columns:200px 1fr;gap:6px 32px}
+.now__k{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--accent)}
+.now__d{grid-column:1;font-size:12px;color:var(--light)}
+.now__l{grid-column:2;grid-row:1/span 3;list-style:none;margin:0;padding:0}
+.now__l li{display:grid;grid-template-columns:110px 1fr;gap:16px;padding:9px 0;border-bottom:1px solid var(--border);font-size:15px}
+.now__l span{font-size:12px;color:var(--light);padding-top:2px}
+@media (max-width:1007px){.now{padding:0 0 40px}.now__in{grid-template-columns:1fr}.now__l{grid-column:1;grid-row:auto}.now__l li{grid-template-columns:92px 1fr;font-size:14px}}
+/* toast (copy email) */
+.toast{position:fixed;left:50%;bottom:28px;z-index:200;transform:translate(-50%,12px);padding:10px 16px;background:var(--text);color:#fff;font-size:13px;opacity:0;pointer-events:none;transition:opacity .2s ease,transform .25s var(--ease,ease)}
+.toast.on{opacity:1;transform:translate(-50%,0)}
+/* résumé preview */
+.rsm{position:fixed;inset:0;z-index:150;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity .2s ease}
+.rsm.on{opacity:1}
+.rsm__bg{position:absolute;inset:0;background:rgba(29,27,25,.55)}
+.rsm__card{position:relative;display:flex;flex-direction:column;width:min(900px,92vw);height:min(1100px,90vh);background:#fff;transform:translateY(14px);transition:transform .3s var(--ease,ease)}
+.rsm.on .rsm__card{transform:none}
+.rsm__top{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:12px 16px;border-bottom:1px solid var(--border)}
+.rsm__act{display:flex;align-items:center;gap:8px}
+.rsm__act .btn{width:auto;height:32px;padding:0 14px}
+.rsm__x{width:32px;height:32px;font-size:22px;line-height:1}
+.rsm iframe{flex:1;width:100%;border:0;background:var(--tile)}
