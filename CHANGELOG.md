@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-11-27 (16)
+- Tab title nudge now reads "saving you a seat 🍵" (ties to the matcha doodle).
+
 ## 2026-11-27 (15) — Tab title nudge
 - After OFF+BRAND (itsoffbrand.com): 2s after the tab loses focus the title reads "I miss you 😢" (theirs: "We miss you 😢"); it resets on focus.
 
