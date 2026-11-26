@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-27 (18) — Smoother transitions, Now removed
+- Now block removed from the homepage.
+- View transitions: old page fades out in .18s while the new one fades in right behind it; project images glide .55s with a quick mid-swap (no doubled image); header excluded from animation; pages arriving through a transition skip the scroll-reveal fade (hook in <head>).
+
 ## 2026-11-27 (17) — Copy email, Now, résumé preview
 - Desktop: clicking any email link copies it and shows a "Email copied ✓" toast (mobile still opens the mail app).
 - Home: dated "Now" block (building ModelLab, Fitness 19, FL Studio, roles wanted).
