@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-11-27 (11) — About reverted
+- About v4 type scale and stretched photo reverted to the previous version; headline "I notice what makes people show up." reduced to 40px desktop / 32px mobile.
+
 ## 2026-11-27 (10) — About scale + reveal fix
 - About: one type scale (12 caps labels · 15 gray body · 22 statements · 40–56 display); photo stretches to the text column so its top meets "About / 01" and its caption sits on the credentials line.
 - Reveal-on-scroll now also fires for sections taller than the screen (Work was hidden on load after the editorial layout).
