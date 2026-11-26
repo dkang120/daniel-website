@@ -604,3 +604,35 @@ p{margin:0}
 @media (max-width:1007px){.proof a{min-height:44px}}
 .sel__grid li:first-child img{object-fit:contain;padding:12px 12px 0;object-position:50% 100%}
 @media (max-width:1007px){.sel__note{top:-4px;bottom:auto}}
+/* 2026-11-27 final touches */
+@media (max-width:1007px){
+  .m-only.gal__frame{padding:0 24px;margin:2px 0 16px}
+  .intro .intro__p{margin-bottom:10px}
+  .intro .intro__meta{margin:0 0 30px}
+  .intro .intro__cta{gap:12px}
+  .intro .intro__link{margin-top:20px}
+}
+/* About: editorial contrast — big display lines, small quiet body and labels */
+.page--about .about__h{font-size:56px;line-height:1.02;letter-spacing:-.035em;font-weight:400;margin:0 0 26px;max-width:12ch}
+.page--about .editorial__text>p:not(.pull):not(.about__k):not(.bridge):not(.creds-line):not(.keep-going){font-size:14px;line-height:1.6;color:var(--light);max-width:52ch}
+.page--about .pull{font-size:26px;line-height:1.2;letter-spacing:-.02em;color:var(--text);margin:26px 0 10px!important;max-width:20ch}
+.page--about .duo2{gap:36px;margin-top:34px!important;padding-top:18px}
+.page--about .duo2 h2{font-size:12px;letter-spacing:.08em;text-transform:uppercase;font-weight:500;color:var(--text);margin:0 0 10px}
+.page--about .duo2 h2+p{font-size:21px!important;line-height:1.25!important;letter-spacing:-.015em;color:var(--text)}
+.page--about .bridge{margin-top:30px!important;font-size:13px}
+@media (max-width:1007px){
+  .page--about .about__h{font-size:40px;max-width:none}
+  .page--about .pull{font-size:22px}
+  .page--about .duo2 h2+p{font-size:19px!important}
+}
+.page--about .duo2 h2{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.page--about .duo2__k{margin-bottom:10px!important}
+@media (min-width:1008px){.page--about .about__h{font-size:52px}.page--about .duo2 h2+p{font-size:19px!important}.page--about .editorial{padding-top:20px;padding-bottom:20px}}
+/* Work: three text sizes only — label 11, title 15, line 13; no bolds */
+.work .card__lbl{margin:12px 0 0;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--light)}
+.work .card__lbl span{color:var(--accent)}
+.work .card__meta{margin-top:2px;align-items:baseline}
+.work .card__t{font-size:15px;color:var(--text)}
+.work .card__meta .muted{font-size:12px}
+.work .card__sum{margin-top:2px;font-size:13px;line-height:1.5;color:var(--light);max-width:60ch}
+.work .card__k{color:var(--text)}

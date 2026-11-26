@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-27 (5) — Final touches
+- Beyond (mobile): framing line gets 24px side padding.
+- About: editorial scale — 52px display headline (40 mobile), 26px pull line, 19px Perspective/Process statements, 14px gray body; duplicate sub-labels hidden visually.
+- Work: card text cut to three sizes (11px label, 15px title, 13px line), no bolds, no separate metric line or "Read case study" link.
+- Home (mobile): more space between the intro line, the school line and the buttons.
+
 ## 2026-11-27 (4) — Second audit round
 - The Close removed: case page, images, Work card, Experience/Ask Daniel/hero links and sitemap entry. 60% now links to Experience → Fitness 19.
 - Nav: Work, About | Beyond, Résumé, Contact (button). Experience moved to the mobile menu's secondary list and the footer; Next chain unchanged.
