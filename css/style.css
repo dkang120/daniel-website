@@ -636,3 +636,4 @@ p{margin:0}
 .work .card__meta .muted{font-size:12px}
 .work .card__sum{margin-top:2px;font-size:13px;line-height:1.5;color:var(--light);max-width:60ch}
 .work .card__k{color:var(--text)}
+.hero-intro .proof small{display:none}

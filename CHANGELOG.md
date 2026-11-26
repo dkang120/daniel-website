@@ -1,5 +1,8 @@
 # Changelog
 
+## 2026-11-27 (6) — Hero fix
+- Desktop: the intro box (tagline, metrics, buttons) had dropped below the photo because the new Selected work strip sat inside <main>; the strip now sits after <main>. Metric context lines hidden in the hero (the strip below carries them).
+
 ## 2026-11-27 (5) — Final touches
 - Beyond (mobile): framing line gets 24px side padding.
 - About: editorial scale — 52px display headline (40 mobile), 26px pull line, 19px Perspective/Process statements, 14px gray body; duplicate sub-labels hidden visually.
