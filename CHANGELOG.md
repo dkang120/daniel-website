@@ -1,5 +1,9 @@
 # Changelog
 
+## 2026-11-27 (10) — About scale + reveal fix
+- About: one type scale (12 caps labels · 15 gray body · 22 statements · 40–56 display); photo stretches to the text column so its top meets "About / 01" and its caption sits on the credentials line.
+- Reveal-on-scroll now also fires for sections taller than the screen (Work was hidden on load after the editorial layout).
+
 ## 2026-11-27 (9) — Work option B + Beyond title
 - Work (desktop): editorial layout — 56px intro, one project per row with a 44px title, result line and image alternating sides between thin rules. Mobile keeps the stacked cards; the result now sits on its own line.
 - Beyond (desktop): title + framing line centered over the gallery (the reveal animation had been shifting it).

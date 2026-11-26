@@ -49,7 +49,7 @@
     dots.forEach(function (d, k) { d.setAttribute('aria-current', k === best ? 'true' : 'false'); });
   }
   var io = new IntersectionObserver(function (es) {
-    es.forEach(function (e) { if (e.isIntersecting && e.intersectionRatio >= 0.3) (e.target._rv || []).forEach(function (el) { el.classList.add('in'); }); });
+    es.forEach(function (e) { if (e.isIntersecting && (e.intersectionRatio >= 0.3 || e.intersectionRect.height >= window.innerHeight * 0.3)) (e.target._rv || []).forEach(function (el) { el.classList.add('in'); }); });
     track();
   }, { threshold: [0, 0.3, 0.6, 1] });
   screens.forEach(function (s) { io.observe(s); });

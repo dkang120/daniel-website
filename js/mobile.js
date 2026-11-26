@@ -71,7 +71,7 @@
 
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
-      if (e.isIntersecting && e.intersectionRatio >= 0.35) {
+      if (e.isIntersecting && (e.intersectionRatio >= 0.35 || e.intersectionRect.height >= window.innerHeight * 0.35)) {
         (e.target._rv || []).forEach(function (el) { el.classList.add('in'); });
       }
     });

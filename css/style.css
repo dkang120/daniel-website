@@ -677,3 +677,27 @@ p{margin:0}
 .work .card__sum{grid-area:s;align-self:start;margin-top:18px!important;font-size:15px!important;max-width:34ch}
 .work .card__k{font-size:20px;letter-spacing:-.01em;margin-bottom:6px}
 }
+/* About v4 — one type scale, 4 steps only:
+   label 12 caps (accent) · body 15 gray · statement 22 ink · display clamp(40-56) ink.
+   Photo stretches to the text column so its top meets "About / 01" and its caption sits on the credentials line. */
+@media (min-width:1008px){
+  .page--about .editorial{display:grid;grid-template-columns:minmax(0,600px) clamp(280px,31vw,440px);justify-content:center;align-items:stretch;gap:clamp(40px,5vw,80px);max-width:none;padding:56px 40px 48px;min-height:0}
+  .page--about .editorial__text{display:flex;flex-direction:column;justify-content:flex-start}
+  .page--about .creds-line{margin-top:auto!important}
+  .page--about .editorial__figure{display:flex;flex-direction:column;justify-content:flex-start;min-height:0;padding:0}
+  .page--about .editorial__figure img{flex:1 1 0;min-height:0;width:100%;height:auto!important;aspect-ratio:auto!important;object-fit:cover;object-position:50% 30%}
+  .page--about .editorial__figure figcaption{flex:none;margin-top:14px;padding-top:13px;border-top:1px solid transparent;font-size:12px;line-height:1.5;color:var(--light)}
+}
+.page--about .about__k,.page--about .duo2__k{font-size:12px;letter-spacing:.12em}
+.page--about .about__h{font-size:clamp(40px,4.4vw,56px)!important;line-height:1.02;letter-spacing:-.035em;margin:0 0 28px!important;max-width:12ch}
+.page--about .editorial__text>p:not(.pull):not(.about__k):not(.creds-line):not(.keep-going){font-size:15px!important;line-height:1.6;color:var(--light);max-width:50ch;margin:0}
+.page--about .editorial__text>p+p{margin-top:16px}
+.page--about .pull,.page--about .duo2 h2+p{font-size:22px!important;line-height:1.3!important;letter-spacing:-.015em!important;color:var(--text)!important;font-weight:400}
+.page--about .pull{margin:28px 0 12px!important;max-width:22ch}
+.page--about .duo2{margin-top:32px!important;padding-top:18px;gap:40px}
+.page--about .bridge{margin-top:28px!important;padding-left:14px;border-left:1px solid var(--accent)}
+.page--about .bridge b{font-weight:400;color:var(--text)}
+.page--about .creds-line{font-size:12px!important;line-height:1.5;padding-top:13px;color:var(--light)!important;max-width:none}
+@media (max-width:1007px){.page--about .pull,.page--about .duo2 h2+p{font-size:20px!important}}
+.page--about .bridge{margin-bottom:28px!important}
+.page--about .pull{margin:28px 0 16px!important}
