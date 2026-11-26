@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-27 — Audit pass: nav, Work, About
+- Header nav cut from 7 links to 5: Work, About, Experience | Beyond, Connect. Skills and Recommendation stay in the mobile menu and footer.
+- Work: ModelLab back as a featured full-width card (links out to the live site), thumbnail = live homepage screenshot (`images/thumb-modellab-site.webp`). Every card summary now leads with its result in bold.
+- About (desktop): text and portrait now share one screen instead of two; "a marketer who knows how to close" is a pull line; credentials moved from a paragraph to a quiet row.
+- Backup of the previous version: branch `pre-audit-2026-11-27`.
+
 ## 2026-11-26 — Résumé + skills: video research pipeline
 - Résumé PDF replaced with the latest Google Doc export (v=10 everywhere): new "AI Video Research Pipeline (Personal Project)" entry.
 - Skills: added Supabase and Gemini API (Software) and Short-Form Video Analysis (Skills).

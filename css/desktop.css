@@ -213,3 +213,12 @@ main.page:has(.gal){background:#f3f0ec}
 .hero-intro .proof--hero span{font-size:12px;color:#fff}
 .hero-intro__cta{gap:8px}
 .hero-intro__cta .btn{text-shadow:none}
+
+/* ---------- about: text + portrait share one screen (was text screen, then photo screen) ---------- */
+.editorial{display:grid;grid-template-columns:minmax(0,520px) auto;justify-content:center;align-items:center;gap:72px;max-width:1160px;min-height:var(--dscr);padding:0 40px}
+.editorial__text,.editorial__figure{min-height:0;padding:0}
+.editorial__text{max-width:none;margin:0}
+.editorial__figure img{width:auto;aspect-ratio:3/4;height:min(600px,calc(var(--dscr) - 120px))}
+.editorial .keep-going{display:none}
+/* ---------- work: ModelLab featured full width, then the 2x2 grid ---------- */
+.work .card--feature{grid-column:1/-1}
