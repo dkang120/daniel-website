@@ -24,11 +24,15 @@
     form.addEventListener('submit', function (e) {
       e.preventDefault();
       var name = form.name.value.trim(), email = form.email.value.trim();
-      if (!name || !/^\S+@\S+\.\S+$/.test(email)) {
-        status.textContent = 'Please add your name and a valid email.';
-        (!name ? form.name : form.email).focus();
+      var badN = !name, badE = !/^\S+@\S+\.\S+$/.test(email);
+      form.name.setAttribute('aria-invalid', badN); form.email.setAttribute('aria-invalid', badE);
+      if (badN || badE) {
+        status.classList.add('err');
+        status.textContent = badN ? 'Add your name so I know who to reply to.' : 'That email doesn’t look right. Check it and try again.';
+        (badN ? form.name : form.email).focus();
         return;
       }
+      status.classList.remove('err');
       status.textContent = 'Sending…';
       fetch(form.action, { method: 'POST', body: new FormData(form), headers: { Accept: 'application/json' } })
         .then(function (r) { if (!r.ok) throw new Error('send failed'); form.classList.add('sent'); status.textContent = 'Thanks — I’ll reply within a day.'; })

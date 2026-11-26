@@ -14,7 +14,7 @@
     { id: 'sell', q: 'Can you actually sell?',
       k: ['sell', 'sales', 'close', 'closing', 'closer', 'quota', 'target', 'convert', 'conversion', 'fitness 19', 'gym'],
       a: 'Yes. At Fitness 19 I turned 60% of tours into memberships in my first two months, 188% of the monthly target. My approach is simple: they talk 80% of the call, I find the gap, then make the decision easy.',
-      link: ['How I run a call', 'work/the-close/'] },
+      link: ['See Fitness 19', 'experience/#fitness-19'] },
     { id: 'social', q: 'What have you done in social media?',
       k: ['social', 'instagram', 'content', 'jc in me', 'engagement', 'followers', 'brand', 'rebrand'],
       a: 'I ran JC in Me’s Instagram end to end: strategy, design and posting. In the last 90 days a Reels-led strategy drove 155,000+ views, up 400%+, and grew the account to 1,000+ followers, with 69% of views from non-followers.',

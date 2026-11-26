@@ -1,5 +1,15 @@
 # Changelog
 
+## 2026-11-27 (4) — Second audit round
+- The Close removed: case page, images, Work card, Experience/Ask Daniel/hero links and sitemap entry. 60% now links to Experience → Fitness 19.
+- Nav: Work, About | Beyond, Résumé, Contact (button). Experience moved to the mobile menu's secondary list and the footer; Next chain unchanged.
+- Home: "Selected work" strip after the hero (fills the empty screen), school line made small, mobile hero drops the metric context lines.
+- Work: intro line, new labels (Product & Paid Social / Community & Growth / Content & Acquisition / Brand & Digital), big metric line, "Read case study →" on each card, 3-up row under ModelLab.
+- About v3: "About / 01 — I notice what makes people show up.", Perspective / Process as two large anchors, outside work folded into the accent line, credentials as one line.
+- Experience: subtitle, impact line in the overview table, shorter descriptions, "Present" instead of "Now".
+- Contact: "Let's connect", placeholders, marketing/sales options, field-level errors, email fallback line, full-width button on mobile.
+- Handwritten Caveat notes ("the proof ↓", "start here ↓") carry the hero doodles into the inner pages.
+
 ## 2026-11-27 (3) — Menu order
 - "Next →" end cards and footer links now follow the menu: Home → Work → About → Experience → Beyond → Connect. Skills and Recommendation sit muted in the footer.
 
