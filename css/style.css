@@ -2,8 +2,13 @@
 :root{
   --bg:#fff; --text:#1D1B19; --light:#6D6967; --border:#DAD6D5; --tile:#f8f6f5;
   --gutter:20px; --header-h:60px;
-  --font:"Basic Commercial","Helvetica Neue",Helvetica,Arial,sans-serif;
+  --font:"Heros","Basic Commercial","Helvetica Neue",Helvetica,Arial,sans-serif;
+  /* 2026-11-27 system: one family (TeX Gyre Heros, a free Helvetica clone closest to The Row's Basic Commercial) + Caveat for handwritten notes only */
+  --fs-xs:12px; --fs-s:13px; --fs-m:15px; --fs-l:20px; --fs-xl:32px; --fs-xxl:60px;
+  --accent:#8E5F64;   /* dusty rose from the Acne Studios fitting-room hanger; links, markers, focus only */
 }
+@font-face{font-family:"Heros";font-weight:400 500;font-style:normal;font-display:swap;src:url("../fonts/heros-regular.woff2") format("woff2")}
+@font-face{font-family:"Heros";font-weight:600 700;font-style:normal;font-display:swap;src:url("../fonts/heros-bold.woff2") format("woff2")}
 *,*::before,*::after{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
 body{margin:0;background:var(--bg);color:var(--text);font:400 13px/1.65 var(--font);-webkit-font-smoothing:antialiased;letter-spacing:normal}
@@ -470,7 +475,73 @@ p{margin:0}
 .card__sum b{color:var(--text);font-weight:500}
 .editorial__text .pull{font-size:20px;line-height:1.3;letter-spacing:-.01em;color:var(--text)}
 .creds{margin-top:28px;padding-top:18px;border-top:1px solid var(--border)}
-.creds__h{font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px}
+.creds__h{font-size:12px;letter-spacing:.08em;text-transform:uppercase;margin:0 0 10px;color:var(--accent)}
 .creds ul{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0;padding:0;list-style:none;font-size:13px}
 .card--feature .card__img img{object-fit:contain;padding:22px 22px 0;object-position:50% 100%}
 .card--feature .card__img img{filter:drop-shadow(0 10px 28px rgba(0,0,0,.10))}
+
+/* ---------- 2026-11-27 site-wide pass ---------- */
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.u:hover,.card__meta a:hover{color:var(--accent)}
+/* header: Résumé as a utility link, Connect as a small button */
+.nav__cta{padding:4px 12px 5px!important;margin-top:-5px;border:1px solid currentColor;text-decoration:none!important;line-height:1.2}
+.nav__cta:hover,.nav__cta[aria-current]{background:var(--text);color:#fff!important;border-color:var(--text)}
+.is-home.hero-dark .nav__cta:hover{background:#fff;color:var(--text)!important;border-color:#fff}
+/* Next end card: a line about where you're going, accent arrow */
+.footer__next-d{display:block;margin-top:8px;font-size:var(--fs-s);color:var(--light)}
+.footer__next-t span{color:var(--accent)}
+/* Ask Daniel: square, flat, set like the nav instead of a floating pill */
+.ask-btn{border-radius:0;box-shadow:none;height:32px;padding:0 14px;font-size:var(--fs-s);letter-spacing:normal;display:inline-flex;align-items:center;gap:8px}
+.ask-btn::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
+.ask-btn:hover::before,.ask-btn[aria-expanded="true"]::before{background:#fff}
+.ask{border-color:var(--text);box-shadow:none}
+.ask__chip{border-radius:0}
+.sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+/* hero proof: each number links to its case, with the context under it */
+.proof a{display:block;color:inherit}
+.proof small{display:block;margin-top:4px;font-size:11px;line-height:1.3;opacity:.8}
+.proof a:hover small{opacity:1;text-decoration:underline;text-underline-offset:2px}
+.hero-m__eyebrow{font-size:11px;letter-spacing:.14em;text-transform:uppercase;margin:0 0 6px;color:#fff;opacity:.9;text-shadow:0 1px 10px rgba(0,0,0,.35)}
+.hero-intro .hero-intro__eyebrow{color:#fff;opacity:.9}
+/* About v2 (backup of v1: branch about-backup-2026-11-27) */
+.page--about .editorial__figure img{object-position:50% 30%}
+.trio{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin:26px 0 0;padding:18px 0 0;border-top:1px solid var(--border)}
+.trio dt{font-size:var(--fs-xs);letter-spacing:.08em;text-transform:uppercase;color:var(--accent);margin:0 0 6px}
+.trio dd{margin:0;font-size:var(--fs-s);line-height:1.5}
+.bridge{margin-top:22px!important;padding-left:12px;border-left:2px solid var(--accent);color:var(--light)}
+.creds__h{color:var(--accent)}
+@media (max-width:640px){.trio{grid-template-columns:1fr;gap:14px}}
+/* Work: numbered labels, bigger crops */
+.card__no{color:var(--accent);font-variant-numeric:tabular-nums;margin-right:2px}
+.work .card:not(.card--feature) .card__img img{transform:scale(1.18)}
+.work .card:not(.card--feature) a:hover .card__img img{transform:scale(1.22)}
+/* Fieldnote case: challenge / approach / outcome */
+.steps{list-style:none;margin:0 0 22px;padding:14px 0 0;border-top:1px solid var(--border);display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:960px}
+.steps b{display:block;font-weight:500;margin-bottom:4px}
+.steps b::before{content:counter(s,decimal-leading-zero) " ";counter-increment:s;color:var(--accent);font-weight:400}
+.steps{counter-reset:s}
+.steps span{color:var(--light);display:block}
+@media (max-width:640px){.steps{grid-template-columns:1fr;gap:12px}}
+/* Experience: impact line, left rule per role, stronger group headers, links on */
+.care .exp{position:relative;padding-left:16px!important;border-left:2px solid var(--border)}
+.care .exp+.exp{border-top:0!important;margin-top:14px}
+.care .exp:hover,.care .exp:target{border-left-color:var(--accent)}
+.exp__kpi{margin:0 0 6px!important;font-weight:500;color:var(--text)}
+.care .exp-group__label{font-size:12px!important;font-weight:600;color:var(--text);margin-bottom:14px!important;padding-bottom:8px;border-bottom:1px solid var(--text)}
+.care .exp-group__label::after{display:none}
+.exp-more{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 8px}
+.exp-more a{display:inline-flex;align-items:center;gap:8px;min-height:44px;padding:0 16px;border:1px solid var(--text)}
+.exp-more a:hover{background:var(--text);color:#fff}
+.exp-more span{color:var(--accent)}
+.gal__frame{max-width:420px;margin:6px auto 0;font-size:var(--fs-s);color:var(--light);text-align:center}
+.m-only.gal__frame{text-align:left;margin:4px 0 14px}
+@media (min-width:1008px){.is-home .board{right:calc(var(--gutter) + 124px)}.is-home .board-hi{right:calc(var(--gutter) + 124px)}}
+/* mobile checklist: 44px tap targets, global reduced-motion fallback */
+@media (max-width:1007px){
+  .ask-btn{height:44px;padding:0 16px}
+  .exp p:last-child>.u:only-child{min-height:44px!important}
+  .duo .card__meta a{display:inline-flex;align-items:center;min-height:44px}
+  .rail button{position:relative}
+  .rail button::after{content:"";position:absolute;inset:-8px}
+}
+@media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}}

@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026-11-27 (2) — Full audit list
+- Font: self-hosted TeX Gyre Heros (free Helvetica clone, closest to The Row's paid Basic Commercial), so every device matches what Macs showed. Caveat stays for handwritten notes only.
+- No beige anywhere: Beyond's warm wall and gallery-light gradient removed (plain white; frames and placards kept).
+- Nav: header and mobile menu now match (Work, About, Experience, Beyond, Connect); Résumé is a utility link; Connect is a small outlined button.
+- Accent: dusty rose #8E5F64 (from the Acne Studios fitting-room hanger), used only for labels, numbers, arrows and focus rings.
+- Home: "Marketing · Growth · Sales" label; each metric links to its case; one real h1; mobile intro no longer repeats the headline and metrics; hero photo captions no longer read twice by screen readers (alts rewritten); departures board moved left so Ask Daniel doesn't cover it.
+- About v2 (v1 on branch `about-backup-2026-11-27`): Seoul fitting-room crop, what I think about / how I operate / outside work, a line tying travel to how I market, credentials row.
+- Work: numbered cards (01–05), bigger crops; Fieldnote case gets challenge / approach / outcome; The Close is No. 04.
+- Experience: bold impact line per role, left rule per role (rose on hover), stronger group headers, buttons to Skills and Recommendations.
+- Beyond: one framing line under the title.
+- Next cards say where you're going; Ask Daniel is square and flat with a rose dot.
+- Mobile: 44px tap targets, global reduced-motion fallback; no horizontal overflow and zero layout shift on all 12 pages.
+
 ## 2026-11-27 — Audit pass: nav, Work, About
 - Header nav cut from 7 links to 5: Work, About, Experience | Beyond, Connect. Skills and Recommendation stay in the mobile menu and footer.
 - Work: ModelLab back as a featured full-width card (links out to the live site), thumbnail = live homepage screenshot (`images/thumb-modellab-site.webp`). Every card summary now leads with its result in bold.

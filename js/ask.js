@@ -32,7 +32,7 @@
     { id: 'contact', q: 'How do I reach you?',
       k: ['contact', 'reach', 'email', 'call', 'talk', 'connect', 'linkedin', 'resume', 'résumé', 'cv', 'chat'],
       a: 'Email me at kangd4u@gmail.com, or connect with me on LinkedIn. My résumé is below.',
-      link: ['Résumé (PDF)', 'assets/Daniel-Kang-Resume.pdf?v=9'] }
+      link: ['Résumé (PDF)', 'assets/Daniel-Kang-Resume.pdf?v=10'] }
   ];
   var FALLBACK = 'I don’t have a written answer for that one yet. Email me at kangd4u@gmail.com and I’ll answer it myself.';
 

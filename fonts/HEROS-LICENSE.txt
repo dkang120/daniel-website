@@ -1,0 +1,2 @@
+TeX Gyre Heros — (c) GUST e-foundry, distributed under the GUST Font License (https://www.gust.org.pl/projects/e-foundry/licenses).
+Subset to Latin and converted to WOFF2 for this site.
