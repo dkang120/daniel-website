@@ -71,12 +71,17 @@
   panel.appendChild(head); panel.appendChild(log); panel.appendChild(chips); panel.appendChild(form);
   document.body.appendChild(btn); document.body.appendChild(panel);
 
-  // Mobile home: keep the photo hero clean; show the button once past it.
-  if (document.body.classList.contains('is-home')) {
-    var mq = window.matchMedia('(max-width:1007px)');
-    var onScroll = function () { btn.classList.toggle('ask-btn--hide', mq.matches && window.scrollY < window.innerHeight * 0.6 && panel.hidden); };
-    window.addEventListener('scroll', onScroll, { passive: true }); mq.addEventListener('change', onScroll); onScroll();
-  }
+  // Mobile: keep the control off the content while scrolling down; reveal it on scroll up.
+  var mq = window.matchMedia('(max-width:1007px)'), lastY = window.scrollY;
+  var onScroll = function () {
+    var y = window.scrollY, homeHero = document.body.classList.contains('is-home') && y < window.innerHeight * 0.6;
+    var movingDown = y > lastY + 4 && y > 120;
+    var movingUp = y < lastY - 4;
+    if (!mq.matches || !panel.hidden || movingUp) btn.classList.remove('ask-btn--hide');
+    else if (homeHero || movingDown) btn.classList.add('ask-btn--hide');
+    lastY = y;
+  };
+  window.addEventListener('scroll', onScroll, { passive: true }); mq.addEventListener('change', onScroll); onScroll();
 
   var asked = {};
   function renderChips() {

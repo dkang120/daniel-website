@@ -121,10 +121,14 @@ p .u,dd .u{display:inline;padding:0;margin:0}
 .pdp{padding:0}
 .pdp__gallery{height:52vh;background:var(--tile);position:relative}
 @supports (height:100svh){.pdp__gallery{height:52svh}}
+.pdp__gallery--shot{height:auto;padding:0 0 28px}
+@supports (height:100svh){.pdp__gallery--shot{height:auto}}
 .pdp__gallery>img{width:100%;height:100%;object-fit:cover}
 .pdp__info{padding:0}
 .pdp__head{min-height:calc(48vh - var(--hh));padding:22px 24px 20px;display:flex;flex-direction:column;justify-content:center}
 @supports (height:100svh){.pdp__head{min-height:calc(48svh - var(--hh))}}
+.pdp--shot .pdp__head{min-height:0;padding:42px 24px 34px;justify-content:flex-start}
+@supports (height:100svh){.pdp--shot .pdp__head{min-height:0}}
 .pdp__crumbs{font-size:13px;margin-bottom:10px}
 .pdp__crumbs a{display:inline-flex;align-items:center;min-height:44px;margin:-14px 0}
 .pdp__title{font-size:22px;line-height:1.2;margin-bottom:4px}

@@ -1,5 +1,11 @@
 # Changelog
 
+## 2026-11-27 (audit implementation)
+- Preserved the pre-audit site on `backup/pre-audit-2026-11-27`; all work is isolated on `codex/audit-improvements-2026-11-27`.
+- Added a dedicated ModelLab case study with verified live-product facts, clear free/optional Pro pricing, the acquisition funnel and an explicit “test in progress” label instead of unproven campaign results.
+- Added site-wide skip links, strengthened the desktop hero’s type contrast and made Ask Daniel hide while scrolling down on mobile so it no longer covers case-study content.
+- Replaced the vague TMU “countless testimonies” line with the verified Big Four matching result; labeled Fieldnote as a concept / pre-launch validation project.
+
 ## 2026-11-27 (18) — Smoother transitions, Now removed
 - Now block removed from the homepage.
 - View transitions: old page fades out in .18s while the new one fades in right behind it; project images glide .55s with a quick mid-swap (no doubled image); header excluded from animation; pages arriving through a transition skip the scroll-reveal fade (hook in <head>).

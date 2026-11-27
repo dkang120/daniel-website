@@ -1,4 +1,15 @@
 (function () {
+  /* keyboard shortcut: place a skip link before the site header on every page */
+  var main = document.querySelector('main');
+  if (main) {
+    main.id = main.id || 'main-content';
+    main.setAttribute('tabindex', '-1');
+    var skip = document.createElement('a');
+    skip.className = 'skip-link'; skip.href = '#' + main.id; skip.textContent = 'Skip to main content';
+    document.body.insertBefore(skip, document.body.firstChild);
+    skip.addEventListener('click', function () { setTimeout(function () { main.focus({ preventScroll: true }); }, 0); });
+  }
+
   /* mobile menu */
   var d = document.getElementById('drawer');
   var b = document.querySelector('.header__burger');

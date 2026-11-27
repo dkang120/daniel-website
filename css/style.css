@@ -431,6 +431,9 @@ p{margin:0}
 /* Case study: results up front */
 .star__glance{margin:0 0 34px;padding:18px 0 6px;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
 .star__glance-k{font-size:12px;margin:0 0 10px}
+.case-shot{display:flex;flex-direction:column;gap:10px;width:min(92%,760px);margin:auto;color:var(--light);font-size:var(--fs-s);text-decoration:none}
+.case-shot img{display:block;width:100%;height:auto;border:1px solid var(--border);box-shadow:0 18px 50px -28px rgba(29,27,25,.35)}
+.case-shot:hover span{color:var(--accent);text-decoration:underline;text-underline-offset:3px}
 
 /* Ask Daniel */
 .ask-btn{position:fixed;right:20px;bottom:20px;z-index:60;height:34px;padding:0 16px;border:1px solid var(--text);border-radius:17px;background:#fff;color:var(--text);font-size:12px;letter-spacing:.02em;box-shadow:0 2px 14px rgba(29,27,25,.08);transition:background .2s,color .2s}
@@ -482,6 +485,8 @@ p{margin:0}
 
 /* ---------- 2026-11-27 site-wide pass ---------- */
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.skip-link{position:fixed;top:10px;left:10px;z-index:1000;padding:10px 14px;background:var(--text);color:#fff;text-decoration:none;transform:translateY(-150%);transition:transform .15s ease}
+.skip-link:focus{transform:translateY(0)}
 .u:hover,.card__meta a:hover{color:var(--accent)}
 /* header: Résumé as a utility link, Connect as a small button */
 .nav__cta{padding:4px 12px 5px!important;margin-top:-5px;border:1px solid currentColor;text-decoration:none!important;line-height:1.2}
